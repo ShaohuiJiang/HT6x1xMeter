@@ -26,30 +26,30 @@ extern "C" {
     
 /*
 *********************************************************************************************************
-*                                           È«¾Öºê/½á¹¹Ìå
+*                                           å…¨å±€å®/ç»“æ„ä½“
 *********************************************************************************************************
 */
 
 /* 
-* @brief  SPIÊ±ÖÓÏàÎ»¶¨Òå
+* @brief  SPIæ—¶é’Ÿç›¸ä½å®šä¹‰
 */
 typedef enum
 { 
-    SPI_CPHA_1Edge = 0x00,                      /*!< µÚÒ»¸ö¶¯Ì¬ÑØÖ®Ç°°ëÖÜÆÚÊı¾İ±»·¢ËÍ  */
-    SPI_CPHA_2Edge = 0x08,                      /*!< ¶¯Ì¬ÑØÍ¨¹ıºóÊı¾İ±»·¢ËÍ            */
+    SPI_CPHA_1Edge = 0x00,                      /*!< ç¬¬ä¸€ä¸ªåŠ¨æ€æ²¿ä¹‹å‰åŠå‘¨æœŸæ•°æ®è¢«å‘é€  */
+    SPI_CPHA_2Edge = 0x08,                      /*!< åŠ¨æ€æ²¿é€šè¿‡åæ•°æ®è¢«å‘é€            */
 }SPICPHA_TypeDef;                               /*!< end of group SPICPHA_TypeDef      */   
 
 /* 
-* @brief  SPIÊ±ÖÓ¼«ĞÔ¶¨Òå
+* @brief  SPIæ—¶é’Ÿææ€§å®šä¹‰
 */
 typedef enum
 { 
-    SPI_CPOL_Low = 0x00,                        /*!< ¿ÕÏĞ×´Ì¬SCK±»ÖÃÎªµÍµçÆ½           */
-    SPI_CPOL_high = 0x04,                       /*!< ¿ÕÏĞ×´Ì¬SCK±»ÖÃÎª¸ßµçÆ½           */
+    SPI_CPOL_Low = 0x00,                        /*!< ç©ºé—²çŠ¶æ€SCKè¢«ç½®ä¸ºä½ç”µå¹³           */
+    SPI_CPOL_high = 0x04,                       /*!< ç©ºé—²çŠ¶æ€SCKè¢«ç½®ä¸ºé«˜ç”µå¹³           */
 }SPICPOL_TypeDef;                               /*!< end of group SPICPOL_TypeDef      */ 
 
 /* 
-* @brief  SPIÊ±ÖÓÆµÂÊ¶¨Òå
+* @brief  SPIæ—¶é’Ÿé¢‘ç‡å®šä¹‰
 */
 typedef enum
 { 
@@ -60,43 +60,43 @@ typedef enum
     SPI_BaudRatePrescaler_32  = 0x40,           /*!< Fspi = Fsys/32                    */
     SPI_BaudRatePrescaler_64  = 0x50,           /*!< Fspi = Fsys/64                    */
     SPI_BaudRatePrescaler_128 = 0x60,           /*!< Fspi = Fsys/128                   */
-    SPI_CLK_None              = 0x70,           /*!< ²»²úÉúÖ÷Ê±ÖÓ                      */
+    SPI_CLK_None              = 0x70,           /*!< ä¸äº§ç”Ÿä¸»æ—¶é’Ÿ                      */
 }SPIBaudrate_TypeDef;                           /*!< end of group SPIBaudrate_TypeDef  */ 
 
 /* 
-* @brief  SPIMode¶¨Òå
+* @brief  SPIModeå®šä¹‰
 */
 typedef enum
 { 
-    SPI_Master = 0x02,                          /*!< SPIÖ÷»úÄ£Ê½                       */
-    SPI_Slave  = 0x00,                          /*!< SPI´Ó»úÄ£Ê½                       */
+    SPI_Master = 0x02,                          /*!< SPIä¸»æœºæ¨¡å¼                       */
+    SPI_Slave  = 0x00,                          /*!< SPIä»æœºæ¨¡å¼                       */
 }SPIMode_TypeDef;                               /*!< end of group SPIMode_TypeDef      */ 
 
 
 /* 
-* @brief  SPIÄ£¿é³õÊ¼»¯½á¹¹¶¨Òå
+* @brief  SPIæ¨¡å—åˆå§‹åŒ–ç»“æ„å®šä¹‰
 */
 typedef struct
 {
-    FunctionalState SPI_CSInCtrol;              /*!< ×ö´Ó»úÊ±£¬ÊÇ·ñ´ò¿ªSPI_CSÊäÈë¿ØÖÆ  */
-    SPIBaudrate_TypeDef SPI_Baudrate;           /*!< SPIÊ±ÖÓÉèÖÃ                       */
-    SPICPHA_TypeDef SPI_CPHA;                   /*!< Ê±ÖÓÏàÎ»ÉèÖÃ                      */
-    SPICPOL_TypeDef SPI_CPOL;                   /*!< Ê±ÖÓ¼«ĞÔÉèÖÃ                      */
-    SPIMode_TypeDef SPI_Mode;                   /*!< SPI_ModeÉèÖÃ                      */
+    FunctionalState SPI_CSInCtrol;              /*!< åšä»æœºæ—¶ï¼Œæ˜¯å¦æ‰“å¼€SPI_CSè¾“å…¥æ§åˆ¶  */
+    SPIBaudrate_TypeDef SPI_Baudrate;           /*!< SPIæ—¶é’Ÿè®¾ç½®                       */
+    SPICPHA_TypeDef SPI_CPHA;                   /*!< æ—¶é’Ÿç›¸ä½è®¾ç½®                      */
+    SPICPOL_TypeDef SPI_CPOL;                   /*!< æ—¶é’Ÿææ€§è®¾ç½®                      */
+    SPIMode_TypeDef SPI_Mode;                   /*!< SPI_Modeè®¾ç½®                      */
 
 }SPI_InitTypeDef;                               /*!< end of group SPI_InitTypeDef      */
 
 
 /*
 *********************************************************************************************************
-*                                             È«¾Ö±äÁ¿
+*                                             å…¨å±€å˜é‡
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           È«¾Öº¯ÊıÉêÃ÷
+*                                           å…¨å±€å‡½æ•°ç”³æ˜
 *********************************************************************************************************
 */
 

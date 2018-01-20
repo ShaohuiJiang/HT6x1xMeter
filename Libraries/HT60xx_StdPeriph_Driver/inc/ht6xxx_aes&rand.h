@@ -29,11 +29,11 @@ extern "C" {
     
 /*
 *********************************************************************************************************
-*                                           È«¾Öºê/½á¹¹Ìå
+*                                           å…¨å±€å®/ç»“æ„ä½“
 *********************************************************************************************************
 */
 /* 
-* @brief  AES_key³¤¶ÈÄ£Ê½¶¨Òå
+* @brief  AES_keyé•¿åº¦æ¨¡å¼å®šä¹‰
 */
 typedef enum
 { 
@@ -43,23 +43,23 @@ typedef enum
 }AESKeyMode_TypeDef;                										/*!<end of group AESKeyMode_TypeDef  */	
 
 /* 
-* @brief  AES/GHASH/RANDÖĞ¶ÏÊ¹ÄÜ¶¨Òå
+* @brief  AES/GHASH/RANDä¸­æ–­ä½¿èƒ½å®šä¹‰
 */
 typedef enum
 { 
-    AES_IE = GHASH_AESGHASHIE_AESIE,       							/*!< AESÖĞ¶ÏÊ¹ÄÜ                    */
-    GHASH_IE = GHASH_AESGHASHIE_GHASHIE,       					/*!< GHASHÖĞ¶ÏÊ¹ÄÜ                   */
-		RAND_IE = GHASH_AESGHASHIE_RANDIE,       						/*!< RANDÖĞ¶ÏÊ¹ÄÜ                   */
+    AES_IE = GHASH_AESGHASHIE_AESIE,       							/*!< AESä¸­æ–­ä½¿èƒ½                    */
+    GHASH_IE = GHASH_AESGHASHIE_GHASHIE,       					/*!< GHASHä¸­æ–­ä½¿èƒ½                   */
+		RAND_IE = GHASH_AESGHASHIE_RANDIE,       						/*!< RANDä¸­æ–­ä½¿èƒ½                   */
 }AES_ITEnTypeDef;  																			/*!<end of group AES_ITEnTypeDef  */	
 
 /* 
-* @brief  AES/GHASH/RANDÖĞ¶Ï±êÖ¾¶¨Òå
+* @brief  AES/GHASH/RANDä¸­æ–­æ ‡å¿—å®šä¹‰
 */
 typedef enum
 { 
-    AES_IF = GHASH_AESGHASHIF_AESIF,       							/*!< AESÖĞ¶Ï±êÖ¾                    */
-    GHASH_IF = GHASH_AESGHASHIF_GHASHIF,       					/*!< GHASHÖĞ¶Ï±êÖ¾                   */
-		RAND_IF = GHASH_AESGHASHIF_RANDIF,       						/*!< RANDÖĞ¶Ï±êÖ¾                 */
+    AES_IF = GHASH_AESGHASHIF_AESIF,       							/*!< AESä¸­æ–­æ ‡å¿—                    */
+    GHASH_IF = GHASH_AESGHASHIF_GHASHIF,       					/*!< GHASHä¸­æ–­æ ‡å¿—                   */
+		RAND_IF = GHASH_AESGHASHIF_RANDIF,       						/*!< RANDä¸­æ–­æ ‡å¿—                 */
 }AES_ITFlagTypeDef;  			
 
 typedef union
@@ -84,14 +84,14 @@ typedef union
 } Parameter512bits_TypeDef;
 /*
 *********************************************************************************************************
-*                                             È«¾Ö±äÁ¿
+*                                             å…¨å±€å˜é‡
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           È«¾Öº¯ÊıÉêÃ÷
+*                                           å…¨å±€å‡½æ•°ç”³æ˜
 *********************************************************************************************************
 */
 void HT_AES_Encrypt(AESKeyMode_TypeDef AESKeyMode, uint32_t *pKeyAddr, uint32_t *pIntDataAddr);

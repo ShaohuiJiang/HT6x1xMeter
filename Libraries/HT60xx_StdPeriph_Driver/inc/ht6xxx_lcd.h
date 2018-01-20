@@ -26,21 +26,21 @@ extern "C" {
     
 /*
 *********************************************************************************************************
-*                                           È«¾Öºê/½á¹¹Ìå
+*                                           å…¨å±€å®/ç»“æ„ä½“
 *********************************************************************************************************
 */
 
 /* 
-* @brief  LCDÆ«Ñ¹Çı¶¯Ñ¡ÔñÎ»¶¨Òå
+* @brief  LCDåå‹é©±åŠ¨é€‰æ‹©ä½å®šä¹‰
 */
 typedef enum
 { 
-    LCDBias_OneThird = 0x80,               /*!< 1/3 bias Æ«Ñ¹Çı¶¯              */
-    LCDBias_OneFourth = 0x00,              /*!< 1/4 bias Æ«Ñ¹Çı¶¯              */
+    LCDBias_OneThird = 0x80,               /*!< 1/3 bias åå‹é©±åŠ¨              */
+    LCDBias_OneFourth = 0x00,              /*!< 1/4 bias åå‹é©±åŠ¨              */
 }LCDBias_TypeDef;                          /*!< end of group LCDBias_TypeDef   */  
 
 /* 
-* @brief  LCDCom¶¨Òå
+* @brief  LCDComå®šä¹‰
 */
 typedef enum
 { 
@@ -50,53 +50,53 @@ typedef enum
 }LCDCom_TypeDef;                           /*!< end of group LCDCom_TypeDef    */ 
 
 /* 
-* @brief  LCDÉ¨ÃèÆµÂÊÑ¡ÔñÎ»¶¨Òå
+* @brief  LCDæ‰«æé¢‘ç‡é€‰æ‹©ä½å®šä¹‰
 */
 typedef enum
 { 
-    LCDCLK_Div1 = 0x04,                    /*!< LCDÉ¨ÃèÆµÂÊ×î¸ß                */
-    LCDCLK_Div2 = 0x00,                    /*!< LCDÉ¨ÃèÆµÂÊ/2                  */
-    LCDCLK_Div4 = 0x01,                    /*!< LCDÉ¨ÃèÆµÂÊ/4                  */
-    LCDCLK_Div8 = 0x02,                    /*!< LCDÉ¨ÃèÆµÂÊ/8                  */
-    LCDCLK_Div16 = 0x03,                   /*!< LCDÉ¨ÃèÆµÂÊ/16                 */
+    LCDCLK_Div1 = 0x04,                    /*!< LCDæ‰«æé¢‘ç‡æœ€é«˜                */
+    LCDCLK_Div2 = 0x00,                    /*!< LCDæ‰«æé¢‘ç‡/2                  */
+    LCDCLK_Div4 = 0x01,                    /*!< LCDæ‰«æé¢‘ç‡/4                  */
+    LCDCLK_Div8 = 0x02,                    /*!< LCDæ‰«æé¢‘ç‡/8                  */
+    LCDCLK_Div16 = 0x03,                   /*!< LCDæ‰«æé¢‘ç‡/16                 */
 }LCDCLK_TypeDef;                           /*!< end of group LCDCLK_TypeDef    */
 
 /* 
-* @brief  LCD³äµçÄ£Ê½¶¨Òå
+* @brief  LCDå……ç”µæ¨¡å¼å®šä¹‰
 */
 typedef enum
 { 
-    LCDCharge_HighCurrent = 0x00,          /*!< LCD´óµçÁ÷³äµçÄ£Ê½                   */
-    LCDCharge_LittleCurrent = 0x10,        /*!< LCDĞ¡µçÁ÷³äµçÄ£Ê½                   */
-    LCDChargeQuick_PeriodDiv8 = 0x30,      /*!< ¿ìËÙ³äµçÄ£Ê½£¬³äµçÊ±¼ä1/8¸öFlcdÖÜÆÚ */
-    LCDChargeQuick_PeriodDiv16 = 0x70,     /*!< ¿ìËÙ³äµçÄ£Ê½£¬³äµçÊ±¼ä1/16¸öFlcdÖÜÆÚ*/
-    LCDChargeQuick_PeriodDiv32 = 0xb0,     /*!< ¿ìËÙ³äµçÄ£Ê½£¬³äµçÊ±¼ä1/32¸öFlcdÖÜÆÚ*/
-    LCDChargeQuick_PeriodDiv64 = 0xf0,     /*!< ¿ìËÙ³äµçÄ£Ê½£¬³äµçÊ±¼ä1/64¸öFlcdÖÜÆÚ*/
+    LCDCharge_HighCurrent = 0x00,          /*!< LCDå¤§ç”µæµå……ç”µæ¨¡å¼                   */
+    LCDCharge_LittleCurrent = 0x10,        /*!< LCDå°ç”µæµå……ç”µæ¨¡å¼                   */
+    LCDChargeQuick_PeriodDiv8 = 0x30,      /*!< å¿«é€Ÿå……ç”µæ¨¡å¼ï¼Œå……ç”µæ—¶é—´1/8ä¸ªFlcdå‘¨æœŸ */
+    LCDChargeQuick_PeriodDiv16 = 0x70,     /*!< å¿«é€Ÿå……ç”µæ¨¡å¼ï¼Œå……ç”µæ—¶é—´1/16ä¸ªFlcdå‘¨æœŸ*/
+    LCDChargeQuick_PeriodDiv32 = 0xb0,     /*!< å¿«é€Ÿå……ç”µæ¨¡å¼ï¼Œå……ç”µæ—¶é—´1/32ä¸ªFlcdå‘¨æœŸ*/
+    LCDChargeQuick_PeriodDiv64 = 0xf0,     /*!< å¿«é€Ÿå……ç”µæ¨¡å¼ï¼Œå……ç”µæ—¶é—´1/64ä¸ªFlcdå‘¨æœŸ*/
 }LCDChargeMode_TypeDef;                    /*!< end of group LCDChargeMode_TypeDef  */  
 
 /* 
-* @brief  LCDÄ£¿é³õÊ¼»¯½á¹¹¶¨Òå
+* @brief  LCDæ¨¡å—åˆå§‹åŒ–ç»“æ„å®šä¹‰
 */
 typedef struct
 {
-    LCDBias_TypeDef LCD_Bias;              /*!< LCDÆ«Ñ¹Çı¶¯¶¨Òå                     */
-    LCDCom_TypeDef  LCD_Com;               /*!< LCDCom Number¶¨Òå                   */
-    LCDCLK_TypeDef  LCD_CLK;               /*!< LCDÉ¨ÃèÆµÂÊ¶¨Òå                     */
-    LCDChargeMode_TypeDef LCD_ChargeMode;  /*!< LCD³äµçÄ£Ê½¶¨Òå                     */
-    uint16_t LCD_Vrsel;                    /*!< LCD_Vrsel[3..0]: ¶Ô±È¶ÈÉèÖÃ         */                                                
+    LCDBias_TypeDef LCD_Bias;              /*!< LCDåå‹é©±åŠ¨å®šä¹‰                     */
+    LCDCom_TypeDef  LCD_Com;               /*!< LCDCom Numberå®šä¹‰                   */
+    LCDCLK_TypeDef  LCD_CLK;               /*!< LCDæ‰«æé¢‘ç‡å®šä¹‰                     */
+    LCDChargeMode_TypeDef LCD_ChargeMode;  /*!< LCDå……ç”µæ¨¡å¼å®šä¹‰                     */
+    uint16_t LCD_Vrsel;                    /*!< LCD_Vrsel[3..0]: å¯¹æ¯”åº¦è®¾ç½®         */                                                
 }LCD_InitTypeDef;                          /*!< end of group LCD_InitTypeDef        */
 
 
 /*
 *********************************************************************************************************
-*                                             È«¾Ö±äÁ¿
+*                                             å…¨å±€å˜é‡
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           È«¾Öº¯ÊıÉêÃ÷
+*                                           å…¨å±€å‡½æ•°ç”³æ˜
 *********************************************************************************************************
 */
 

@@ -26,30 +26,30 @@ extern "C" {
     
 /*
 *********************************************************************************************************
-*                                           »´æ÷∫Í/Ω·ππÃÂ
+*                                           ÂÖ®Â±ÄÂÆè/ÁªìÊûÑ‰Ωì
 *********************************************************************************************************
 */
 
 /* 
-* @brief  RTC Timer∂®“Â
+* @brief  RTC TimerÂÆö‰πâ
 */
 typedef enum
 { 
-    RTCTMR1 = 0x20,                /*!< RTC∂® ±∆˜1                        */
-    RTCTMR2 = 0x40,                /*!< RTC∂® ±∆˜2                        */
+    RTCTMR1 = 0x20,                /*!< RTCÂÆöÊó∂Âô®1                        */
+    RTCTMR2 = 0x40,                /*!< RTCÂÆöÊó∂Âô®2                        */
 }RTCTMR_SelectTypeDef;             /*!< end of group RTCTMR_SelectTypeDef */   
 
 /* 
-* @brief  RTC Timer≥ı ºªØ∂®“Â
+* @brief  RTC TimerÂàùÂßãÂåñÂÆö‰πâ
 */
 typedef struct
 {
-    FunctionalState NewState;      /*!< ∂® ±∆˜◊¥Ã¨…Ë÷√£∫ πƒ‹orπÿ±’        */
-    uint16_t  Count;               /*!< ∂® ±∆˜∂® ±÷‹∆⁄…Ë÷√                */ 
+    FunctionalState NewState;      /*!< ÂÆöÊó∂Âô®Áä∂ÊÄÅËÆæÁΩÆÔºö‰ΩøËÉΩorÂÖ≥Èó≠        */
+    uint16_t  Count;               /*!< ÂÆöÊó∂Âô®ÂÆöÊó∂Âë®ÊúüËÆæÁΩÆ                */ 
 }RTCTMR_InitTypeDef;               /*!< end of group RTCTMR_InitTypeDef   */
 
 /* 
-* @brief  Tout ‰≥ˆ∂®“Â
+* @brief  ToutËæìÂá∫ÂÆö‰πâ
 */
 typedef enum
 { 
@@ -67,40 +67,40 @@ typedef enum
 }RTCTout_TypeDef;                  /*!< end of group RTCTout_TypeDef  */  
 
 /* 
-* @brief  ƒ÷÷”…Ë÷√∂®“Â
+* @brief  ÈóπÈíüËÆæÁΩÆÂÆö‰πâ
 */
 typedef union
 { 
     struct
     {
-        uint8_t minute;            /*!< ƒ÷÷”ºƒ¥Ê∆˜÷–∑÷÷”…Ë÷√          */
-        uint8_t hour;              /*!< ƒ÷÷”ºƒ¥Ê∆˜÷––° ±…Ë÷√          */
+        uint8_t minute;            /*!< ÈóπÈíüÂØÑÂ≠òÂô®‰∏≠ÂàÜÈíüËÆæÁΩÆ          */
+        uint8_t hour;              /*!< ÈóπÈíüÂØÑÂ≠òÂô®‰∏≠Â∞èÊó∂ËÆæÁΩÆ          */
     }Muster;                                                              
     uint16_t HourAndMinute;                                               
 }RTCAlarm_TypeDef;                 /*!< end of group RTCAlarm_TypeDef */  
 
 /* 
-* @brief  RTCƒ£øÈ≥ı ºªØΩ·ππ∂®“Â
+* @brief  RTCÊ®°ÂùóÂàùÂßãÂåñÁªìÊûÑÂÆö‰πâ
 */
 typedef struct
 {
-    RTCTMR_InitTypeDef RTC_TMR1;   /*!< RTC∂® ±∆˜1…Ë÷√                */                                                                          
-    RTCTMR_InitTypeDef RTC_TMR2;   /*!< RTC∂® ±∆˜2…Ë÷√                */                                                                         
-    RTCAlarm_TypeDef RTC_Alarm;    /*!< RTCƒ÷÷”…Ë÷√                   */                                                                             
-    RTCTout_TypeDef RTC_TOUT;      /*!< RTC Tout ‰≥ˆ…Ë÷√              */                                                                        
+    RTCTMR_InitTypeDef RTC_TMR1;   /*!< RTCÂÆöÊó∂Âô®1ËÆæÁΩÆ                */                                                                          
+    RTCTMR_InitTypeDef RTC_TMR2;   /*!< RTCÂÆöÊó∂Âô®2ËÆæÁΩÆ                */                                                                         
+    RTCAlarm_TypeDef RTC_Alarm;    /*!< RTCÈóπÈíüËÆæÁΩÆ                   */                                                                             
+    RTCTout_TypeDef RTC_TOUT;      /*!< RTC ToutËæìÂá∫ËÆæÁΩÆ              */                                                                        
 }RTC_InitTypeDef;                  /*!< end of group RTC_InitTypeDef  */
 
 
 /*
 *********************************************************************************************************
-*                                             »´æ÷±‰¡ø
+*                                             ÂÖ®Â±ÄÂèòÈáè
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           »´æ÷∫Ø ˝…Í√˜
+*                                           ÂÖ®Â±ÄÂáΩÊï∞Áî≥Êòé
 *********************************************************************************************************
 */
 void HT_RTC_Init(RTC_InitTypeDef* RTC_InitStruct);

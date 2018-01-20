@@ -26,145 +26,145 @@ extern "C" {
 
 /*
 *********************************************************************************************************
-*                                           È«¾Öºê/½á¹¹Ìå
+*                                           å…¨å±€å®/ç»“æ„ä½“
 *********************************************************************************************************
 */
 
 /* 
-* @brief  LVDIN×´Ì¬¶¨Òå
+* @brief  LVDINçŠ¶æ€å®šä¹‰
 */
 typedef enum
 { 
-    LVDINEnable = 0x04,                   /*!< LVDINÊ¹ÄÜ                        */
-    LVDINDisable = 0x00,                  /*!< LVDIN¹Ø±Õ                        */
+    LVDINEnable = 0x04,                   /*!< LVDINä½¿èƒ½                        */
+    LVDINDisable = 0x00,                  /*!< LVDINå…³é—­                        */
 }LVDINState_TypeDef;                      /*!< end of group LVDIN_StateTypeDef  */   
 
 /* 
-* @brief  BOR×´Ì¬¶¨Òå
+* @brief  BORçŠ¶æ€å®šä¹‰
 */
 typedef enum
 { 
-    BORDisable = 0x00,                    /*!< BOR¹Ø±Õ                          */
-    BORReset = 0x03,                      /*!< BORÊ¹ÄÜ£¬²úÉú¸´Î»                */
-    BORInterrupt = 0x01,                  /*!< BORÊ¹ÄÜ£¬²úÉúÖĞ¶Ï                */
+    BORDisable = 0x00,                    /*!< BORå…³é—­                          */
+    BORReset = 0x03,                      /*!< BORä½¿èƒ½ï¼Œäº§ç”Ÿå¤ä½                */
+    BORInterrupt = 0x01,                  /*!< BORä½¿èƒ½ï¼Œäº§ç”Ÿä¸­æ–­                */
 }BORState_TypeDef;                        /*!< end of group BOR_StateTypeDef    */
 
 /* 
-* @brief  VCCãĞÖµ¶¨Òå
+* @brief  VCCé˜ˆå€¼å®šä¹‰
 */
 typedef enum
 { 
-    VccLVL_2V4 = PMU_VDETCFG_VCCLVL_2V4,  /*!< Vcc¼ì²âãĞÖµ = 2.4V               */
-    VccLVL_2V6 = PMU_VDETCFG_VCCLVL_2V6,  /*!< Vcc¼ì²âãĞÖµ = 2.6V               */
-    VccLVL_2V8 = PMU_VDETCFG_VCCLVL_2V8,  /*!< Vcc¼ì²âãĞÖµ = 2.8V               */
-    VccLVL_3V0 = PMU_VDETCFG_VCCLVL_3V0,  /*!< Vcc¼ì²âãĞÖµ = 3.0V               */
+    VccLVL_2V4 = PMU_VDETCFG_VCCLVL_2V4,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 2.4V               */
+    VccLVL_2V6 = PMU_VDETCFG_VCCLVL_2V6,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 2.6V               */
+    VccLVL_2V8 = PMU_VDETCFG_VCCLVL_2V8,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 2.8V               */
+    VccLVL_3V0 = PMU_VDETCFG_VCCLVL_3V0,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 3.0V               */
 #if  defined  HT6x1x ||  defined  HT6x2x    
-    VccLVL_3V2 = PMU_VDETCFG_VCCLVL_3V2,  /*!< Vcc¼ì²âãĞÖµ = 3.2V               */
-    VccLVL_3V4 = PMU_VDETCFG_VCCLVL_3V4,  /*!< Vcc¼ì²âãĞÖµ = 3.4V               */
-    VccLVL_3V6 = PMU_VDETCFG_VCCLVL_3V6,  /*!< Vcc¼ì²âãĞÖµ = 3.6V               */
-    VccLVL_3V8 = PMU_VDETCFG_VCCLVL_3V8,  /*!< Vcc¼ì²âãĞÖµ = 3.8V               */
-    VccLVL_4V0 = PMU_VDETCFG_VCCLVL_4V0,  /*!< Vcc¼ì²âãĞÖµ = 4.0V               */
-    VccLVL_4V2 = PMU_VDETCFG_VCCLVL_4V2,  /*!< Vcc¼ì²âãĞÖµ = 4.2V               */    
-    VccLVL_4V4 = PMU_VDETCFG_VCCLVL_4V4,  /*!< Vcc¼ì²âãĞÖµ = 4.4V               */
-    VccLVL_4V6 = PMU_VDETCFG_VCCLVL_4V6,  /*!< Vcc¼ì²âãĞÖµ = 4.6V               */
-    VccLVL_4V8 = PMU_VDETCFG_VCCLVL_4V8,  /*!< Vcc¼ì²âãĞÖµ = 4.8V               */ 
-    VccLVL_5V0 = PMU_VDETCFG_VCCLVL_5V0,  /*!< Vcc¼ì²âãĞÖµ = 5.0V               */ 
+    VccLVL_3V2 = PMU_VDETCFG_VCCLVL_3V2,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 3.2V               */
+    VccLVL_3V4 = PMU_VDETCFG_VCCLVL_3V4,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 3.4V               */
+    VccLVL_3V6 = PMU_VDETCFG_VCCLVL_3V6,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 3.6V               */
+    VccLVL_3V8 = PMU_VDETCFG_VCCLVL_3V8,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 3.8V               */
+    VccLVL_4V0 = PMU_VDETCFG_VCCLVL_4V0,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 4.0V               */
+    VccLVL_4V2 = PMU_VDETCFG_VCCLVL_4V2,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 4.2V               */    
+    VccLVL_4V4 = PMU_VDETCFG_VCCLVL_4V4,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 4.4V               */
+    VccLVL_4V6 = PMU_VDETCFG_VCCLVL_4V6,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 4.6V               */
+    VccLVL_4V8 = PMU_VDETCFG_VCCLVL_4V8,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 4.8V               */ 
+    VccLVL_5V0 = PMU_VDETCFG_VCCLVL_5V0,  /*!< Vccæ£€æµ‹é˜ˆå€¼ = 5.0V               */ 
 #endif
 }VCCLVL_TypeDef;                          /*!< end of group VCCLVL_TypeDef      */
 
 /* 
-* @brief  BORãĞÖµ¶¨Òå
+* @brief  BORé˜ˆå€¼å®šä¹‰
 */
 typedef enum
 { 
-    BORLVL_2V2 = PMU_VDETCFG_BORLVL_2V2,  /*!< BOR¼ì²âãĞÖµ = 2.2V               */
-    BORLVL_2V4 = PMU_VDETCFG_BORLVL_2V4,  /*!< BOR¼ì²âãĞÖµ = 2.4V               */
-    BORLVL_2V6 = PMU_VDETCFG_BORLVL_2V6,  /*!< BOR¼ì²âãĞÖµ = 2.6V               */
-    BORLVL_2V8 = PMU_VDETCFG_BORLVL_2V8,  /*!< BOR¼ì²âãĞÖµ = 2.8V               */ 
+    BORLVL_2V2 = PMU_VDETCFG_BORLVL_2V2,  /*!< BORæ£€æµ‹é˜ˆå€¼ = 2.2V               */
+    BORLVL_2V4 = PMU_VDETCFG_BORLVL_2V4,  /*!< BORæ£€æµ‹é˜ˆå€¼ = 2.4V               */
+    BORLVL_2V6 = PMU_VDETCFG_BORLVL_2V6,  /*!< BORæ£€æµ‹é˜ˆå€¼ = 2.6V               */
+    BORLVL_2V8 = PMU_VDETCFG_BORLVL_2V8,  /*!< BORæ£€æµ‹é˜ˆå€¼ = 2.8V               */ 
 }BOTLVL_TypeDef;                          /*!< end of group BOTLVL_TypeDef      */
 
 /* 
-* @brief  VCC_DET,BOR_DET·ÖÊ±¼ì²âÊ±¼ä¶¨Òå
+* @brief  VCC_DET,BOR_DETåˆ†æ—¶æ£€æµ‹æ—¶é—´å®šä¹‰
 */
 typedef enum
 { 
-    DETTIM_300uS = PMU_VDETPCFG_VDETTIME_300uS,  /*!< ·ÖÊ±¼ì²âÊ±¼ä = 300us        */
-    DETTIM_360uS = PMU_VDETPCFG_VDETTIME_360uS,  /*!< ·ÖÊ±¼ì²âÊ±¼ä = 360us        */
-    DETTIM_480uS = PMU_VDETPCFG_VDETTIME_480uS,  /*!< ·ÖÊ±¼ì²âÊ±¼ä = 480us        */
-    DETTIM_1120uS = PMU_VDETPCFG_VDETTIME_1120uS,  /*!< ·ÖÊ±¼ì²âÊ±¼ä = 560us        */ 
+    DETTIM_300uS = PMU_VDETPCFG_VDETTIME_300uS,  /*!< åˆ†æ—¶æ£€æµ‹æ—¶é—´ = 300us        */
+    DETTIM_360uS = PMU_VDETPCFG_VDETTIME_360uS,  /*!< åˆ†æ—¶æ£€æµ‹æ—¶é—´ = 360us        */
+    DETTIM_480uS = PMU_VDETPCFG_VDETTIME_480uS,  /*!< åˆ†æ—¶æ£€æµ‹æ—¶é—´ = 480us        */
+    DETTIM_1120uS = PMU_VDETPCFG_VDETTIME_1120uS,  /*!< åˆ†æ—¶æ£€æµ‹æ—¶é—´ = 560us        */ 
 }DETTIM_TypeDef;                                 /*!< end of group DETTIM_TypeDef */
 
 /* 
-* @brief  VCC_DET,BOR_DET·ÖÊ±¼ì²âÖÜÆÚ¶¨Òå
+* @brief  VCC_DET,BOR_DETåˆ†æ—¶æ£€æµ‹å‘¨æœŸå®šä¹‰
 */
 typedef enum
 { 
-    DETPRD_16P5mS = PMU_VDETPCFG_VDETPRD_16P5mS, /*!< ·ÖÊ±¼ì²âÖÜÆÚ = 16.5ms       */
-    DETPRD_33mS   = PMU_VDETPCFG_VDETPRD_33mS,   /*!< ·ÖÊ±¼ì²âÖÜÆÚ = 33ms         */
-    DETPRD_67mS   = PMU_VDETPCFG_VDETPRD_67mS,   /*!< ·ÖÊ±¼ì²âÖÜÆÚ = 67ms         */
-    DETPRD_134mS  = PMU_VDETPCFG_VDETPRD_134mS,  /*!< ·ÖÊ±¼ì²âÖÜÆÚ = 134ms        */ 
-    DETPRD_268mS  = PMU_VDETPCFG_VDETPRD_268mS,  /*!< ·ÖÊ±¼ì²âÖÜÆÚ = 268ms        */
-    DETPRD_536mS  = PMU_VDETPCFG_VDETPRD_536mS,  /*!< ·ÖÊ±¼ì²âÖÜÆÚ = 536ms        */
-    DETPRD_1072mS = PMU_VDETPCFG_VDETPRD_1072mS, /*!< ·ÖÊ±¼ì²âÖÜÆÚ = 1072ms       */
-    DETPRD_2144mS = PMU_VDETPCFG_VDETPRD_2144mS, /*!< ·ÖÊ±¼ì²âÖÜÆÚ = 2144ms       */
+    DETPRD_16P5mS = PMU_VDETPCFG_VDETPRD_16P5mS, /*!< åˆ†æ—¶æ£€æµ‹å‘¨æœŸ = 16.5ms       */
+    DETPRD_33mS   = PMU_VDETPCFG_VDETPRD_33mS,   /*!< åˆ†æ—¶æ£€æµ‹å‘¨æœŸ = 33ms         */
+    DETPRD_67mS   = PMU_VDETPCFG_VDETPRD_67mS,   /*!< åˆ†æ—¶æ£€æµ‹å‘¨æœŸ = 67ms         */
+    DETPRD_134mS  = PMU_VDETPCFG_VDETPRD_134mS,  /*!< åˆ†æ—¶æ£€æµ‹å‘¨æœŸ = 134ms        */ 
+    DETPRD_268mS  = PMU_VDETPCFG_VDETPRD_268mS,  /*!< åˆ†æ—¶æ£€æµ‹å‘¨æœŸ = 268ms        */
+    DETPRD_536mS  = PMU_VDETPCFG_VDETPRD_536mS,  /*!< åˆ†æ—¶æ£€æµ‹å‘¨æœŸ = 536ms        */
+    DETPRD_1072mS = PMU_VDETPCFG_VDETPRD_1072mS, /*!< åˆ†æ—¶æ£€æµ‹å‘¨æœŸ = 1072ms       */
+    DETPRD_2144mS = PMU_VDETPCFG_VDETPRD_2144mS, /*!< åˆ†æ—¶æ£€æµ‹å‘¨æœŸ = 2144ms       */
 }DETPRD_TypeDef;                                 /*!< end of group DETPRD_TypeDef */
 
 /* 
-* @brief  DISChargeÄ£Ê½¶¨Òå
+* @brief  DISChargeæ¨¡å¼å®šä¹‰
 */
 #if  defined  HT6x2x  ||  defined HT501x
 typedef enum
 { 
-    DisCharge0mA =0,                            /*!< ¹Ø±Õµç³Ø¶Û»¯¹¦ÄÜ              */
-    DisCharge1mA =0x8000,                       /*!< µç³Ø¶Û»¯Ê¹ÄÜ£¬µçÁ÷1mA         */
-    DisCharge2mA =0x88000,                      /*!< µç³Ø¶Û»¯Ê¹ÄÜ£¬µçÁ÷2mA         */
-	DisCharge50uA =0x48000,                     /*!< µç³Ø¶Û»¯Ê¹ÄÜ£¬µçÁ÷50uA        */
-	DisCharge100uA =0xC8000,                    /*!< µç³Ø¶Û»¯Ê¹ÄÜ£¬µçÁ÷100uA       */
+    DisCharge0mA =0,                            /*!< å…³é—­ç”µæ± é’åŒ–åŠŸèƒ½              */
+    DisCharge1mA =0x8000,                       /*!< ç”µæ± é’åŒ–ä½¿èƒ½ï¼Œç”µæµ1mA         */
+    DisCharge2mA =0x88000,                      /*!< ç”µæ± é’åŒ–ä½¿èƒ½ï¼Œç”µæµ2mA         */
+	DisCharge50uA =0x48000,                     /*!< ç”µæ± é’åŒ–ä½¿èƒ½ï¼Œç”µæµ50uA        */
+	DisCharge100uA =0xC8000,                    /*!< ç”µæ± é’åŒ–ä½¿èƒ½ï¼Œç”µæµ100uA       */
 }DISCharge_TypeDef;                             /*!< end of group DISCharge_TypeDef*/
 #endif
 
 /* 
-* @brief  POW×´Ì¬¶¨Òå
+* @brief  POWçŠ¶æ€å®šä¹‰
 */
 #if  defined HT6x2x
 typedef enum
 { 
-    POWEnable = 0x20,                   /*!< POW_DETÊ¹ÄÜ                        */
-    POWDisable = 0x00,                  /*!< POW_DET¹Ø±Õ                        */
+    POWEnable = 0x20,                   /*!< POW_DETä½¿èƒ½                        */
+    POWDisable = 0x00,                  /*!< POW_DETå…³é—­                        */
 }POWState_TypeDef;                      /*!< end of group POWState_TypeDef			 */   
 #endif
 
 /* 
-* @brief  PMUÄ£¿é³õÊ¼»¯½á¹¹¶¨Òå
+* @brief  PMUæ¨¡å—åˆå§‹åŒ–ç»“æ„å®šä¹‰
 */
 typedef struct
 {
-    LVDINState_TypeDef Lvdin0State;              /*!< LVDIN0×´Ì¬ÉèÖÃ              */
+    LVDINState_TypeDef Lvdin0State;              /*!< LVDIN0çŠ¶æ€è®¾ç½®              */
 #if  defined  HT501x ||  defined  HT6x2x 
-    LVDINState_TypeDef Lvdin1State;              /*!< LVDIN1×´Ì¬ÉèÖÃ              */
+    LVDINState_TypeDef Lvdin1State;              /*!< LVDIN1çŠ¶æ€è®¾ç½®              */
 #endif  
 #if  defined  HT6x2x
-	POWState_TypeDef POWState;				 	 /*!< POW×´Ì¬ÉèÖÃ   	           */		
-	uint32_t	POWFilter;						 /*!< POWÊı×ÖÂË²¨ÉèÖÃ            */	
+	POWState_TypeDef POWState;				 	 /*!< POWçŠ¶æ€è®¾ç½®   	           */		
+	uint32_t	POWFilter;						 /*!< POWæ•°å­—æ»¤æ³¢è®¾ç½®            */	
 #endif	
-    BORState_TypeDef BorState;                   /*!< BOR×´Ì¬ÉèÖÃ                 */
-    VCCLVL_TypeDef VccLvlSet;                    /*!< Vcc¼ì²âãĞÖµÉèÖÃ             */
-    BOTLVL_TypeDef BorLvlSet;                    /*!< BOR¼ì²âãĞÖµÉèÖÃ             */
-    DETTIM_TypeDef VccBorDetTime;                /*!< VccºÍBor¼ì²âÊ±¼äÉèÖÃ        */
-    DETPRD_TypeDef VccBorDetPeriod;              /*!< VccºÍBor¼ì²âÖÜÆÚÉèÖÃ        */                                                         
+    BORState_TypeDef BorState;                   /*!< BORçŠ¶æ€è®¾ç½®                 */
+    VCCLVL_TypeDef VccLvlSet;                    /*!< Vccæ£€æµ‹é˜ˆå€¼è®¾ç½®             */
+    BOTLVL_TypeDef BorLvlSet;                    /*!< BORæ£€æµ‹é˜ˆå€¼è®¾ç½®             */
+    DETTIM_TypeDef VccBorDetTime;                /*!< Vccå’ŒBoræ£€æµ‹æ—¶é—´è®¾ç½®        */
+    DETPRD_TypeDef VccBorDetPeriod;              /*!< Vccå’ŒBoræ£€æµ‹å‘¨æœŸè®¾ç½®        */                                                         
 }PMU_InitTypeDef;                                /*!< end of group PMU_InitTypeDef*/
 
 
 /*
 *********************************************************************************************************
-*                                             È«¾Ö±äÁ¿
+*                                             å…¨å±€å˜é‡
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           È«¾Öº¯ÊıÉêÃ÷
+*                                           å…¨å±€å‡½æ•°ç”³æ˜
 *********************************************************************************************************
 */
 void HT_PMU_Init(PMU_InitTypeDef* PMU_InitStruct);

@@ -26,46 +26,46 @@ extern "C" {
     
 /*
 *********************************************************************************************************
-*                                           »´æ÷∫Í/Ω·ππÃÂ
+*                                           ÂÖ®Â±ÄÂÆè/ÁªìÊûÑ‰Ωì
 *********************************************************************************************************
 */
     
 /* 
-* @brief  œµÕ≥ ±÷”‘¥—°‘Ò∂®“Â
+* @brief  Á≥ªÁªüÊó∂ÈíüÊ∫êÈÄâÊã©ÂÆö‰πâ
 */
 typedef enum
 { 
-    SysLRC = CMU_SYSCLKCFG_CLKSEL_LRC,            /*!< Fsys = ƒ⁄≤øµÕ∆µRC ±÷”            */
+    SysLRC = CMU_SYSCLKCFG_CLKSEL_LRC,            /*!< Fsys = ÂÜÖÈÉ®‰ΩéÈ¢ëRCÊó∂Èíü            */
     SysLF  = CMU_SYSCLKCFG_CLKSEL_LF,             /*!< Fsys = osc or mems/16            */
-    SysHRCDiv1 = (CMU_SYSCLKCFG_CLKSEL_HRC|0x00), /*!< Fsys = Õ‚≤ø∏ﬂ∆µRC ±÷”/1          */
-    SysHRCDiv2 = (CMU_SYSCLKCFG_CLKSEL_HRC|0x10), /*!< Fsys = Õ‚≤ø∏ﬂ∆µRC ±÷”/2          */
-    SysHRCDiv4 = (CMU_SYSCLKCFG_CLKSEL_HRC|0x20), /*!< Fsys = Õ‚≤ø∏ﬂ∆µRC ±÷”/4          */
-    SysHRCDiv8 = (CMU_SYSCLKCFG_CLKSEL_HRC|0x30), /*!< Fsys = Õ‚≤ø∏ﬂ∆µRC ±÷”/8          */
-    SysPLL = CMU_SYSCLKCFG_CLKSEL_PLL,            /*!< Fsys = ƒ⁄≤øPLL ±÷”               */
+    SysHRCDiv1 = (CMU_SYSCLKCFG_CLKSEL_HRC|0x00), /*!< Fsys = Â§ñÈÉ®È´òÈ¢ëRCÊó∂Èíü/1          */
+    SysHRCDiv2 = (CMU_SYSCLKCFG_CLKSEL_HRC|0x10), /*!< Fsys = Â§ñÈÉ®È´òÈ¢ëRCÊó∂Èíü/2          */
+    SysHRCDiv4 = (CMU_SYSCLKCFG_CLKSEL_HRC|0x20), /*!< Fsys = Â§ñÈÉ®È´òÈ¢ëRCÊó∂Èíü/4          */
+    SysHRCDiv8 = (CMU_SYSCLKCFG_CLKSEL_HRC|0x30), /*!< Fsys = Â§ñÈÉ®È´òÈ¢ëRCÊó∂Èíü/8          */
+    SysPLL = CMU_SYSCLKCFG_CLKSEL_PLL,            /*!< Fsys = ÂÜÖÈÉ®PLLÊó∂Èíü               */
 #if  defined  HT6x1x ||  defined  HT6x2x
-    SysMEMS= CMU_SYSCLKCFG_CLKSEL_MEMS,           /*!< Fsys = ƒ⁄≤ømems ±÷”              */
+    SysMEMS= CMU_SYSCLKCFG_CLKSEL_MEMS,           /*!< Fsys = ÂÜÖÈÉ®memsÊó∂Èíü              */
 #endif
 #if defined HT501x || defined  HT6x2x
-    SysPLLX2= (CMU_SYSCLKCFG_CLKSEL_PLL|0x08),    /*!< Fsys = ƒ⁄≤øPLL ±÷” X 2           */
+    SysPLLX2= (CMU_SYSCLKCFG_CLKSEL_PLL|0x08),    /*!< Fsys = ÂÜÖÈÉ®PLLÊó∂Èíü X 2           */
 #endif
 }SYSCLK_SelectTypeDef;                             /*!< end of group SYSCLK_SelectTypeDef*/  
 
 /* 
-* @brief  Clkout ±÷”‘¥—°‘Ò∂®“Â
+* @brief  ClkoutÊó∂ÈíüÊ∫êÈÄâÊã©ÂÆö‰πâ
 */
 typedef enum
 { 
-    ClkoutFLRC = CMU_CLKOUTSEL_LRC,     /*!< ƒ⁄≤øµÕ∆µRC ±÷” ---> Clkout       */
+    ClkoutFLRC = CMU_CLKOUTSEL_LRC,     /*!< ÂÜÖÈÉ®‰ΩéÈ¢ëRCÊó∂Èíü ---> Clkout       */
     ClkoutFLF  = CMU_CLKOUTSEL_LF,      /*!< osc or mems/16 ---> Clkout       */
-    ClkoutFHRC = CMU_CLKOUTSEL_HRC,     /*!< Õ‚≤ø∏ﬂ∆µRC ±÷” ---> Clkout       */
-    ClkoutFSys = CMU_CLKOUTSEL_SYS,     /*!< ƒ⁄≤øPLL ±÷”    ---> Clkout       */
+    ClkoutFHRC = CMU_CLKOUTSEL_HRC,     /*!< Â§ñÈÉ®È´òÈ¢ëRCÊó∂Èíü ---> Clkout       */
+    ClkoutFSys = CMU_CLKOUTSEL_SYS,     /*!< ÂÜÖÈÉ®PLLÊó∂Èíü    ---> Clkout       */
 #if  defined  HT6x1x ||  defined  HT6x2x    
-    ClkoutFMEMS= CMU_CLKOUTSEL_MEMS,    /*!< ƒ⁄≤ømems ±÷”   ---> Clkout       */
+    ClkoutFMEMS= CMU_CLKOUTSEL_MEMS,    /*!< ÂÜÖÈÉ®memsÊó∂Èíü   ---> Clkout       */
 #endif
 }Clkout_SelectTypeDef;                  /*!< end of group Clkout_SelectTypeDef*/ 
 
 /* 
-* @brief  CPU ±÷”∑÷∆µ∂®“Â
+* @brief  CPUÊó∂ÈíüÂàÜÈ¢ëÂÆö‰πâ
 */
 typedef enum
 { 
@@ -80,36 +80,36 @@ typedef enum
 }CPU_DivTypeDef;                        /*!< end of group CPU_DivTypeDef      */ 
 
 /* 
-* @brief  œµÕ≥ ±÷”≈‰÷√ƒ£øÈ≥ı ºªØΩ·ππ∂®“Â
+* @brief  Á≥ªÁªüÊó∂ÈíüÈÖçÁΩÆÊ®°ÂùóÂàùÂßãÂåñÁªìÊûÑÂÆö‰πâ
 */
 typedef struct
 {
-   SYSCLK_SelectTypeDef  SysClkSel;    /*!< œµÕ≥ ±÷”—°‘Ò                      */
-   CPU_DivTypeDef        CPUDiv;       /*!< CPU ±÷”∑÷∆µ                       */
+   SYSCLK_SelectTypeDef  SysClkSel;    /*!< Á≥ªÁªüÊó∂ÈíüÈÄâÊã©                      */
+   CPU_DivTypeDef        CPUDiv;       /*!< CPUÊó∂ÈíüÂàÜÈ¢ë                       */
 }CMU_InitTypeDef;                      /*!< end of group CMU_InitTypeDef      */
 
 /* 
-* @brief  œµÕ≥ ±÷”≈‰÷√ƒ£øÈ≥ı ºªØΩ·ππ∂®“Â
+* @brief  Á≥ªÁªüÊó∂ÈíüÈÖçÁΩÆÊ®°ÂùóÂàùÂßãÂåñÁªìÊûÑÂÆö‰πâ
 */
 typedef struct
 {
-   Clkout_SelectTypeDef  ClkoutSel;    /*!< Clkout ±÷”‘¥—°‘Ò                  */
-   uint8_t  ClkoutDiv;                 /*!< Clkout ‰≥ˆ ±÷”∑÷∆µ…Ë÷√            
-                                            ClkoutDiv …Ë÷√∑∂ŒßŒ™£∫0~15
-                                            ∑÷∆µœµ ˝ = 2*(ClkoutDiv[3..0]+1)  */
+   Clkout_SelectTypeDef  ClkoutSel;    /*!< ClkoutÊó∂ÈíüÊ∫êÈÄâÊã©                  */
+   uint8_t  ClkoutDiv;                 /*!< ClkoutËæìÂá∫Êó∂ÈíüÂàÜÈ¢ëËÆæÁΩÆ            
+                                            ClkoutDiv ËÆæÁΩÆËåÉÂõ¥‰∏∫Ôºö0~15
+                                            ÂàÜÈ¢ëÁ≥ªÊï∞ = 2*(ClkoutDiv[3..0]+1)  */
 }Clkout_InitTypeDef;                   /*!< end of group Clkout_InitTypeDef   */
 
 
 /*
 *********************************************************************************************************
-*                                             »´æ÷±‰¡ø
+*                                             ÂÖ®Â±ÄÂèòÈáè
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           »´æ÷∫Ø ˝…Í√˜
+*                                           ÂÖ®Â±ÄÂáΩÊï∞Áî≥Êòé
 *********************************************************************************************************
 */
 void HT_CMU_Init(CMU_InitTypeDef* CMU_InitStruct);

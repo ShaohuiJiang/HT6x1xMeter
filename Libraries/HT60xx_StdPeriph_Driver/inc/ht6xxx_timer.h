@@ -26,89 +26,89 @@ extern "C" {
     
 /*
 *********************************************************************************************************
-*                                           È«¾Öºê/½á¹¹Ìå
+*                                           å…¨å±€å®/ç»“æ„ä½“
 *********************************************************************************************************
 */
 
 /* 
-* @brief  Timer¹¤×÷Ä£Ê½¶¨Òå
+* @brief  Timerå·¥ä½œæ¨¡å¼å®šä¹‰
 */
 typedef enum
 { 
-    TIMPWMCountUpLevelHigh = 0x02,               /*!< PWMÏòÉÏ¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½¸ß    */
-    TIMPWMCountDownLevelHigh = 0x12,             /*!< PWMÏòÏÂ¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½¸ß    */
-    TIMPWMCenterAlignedLevelHigh = 0x22,         /*!< PWMÖĞÑë¶ÔÆë¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½¸ß*/
-    TIMPWMCountUpLevelLow = 0x42,                /*!< PWMÏòÉÏ¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½µÍ    */
-    TIMPWMCountDownLevelLow	= 0x52,              /*!< PWMÏòÏÂ¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½µÍ    */
-    TIMPWMCenterAlignedLevelLow = 0x62,          /*!< PWMÖĞÑë¶ÔÆë¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½µÍ*/
-    TIMCaptureRiseEdge = 0x04,                   /*!< ÉÏÉıÑØ²¶»ñ·½Ê½                 */
-    TIMCaptureFallEdge = 0x0c,                   /*!< ÏÂÉıÑØ²¶»ñ·½Ê½                 */
+    TIMPWMCountUpLevelHigh = 0x02,               /*!< PWMå‘ä¸Šè®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³é«˜    */
+    TIMPWMCountDownLevelHigh = 0x12,             /*!< PWMå‘ä¸‹è®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³é«˜    */
+    TIMPWMCenterAlignedLevelHigh = 0x22,         /*!< PWMä¸­å¤®å¯¹é½è®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³é«˜*/
+    TIMPWMCountUpLevelLow = 0x42,                /*!< PWMå‘ä¸Šè®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³ä½    */
+    TIMPWMCountDownLevelLow	= 0x52,              /*!< PWMå‘ä¸‹è®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³ä½    */
+    TIMPWMCenterAlignedLevelLow = 0x62,          /*!< PWMä¸­å¤®å¯¹é½è®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³ä½*/
+    TIMCaptureRiseEdge = 0x04,                   /*!< ä¸Šå‡æ²¿æ•è·æ–¹å¼                 */
+    TIMCaptureFallEdge = 0x0c,                   /*!< ä¸‹å‡æ²¿æ•è·æ–¹å¼                 */
 #if defined HT6x2x
-    TIMEventRecordRiseEdge = 0x00,               /*!< ÉÏÉıÑØÊÂ¼ş¼ÇÂ¼                 */
-    TIMEventRecordFallEdge = 0x08,               /*!< ÏÂÉıÑØÊÂ¼ş¼ÇÂ¼                 */    
+    TIMEventRecordRiseEdge = 0x00,               /*!< ä¸Šå‡æ²¿äº‹ä»¶è®°å½•                 */
+    TIMEventRecordFallEdge = 0x08,               /*!< ä¸‹å‡æ²¿äº‹ä»¶è®°å½•                 */    
 #endif
-    TIMCycleTiming = 0x06,                       /*!< ¶¨Ê±Æ÷ÖÜÆÚ¶¨Ê±                 */
+    TIMCycleTiming = 0x06,                       /*!< å®šæ—¶å™¨å‘¨æœŸå®šæ—¶                 */
 }TMRMode_TypeDef;                                /*!< end of group TMRMode_TypeDef   */   
 
 /* 
-* @brief  TimerExt¹¤×÷Ä£Ê½¶¨Òå     only for HT6x2x  Timer4 & Timer5  
+* @brief  TimerExtå·¥ä½œæ¨¡å¼å®šä¹‰     only for HT6x2x  Timer4 & Timer5  
 */
 #if defined HT6x2x
 typedef enum
 { 
-    TIMExtPWMCountUpLevelHigh = 0x02,            /*!< PWMÏòÉÏ¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½¸ß    */
-    TIMExtPWMCountDownLevelHigh = 0x12,          /*!< PWMÏòÏÂ¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½¸ß    */
-    TIMExtPWMCenterAlignedLevelHigh = 0x22,      /*!< PWMÖĞÑë¶ÔÆë¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½¸ß*/
-    TIMExtPWMCountUpLevelLow = 0x42,             /*!< PWMÏòÉÏ¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½µÍ    */
-    TIMExtPWMCountDownLevelLow	= 0x52,          /*!< PWMÏòÏÂ¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½µÍ    */
-    TIMExtPWMCenterAlignedLevelLow = 0x62,       /*!< PWMÖĞÑë¶ÔÆë¼ÆÊı·½Ê½£¬³õÊ¼µçÆ½µÍ*/
-    TIMExtCycleTiming = 0x06,                    /*!< ¶¨Ê±Æ÷ÖÜÆÚ¶¨Ê±                 */
+    TIMExtPWMCountUpLevelHigh = 0x02,            /*!< PWMå‘ä¸Šè®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³é«˜    */
+    TIMExtPWMCountDownLevelHigh = 0x12,          /*!< PWMå‘ä¸‹è®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³é«˜    */
+    TIMExtPWMCenterAlignedLevelHigh = 0x22,      /*!< PWMä¸­å¤®å¯¹é½è®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³é«˜*/
+    TIMExtPWMCountUpLevelLow = 0x42,             /*!< PWMå‘ä¸Šè®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³ä½    */
+    TIMExtPWMCountDownLevelLow	= 0x52,          /*!< PWMå‘ä¸‹è®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³ä½    */
+    TIMExtPWMCenterAlignedLevelLow = 0x62,       /*!< PWMä¸­å¤®å¯¹é½è®¡æ•°æ–¹å¼ï¼Œåˆå§‹ç”µå¹³ä½*/
+    TIMExtCycleTiming = 0x06,                    /*!< å®šæ—¶å™¨å‘¨æœŸå®šæ—¶                 */
 }TMRExtMode_TypeDef;                             /*!< end of group TMRExtMode_TypeDef*/ 
 
 typedef enum
 { 
-    TIMExtClk_LRC = TMR_TMRCON_CLKSEL_LRC,       /*!< Timer ClkÊ±ÖÓÔ´ÎªLRC                */
-    TIMExtClk_LF  = TMR_TMRCON_CLKSEL_LF,        /*!< Timer ClkÊ±ÖÓÔ´ÎªLF                 */
-    TIMExtClk_HRC = TMR_TMRCON_CLKSEL_HRC,       /*!< Timer ClkÊ±ÖÓÔ´ÎªHRC                */
-    TIMExtClk_PLL = TMR_TMRCON_CLKSEL_PLL,       /*!< Timer ClkÊ±ÖÓÔ´ÎªPLL                */    
-    TIMExtClk_MEMS= TMR_TMRCON_CLKSEL_MEMS,      /*!< Timer ClkÊ±ÖÓÔ´ÎªMEMS               */     
+    TIMExtClk_LRC = TMR_TMRCON_CLKSEL_LRC,       /*!< Timer Clkæ—¶é’Ÿæºä¸ºLRC                */
+    TIMExtClk_LF  = TMR_TMRCON_CLKSEL_LF,        /*!< Timer Clkæ—¶é’Ÿæºä¸ºLF                 */
+    TIMExtClk_HRC = TMR_TMRCON_CLKSEL_HRC,       /*!< Timer Clkæ—¶é’Ÿæºä¸ºHRC                */
+    TIMExtClk_PLL = TMR_TMRCON_CLKSEL_PLL,       /*!< Timer Clkæ—¶é’Ÿæºä¸ºPLL                */    
+    TIMExtClk_MEMS= TMR_TMRCON_CLKSEL_MEMS,      /*!< Timer Clkæ—¶é’Ÿæºä¸ºMEMS               */     
 }TMRExtClkSource_TypeDef;                        /*!< end of group TMRExtClkSource_TypeDef*/ 
 #endif
 
 /* 
-* @brief  TimerÄ£¿é³õÊ¼»¯½á¹¹¶¨Òå
+* @brief  Timeræ¨¡å—åˆå§‹åŒ–ç»“æ„å®šä¹‰
 */
 typedef struct
 {
-    TMRMode_TypeDef TimerMode;                   /*!< ¶¨Ê±Æ÷¹¤×÷Ä£Ê½                 */
-    uint16_t TimerPreDiv;                        /*!< ¶¨Ê±Æ÷Ê±ÖÓÔ¤·ÖÆµÉèÖÃ           */ 
-    uint16_t TimerPeriod;                        /*!< ¶¨Ê±Æ÷¶¨Ê±ÖÜÆÚ                 */
-    uint16_t TimerCompare;                       /*!< ¶¨Ê±Æ÷±È½Ï¼Ä´æÆ÷               */                      
+    TMRMode_TypeDef TimerMode;                   /*!< å®šæ—¶å™¨å·¥ä½œæ¨¡å¼                 */
+    uint16_t TimerPreDiv;                        /*!< å®šæ—¶å™¨æ—¶é’Ÿé¢„åˆ†é¢‘è®¾ç½®           */ 
+    uint16_t TimerPeriod;                        /*!< å®šæ—¶å™¨å®šæ—¶å‘¨æœŸ                 */
+    uint16_t TimerCompare;                       /*!< å®šæ—¶å™¨æ¯”è¾ƒå¯„å­˜å™¨               */                      
 }TMR_InitTypeDef;                                /*!< end of group TMR_InitTypeDef   */
 
 /* 
-* @brief  TimerExtÄ£¿é³õÊ¼»¯½á¹¹¶¨Òå
+* @brief  TimerExtæ¨¡å—åˆå§‹åŒ–ç»“æ„å®šä¹‰
 */
 #if defined HT6x2x
 typedef struct
 {
-    TMRExtClkSource_TypeDef TimerSource;         /*!< ¶¨Ê±Æ÷Ê±ÖÓÔ´Ñ¡Ôñ               */
-    TMRExtMode_TypeDef TimerMode;                /*!< ¶¨Ê±Æ÷¹¤×÷Ä£Ê½                 */
-    uint16_t TimerPreDiv;                        /*!< ¶¨Ê±Æ÷Ê±ÖÓÔ¤·ÖÆµÉèÖÃ           */ 
-    uint16_t TimerPeriod;                        /*!< ¶¨Ê±Æ÷¶¨Ê±ÖÜÆÚ                 */     
+    TMRExtClkSource_TypeDef TimerSource;         /*!< å®šæ—¶å™¨æ—¶é’Ÿæºé€‰æ‹©               */
+    TMRExtMode_TypeDef TimerMode;                /*!< å®šæ—¶å™¨å·¥ä½œæ¨¡å¼                 */
+    uint16_t TimerPreDiv;                        /*!< å®šæ—¶å™¨æ—¶é’Ÿé¢„åˆ†é¢‘è®¾ç½®           */ 
+    uint16_t TimerPeriod;                        /*!< å®šæ—¶å™¨å®šæ—¶å‘¨æœŸ                 */     
 }TMRExt_InitTypeDef;                             /*!< end of group TMRExt_InitTypeDef*/
 #endif
 
 /*
 *********************************************************************************************************
-*                                             È«¾Ö±äÁ¿
+*                                             å…¨å±€å˜é‡
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           È«¾Öº¯ÊıÉêÃ÷
+*                                           å…¨å±€å‡½æ•°ç”³æ˜
 *********************************************************************************************************
 */
 

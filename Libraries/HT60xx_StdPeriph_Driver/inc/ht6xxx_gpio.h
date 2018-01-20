@@ -26,70 +26,70 @@ extern "C" {
     
 /*
 *********************************************************************************************************
-*                                           »´æ÷∫Í/Ω·ππÃÂ
+*                                           ÂÖ®Â±ÄÂÆè/ÁªìÊûÑ‰Ωì
 *********************************************************************************************************
 */
 /* 
-* @brief  GPIOπ‹Ω≈ƒ£ Ω∂®“Â
+* @brief  GPIOÁÆ°ËÑöÊ®°ÂºèÂÆö‰πâ
 */
 typedef enum
 { 
-    GPIO_Mode_IOIN  = 0x00,       /*!< GPIO ‰»Î                      */
-    GPIO_Mode_IOOUT = 0x01,       /*!< GPIO ‰≥ˆ                      */
-    GPIO_Mode_AF1 = 0x10,         /*!< ∏¥”√π¶ƒ‹1                     */
-    GPIO_Mode_AF2 = 0x11          /*!< ∏¥”√π¶ƒ‹2                     */
+    GPIO_Mode_IOIN  = 0x00,       /*!< GPIOËæìÂÖ•                      */
+    GPIO_Mode_IOOUT = 0x01,       /*!< GPIOËæìÂá∫                      */
+    GPIO_Mode_AF1 = 0x10,         /*!< Â§çÁî®ÂäüËÉΩ1                     */
+    GPIO_Mode_AF2 = 0x11          /*!< Â§çÁî®ÂäüËÉΩ2                     */
 }GPIOMode_TypeDef;                /*!<end of group GPIOMode_TypeDef  */
 
 /* 
-* @brief  GPIO ˝◊÷ ‰»Î…œ¿≠∂®“Â
+* @brief  GPIOÊï∞Â≠óËæìÂÖ•‰∏äÊãâÂÆö‰πâ
 */
 typedef enum
 { 
-    GPIO_Input_Up   = 0x00,      /*!< GPIO ˝◊÷ ‰»Î…œ¿≠ πƒ‹           */
-    GPIO_Input_Floating = 0x01,  /*!< GPIO ˝◊÷ ‰»Î…œ¿≠πÿ±’           */
+    GPIO_Input_Up   = 0x00,      /*!< GPIOÊï∞Â≠óËæìÂÖ•‰∏äÊãâ‰ΩøËÉΩ           */
+    GPIO_Input_Floating = 0x01,  /*!< GPIOÊï∞Â≠óËæìÂÖ•‰∏äÊãâÂÖ≥Èó≠           */
 }GPIOInput_TypeDef;              /*!< end of group GPIOInput_TypeDef */
 
 /* 
-* @brief  GPIO ˝◊÷ ‰≥ˆø™¬©∂®“Â
+* @brief  GPIOÊï∞Â≠óËæìÂá∫ÂºÄÊºèÂÆö‰πâ
 */
 typedef enum
 { 
-    GPIO_Output_OD = 0x00,       /*!< GPIO ˝◊÷ø™¬© ‰≥ˆ               */
-    GPIO_Output_PP = 0x01,       /*!< GPIO ˝◊÷Õ∆ÕÏ ‰≥ˆ               */
+    GPIO_Output_OD = 0x00,       /*!< GPIOÊï∞Â≠óÂºÄÊºèËæìÂá∫               */
+    GPIO_Output_PP = 0x01,       /*!< GPIOÊï∞Â≠óÊé®ÊåΩËæìÂá∫               */
 }GPIOOutput_TypeDef;             /*!< end of group GPIOOutput_TypeDef*/
 
 /* 
-* @brief  GPIO≥ı ºªØΩ·ππ∂®“Â
+* @brief  GPIOÂàùÂßãÂåñÁªìÊûÑÂÆö‰πâ
 */
 typedef struct
 {
-    uint16_t GPIO_Pin;                    /*!< GPIOπ‹Ω≈                     */
+    uint16_t GPIO_Pin;                    /*!< GPIOÁÆ°ËÑö                     */
     
-    GPIOMode_TypeDef GPIO_Mode;           /*!< GPIOƒ£ Ω                     */  
+    GPIOMode_TypeDef GPIO_Mode;           /*!< GPIOÊ®°Âºè                     */  
     
-    GPIOInput_TypeDef GPIO_InputStruct;   /*!< GPIO ˝◊÷ ‰»Î…œ¿≠π¶ƒ‹≈‰÷√     */
+    GPIOInput_TypeDef GPIO_InputStruct;   /*!< GPIOÊï∞Â≠óËæìÂÖ•‰∏äÊãâÂäüËÉΩÈÖçÁΩÆ     */
     
-    GPIOOutput_TypeDef GPIO_OutputStruct; /*!< GPIO ˝◊÷ ‰≥ˆø™¬©π¶ƒ‹≈‰÷√     */
+    GPIOOutput_TypeDef GPIO_OutputStruct; /*!< GPIOÊï∞Â≠óËæìÂá∫ÂºÄÊºèÂäüËÉΩÈÖçÁΩÆ     */
     
 }GPIO_InitTypeDef;                        /*!< end of group GPIO_InitTypeDef*/
 
 /* 
-* @brief  GPIO≥ı ºªØŒ™∏¥”√π‹Ω≈Ω·ππ∂®“Â
+* @brief  GPIOÂàùÂßãÂåñ‰∏∫Â§çÁî®ÁÆ°ËÑöÁªìÊûÑÂÆö‰πâ
 */
 typedef struct
 {
-    uint16_t GPIO_Pin;                    /*!< GPIOπ‹Ω≈                     */
+    uint16_t GPIO_Pin;                    /*!< GPIOÁÆ°ËÑö                     */
     
-    uint16_t GPIO_AFMode;                 /*!< GPIOƒ£ Ω                     */  
+    uint16_t GPIO_AFMode;                 /*!< GPIOÊ®°Âºè                     */  
     
-    GPIOInput_TypeDef GPIO_InputStruct;   /*!< GPIO ˝◊÷ ‰»Î…œ¿≠π¶ƒ‹≈‰÷√     */
+    GPIOInput_TypeDef GPIO_InputStruct;   /*!< GPIOÊï∞Â≠óËæìÂÖ•‰∏äÊãâÂäüËÉΩÈÖçÁΩÆ     */
     
-    GPIOOutput_TypeDef GPIO_OutputStruct; /*!< GPIO ˝◊÷ ‰≥ˆø™¬©π¶ƒ‹≈‰÷√     */
+    GPIOOutput_TypeDef GPIO_OutputStruct; /*!< GPIOÊï∞Â≠óËæìÂá∫ÂºÄÊºèÂäüËÉΩÈÖçÁΩÆ     */
     
 }GPIO_InitAFTypeDef;                        /*!< end of group GPIO_InitTypeDef*/
 
 /* 
-* @brief  GPIOπ‹Ω≈∂®“Â
+* @brief  GPIOÁÆ°ËÑöÂÆö‰πâ
 */
 #define GPIO_Pin_0                 ((uint16_t)0x0001)     /*!< Pin 0 selected    */
 #define GPIO_Pin_1                 ((uint16_t)0x0002)     /*!< Pin 1 selected    */
@@ -110,7 +110,7 @@ typedef struct
 #define GPIO_Pin_All               ((uint16_t)0xFFFF)     /*!< All pins selected */
 
 /* 
-* @brief  GPIOπ‹Ω≈∏¥”√π¶ƒ‹∂®“Â
+* @brief  GPIOÁÆ°ËÑöÂ§çÁî®ÂäüËÉΩÂÆö‰πâ
 */
 #define PA0_SEG28                  ((uint16_t)0x0000<<0)  /*!< PA0_AF1: seg28    */  
 #define PA1_SEG29                  ((uint16_t)0x0000<<1)  /*!< PA1_AF1: seg29    */  
@@ -268,14 +268,14 @@ typedef struct
 #endif
 /*
 *********************************************************************************************************
-*                                             »´æ÷±‰¡ø
+*                                             ÂÖ®Â±ÄÂèòÈáè
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           »´æ÷∫Ø ˝…Í√˜
+*                                           ÂÖ®Â±ÄÂáΩÊï∞Áî≥Êòé
 *********************************************************************************************************
 */
 

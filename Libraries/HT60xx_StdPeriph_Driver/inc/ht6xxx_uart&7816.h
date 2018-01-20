@@ -26,151 +26,151 @@ extern "C" {
     
 /*
 *********************************************************************************************************
-*                                           ȫ�ֺ�/�ṹ��
+*                                           全局宏/结构体
 *********************************************************************************************************
 */
 
 /* 
-* @brief  UARTͨѶ�߼�����
+* @brief  UART通讯逻辑定义
 */
 typedef enum
 { 
-    UartLogicPositive = UART_UARTCON_UNEG_POSITIVE,     /*!< UARTͨѶѡ�����߼�             */
-    UartLogicNegetive = UART_UARTCON_UNEG_NEGETIVE,     /*!< UARTͨѶѡ���߼�             */
+    UartLogicPositive = UART_UARTCON_UNEG_POSITIVE,     /*!< UART通讯选择正逻辑             */
+    UartLogicNegetive = UART_UARTCON_UNEG_NEGETIVE,     /*!< UART通讯选择负逻辑             */
 #if defined  HT6x2x
-    UartLogicAuto = UART_UARTCON_UNEG_AUTO,             /*!< UARTͨѶѡ������߼��Զ��ж�   */
+    UartLogicAuto = UART_UARTCON_UNEG_AUTO,             /*!< UART通讯选择接收逻辑自动判断   */
 #endif   
 }UARTLogic_TypeDef;                                     /*!< end of group UARTLogic_TypeDef */   
 
 /* 
-* @brief  UARTֹͣλ����
+* @brief  UART停止位定义
 */
 typedef enum
 { 
-    OneStopBits = UART_UARTCON_STOPSEL_1Bit,            /*!< 1λֹͣλ                         */
-    TwoStopBits = UART_UARTCON_STOPSEL_2Bit,            /*!< 2λֹͣλ                         */
+    OneStopBits = UART_UARTCON_STOPSEL_1Bit,            /*!< 1位停止位                         */
+    TwoStopBits = UART_UARTCON_STOPSEL_2Bit,            /*!< 2位停止位                         */
 }UARTStopBits_TypeDef;                                  /*!< end of group UARTStopBits_TypeDef */
 
 /* 
-* @brief  UART���ݳ���λ����
+* @brief  UART数据长度位定义
 */
 typedef enum
 { 
-    WordLength_7Bits = UART_UARTCON_LENSEL_7Bit,        /*!< 7λ����λ                          */
-    WordLength_8Bits = UART_UARTCON_LENSEL_8Bit,        /*!< 8λ����λ                          */
+    WordLength_7Bits = UART_UARTCON_LENSEL_7Bit,        /*!< 7位数据位                          */
+    WordLength_8Bits = UART_UARTCON_LENSEL_8Bit,        /*!< 8位数据位                          */
 }UARTWordLength_TypeDef;                                /*!< end of group UARTWordLength_TypeDef*/
 
 /* 
-* @brief  UART��żУ��λ����
+* @brief  UART奇偶校验位定义
 */
 typedef enum
 { 
-    UartParity_Disable = 0xff,                          /*!< û����żУ��λ                     */
-    UartParity_Always1 = UART_UARTCON_PARITYSEL_1,      /*!< ��żУ��λ�㶨Ϊ1                  */
-    UartParity_Always0 = UART_UARTCON_PARITYSEL_0,      /*!< ��żУ��λ�㶨Ϊ0                  */
-    UartParity_ODD = UART_UARTCON_PARITYSEL_ODD,        /*!< ��У��                             */
-    UartParity_EVEN = UART_UARTCON_PARITYSEL_EVEN,      /*!< żУ��                             */
+    UartParity_Disable = 0xff,                          /*!< 没有奇偶校验位                     */
+    UartParity_Always1 = UART_UARTCON_PARITYSEL_1,      /*!< 奇偶校验位恒定为1                  */
+    UartParity_Always0 = UART_UARTCON_PARITYSEL_0,      /*!< 奇偶校验位恒定为0                  */
+    UartParity_ODD = UART_UARTCON_PARITYSEL_ODD,        /*!< 奇校验                             */
+    UartParity_EVEN = UART_UARTCON_PARITYSEL_EVEN,      /*!< 偶校验                             */
 }UARTParity_TypeDef;                                    /*!< end of group UARTParity_TypeDef    */
 
 
 /* 
-* @brief  UARTģ���ʼ���ṹ����
+* @brief  UART模块初始化结构定义
 */
 typedef struct
 {
-    UARTLogic_TypeDef  UART_Logic;                      /*!< �����߼�����                       */                                                                          
-    UARTStopBits_TypeDef  UART_StopBits;                /*!< ����ֹͣλ����                     */                                                                         
-    UARTWordLength_TypeDef  UART_WordLength;            /*!< ����ͨѶ���ݳ�������               */ 
-    UARTParity_TypeDef  UART_Parity;                    /*!< ������żУ��λ����                 */
-    uint32_t  UART_BaudRate;                            /*!< ���ڲ�����, ����1200, 2400         */
-    FunctionalState  ReceiveEN;                         /*!< ���ڽ���ʹ�ܿ���                   */ 
-    FunctionalState  SendEN;                            /*!< ���ڷ���ʹ�ܿ���                   */ 
+    UARTLogic_TypeDef  UART_Logic;                      /*!< 串口逻辑设置                       */                                                                          
+    UARTStopBits_TypeDef  UART_StopBits;                /*!< 串口停止位设置                     */                                                                         
+    UARTWordLength_TypeDef  UART_WordLength;            /*!< 串口通讯数据长度设置               */ 
+    UARTParity_TypeDef  UART_Parity;                    /*!< 串口奇偶校验位设置                 */
+    uint32_t  UART_BaudRate;                            /*!< 串口波特率, 比如1200, 2400         */
+    FunctionalState  ReceiveEN;                         /*!< 串口接收使能控制                   */ 
+    FunctionalState  SendEN;                            /*!< 串口发送使能控制                   */ 
 }UART_InitTypeDef;                                      /*!< end of group UART_InitTypeDef      */
 
 /* 
-* @brief  �������������Զ���
+* @brief  红外调制输出极性定义
 */
 typedef enum
 { 
-    IRPolarityPositive = UART_IRCON_IRLVL_POSITIVE,     /*!< ��������������Ϊ��               */
-    IRPolarityNegetive = UART_IRCON_IRLVL_NEGETIVE,     /*!< ��������������Ϊ��               */
+    IRPolarityPositive = UART_IRCON_IRLVL_POSITIVE,     /*!< 红外调制输出极性为正               */
+    IRPolarityNegetive = UART_IRCON_IRLVL_NEGETIVE,     /*!< 红外调制输出极性为负               */
 }IRPolarity_TypeDef;                                    /*!< end of group IRPolarity_TypeDef    */
 
 /* 
-* @brief  �������������Զ���
+* @brief  红外调制输出极性定义
 */
 typedef enum
 { 
-    IRDuty50 = UART_IRDUTY_IRDUTY_50,                   /*!< ������Ʋ���ռ�ձ�50%              */
-    IRDuty25 = UART_IRDUTY_IRDUTY_25,                   /*!< ������Ʋ���ռ�ձ�25%              */
-    IRDuty12P5 = UART_IRDUTY_IRDUTY_12P5,               /*!< ������Ʋ���ռ�ձ�12.5%            */
-    IRDuty6P25 = UART_IRDUTY_IRDUTY_6P25,               /*!< ������Ʋ���ռ�ձ�6.25%            */
+    IRDuty50 = UART_IRDUTY_IRDUTY_50,                   /*!< 红外调制波形占空比50%              */
+    IRDuty25 = UART_IRDUTY_IRDUTY_25,                   /*!< 红外调制波形占空比25%              */
+    IRDuty12P5 = UART_IRDUTY_IRDUTY_12P5,               /*!< 红外调制波形占空比12.5%            */
+    IRDuty6P25 = UART_IRDUTY_IRDUTY_6P25,               /*!< 红外调制波形占空比6.25%            */
 }IRDuty_TypeDef;                                        /*!< end of group IRDuty_TypeDef        */
 
 /* 
-* @brief  ����ģ���ʼ���ṹ����
+* @brief  红外模块初始化结构定义
 */
 typedef struct
 {
-    UART_InitTypeDef  UARTModule;                        /*!< UARTͨѶ��ʼ��                     */                                                                          
-    IRPolarity_TypeDef  IRPolarity;                      /*!< ������������������               */                                                                         
-    IRDuty_TypeDef  IRDuty;                              /*!< ������Ʋ���ռ�ձ�����             */ 
+    UART_InitTypeDef  UARTModule;                        /*!< UART通讯初始化                     */                                                                          
+    IRPolarity_TypeDef  IRPolarity;                      /*!< 红外调制输出极性配置               */                                                                         
+    IRDuty_TypeDef  IRDuty;                              /*!< 红外调制波形占空比设置             */ 
 }IR_InitTypeDef;                                         /*!< end of group IR_InitTypeDef        */
 
 /* 
-* @brief  ISO7816��żУ��λ����
+* @brief  ISO7816奇偶校验位定义
 */
 typedef enum
 { 
-    ISO7816Parity_ODD = UART_ISO7816CON_7816PARITY_ODD,  /*!< ��У��                             */
-    ISO7816Parity_EVEN = UART_ISO7816CON_7816PARITY_EVEN,/*!< żУ��                             */
+    ISO7816Parity_ODD = UART_ISO7816CON_7816PARITY_ODD,  /*!< 奇校验                             */
+    ISO7816Parity_EVEN = UART_ISO7816CON_7816PARITY_EVEN,/*!< 偶校验                             */
 }ISO7816Parity_TypeDef;                                  /*!< end of group ISO7816Parity_TypeDef */
 
 /* 
-* @brief  ISO7816�Զ��ط����մ�������
+* @brief  ISO7816自动重发重收次数定义
 */
 typedef enum
 { 
-    Repeat_Zero = UART_ISO7816CON_REPTR_0,               /*!< �Զ��ط����մ�����Ϊ0              */
-    Repeat_One = UART_ISO7816CON_REPTR_1,                /*!< �Զ��ط����մ�����Ϊ1              */
-    Repeat_Two = UART_ISO7816CON_REPTR_2,                /*!< �Զ��ط����մ�����Ϊ2              */
-    Repeat_Three = UART_ISO7816CON_REPTR_3,              /*!< �Զ��ط����մ�����Ϊ3              */
+    Repeat_Zero = UART_ISO7816CON_REPTR_0,               /*!< 自动重发重收次数设为0              */
+    Repeat_One = UART_ISO7816CON_REPTR_1,                /*!< 自动重发重收次数设为1              */
+    Repeat_Two = UART_ISO7816CON_REPTR_2,                /*!< 自动重发重收次数设为2              */
+    Repeat_Three = UART_ISO7816CON_REPTR_3,              /*!< 自动重发重收次数设为3              */
 }ISO7816Repeat_TypeDef;                                  /*!< end of group ISO7816Repeat_TypeDef */
 
 /* 
-* @brief  ISO7816��Ӧλ���ȶ���
+* @brief  ISO7816响应位长度定义
 */
 typedef enum
 { 
-    ACKLen_1Bit = UART_ISO7816CON_ACKLEN_1Bit,            /*!< ACK��Ӧ����1Bit                   */
-    ACKLen_1P5Bit = UART_ISO7816CON_ACKLEN_1P5Bit,        /*!< ACK��Ӧ����1.5Bit                 */
-    ACKLen_2Bit = UART_ISO7816CON_ACKLEN_2Bit,            /*!< ACK��Ӧ����2Bit                   */
+    ACKLen_1Bit = UART_ISO7816CON_ACKLEN_1Bit,            /*!< ACK响应长度1Bit                   */
+    ACKLen_1P5Bit = UART_ISO7816CON_ACKLEN_1P5Bit,        /*!< ACK响应长度1.5Bit                 */
+    ACKLen_2Bit = UART_ISO7816CON_ACKLEN_2Bit,            /*!< ACK响应长度2Bit                   */
 }ISO7816ACKLen_TypeDef;                                   /*!< end of group ISO7816ACKLen_TypeDef*/    
 
 /* 
-* @brief  ISO7816ģ���ʼ���ṹ����
+* @brief  ISO7816模块初始化结构定义
 */
 typedef struct
 {
-    ISO7816Parity_TypeDef  ISO7816_Parity;                /*!< ISO7816��ż�趨                   */                                                                          
-    ISO7816Repeat_TypeDef  ISO7816_RepeatTime;            /*!< ISO7816�ط����մ����趨           */
-    FunctionalState  AutoRxEN;                            /*!< �Զ����չ����趨                  */ 
-    FunctionalState  AutoTxEN;                            /*!< �Զ��ط������趨                  */ 
-    ISO7816ACKLen_TypeDef  ISO7816_AckLen;                /*!< ISO7816��Ӧ�����趨               */ 
-    uint32_t  ISO7816_BaudRate;                           /*!< ISO7816�������趨������9600       */ 
+    ISO7816Parity_TypeDef  ISO7816_Parity;                /*!< ISO7816奇偶设定                   */                                                                          
+    ISO7816Repeat_TypeDef  ISO7816_RepeatTime;            /*!< ISO7816重发重收次数设定           */
+    FunctionalState  AutoRxEN;                            /*!< 自动重收功能设定                  */ 
+    FunctionalState  AutoTxEN;                            /*!< 自动重发功能设定                  */ 
+    ISO7816ACKLen_TypeDef  ISO7816_AckLen;                /*!< ISO7816响应长度设定               */ 
+    uint32_t  ISO7816_BaudRate;                           /*!< ISO7816波特率设定，比如9600       */ 
 }ISO7816_InitTypeDef;                                     /*!< end of group ISO7816_InitTypeDef  */
 
 
 /*
 *********************************************************************************************************
-*                                             ȫ�ֱ���
+*                                             全局变量
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           ȫ�ֺ�������
+*                                           全局函数申明
 *********************************************************************************************************
 */
 void HT_UART_Init(HT_UART_TypeDef* UARTx, UART_InitTypeDef* UART_InitStruct);

@@ -1,7 +1,7 @@
 /*
 *********************************************************************************************************
 *                                 			   HT60XX
-*                            			      HT60XX≥Ã–Ú
+*                            			      HT60XXÁ®ãÂ∫è
 *
 *                       			Copyright 2013, Hi-Trend Tech, Corp.
 *                             			 All Rights Reserved
@@ -22,7 +22,7 @@
 
 /*
 *********************************************************************************************************
-*                                            ±æµÿ∫Í/Ω·ππÃÂ
+*                                            Êú¨Âú∞ÂÆè/ÁªìÊûÑ‰Ωì
 *********************************************************************************************************
 */
 #define RX_Head1    0xAA
@@ -31,14 +31,14 @@
 
 /*
 *********************************************************************************************************
-*                                            ±æµÿ±‰¡ø
+*                                            Êú¨Âú∞ÂèòÈáè
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           ±æµÿ∫Ø ˝…Í√˜
+*                                           Êú¨Âú∞ÂáΩÊï∞Áî≥Êòé
 *********************************************************************************************************
 */
 
@@ -53,22 +53,22 @@
 
 void PMU_IRQHandler()
 {
-    if(SET == HT_PMU_ITFlagStatusGet(PMU_PMUIF_VCCIF))           /*!< VccºÏ≤‚÷–∂œ÷√Œª            */
+    if(SET == HT_PMU_ITFlagStatusGet(PMU_PMUIF_VCCIF))           /*!< VccÊ£ÄÊµã‰∏≠Êñ≠ÁΩÆ‰Ωç            */
     {
      
-        HT_PMU_ClearITPendingBit(PMU_PMUIF_VCCIF);               /*!< «Â≥˝÷–∂œ±Í÷æ               */
+        HT_PMU_ClearITPendingBit(PMU_PMUIF_VCCIF);               /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó               */
     }
     
-    if(SET == HT_PMU_ITFlagStatusGet(PMU_PMUIF_BORIF))           /*!< BorºÏ≤‚÷–∂œ÷√Œª            */
+    if(SET == HT_PMU_ITFlagStatusGet(PMU_PMUIF_BORIF))           /*!< BorÊ£ÄÊµã‰∏≠Êñ≠ÁΩÆ‰Ωç            */
     {
 
-        HT_PMU_ClearITPendingBit(PMU_PMUIF_BORIF);               /*!< «Â≥˝÷–∂œ±Í÷æ               */
+        HT_PMU_ClearITPendingBit(PMU_PMUIF_BORIF);               /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó               */
     }
 
-    if(SET == HT_PMU_ITFlagStatusGet(PMU_PMUIF_LVD0IF))           /*!< LvdinºÏ≤‚÷–∂œ÷√Œª          */
+    if(SET == HT_PMU_ITFlagStatusGet(PMU_PMUIF_LVD0IF))           /*!< LvdinÊ£ÄÊµã‰∏≠Êñ≠ÁΩÆ‰Ωç          */
     {
 
-        HT_PMU_ClearITPendingBit(PMU_PMUIF_LVD0IF);               /*!< «Â≥˝÷–∂œ±Í÷æ               */
+        HT_PMU_ClearITPendingBit(PMU_PMUIF_LVD0IF);               /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó               */
     }    
 }
 
@@ -99,16 +99,16 @@ void AES_IRQHandler()                       /*!< AES                */
 
 void EXTI0_IRQHandler()
 {
-    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT0))         /*!< INT0…œ…˝—ÿ÷–∂œ           */
+    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT0))         /*!< INT0‰∏äÂçáÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT0);             /*!< «Â≥˝÷–∂œ±Í÷æ             */
+        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT0);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */
     }
 
-    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT0))         /*!< INT0œ¬Ωµ—ÿ÷–∂œ           */
+    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT0))         /*!< INT0‰∏ãÈôçÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT0);             /*!< «Â≥˝÷–∂œ±Í÷æ             */
+        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT0);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */
     }      
 }
 
@@ -121,16 +121,16 @@ void EXTI0_IRQHandler()
 
 void EXTI1_IRQHandler()
 {
-    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT1))         /*!< INT1…œ…˝—ÿ÷–∂œ           */
+    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT1))         /*!< INT1‰∏äÂçáÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT1);             /*!< «Â≥˝÷–∂œ±Í÷æ             */        
+        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT1);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */        
     }
 
-    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT1))         /*!< INT1œ¬Ωµ—ÿ÷–∂œ           */
+    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT1))         /*!< INT1‰∏ãÈôçÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT1);             /*!< «Â≥˝÷–∂œ±Í÷æ             */        
+        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT1);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */        
     }      
 }
 
@@ -143,16 +143,16 @@ void EXTI1_IRQHandler()
 
 void EXTI2_IRQHandler()
 {
-    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT2))         /*!< INT2…œ…˝—ÿ÷–∂œ           */
+    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT2))         /*!< INT2‰∏äÂçáÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT2);             /*!< «Â≥˝÷–∂œ±Í÷æ             */         
+        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT2);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */         
     }
 
-    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT2))         /*!< INT2œ¬Ωµ—ÿ÷–∂œ           */
+    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT2))         /*!< INT2‰∏ãÈôçÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT2);             /*!< «Â≥˝÷–∂œ±Í÷æ             */       
+        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT2);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */       
     }      
 }
 
@@ -165,16 +165,16 @@ void EXTI2_IRQHandler()
 
 void EXTI3_IRQHandler()
 {
-    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT3))         /*!< INT3…œ…˝—ÿ÷–∂œ           */
+    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT3))         /*!< INT3‰∏äÂçáÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT3);             /*!< «Â≥˝÷–∂œ±Í÷æ             */         
+        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT3);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */         
     }
 
-    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT3))         /*!< INT3œ¬Ωµ—ÿ÷–∂œ           */
+    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT3))         /*!< INT3‰∏ãÈôçÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT3);             /*!< «Â≥˝÷–∂œ±Í÷æ             */         
+        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT3);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */         
     }      
 }
 
@@ -187,16 +187,16 @@ void EXTI3_IRQHandler()
 
 void EXTI4_IRQHandler()
 {
-    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT4))         /*!< INT4…œ…˝—ÿ÷–∂œ           */
+    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT4))         /*!< INT4‰∏äÂçáÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT4);             /*!< «Â≥˝÷–∂œ±Í÷æ             */         
+        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT4);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */         
     }
 
-    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT4))         /*!< INT4œ¬Ωµ—ÿ÷–∂œ           */
+    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT4))         /*!< INT4‰∏ãÈôçÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT4);             /*!< «Â≥˝÷–∂œ±Í÷æ             */        
+        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT4);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */        
     }      
 }
 
@@ -209,16 +209,16 @@ void EXTI4_IRQHandler()
 
 void EXTI5_IRQHandler()
 {
-    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT5))         /*!< INT5…œ…˝—ÿ÷–∂œ           */
+    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT5))         /*!< INT5‰∏äÂçáÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT5);             /*!< «Â≥˝÷–∂œ±Í÷æ             */         
+        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT5);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */         
     }
 
-    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT5))         /*!< INT5œ¬Ωµ—ÿ÷–∂œ           */
+    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT5))         /*!< INT5‰∏ãÈôçÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT5);             /*!< «Â≥˝÷–∂œ±Í÷æ             */         
+        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT5);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */         
     }      
 }
 
@@ -231,16 +231,16 @@ void EXTI5_IRQHandler()
 
 void EXTI6_IRQHandler()
 {
-    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT6))         /*!< INT6…œ…˝—ÿ÷–∂œ           */
+    if(SET == HT_EXTIRise_ITFlagStatusGet(INT_EXTIF_RIF_INT6))         /*!< INT6‰∏äÂçáÊ≤ø‰∏≠Êñ≠           */
     {
         
-        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT6);             /*!< «Â≥˝÷–∂œ±Í÷æ             */        
+        HT_EXTIRise_ClearITPendingBit(INT_EXTIF_RIF_INT6);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */        
     }
 
-    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT6))         /*!< INT6œ¬Ωµ—ÿ÷–∂œ           */
+    if(SET == HT_EXTIFall_ITFlagStatusGet(INT_EXTIF_FIF_INT6))         /*!< INT6‰∏ãÈôçÊ≤ø‰∏≠Êñ≠           */
     {
 
-        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT6);             /*!< «Â≥˝÷–∂œ±Í÷æ             */         
+        HT_EXTIFall_ClearITPendingBit(INT_EXTIF_FIF_INT6);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó             */         
     }      
 }
 
@@ -254,16 +254,16 @@ void EXTI6_IRQHandler()
 void UART0_IRQHandler()
 {
     
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART0, UART_UARTSTA_TXIF))         /*!< UART0∑¢ÀÕ÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART0, UART_UARTSTA_TXIF))         /*!< UART0ÂèëÈÄÅ‰∏≠Êñ≠         */
     {
 
-        HT_UART_ClearITPendingBit(HT_UART0, UART_UARTSTA_TXIF);             /*!< «Â≥˝÷–∂œ±Í÷æ          */
+        HT_UART_ClearITPendingBit(HT_UART0, UART_UARTSTA_TXIF);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */
     } 
 
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART0, UART_UARTSTA_RXIF))         /*!< UART0Ω” ’÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART0, UART_UARTSTA_RXIF))         /*!< UART0Êé•Êî∂‰∏≠Êñ≠         */
     {
 
-        HT_UART_ClearITPendingBit(HT_UART0, UART_UARTSTA_RXIF);             /*!< «Â≥˝÷–∂œ±Í÷æ          */ 
+        HT_UART_ClearITPendingBit(HT_UART0, UART_UARTSTA_RXIF);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */ 
        
     }      
 }
@@ -277,16 +277,16 @@ void UART0_IRQHandler()
 
 void UART1_IRQHandler()
 {
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART1, UART_UARTSTA_TXIF))         /*!< UART1∑¢ÀÕ÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART1, UART_UARTSTA_TXIF))         /*!< UART1ÂèëÈÄÅ‰∏≠Êñ≠         */
     {
 
-        HT_UART_ClearITPendingBit(HT_UART1, UART_UARTSTA_TXIF);             /*!< «Â≥˝÷–∂œ±Í÷æ          */        
+        HT_UART_ClearITPendingBit(HT_UART1, UART_UARTSTA_TXIF);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */        
     } 
 
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART1, UART_UARTSTA_RXIF))         /*!< UART1Ω” ’÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART1, UART_UARTSTA_RXIF))         /*!< UART1Êé•Êî∂‰∏≠Êñ≠         */
     {
 
-        HT_UART_ClearITPendingBit(HT_UART1, UART_UARTSTA_RXIF);             /*!< «Â≥˝÷–∂œ±Í÷æ          */          
+        HT_UART_ClearITPendingBit(HT_UART1, UART_UARTSTA_RXIF);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */          
     }      
 }
 
@@ -299,16 +299,16 @@ void UART1_IRQHandler()
 
 void UART2_IRQHandler()
 {
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART2, UART_UARTSTA_TXIF))         /*!< UART2∑¢ÀÕ÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART2, UART_UARTSTA_TXIF))         /*!< UART2ÂèëÈÄÅ‰∏≠Êñ≠         */
     {
 
-        HT_UART_ClearITPendingBit(HT_UART2, UART_UARTSTA_TXIF);             /*!< «Â≥˝÷–∂œ±Í÷æ          */         
+        HT_UART_ClearITPendingBit(HT_UART2, UART_UARTSTA_TXIF);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */         
     } 
 
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART2, UART_UARTSTA_RXIF))         /*!< UART2Ω” ’÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART2, UART_UARTSTA_RXIF))         /*!< UART2Êé•Êî∂‰∏≠Êñ≠         */
     {
 
-        HT_UART_ClearITPendingBit(HT_UART2, UART_UARTSTA_RXIF);             /*!< «Â≥˝÷–∂œ±Í÷æ          */ 
+        HT_UART_ClearITPendingBit(HT_UART2, UART_UARTSTA_RXIF);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */ 
     }      
 }
 
@@ -322,34 +322,34 @@ void UART2_IRQHandler()
 void UART3_IRQHandler()
 { 
     
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART3, UART_UARTSTA_TXIF))            /*!< UART3∑¢ÀÕ÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART3, UART_UARTSTA_TXIF))            /*!< UART3ÂèëÈÄÅ‰∏≠Êñ≠         */
     {
 
-        HT_UART_ClearITPendingBit(HT_UART3, UART_UARTSTA_TXIF);                /*!< «Â≥˝÷–∂œ±Í÷æ          */          
+        HT_UART_ClearITPendingBit(HT_UART3, UART_UARTSTA_TXIF);                /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */          
     } 
 
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART3, UART_UARTSTA_RXIF))            /*!< UART3Ω” ’÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART3, UART_UARTSTA_RXIF))            /*!< UART3Êé•Êî∂‰∏≠Êñ≠         */
     {
         
-        HT_UART_ClearITPendingBit(HT_UART3, UART_UARTSTA_RXIF);                /*!< «Â≥˝÷–∂œ±Í÷æ          */        
+        HT_UART_ClearITPendingBit(HT_UART3, UART_UARTSTA_RXIF);                /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */        
     }    
 
-    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_1, UART_ISO7816STA_TXIF))  /*!< 7816∑¢ÀÕ÷–∂œ          */
+    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_1, UART_ISO7816STA_TXIF))  /*!< 7816ÂèëÈÄÅ‰∏≠Êñ≠          */
     {
        
-        HT_ISO7816_ClearITPendingBit(HT_ISO7816_1, UART_ISO7816STA_TXIF);      /*!< «Â≥˝÷–∂œ±Í÷æ          */ 
+        HT_ISO7816_ClearITPendingBit(HT_ISO7816_1, UART_ISO7816STA_TXIF);      /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */ 
     }  
 
-    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_1, UART_ISO7816STA_RXIF))  /*!< 7816Ω” ’÷–∂œ          */
+    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_1, UART_ISO7816STA_RXIF))  /*!< 7816Êé•Êî∂‰∏≠Êñ≠          */
     {
 
-        HT_ISO7816_ClearITPendingBit(HT_ISO7816_1, UART_ISO7816STA_RXIF);      /*!< «Â≥˝÷–∂œ±Í÷æ          */         
+        HT_ISO7816_ClearITPendingBit(HT_ISO7816_1, UART_ISO7816STA_RXIF);      /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */         
     } 
 
-    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_1, UART_ISO7816STA_PRDIF)) /*!< 7816Ω” ’…œ“Á÷–∂œ±Í÷æ  */
+    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_1, UART_ISO7816STA_PRDIF)) /*!< 7816Êé•Êî∂‰∏äÊ∫¢‰∏≠Êñ≠Ê†áÂøó  */
     {
 
-        HT_ISO7816_ClearITPendingBit(HT_ISO7816_1, UART_ISO7816STA_PRDIF);     /*!< «Â≥˝÷–∂œ±Í÷æ          */        
+        HT_ISO7816_ClearITPendingBit(HT_ISO7816_1, UART_ISO7816STA_PRDIF);     /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */        
     }     
 }
 
@@ -362,34 +362,34 @@ void UART3_IRQHandler()
 
 void UART4_IRQHandler()
 {
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART4, UART_UARTSTA_TXIF))            /*!< UART4∑¢ÀÕ÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART4, UART_UARTSTA_TXIF))            /*!< UART4ÂèëÈÄÅ‰∏≠Êñ≠         */
     {
 
-        HT_UART_ClearITPendingBit(HT_UART4, UART_UARTSTA_TXIF);                /*!< «Â≥˝÷–∂œ±Í÷æ          */         
+        HT_UART_ClearITPendingBit(HT_UART4, UART_UARTSTA_TXIF);                /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */         
     } 
 
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART4, UART_UARTSTA_RXIF))            /*!< UART4Ω” ’÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART4, UART_UARTSTA_RXIF))            /*!< UART4Êé•Êî∂‰∏≠Êñ≠         */
     {
 
-        HT_UART_ClearITPendingBit(HT_UART4, UART_UARTSTA_RXIF);                /*!< «Â≥˝÷–∂œ±Í÷æ          */          
+        HT_UART_ClearITPendingBit(HT_UART4, UART_UARTSTA_RXIF);                /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */          
     } 
 
-    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_0, UART_ISO7816STA_TXIF))  /*!< 7816∑¢ÀÕ÷–∂œ          */
+    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_0, UART_ISO7816STA_TXIF))  /*!< 7816ÂèëÈÄÅ‰∏≠Êñ≠          */
     {
 
-        HT_ISO7816_ClearITPendingBit(HT_ISO7816_0, UART_ISO7816STA_TXIF);      /*!< «Â≥˝÷–∂œ±Í÷æ          */         
+        HT_ISO7816_ClearITPendingBit(HT_ISO7816_0, UART_ISO7816STA_TXIF);      /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */         
     }  
 
-    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_0, UART_ISO7816STA_RXIF))  /*!< 7816Ω” ’÷–∂œ          */
+    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_0, UART_ISO7816STA_RXIF))  /*!< 7816Êé•Êî∂‰∏≠Êñ≠          */
     {
 
-        HT_ISO7816_ClearITPendingBit(HT_ISO7816_0, UART_ISO7816STA_RXIF);      /*!< «Â≥˝÷–∂œ±Í÷æ          */         
+        HT_ISO7816_ClearITPendingBit(HT_ISO7816_0, UART_ISO7816STA_RXIF);      /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */         
     } 
 
-    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_0, UART_ISO7816STA_PRDIF)) /*!< 7816Ω” ’…œ“Á÷–∂œ±Í÷æ  */
+    if(SET == HT_ISO7816_ITFlagStatusGet(HT_ISO7816_0, UART_ISO7816STA_PRDIF)) /*!< 7816Êé•Êî∂‰∏äÊ∫¢‰∏≠Êñ≠Ê†áÂøó  */
     {
 
-        HT_ISO7816_ClearITPendingBit(HT_ISO7816_0, UART_ISO7816STA_PRDIF);     /*!< «Â≥˝÷–∂œ±Í÷æ          */         
+        HT_ISO7816_ClearITPendingBit(HT_ISO7816_0, UART_ISO7816STA_PRDIF);     /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */         
     }      
 }
 
@@ -402,16 +402,16 @@ void UART4_IRQHandler()
 
 void UART5_IRQHandler()
 {
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART5, UART_UARTSTA_TXIF))         /*!< UART5∑¢ÀÕ÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART5, UART_UARTSTA_TXIF))         /*!< UART5ÂèëÈÄÅ‰∏≠Êñ≠         */
     {
 
-        HT_UART_ClearITPendingBit(HT_UART5, UART_UARTSTA_TXIF);             /*!< «Â≥˝÷–∂œ±Í÷æ          */        
+        HT_UART_ClearITPendingBit(HT_UART5, UART_UARTSTA_TXIF);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */        
     } 
 
-    if(SET == HT_UART_ITFlagStatusGet(HT_UART5, UART_UARTSTA_RXIF))         /*!< UART5Ω” ’÷–∂œ         */
+    if(SET == HT_UART_ITFlagStatusGet(HT_UART5, UART_UARTSTA_RXIF))         /*!< UART5Êé•Êî∂‰∏≠Êñ≠         */
     {
 
-        HT_UART_ClearITPendingBit(HT_UART5, UART_UARTSTA_RXIF);             /*!< «Â≥˝÷–∂œ±Í÷æ          */         
+        HT_UART_ClearITPendingBit(HT_UART5, UART_UARTSTA_RXIF);             /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */         
     }      
 }
 
@@ -425,22 +425,22 @@ void UART5_IRQHandler()
 void TIMER_0_IRQHandler()
 {
     
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR0, TMR_TMRIF_PRDIF))                /*!< ÷‹∆⁄÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR0, TMR_TMRIF_PRDIF))                /*!< Âë®Êúü‰∏≠Êñ≠           */
     {
         
-        HT_TMR_ClearITPendingBit(HT_TMR0, TMR_TMRIF_PRDIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */
+        HT_TMR_ClearITPendingBit(HT_TMR0, TMR_TMRIF_PRDIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */
     } 
     
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR0, TMR_TMRIF_CAPIF))                /*!< ≤∂ªÒ÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR0, TMR_TMRIF_CAPIF))                /*!< ÊçïËé∑‰∏≠Êñ≠           */
     {
 
-        HT_TMR_ClearITPendingBit(HT_TMR0, TMR_TMRIF_CAPIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */        
+        HT_TMR_ClearITPendingBit(HT_TMR0, TMR_TMRIF_CAPIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */        
     } 
     
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR0, TMR_TMRIF_CMPIF))                /*!< ±»Ωœ÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR0, TMR_TMRIF_CMPIF))                /*!< ÊØîËæÉ‰∏≠Êñ≠           */
     {
 
-        HT_TMR_ClearITPendingBit(HT_TMR0, TMR_TMRIF_CMPIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */         
+        HT_TMR_ClearITPendingBit(HT_TMR0, TMR_TMRIF_CMPIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */         
     } 
     
 }
@@ -455,22 +455,22 @@ void TIMER_0_IRQHandler()
 void TIMER_1_IRQHandler()
 {
 
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR1, TMR_TMRIF_PRDIF))                /*!< ÷‹∆⁄÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR1, TMR_TMRIF_PRDIF))                /*!< Âë®Êúü‰∏≠Êñ≠           */
     {
 
-        HT_TMR_ClearITPendingBit(HT_TMR1, TMR_TMRIF_PRDIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */        
+        HT_TMR_ClearITPendingBit(HT_TMR1, TMR_TMRIF_PRDIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */        
     }  
     
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR1, TMR_TMRIF_CAPIF))                /*!< ≤∂ªÒ÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR1, TMR_TMRIF_CAPIF))                /*!< ÊçïËé∑‰∏≠Êñ≠           */
     {
 
-        HT_TMR_ClearITPendingBit(HT_TMR1, TMR_TMRIF_CAPIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */        
+        HT_TMR_ClearITPendingBit(HT_TMR1, TMR_TMRIF_CAPIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */        
     }  
     
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR1, TMR_TMRIF_CMPIF))                /*!< ±»Ωœ÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR1, TMR_TMRIF_CMPIF))                /*!< ÊØîËæÉ‰∏≠Êñ≠           */
     {
 
-        HT_TMR_ClearITPendingBit(HT_TMR1, TMR_TMRIF_CMPIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */        
+        HT_TMR_ClearITPendingBit(HT_TMR1, TMR_TMRIF_CMPIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */        
     } 
     
 }
@@ -485,22 +485,22 @@ void TIMER_1_IRQHandler()
 void TIMER_2_IRQHandler()
 {
 
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR2, TMR_TMRIF_PRDIF))                /*!< ÷‹∆⁄÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR2, TMR_TMRIF_PRDIF))                /*!< Âë®Êúü‰∏≠Êñ≠           */
     {
 
-        HT_TMR_ClearITPendingBit(HT_TMR2, TMR_TMRIF_PRDIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */         
+        HT_TMR_ClearITPendingBit(HT_TMR2, TMR_TMRIF_PRDIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */         
     }   
     
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR2, TMR_TMRIF_CAPIF))                /*!< ≤∂ªÒ÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR2, TMR_TMRIF_CAPIF))                /*!< ÊçïËé∑‰∏≠Êñ≠           */
     {
 
-        HT_TMR_ClearITPendingBit(HT_TMR2, TMR_TMRIF_CAPIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */         
+        HT_TMR_ClearITPendingBit(HT_TMR2, TMR_TMRIF_CAPIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */         
     }  
     
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR2, TMR_TMRIF_CMPIF))                /*!< ±»Ωœ÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR2, TMR_TMRIF_CMPIF))                /*!< ÊØîËæÉ‰∏≠Êñ≠           */
     {
 
-        HT_TMR_ClearITPendingBit(HT_TMR2, TMR_TMRIF_CMPIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */         
+        HT_TMR_ClearITPendingBit(HT_TMR2, TMR_TMRIF_CMPIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */         
     } 
     
 }
@@ -515,22 +515,22 @@ void TIMER_2_IRQHandler()
 void TIMER_3_IRQHandler()
 {
 
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR3, TMR_TMRIF_PRDIF))                /*!< ÷‹∆⁄÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR3, TMR_TMRIF_PRDIF))                /*!< Âë®Êúü‰∏≠Êñ≠           */
     {
 
-        HT_TMR_ClearITPendingBit(HT_TMR3, TMR_TMRIF_PRDIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */        
+        HT_TMR_ClearITPendingBit(HT_TMR3, TMR_TMRIF_PRDIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */        
     }  
     
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR3, TMR_TMRIF_CAPIF))                /*!< ≤∂ªÒ÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR3, TMR_TMRIF_CAPIF))                /*!< ÊçïËé∑‰∏≠Êñ≠           */
     {
 
-        HT_TMR_ClearITPendingBit(HT_TMR3, TMR_TMRIF_CAPIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */         
+        HT_TMR_ClearITPendingBit(HT_TMR3, TMR_TMRIF_CAPIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */         
     }  
     
-    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR3, TMR_TMRIF_CMPIF))                /*!< ±»Ωœ÷–∂œ           */
+    if(SET == HT_TMR_ITFlagStatusGet(HT_TMR3, TMR_TMRIF_CMPIF))                /*!< ÊØîËæÉ‰∏≠Êñ≠           */
     {
 
-        HT_TMR_ClearITPendingBit(HT_TMR3, TMR_TMRIF_CMPIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ       */        
+        HT_TMR_ClearITPendingBit(HT_TMR3, TMR_TMRIF_CMPIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó       */        
     } 
     
 }
@@ -545,40 +545,40 @@ void TIMER_3_IRQHandler()
 void TBS_IRQHandler()
 {
 
-    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_TMPIF))                 /*!< Œ¬∂»≤‚¡ø÷–∂œ          */
+    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_TMPIF))                 /*!< Ê∏©Â∫¶ÊµãÈáè‰∏≠Êñ≠          */
     {
         
-        HT_TBS_ClearITPendingBit(TBS_TBSIF_TMPIF);                     /*!< «Â≥˝÷–∂œ±Í÷æ          */
+        HT_TBS_ClearITPendingBit(TBS_TBSIF_TMPIF);                     /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */
     }  
     
-    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_VBATIF))                /*!< µÁ≥ÿ≤‚¡ø÷–∂œ          */
+    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_VBATIF))                /*!< ÁîµÊ±†ÊµãÈáè‰∏≠Êñ≠          */
     {
 
-        HT_TBS_ClearITPendingBit(TBS_TBSIF_VBATIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ          */        
+        HT_TBS_ClearITPendingBit(TBS_TBSIF_VBATIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */        
     }  
     
-    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_ADC0IF))                /*!< ADC0≤‚¡ø÷–∂œ          */
+    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_ADC0IF))                /*!< ADC0ÊµãÈáè‰∏≠Êñ≠          */
     {
 
-        HT_TBS_ClearITPendingBit(TBS_TBSIF_ADC0IF);                    /*!< «Â≥˝÷–∂œ±Í÷æ          */        
+        HT_TBS_ClearITPendingBit(TBS_TBSIF_ADC0IF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */        
     }   
     
-    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_ADC1IF))                /*!< ADC1≤‚¡ø÷–∂œ          */
+    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_ADC1IF))                /*!< ADC1ÊµãÈáè‰∏≠Êñ≠          */
     {
 
-        HT_TBS_ClearITPendingBit(TBS_TBSIF_ADC1IF);                    /*!< «Â≥˝÷–∂œ±Í÷æ          */        
+        HT_TBS_ClearITPendingBit(TBS_TBSIF_ADC1IF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */        
     }   
     
-    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_VBATCMPIF))             /*!< µÁ≥ÿµÁ—π±»Ωœ÷–∂œ      */
+    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_VBATCMPIF))             /*!< ÁîµÊ±†ÁîµÂéãÊØîËæÉ‰∏≠Êñ≠      */
     {
 
-        HT_TBS_ClearITPendingBit(TBS_TBSIF_VBATCMPIF);                 /*!< «Â≥˝÷–∂œ±Í÷æ          */       
+        HT_TBS_ClearITPendingBit(TBS_TBSIF_VBATCMPIF);                 /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */       
     }  
     
-    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_VCCIF))                 /*!< µÁ‘¥≤‚¡ø÷–∂œ          */
+    if(SET == HT_TBS_ITFlagStatusGet(TBS_TBSIF_VCCIF))                 /*!< ÁîµÊ∫êÊµãÈáè‰∏≠Êñ≠          */
     {
 
-        HT_TBS_ClearITPendingBit(TBS_TBSIF_VCCIF);                     /*!< «Â≥˝÷–∂œ±Í÷æ          */         
+        HT_TBS_ClearITPendingBit(TBS_TBSIF_VCCIF);                     /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */         
     }       
 }
 
@@ -592,44 +592,44 @@ void TBS_IRQHandler()
 void RTC_IRQHandler()
 {
     uint8_t Flag = HT_RTC->RTCIF;
-    HT_RTC->RTCIF=0;                                               /*!< «Â≥˝÷–∂œ±Í÷æ          */
+    HT_RTC->RTCIF=0;                                               /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */
     
-    if(Flag & RTC_RTCIF_SECIF)                                     /*!< √Î÷–∂œ                */
+    if(Flag & RTC_RTCIF_SECIF)                                     /*!< Áßí‰∏≠Êñ≠                */
     {
 
     }       
     
-    if(Flag & RTC_RTCIF_MINIF)                                     /*!< ∑÷÷–∂œ                */
+    if(Flag & RTC_RTCIF_MINIF)                                     /*!< ÂàÜ‰∏≠Êñ≠                */
     {
        
     }  
     
-    if(Flag & RTC_RTCIF_HRIF)                                      /*!< –° ±÷–∂œ              */
+    if(Flag & RTC_RTCIF_HRIF)                                      /*!< Â∞èÊó∂‰∏≠Êñ≠              */
     {
       
     }
 
-    if(Flag & RTC_RTCIF_DAYIF)                                     /*!< »’÷–∂œ                */
+    if(Flag & RTC_RTCIF_DAYIF)                                     /*!< Êó•‰∏≠Êñ≠                */
     {
         
     }  
 
-    if(Flag & RTC_RTCIF_MTHIF)                                     /*!< ‘¬÷–∂œ                */
+    if(Flag & RTC_RTCIF_MTHIF)                                     /*!< Êúà‰∏≠Êñ≠                */
     {
        
     }  
 
-    if(Flag & RTC_RTCIF_RTC1IF)                                    /*!< RTC∂® ±∆˜1÷–∂œ        */
+    if(Flag & RTC_RTCIF_RTC1IF)                                    /*!< RTCÂÆöÊó∂Âô®1‰∏≠Êñ≠        */
     {
         
     }  
 
-    if(Flag & RTC_RTCIF_RTC2IF)                                    /*!< RTC∂® ±∆˜2÷–∂œ        */
+    if(Flag & RTC_RTCIF_RTC2IF)                                    /*!< RTCÂÆöÊó∂Âô®2‰∏≠Êñ≠        */
     {
        
     }  
 
-    if(Flag & RTC_RTCIF_ALMIF)                                     /*!< ƒ÷÷”÷–∂œ              */
+    if(Flag & RTC_RTCIF_ALMIF)                                     /*!< ÈóπÈíü‰∏≠Êñ≠              */
     {
        
     }      
@@ -657,16 +657,16 @@ void I2C_IRQHandler()
 void SPI0_IRQHandler()
 {
 
-    if(SET == HT_SPI_ITFlagStatusGet(HT_SPI0,SPI_SPISTA_MODF))                 /*!< SPI0ƒ£ Ωπ ’œ±Í÷æŒª     */
+    if(SET == HT_SPI_ITFlagStatusGet(HT_SPI0,SPI_SPISTA_MODF))                 /*!< SPI0Ê®°ÂºèÊïÖÈöúÊ†áÂøó‰Ωç     */
     {
 
-        HT_SPI_ClearITPendingBit(HT_SPI0, SPI_SPISTA_MODF);                    /*!< «Â≥˝÷–∂œ±Í÷æ          */
+        HT_SPI_ClearITPendingBit(HT_SPI0, SPI_SPISTA_MODF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */
     }    
 
-    if(SET == HT_SPI_ITFlagStatusGet(HT_SPI0, SPI_SPISTA_SPIF))                /*!< SPI0 ˝æ›¥´ ‰ÕÍ≥…±Í÷æŒª*/
+    if(SET == HT_SPI_ITFlagStatusGet(HT_SPI0, SPI_SPISTA_SPIF))                /*!< SPI0Êï∞ÊçÆ‰º†ËæìÂÆåÊàêÊ†áÂøó‰Ωç*/
     {
 
-        HT_SPI_ClearITPendingBit(HT_SPI0, SPI_SPISTA_SPIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ          */        
+        HT_SPI_ClearITPendingBit(HT_SPI0, SPI_SPISTA_SPIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */        
     }     
 
 }
@@ -685,16 +685,16 @@ void WDT_IRQHandler()
 #elif defined HT6x2x
 void SPI1_IRQHandler()
 {
-    if(SET == HT_SPI_ITFlagStatusGet(HT_SPI1,SPI_SPISTA_MODF))                 /*!< SPI1ƒ£ Ωπ ’œ±Í÷æŒª     */
+    if(SET == HT_SPI_ITFlagStatusGet(HT_SPI1,SPI_SPISTA_MODF))                 /*!< SPI1Ê®°ÂºèÊïÖÈöúÊ†áÂøó‰Ωç     */
     {
 
-        HT_SPI_ClearITPendingBit(HT_SPI1, SPI_SPISTA_MODF);                    /*!< «Â≥˝÷–∂œ±Í÷æ          */
+        HT_SPI_ClearITPendingBit(HT_SPI1, SPI_SPISTA_MODF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */
     }    
 
-    if(SET == HT_SPI_ITFlagStatusGet(HT_SPI1, SPI_SPISTA_SPIF))                /*!< SPI1 ˝æ›¥´ ‰ÕÍ≥…±Í÷æŒª*/
+    if(SET == HT_SPI_ITFlagStatusGet(HT_SPI1, SPI_SPISTA_SPIF))                /*!< SPI1Êï∞ÊçÆ‰º†ËæìÂÆåÊàêÊ†áÂøó‰Ωç*/
     {
 
-        HT_SPI_ClearITPendingBit(HT_SPI1, SPI_SPISTA_SPIF);                    /*!< «Â≥˝÷–∂œ±Í÷æ          */        
+        HT_SPI_ClearITPendingBit(HT_SPI1, SPI_SPISTA_SPIF);                    /*!< Ê∏ÖÈô§‰∏≠Êñ≠Ê†áÂøó          */        
     }     
 }
 #endif

@@ -21,7 +21,7 @@
 
 /*
 *********************************************************************************************************
-*                                           ±¾µØºê/½á¹¹Ìå
+*                                           æœ¬åœ°å®/ç»“æž„ä½“
 *********************************************************************************************************
 */
 
@@ -29,7 +29,7 @@
 
 /*
 *********************************************************************************************************
-*                                             ±¾µØ±äÁ¿
+*                                             æœ¬åœ°å˜é‡
 *********************************************************************************************************
 */
 
@@ -37,7 +37,7 @@ static const uint32_t RegisterWriteProtect[]={CMU_WPREG_Protected, CMU_WPREG_UnP
 
 /*
 *********************************************************************************************************
-*                                           ±¾µØº¯ÊýÉêÃ÷
+*                                           æœ¬åœ°å‡½æ•°ç”³æ˜Ž
 *********************************************************************************************************
 */
 
@@ -46,17 +46,17 @@ static const uint32_t RegisterWriteProtect[]={CMU_WPREG_Protected, CMU_WPREG_UnP
 *********************************************************************************************************
 *                                         INITIAL RTC MODULE
 *
-* º¯ÊýËµÃ÷: ³õÊ¼»¯RTCÄ£¿é
+* å‡½æ•°è¯´æ˜Ž: åˆå§‹åŒ–RTCæ¨¡å—
 *
-* Èë¿Ú²ÎÊý: RTC_InitStruct     RTC³õÊ¼»¯½á¹¹ÌåÖ¸Õë£¬Ö÷Òª°üº¬4¸ö²ÎÊý: 
-*                              1) RTC_TMR1    : RTC¶¨Ê±Æ÷1³õÊ¼»¯½á¹¹£¬Ö÷Òª°üº¬Ê¹ÄÜÓë¶¨Ê±ÖÜÆÚÉèÖÃÁ½·½Ãæ
-*                              2) RTC_TMR2    : RTC¶¨Ê±Æ÷2³õÊ¼»¯½á¹¹£¬Ö÷Òª°üº¬Ê¹ÄÜÓë¶¨Ê±ÖÜÆÚÉèÖÃÁ½·½Ãæ
-*                              3) RTC_Alarm   : RTCÄÖÖÓÉèÖÃ 
-*                              4) RTC_TOUT    : RTCToutÊä³öÅäÖÃ                         
+* å…¥å£å‚æ•°: RTC_InitStruct     RTCåˆå§‹åŒ–ç»“æž„ä½“æŒ‡é’ˆï¼Œä¸»è¦åŒ…å«4ä¸ªå‚æ•°: 
+*                              1) RTC_TMR1    : RTCå®šæ—¶å™¨1åˆå§‹åŒ–ç»“æž„ï¼Œä¸»è¦åŒ…å«ä½¿èƒ½ä¸Žå®šæ—¶å‘¨æœŸè®¾ç½®ä¸¤æ–¹é¢
+*                              2) RTC_TMR2    : RTCå®šæ—¶å™¨2åˆå§‹åŒ–ç»“æž„ï¼Œä¸»è¦åŒ…å«ä½¿èƒ½ä¸Žå®šæ—¶å‘¨æœŸè®¾ç½®ä¸¤æ–¹é¢
+*                              3) RTC_Alarm   : RTCé—¹é’Ÿè®¾ç½® 
+*                              4) RTC_TOUT    : RTCToutè¾“å‡ºé…ç½®                         
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÖÐ¶ÏÅäÖÃÊÇÖ±½Ó¸³Öµ£¬Î´±»ÅäÖÃµÄÎ»»á±»Ö±½ÓÐ´Îª0
+* ç‰¹æ®Šè¯´æ˜Ž: ä¸­æ–­é…ç½®æ˜¯ç›´æŽ¥èµ‹å€¼ï¼Œæœªè¢«é…ç½®çš„ä½ä¼šè¢«ç›´æŽ¥å†™ä¸º0
 *********************************************************************************************************
 */
 void HT_RTC_Init(RTC_InitTypeDef* RTC_InitStruct)
@@ -64,40 +64,40 @@ void HT_RTC_Init(RTC_InitTypeDef* RTC_InitStruct)
     /*  assert_param  */
     
 
-    if(RTC_InitStruct->RTC_TMR1.NewState != DISABLE)                 /*!< ÅäÖÃRTC¶¨Ê±Æ÷1         */
+    if(RTC_InitStruct->RTC_TMR1.NewState != DISABLE)                 /*!< é…ç½®RTCå®šæ—¶å™¨1         */
     {
-        HT_RTC->RTCTMR1 = (uint32_t)RTC_InitStruct->RTC_TMR1.Count;  /*!< ÉèÖÃRTC¶¨Ê±Æ÷1¶¨Ê±ÖÜÆÚ */    
-        HT_RTC->RTCCON |= RTC_RTCCON_RTC1EN;                         /*!< Ê¹ÄÜRTC¶¨Ê±Æ÷1         */     
+        HT_RTC->RTCTMR1 = (uint32_t)RTC_InitStruct->RTC_TMR1.Count;  /*!< è®¾ç½®RTCå®šæ—¶å™¨1å®šæ—¶å‘¨æœŸ */    
+        HT_RTC->RTCCON |= RTC_RTCCON_RTC1EN;                         /*!< ä½¿èƒ½RTCå®šæ—¶å™¨1         */     
     }
     else
     {
-        HT_RTC->RTCCON &= ~RTC_RTCCON_RTC1EN;                        /*!< ¹Ø±ÕRTC¶¨Ê±Æ÷1         */
+        HT_RTC->RTCCON &= ~RTC_RTCCON_RTC1EN;                        /*!< å…³é—­RTCå®šæ—¶å™¨1         */
     }   
 
-    if(RTC_InitStruct->RTC_TMR2.NewState != DISABLE)                 /*!< ÅäÖÃRTC¶¨Ê±Æ÷2         */
+    if(RTC_InitStruct->RTC_TMR2.NewState != DISABLE)                 /*!< é…ç½®RTCå®šæ—¶å™¨2         */
     {
-        HT_RTC->RTCTMR2 = (uint32_t)RTC_InitStruct->RTC_TMR2.Count;  /*!< ÉèÖÃRTC¶¨Ê±Æ÷2¶¨Ê±ÖÜÆÚ */    
-        HT_RTC->RTCCON |= RTC_RTCCON_RTC2EN;                         /*!< Ê¹ÄÜRTC¶¨Ê±Æ÷2         */     
+        HT_RTC->RTCTMR2 = (uint32_t)RTC_InitStruct->RTC_TMR2.Count;  /*!< è®¾ç½®RTCå®šæ—¶å™¨2å®šæ—¶å‘¨æœŸ */    
+        HT_RTC->RTCCON |= RTC_RTCCON_RTC2EN;                         /*!< ä½¿èƒ½RTCå®šæ—¶å™¨2         */     
     }
     else
     {
-        HT_RTC->RTCCON &= ~RTC_RTCCON_RTC2EN;                        /*!< ¹Ø±ÕRTC¶¨Ê±Æ÷2         */
+        HT_RTC->RTCCON &= ~RTC_RTCCON_RTC2EN;                        /*!< å…³é—­RTCå®šæ—¶å™¨2         */
     }   
-                                                                     /*!< ÅäÖÃÄÖÁå¼Ä´æÆ÷         */
+                                                                     /*!< é…ç½®é—¹é“ƒå¯„å­˜å™¨         */
     HT_RTC->ALMR = (uint32_t)(RTC_InitStruct->RTC_Alarm.HourAndMinute & RTC_ALMR);
     
     HT_RTC->RTCCON &= ~(uint32_t)RTC_RTCCON_TOUT;
-    HT_RTC->RTCCON |= (uint32_t)RTC_InitStruct->RTC_TOUT;            /*!< ÅäÖÃTOUTÊä³ö           */   
+    HT_RTC->RTCCON |= (uint32_t)RTC_InitStruct->RTC_TOUT;            /*!< é…ç½®TOUTè¾“å‡º           */   
 } 
 
 /*
 *********************************************************************************************************
 *                                         READ RTC TIME
 *
-* º¯ÊýËµÃ÷: ¶ÁRTCÊ±¼ä¼Ä´æÆ÷£¬°üÀ¨ÖÜ/Äê/ÔÂ/ÈÕ/Ê±/·Ö/Ãë¹²7¸ö¼Ä´æÆ÷
+* å‡½æ•°è¯´æ˜Ž: è¯»RTCæ—¶é—´å¯„å­˜å™¨ï¼ŒåŒ…æ‹¬å‘¨/å¹´/æœˆ/æ—¥/æ—¶/åˆ†/ç§’å…±7ä¸ªå¯„å­˜å™¨
 *
-* Èë¿Ú²ÎÊý: pRTCTime    void*ÐÍ±äÁ¿£¬ÆäÖ¸Ïò¶ÔÏóÓÃÓÚ´æ´¢RTCÊ±¼ä£¬ÔÚ³ÌÐòÖÐÊµ¼Ê±»µ±³Éuint8_t*À´´¦Àí
-*                       ´æ´¢Ñ­ÐòÈçÏÂ£º
+* å…¥å£å‚æ•°: pRTCTime    void*åž‹å˜é‡ï¼Œå…¶æŒ‡å‘å¯¹è±¡ç”¨äºŽå­˜å‚¨RTCæ—¶é—´ï¼Œåœ¨ç¨‹åºä¸­å®žé™…è¢«å½“æˆuint8_t*æ¥å¤„ç†
+*                       å­˜å‚¨å¾ªåºå¦‚ä¸‹ï¼š
 *                       pRTCTime[0]: WEEKR
 *                       pRTCTime[1]: YEARR
 *                       pRTCTime[2]: MONTHR
@@ -106,9 +106,9 @@ void HT_RTC_Init(RTC_InitTypeDef* RTC_InitStruct)
 *                       pRTCTime[5]: MINR
 *                       pRTCTime[6]: SECR
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÓÃ»§Ó¦¾¡Á¿±ÜÃâÔÚ¶ÁµÄ¹ý³ÌÖÐÈ¥Ð´ÕâÐ©¼Ä´æÆ÷
+* ç‰¹æ®Šè¯´æ˜Ž: ç”¨æˆ·åº”å°½é‡é¿å…åœ¨è¯»çš„è¿‡ç¨‹ä¸­åŽ»å†™è¿™äº›å¯„å­˜å™¨
 *********************************************************************************************************
 */
 void HT_RTC_Read(void* pRTCTime)
@@ -117,9 +117,9 @@ void HT_RTC_Read(void* pRTCTime)
     
     uint8_t *pRTCRead = pRTCTime;
     
-    HT_RTC->RTCRD = RTC_RTCRD_READFLAG;                /*!< ÉèÖÃ¿ªÊ¼¶Á±êÖ¾        */
-    while(HT_RTC->RTCRD & RTC_RTCRD_READFLAG);         /*!< µÈ´ý¿ÉÒÔ¶Á            */
-                                                       /*!< ¿ªÊ¼¶Á                */
+    HT_RTC->RTCRD = RTC_RTCRD_READFLAG;                /*!< è®¾ç½®å¼€å§‹è¯»æ ‡å¿—        */
+    while(HT_RTC->RTCRD & RTC_RTCRD_READFLAG);         /*!< ç­‰å¾…å¯ä»¥è¯»            */
+                                                       /*!< å¼€å§‹è¯»                */
     pRTCRead[0] = HT_RTC->WEEKR & RTC_WEEKR;      
     pRTCRead[1] = HT_RTC->YEARR & RTC_YEARR;
     pRTCRead[2] = HT_RTC->MONTHR& RTC_MONTHR;
@@ -134,10 +134,10 @@ void HT_RTC_Read(void* pRTCTime)
 *********************************************************************************************************
 *                                         WRITE RTC TIME     
 *
-* º¯ÊýËµÃ÷: Ð´RTCÊ±¼ä¼Ä´æÆ÷£¬°üÀ¨ÖÜ/Äê/ÔÂ/ÈÕ/Ê±/·Ö/Ãë¹²7¸ö¼Ä´æÆ÷
+* å‡½æ•°è¯´æ˜Ž: å†™RTCæ—¶é—´å¯„å­˜å™¨ï¼ŒåŒ…æ‹¬å‘¨/å¹´/æœˆ/æ—¥/æ—¶/åˆ†/ç§’å…±7ä¸ªå¯„å­˜å™¨
 *
-* Èë¿Ú²ÎÊý: pRTCTime    void*ÐÍ±äÁ¿£¬ÆäÖ¸Ïò¶ÔÏóÓÃÓÚ´æ´¢RTCÊ±¼ä£¬ÔÚ³ÌÐòÖÐÊµ¼Ê±»µ±³Éuint8_t*À´´¦Àí
-*                       ´æ´¢Ñ­ÐòÈçÏÂ£º
+* å…¥å£å‚æ•°: pRTCTime    void*åž‹å˜é‡ï¼Œå…¶æŒ‡å‘å¯¹è±¡ç”¨äºŽå­˜å‚¨RTCæ—¶é—´ï¼Œåœ¨ç¨‹åºä¸­å®žé™…è¢«å½“æˆuint8_t*æ¥å¤„ç†
+*                       å­˜å‚¨å¾ªåºå¦‚ä¸‹ï¼š
 *                       pRTCTime[0]: WEEKR
 *                       pRTCTime[1]: YEARR
 *                       pRTCTime[2]: MONTHR
@@ -146,12 +146,12 @@ void HT_RTC_Read(void* pRTCTime)
 *                       pRTCTime[5]: MINR
 *                       pRTCTime[6]: SECR
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: 1) ÓÉÓÚÒ»´Î¸üÐÂËùÓÐ¼ÆÊ±¼Ä´æÆ÷£¬Èç¹ûÓÃ»§Ïë¸üÐÂ²¿·Ö¼Ä´æÆ÷£¬ÓÃ»§µ÷ÓÃ´Ëº¯ÊýÇ°ÐèÏÈ¶Á³öËùÓÐ¼ÆÊ±¼Ä´æÆ÷£¬
-*              È»ºó¸üÐÂÐèÒª¸üÐÂµÄ¼Ä´æÆ÷£¬×îºóÒ»ÆðÐ´Èë¡£
-*           2) ÓÃ»§Ó¦±ÜÃâÔÚÐ´µÄ¹ý³ÌÖÐ¶ÁÕâÐ©¼Ä´æÆ÷
-*           3) ÓÃ»§Ó¦±£Ö¤Ð´ÈëÊý¾ÝµÄÓÐÐ§ÐÔ
+* ç‰¹æ®Šè¯´æ˜Ž: 1) ç”±äºŽä¸€æ¬¡æ›´æ–°æ‰€æœ‰è®¡æ—¶å¯„å­˜å™¨ï¼Œå¦‚æžœç”¨æˆ·æƒ³æ›´æ–°éƒ¨åˆ†å¯„å­˜å™¨ï¼Œç”¨æˆ·è°ƒç”¨æ­¤å‡½æ•°å‰éœ€å…ˆè¯»å‡ºæ‰€æœ‰è®¡æ—¶å¯„å­˜å™¨ï¼Œ
+*              ç„¶åŽæ›´æ–°éœ€è¦æ›´æ–°çš„å¯„å­˜å™¨ï¼Œæœ€åŽä¸€èµ·å†™å…¥ã€‚
+*           2) ç”¨æˆ·åº”é¿å…åœ¨å†™çš„è¿‡ç¨‹ä¸­è¯»è¿™äº›å¯„å­˜å™¨
+*           3) ç”¨æˆ·åº”ä¿è¯å†™å…¥æ•°æ®çš„æœ‰æ•ˆæ€§
 *********************************************************************************************************
 */
 void HT_RTC_Write(void* pRTCTime)
@@ -160,11 +160,11 @@ void HT_RTC_Write(void* pRTCTime)
     
     uint8_t *pRTCWrite = pRTCTime;
     uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    
-                                                       /*!< ±£´æµ±Ç°Ð´±£»¤×´Ì¬    */ 
-    HT_CMU->WPREG = CMU_WPREG_UnProtected;             /*!< ¹Ø±ÕÐ´±£»¤¹¦ÄÜ        */
+                                                       /*!< ä¿å­˜å½“å‰å†™ä¿æŠ¤çŠ¶æ€    */ 
+    HT_CMU->WPREG = CMU_WPREG_UnProtected;             /*!< å…³é—­å†™ä¿æŠ¤åŠŸèƒ½        */
     
-    HT_RTC->RTCWR = RTC_RTCWR_CLEAR;                   /*!< Çå³ýÐ´±êÖ¾            */
-                                                       /*!< ¿ªÊ¼Ð´                */
+    HT_RTC->RTCWR = RTC_RTCWR_CLEAR;                   /*!< æ¸…é™¤å†™æ ‡å¿—            */
+                                                       /*!< å¼€å§‹å†™                */
     HT_RTC->WEEKR  = pRTCWrite[0] & RTC_WEEKR;      
     HT_RTC->YEARR  = pRTCWrite[1] & RTC_YEARR;
     HT_RTC->MONTHR = pRTCWrite[2] & RTC_MONTHR;
@@ -173,9 +173,9 @@ void HT_RTC_Write(void* pRTCTime)
     HT_RTC->MINR   = pRTCWrite[5] & RTC_MINR;
     HT_RTC->SECR   = pRTCWrite[6] & RTC_SECR;
     
-    HT_RTC->RTCWR = RTC_RTCWR_UPDATE;                  /*!< Ð´Íê³É                */
+    HT_RTC->RTCWR = RTC_RTCWR_UPDATE;                  /*!< å†™å®Œæˆ                */
     
-    HT_CMU->WPREG = writeProtect;                      /*!< »Ö¸´Ö®Ç°Ð´±£»¤ÉèÖÃ    */
+    HT_CMU->WPREG = writeProtect;                      /*!< æ¢å¤ä¹‹å‰å†™ä¿æŠ¤è®¾ç½®    */
 
 } 
 
@@ -183,19 +183,19 @@ void HT_RTC_Write(void* pRTCTime)
 *********************************************************************************************************
 *                                    RTC TIMER CONFIGURE     
 *
-* º¯ÊýËµÃ÷: ÉèÖÃRTC¶¨Ê±Æ÷1»òÕß¶¨Ê±Æ÷2µÄÊ¹ÄÜ×´Ì¬ÒÔ¼°¶¨Ê±ÖÜÆÚ
+* å‡½æ•°è¯´æ˜Ž: è®¾ç½®RTCå®šæ—¶å™¨1æˆ–è€…å®šæ—¶å™¨2çš„ä½¿èƒ½çŠ¶æ€ä»¥åŠå®šæ—¶å‘¨æœŸ
 *
-* Èë¿Ú²ÎÊý: RTCTMRx    Ñ¡ÔñRTC¶¨Ê±Æ÷1»òÕßRTC¶¨Ê±Æ÷2
+* å…¥å£å‚æ•°: RTCTMRx    é€‰æ‹©RTCå®šæ—¶å™¨1æˆ–è€…RTCå®šæ—¶å™¨2
 *
-*           RTCTMR_InitStruct      RTC¶¨Ê±Æ÷³õÊ¼»¯½á¹¹ÌåÖ¸Õë£¬Ö÷Òª°üº¬ÒÔÏÂÁ½¸ö²ÎÊý£º
-*                                  a) SetState  : ÉèÖÃ¶¨Ê±Æ÷Ê¹ÄÜ»òÕß¹Ø±Õ
-*                                  b) Count     : ÉèÖÃ¶¨Ê±Æ÷¶¨Ê±ÖÜÆÚ                                   
-*                                                 ¶ÔRTC¶¨Ê±Æ÷1£¬Ã¿Ò»¸öCount±íÊ¾1s
-*                                                 ¶ÔRTC¶¨Ê±Æ÷2£¬Ã¿Ò»¸öCount±íÊ¾0.0625s
+*           RTCTMR_InitStruct      RTCå®šæ—¶å™¨åˆå§‹åŒ–ç»“æž„ä½“æŒ‡é’ˆï¼Œä¸»è¦åŒ…å«ä»¥ä¸‹ä¸¤ä¸ªå‚æ•°ï¼š
+*                                  a) SetState  : è®¾ç½®å®šæ—¶å™¨ä½¿èƒ½æˆ–è€…å…³é—­
+*                                  b) Count     : è®¾ç½®å®šæ—¶å™¨å®šæ—¶å‘¨æœŸ                                   
+*                                                 å¯¹RTCå®šæ—¶å™¨1ï¼Œæ¯ä¸€ä¸ªCountè¡¨ç¤º1s
+*                                                 å¯¹RTCå®šæ—¶å™¨2ï¼Œæ¯ä¸€ä¸ªCountè¡¨ç¤º0.0625s
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: Êµ¼Ê¶¨Ê±ÖÜÆÚÎª(1+COUNT)£¬¼´ÔÚ1-65536Ö®¼ä
+* ç‰¹æ®Šè¯´æ˜Ž: å®žé™…å®šæ—¶å‘¨æœŸä¸º(1+COUNT)ï¼Œå³åœ¨1-65536ä¹‹é—´
 *********************************************************************************************************
 */
 void HT_RTC_TMRConfig(RTCTMR_SelectTypeDef RTCTMRx, RTCTMR_InitTypeDef* RTCTMR_InitStruct)
@@ -206,16 +206,16 @@ void HT_RTC_TMRConfig(RTCTMR_SelectTypeDef RTCTMRx, RTCTMR_InitTypeDef* RTCTMR_I
     if(RTCTMR_InitStruct->NewState != DISABLE)
     {
         if (RTCTMRx == RTCTMR1)
-            HT_RTC->RTCTMR1 = (uint32_t)RTCTMR_InitStruct->Count;  /*!< ÉèÖÃRTC¶¨Ê±Æ÷1¶¨Ê±ÖÜÆÚ  */
+            HT_RTC->RTCTMR1 = (uint32_t)RTCTMR_InitStruct->Count;  /*!< è®¾ç½®RTCå®šæ—¶å™¨1å®šæ—¶å‘¨æœŸ  */
         else
-            HT_RTC->RTCTMR2 = (uint32_t)RTCTMR_InitStruct->Count;  /*!< ÉèÖÃRTC¶¨Ê±Æ÷2¶¨Ê±ÖÜÆÚ  */
+            HT_RTC->RTCTMR2 = (uint32_t)RTCTMR_InitStruct->Count;  /*!< è®¾ç½®RTCå®šæ—¶å™¨2å®šæ—¶å‘¨æœŸ  */
         
-        HT_RTC->RTCCON |= (uint32_t)RTCTMRx;                       /*!< Ê¹ÄÜRTC¶¨Ê±Æ÷           */
+        HT_RTC->RTCCON |= (uint32_t)RTCTMRx;                       /*!< ä½¿èƒ½RTCå®šæ—¶å™¨           */
             
     }
     else
     {
-            HT_RTC->RTCCON &= ~(uint32_t)RTCTMRx;                  /*!< ¹Ø±ÕRTC¶¨Ê±Æ÷           */
+            HT_RTC->RTCCON &= ~(uint32_t)RTCTMRx;                  /*!< å…³é—­RTCå®šæ—¶å™¨           */
     }
 
 }
@@ -224,13 +224,13 @@ void HT_RTC_TMRConfig(RTCTMR_SelectTypeDef RTCTMRx, RTCTMR_InitTypeDef* RTCTMR_I
 *********************************************************************************************************
 *                                       SET TOUT    
 *
-* º¯ÊýËµÃ÷: ÉèÖÃToutÊä³öÌØ¶¨ÐÅºÅ
+* å‡½æ•°è¯´æ˜Ž: è®¾ç½®Toutè¾“å‡ºç‰¹å®šä¿¡å·
 *
-* Èë¿Ú²ÎÊý: RTCToutSet   ToutÊä³öÉèÖÃ²ÎÊý
+* å…¥å£å‚æ•°: RTCToutSet   Toutè¾“å‡ºè®¾ç½®å‚æ•°
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 void HT_RTC_ToutSet(RTCTout_TypeDef RTCToutSet)
@@ -245,13 +245,13 @@ void HT_RTC_ToutSet(RTCTout_TypeDef RTCToutSet)
 *********************************************************************************************************
 *                                        SET ALARM    
 *
-* º¯ÊýËµÃ÷: ÉèÖÃÄÖÖÓ
+* å‡½æ•°è¯´æ˜Ž: è®¾ç½®é—¹é’Ÿ
 *
-* Èë¿Ú²ÎÊý: RTCAlarmSet  ´æ´¢ÉèÖÃÄÖÁåµÄÊ±Óë·Ö
+* å…¥å£å‚æ•°: RTCAlarmSet  å­˜å‚¨è®¾ç½®é—¹é“ƒçš„æ—¶ä¸Žåˆ†
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 void HT_RTC_AlarmSet(RTCAlarm_TypeDef RTCAlarmSet)
@@ -265,9 +265,9 @@ void HT_RTC_AlarmSet(RTCAlarm_TypeDef RTCAlarmSet)
 *********************************************************************************************************
 *                                 ENABLE OR DISABLE RTC INTERRUPT    
 *
-* º¯ÊýËµÃ÷: Ê¹ÄÜ»òÕß¹Ø±ÕRTCÖÐ¶Ï
+* å‡½æ•°è¯´æ˜Ž: ä½¿èƒ½æˆ–è€…å…³é—­RTCä¸­æ–­
 *
-* Èë¿Ú²ÎÊý: ITEn       RTCÖÐ¶ÏÉèÖÃÎ»£¬¿ÉÒÔÎªÒÔÏÂ²ÎÊý»òÆä×éºÏ
+* å…¥å£å‚æ•°: ITEn       RTCä¸­æ–­è®¾ç½®ä½ï¼Œå¯ä»¥ä¸ºä»¥ä¸‹å‚æ•°æˆ–å…¶ç»„åˆ
 *                        @arg RTC_RTCIE_SECIE
 *                        @arg RTC_RTCIE_MINIE
 *                        @arg RTC_RTCIE_HRIE
@@ -277,11 +277,11 @@ void HT_RTC_AlarmSet(RTCAlarm_TypeDef RTCAlarmSet)
 *                        @arg RTC_RTCIE_RTC2IE
 *                        @arg RTC_RTCIE_ALMIE
 *
-*           NewState   = ENABLE£º Ê¹ÄÜÖÐ¶Ï
-*                      = DISABLE£º¹Ø±ÕÖÐ¶Ï
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+*           NewState   = ENABLEï¼š ä½¿èƒ½ä¸­æ–­
+*                      = DISABLEï¼šå…³é—­ä¸­æ–­
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 void HT_RTC_ITConfig(uint8_t ITEn, FunctionalState NewState)
@@ -290,11 +290,11 @@ void HT_RTC_ITConfig(uint8_t ITEn, FunctionalState NewState)
     
     if (NewState != DISABLE)
     {       
-        HT_RTC->RTCIE |= (uint32_t)ITEn;            /*!< Ê¹ÄÜRTCÖÐ¶Ï           */
+        HT_RTC->RTCIE |= (uint32_t)ITEn;            /*!< ä½¿èƒ½RTCä¸­æ–­           */
     }
     else
     {
-        HT_RTC->RTCIE &= ~(uint32_t)ITEn;           /*!< ¹Ø±ÕRTCÖÐ¶Ï           */
+        HT_RTC->RTCIE &= ~(uint32_t)ITEn;           /*!< å…³é—­RTCä¸­æ–­           */
     } 
 }
 
@@ -302,9 +302,9 @@ void HT_RTC_ITConfig(uint8_t ITEn, FunctionalState NewState)
 *********************************************************************************************************
 *                            GET SPECIFIED RTC INTERRUPT FLAG STATUS
 *
-* º¯ÊýËµÃ÷: »ñÈ¡ÏàÓ¦RTCÖÐ¶Ï±êÖ¾×´Ì¬
+* å‡½æ•°è¯´æ˜Ž: èŽ·å–ç›¸åº”RTCä¸­æ–­æ ‡å¿—çŠ¶æ€
 *
-* Èë¿Ú²ÎÊý: ITFlag     ÏëÒª¼ì²éµÄÄ³¸öRTCÖÐ¶Ï£¬¿ÉÒÔÎªÒÔÏÂ²ÎÊý:
+* å…¥å£å‚æ•°: ITFlag     æƒ³è¦æ£€æŸ¥çš„æŸä¸ªRTCä¸­æ–­ï¼Œå¯ä»¥ä¸ºä»¥ä¸‹å‚æ•°:
 *                        @arg RTC_RTCIF_SECIF
 *                        @arg RTC_RTCIF_MINIF
 *                        @arg RTC_RTCIF_HRIF
@@ -314,10 +314,10 @@ void HT_RTC_ITConfig(uint8_t ITEn, FunctionalState NewState)
 *                        @arg RTC_RTCIF_RTC2IF
 *                        @arg RTC_RTCIF_ALMIF
 *
-* ·µ»Ø²ÎÊý: ITStatus    = SET£º  ÏàÓ¦ÖÐ¶Ï±êÖ¾²úÉú
-*                       = RESET£ºÏàÓ¦ÖÐ¶Ï±êÖ¾Î´²úÉú
+* è¿”å›žå‚æ•°: ITStatus    = SETï¼š  ç›¸åº”ä¸­æ–­æ ‡å¿—äº§ç”Ÿ
+*                       = RESETï¼šç›¸åº”ä¸­æ–­æ ‡å¿—æœªäº§ç”Ÿ
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 ITStatus HT_RTC_ITFlagStatusGet(uint8_t ITFlag)
@@ -338,9 +338,9 @@ ITStatus HT_RTC_ITFlagStatusGet(uint8_t ITFlag)
 *********************************************************************************************************
 *                                   CLEAR RTC INTERRUPT FLAG
 *
-* º¯ÊýËµÃ÷: Çå³ýRTCÖÐ¶Ï±êÖ¾
+* å‡½æ•°è¯´æ˜Ž: æ¸…é™¤RTCä¸­æ–­æ ‡å¿—
 *
-* Èë¿Ú²ÎÊý: ITFlag     ÏëÒªÇå³ýµÄÄ³¸öRTCÖÐ¶Ï±êÖ¾£¬¿ÉÒÔÎªÒÔÏÂ²ÎÊý»òÆä×éºÏ:
+* å…¥å£å‚æ•°: ITFlag     æƒ³è¦æ¸…é™¤çš„æŸä¸ªRTCä¸­æ–­æ ‡å¿—ï¼Œå¯ä»¥ä¸ºä»¥ä¸‹å‚æ•°æˆ–å…¶ç»„åˆ:
 *                        @arg RTC_RTCIF_SECIF
 *                        @arg RTC_RTCIF_MINIF
 *                        @arg RTC_RTCIF_HRIF
@@ -350,9 +350,9 @@ ITStatus HT_RTC_ITFlagStatusGet(uint8_t ITFlag)
 *                        @arg RTC_RTCIF_RTC2IF
 *                        @arg RTC_RTCIF_ALMIF
 *
-* ·µ»Ø²ÎÊý: ÎÞ
+* è¿”å›žå‚æ•°: æ— 
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 void HT_RTC_ClearITPendingBit(uint8_t ITFlag)
@@ -368,35 +368,35 @@ void HT_RTC_ClearITPendingBit(uint8_t ITFlag)
 *********************************************************************************************************
 *                                LOAD RTC COFFIENT FROM INFO FLASH
 *
-* º¯ÊýËµÃ÷: ´ÓInfoFlashÖÐ×°ÔØRTC²¹³¥ÏµÊý
+* å‡½æ•°è¯´æ˜Ž: ä»ŽInfoFlashä¸­è£…è½½RTCè¡¥å¿ç³»æ•°
 *
-* Èë¿Ú²ÎÊý: ÎÞ
+* å…¥å£å‚æ•°: æ— 
 *
-* ·µ»Ø²ÎÊý: Bool    = FALSE£ºInfoÖÐ´æ´¢µÄÏµÊýÒì³££¬×°ÔØÊ§°Ü
-*                   = TRUE £ºInfoÖÐ´æ´¢µÄÏµÊýÕý³££¬×°ÔØ³É¹¦
+* è¿”å›žå‚æ•°: Bool    = FALSEï¼šInfoä¸­å­˜å‚¨çš„ç³»æ•°å¼‚å¸¸ï¼Œè£…è½½å¤±è´¥
+*                   = TRUE ï¼šInfoä¸­å­˜å‚¨çš„ç³»æ•°æ­£å¸¸ï¼Œè£…è½½æˆåŠŸ
 * 
-* ÌØÊâËµÃ÷: ÓÃ»§Ó¦±£Ö¤ÔÚµ÷ÓÃ´Ëº¯ÊýÊ±Flash´¦ÓÚ¶Á×´Ì¬
+* ç‰¹æ®Šè¯´æ˜Ž: ç”¨æˆ·åº”ä¿è¯åœ¨è°ƒç”¨æ­¤å‡½æ•°æ—¶Flashå¤„äºŽè¯»çŠ¶æ€
 *********************************************************************************************************
 */
 Bool HT_RTC_LoadInfoData(void)
 {
     uint32_t i, chksum;
     uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    
-                                                           /*!< ±£´æµ±Ç°Ð´±£»¤×´Ì¬    */    
+                                                           /*!< ä¿å­˜å½“å‰å†™ä¿æŠ¤çŠ¶æ€    */    
 	
     for(i=0,chksum=0; i<14; i++)
     {
         chksum += HT_INFO->DataArry[i];
     }
     if((chksum != HT_INFO->DataArry[14])||(HT_INFO->DataArry[14]==0))                     
-    {                                                      /*!< InfoÖÐÏµÊýÒì³£        */
-        /*!< ÓÃ»§¿ÉÔÚ´Ë½øÒ»²½Ôö¼Ó´¦Àí´úÂë   */
+    {                                                      /*!< Infoä¸­ç³»æ•°å¼‚å¸¸        */
+        /*!< ç”¨æˆ·å¯åœ¨æ­¤è¿›ä¸€æ­¥å¢žåŠ å¤„ç†ä»£ç    */
         
         return FALSE;
     }
-    else                                                   /*!< InfoÖÐÏµÊýÕý³£        */
+    else                                                   /*!< Infoä¸­ç³»æ•°æ­£å¸¸        */
     {
-        HT_CMU->WPREG = CMU_WPREG_UnProtected;             /*!< ¹Ø±ÕÐ´±£»¤¹¦ÄÜ        */
+        HT_CMU->WPREG = CMU_WPREG_UnProtected;             /*!< å…³é—­å†™ä¿æŠ¤åŠŸèƒ½        */
         
         if (HT_RTC->DFAH    != HT_INFO->Muster.iDFAH)   HT_RTC->DFAH    = HT_INFO->Muster.iDFAH;
         if (HT_RTC->DFAL    != HT_INFO->Muster.iDFAL)   HT_RTC->DFAL    = HT_INFO->Muster.iDFAL;
@@ -412,9 +412,9 @@ Bool HT_RTC_LoadInfoData(void)
         if (HT_RTC->MCON01  != HT_INFO->Muster.iMCON01) HT_RTC->MCON01  = HT_INFO->Muster.iMCON01;
         if (HT_RTC->MCON23  != HT_INFO->Muster.iMCON23) HT_RTC->MCON23  = HT_INFO->Muster.iMCON23;
         if (HT_RTC->MCON45  != HT_INFO->Muster.iMCON45) HT_RTC->MCON45  = HT_INFO->Muster.iMCON45;
-                                                           /*!< ×°ÔØÏµÊý              */
+                                                           /*!< è£…è½½ç³»æ•°              */
         
-        HT_CMU->WPREG = writeProtect;                      /*!< »Ö¸´Ö®Ç°Ð´±£»¤ÉèÖÃ    */
+        HT_CMU->WPREG = writeProtect;                      /*!< æ¢å¤ä¹‹å‰å†™ä¿æŠ¤è®¾ç½®    */
 
         return TRUE;
     }

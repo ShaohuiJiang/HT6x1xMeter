@@ -21,7 +21,7 @@
 
 /*
 *********************************************************************************************************
-*                                           ±¾µØºê/½á¹¹Ìå
+*                                           æœ¬åœ°å®/ç»“æž„ä½“
 *********************************************************************************************************
 */
 
@@ -33,14 +33,14 @@ static const uint32_t RegisterWriteProtect[]={CMU_WPREG_Protected, CMU_WPREG_UnP
 
 /*
 *********************************************************************************************************
-*                                             ±¾µØ±äÁ¿
+*                                             æœ¬åœ°å˜é‡
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           ±¾µØº¯ÊýÉêÃ÷
+*                                           æœ¬åœ°å‡½æ•°ç”³æ˜Ž
 *********************************************************************************************************
 */
 
@@ -49,17 +49,17 @@ static const uint32_t RegisterWriteProtect[]={CMU_WPREG_Protected, CMU_WPREG_UnP
 *********************************************************************************************************
 *                                         FLASH BYTE WRITE
 *
-* º¯ÊýËµÃ÷: Flash×Ö½ÚÐ´
+* å‡½æ•°è¯´æ˜Ž: Flashå­—èŠ‚å†™
 *
-* Èë¿Ú²ÎÊý: pWriteByte    Ö¸Ïò±»Ð´Êý¾ÝµÄÊ×µØÖ·
+* å…¥å£å‚æ•°: pWriteByte    æŒ‡å‘è¢«å†™æ•°æ®çš„é¦–åœ°å€
 *
-*           Address       Êý¾Ý½«ÒªÐ´µ½FlashµÄµØÖ·
+*           Address       æ•°æ®å°†è¦å†™åˆ°Flashçš„åœ°å€
 *
-*           Num           Ð´Êý¾Ý³¤¶È£¬ÒÔ×Ö½ÚÎªµ¥Î»
+*           Num           å†™æ•°æ®é•¿åº¦ï¼Œä»¥å­—èŠ‚ä¸ºå•ä½
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÓÃ»§Ó¦±£Ö¤º¯ÊýÖ´ÐÐ¹ý³ÌÖÐ¼Ä´æÆ÷Ð´±£»¤×´Ì¬ÒÔ¼°Flash½âËø×´Ì¬²»±ä
+* ç‰¹æ®Šè¯´æ˜Ž: ç”¨æˆ·åº”ä¿è¯å‡½æ•°æ‰§è¡Œè¿‡ç¨‹ä¸­å¯„å­˜å™¨å†™ä¿æŠ¤çŠ¶æ€ä»¥åŠFlashè§£é”çŠ¶æ€ä¸å˜
 *********************************************************************************************************
 */
 void HT_Flash_ByteWrite(const uint8_t* pWriteByte, uint32_t Address, uint32_t Num)
@@ -67,24 +67,24 @@ void HT_Flash_ByteWrite(const uint8_t* pWriteByte, uint32_t Address, uint32_t Nu
     /*  assert_param  */
     
     uint32_t i;
-    uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    /*!< ±£´æµ±Ç°Ð´±£»¤×´Ì¬     */
+    uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    /*!< ä¿å­˜å½“å‰å†™ä¿æŠ¤çŠ¶æ€     */
     
-    HT_CMU->WPREG = CMU_WPREG_UnProtected;                                 /*!< ¹Ø±ÕÐ´±£»¤¹¦ÄÜ         */
+    HT_CMU->WPREG = CMU_WPREG_UnProtected;                                 /*!< å…³é—­å†™ä¿æŠ¤åŠŸèƒ½         */
     
-    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_UnLocked;                            /*!< Flash½âËø              */
+    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_UnLocked;                            /*!< Flashè§£é”              */
     
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_WRITE;                             /*!< FlashÐ´                */
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_WRITE;                             /*!< Flashå†™                */
     
     for(i=0; i<Num; i++)
     {
-        M8(Address+i) = pWriteByte[i];                                     /*!< Ö´ÐÐFlashÐ´            */
-        while(HT_CMU->FLASHCON & CMU_FLASHCON_BUSY);                       /*!< µÈ´ýÐ´Íê³É             */
+        M8(Address+i) = pWriteByte[i];                                     /*!< æ‰§è¡ŒFlashå†™            */
+        while(HT_CMU->FLASHCON & CMU_FLASHCON_BUSY);                       /*!< ç­‰å¾…å†™å®Œæˆ             */
     }
     
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flash¶Á                */
-    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_Locked;                              /*!< FlashËø¶¨              */
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flashè¯»                */
+    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_Locked;                              /*!< Flashé”å®š              */
     
-    HT_CMU->WPREG = writeProtect;                                          /*!< »Ö¸´Ö®Ç°Ð´±£»¤ÉèÖÃ     */
+    HT_CMU->WPREG = writeProtect;                                          /*!< æ¢å¤ä¹‹å‰å†™ä¿æŠ¤è®¾ç½®     */
      
 } 
 
@@ -92,17 +92,17 @@ void HT_Flash_ByteWrite(const uint8_t* pWriteByte, uint32_t Address, uint32_t Nu
 *********************************************************************************************************
 *                                         FLASH BYTE READ
 *
-* º¯ÊýËµÃ÷: Flash×Ö½Ú¶Á
+* å‡½æ•°è¯´æ˜Ž: Flashå­—èŠ‚è¯»
 *
-* Èë¿Ú²ÎÊý: pReadByte     Ö¸Ïò´æ´¢¶Áµ½µÄÊý¾ÝµÄÊ×µØÖ·
+* å…¥å£å‚æ•°: pReadByte     æŒ‡å‘å­˜å‚¨è¯»åˆ°çš„æ•°æ®çš„é¦–åœ°å€
 *
-*           Address       ¶ÁFlashµÄÊ×µØÖ·
+*           Address       è¯»Flashçš„é¦–åœ°å€
 *
-*           Num           ¶ÁÊý¾Ý³¤¶È£¬ÒÔ×Ö½ÚÎªµ¥Î»
+*           Num           è¯»æ•°æ®é•¿åº¦ï¼Œä»¥å­—èŠ‚ä¸ºå•ä½
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÓÃ»§Ðè×¢Òâ¶ÁµÄÊý¾Ý²»Òª³¬³ö±£´æµÄ·¶Î§£¬ÒÔ·ÀÒç³ö
+* ç‰¹æ®Šè¯´æ˜Ž: ç”¨æˆ·éœ€æ³¨æ„è¯»çš„æ•°æ®ä¸è¦è¶…å‡ºä¿å­˜çš„èŒƒå›´ï¼Œä»¥é˜²æº¢å‡º
 *********************************************************************************************************
 */
 void HT_Flash_ByteRead(uint8_t* pReadByte, uint32_t Address, uint32_t Num)
@@ -111,11 +111,11 @@ void HT_Flash_ByteRead(uint8_t* pReadByte, uint32_t Address, uint32_t Num)
     
     uint32_t i;
     
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flash¶Á                */
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flashè¯»                */
     
     for(i=0; i<Num; i++)
     {
-        pReadByte[i] = M8(Address+i);                                      /*!< Ö´ÐÐFlash¶Á            */
+        pReadByte[i] = M8(Address+i);                                      /*!< æ‰§è¡ŒFlashè¯»            */
     }
      
 } 
@@ -124,18 +124,18 @@ void HT_Flash_ByteRead(uint8_t* pReadByte, uint32_t Address, uint32_t Num)
 *********************************************************************************************************
 *                                         FLASH HALF WORD WRITE
 *
-* º¯ÊýËµÃ÷: Flash°ë×ÖÐ´
+* å‡½æ•°è¯´æ˜Ž: FlashåŠå­—å†™
 *
-* Èë¿Ú²ÎÊý: pWriteHalfWord    Ö¸Ïò±»Ð´Êý¾ÝµÄÊ×µØÖ·
+* å…¥å£å‚æ•°: pWriteHalfWord    æŒ‡å‘è¢«å†™æ•°æ®çš„é¦–åœ°å€
 *
-*           Address           Êý¾Ý½«ÒªÐ´µ½FlashµÄµØÖ·
+*           Address           æ•°æ®å°†è¦å†™åˆ°Flashçš„åœ°å€
 *
-*           Num               Ð´Êý¾Ý³¤¶È£¬ÒÔ°ë×ÖÎªµ¥Î»
+*           Num               å†™æ•°æ®é•¿åº¦ï¼Œä»¥åŠå­—ä¸ºå•ä½
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: 1)ÓÃ»§Ó¦±£Ö¤º¯ÊýÖ´ÐÐ¹ý³ÌÖÐ¼Ä´æÆ÷Ð´±£»¤×´Ì¬ÒÔ¼°Flash½âËø×´Ì¬²»±ä
-*           2)ÓÃ»§Ó¦±£Ö¤´«µÝ¸øº¯ÊýµÄµØÖ·ÎªÖÁÉÙ°ë×Ö¶ÔÆë  
+* ç‰¹æ®Šè¯´æ˜Ž: 1)ç”¨æˆ·åº”ä¿è¯å‡½æ•°æ‰§è¡Œè¿‡ç¨‹ä¸­å¯„å­˜å™¨å†™ä¿æŠ¤çŠ¶æ€ä»¥åŠFlashè§£é”çŠ¶æ€ä¸å˜
+*           2)ç”¨æˆ·åº”ä¿è¯ä¼ é€’ç»™å‡½æ•°çš„åœ°å€ä¸ºè‡³å°‘åŠå­—å¯¹é½  
 *********************************************************************************************************
 */
 void HT_Flash_HalfWordWrite(const uint16_t* pWriteHalfWord, uint32_t Address, uint32_t Num)
@@ -143,25 +143,25 @@ void HT_Flash_HalfWordWrite(const uint16_t* pWriteHalfWord, uint32_t Address, ui
     /*  assert_param  */
     
     uint32_t i;
-    uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    /*!< ±£´æµ±Ç°Ð´±£»¤×´Ì¬     */
+    uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    /*!< ä¿å­˜å½“å‰å†™ä¿æŠ¤çŠ¶æ€     */
     
-    HT_CMU->WPREG = CMU_WPREG_UnProtected;                                 /*!< ¹Ø±ÕÐ´±£»¤¹¦ÄÜ         */
+    HT_CMU->WPREG = CMU_WPREG_UnProtected;                                 /*!< å…³é—­å†™ä¿æŠ¤åŠŸèƒ½         */
     
-    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_UnLocked;                            /*!< Flash½âËø              */
+    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_UnLocked;                            /*!< Flashè§£é”              */
     
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_WRITE;                             /*!< FlashÐ´                */
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_WRITE;                             /*!< Flashå†™                */
     
-    Address &= 0xFFFFFFFE;                                                 /*!< ±£Ö¤°ë×Ö¶ÔÆë           */
+    Address &= 0xFFFFFFFE;                                                 /*!< ä¿è¯åŠå­—å¯¹é½           */
     for(i=0; i<Num; i++)
     {
-        M16(Address+i*2) = pWriteHalfWord[i];                              /*!< Ö´ÐÐFlashÐ´            */
-        while(HT_CMU->FLASHCON & CMU_FLASHCON_BUSY);                       /*!< µÈ´ýÐ´Íê³É             */
+        M16(Address+i*2) = pWriteHalfWord[i];                              /*!< æ‰§è¡ŒFlashå†™            */
+        while(HT_CMU->FLASHCON & CMU_FLASHCON_BUSY);                       /*!< ç­‰å¾…å†™å®Œæˆ             */
     }
     
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flash¶Á                */
-    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_Locked;                              /*!< FlashËø¶¨              */
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flashè¯»                */
+    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_Locked;                              /*!< Flashé”å®š              */
     
-    HT_CMU->WPREG = writeProtect;                                          /*!< »Ö¸´Ö®Ç°Ð´±£»¤ÉèÖÃ     */
+    HT_CMU->WPREG = writeProtect;                                          /*!< æ¢å¤ä¹‹å‰å†™ä¿æŠ¤è®¾ç½®     */
      
 }
 
@@ -169,18 +169,18 @@ void HT_Flash_HalfWordWrite(const uint16_t* pWriteHalfWord, uint32_t Address, ui
 *********************************************************************************************************
 *                                         FLASH HALF WORD READ
 *
-* º¯ÊýËµÃ÷: Flash°ë×Ö¶Á
+* å‡½æ•°è¯´æ˜Ž: FlashåŠå­—è¯»
 *
-* Èë¿Ú²ÎÊý: pReadHalfWord Ö¸Ïò´æ´¢¶Áµ½µÄÊý¾ÝµÄÊ×µØÖ·
+* å…¥å£å‚æ•°: pReadHalfWord æŒ‡å‘å­˜å‚¨è¯»åˆ°çš„æ•°æ®çš„é¦–åœ°å€
 *
-*           Address       ¶ÁFlashµÄÊ×µØÖ·
+*           Address       è¯»Flashçš„é¦–åœ°å€
 *
-*           Num           ¶ÁÊý¾Ý³¤¶È£¬ÒÔ°ë×ÖÎªµ¥Î»
+*           Num           è¯»æ•°æ®é•¿åº¦ï¼Œä»¥åŠå­—ä¸ºå•ä½
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: 1)ÓÃ»§Ó¦±£Ö¤º¯ÊýÖ´ÐÐ¹ý³ÌÖÐ¼Ä´æÆ÷Ð´±£»¤×´Ì¬ÒÔ¼°Flash½âËø×´Ì¬²»±ä
-*           2)ÓÃ»§Ó¦±£Ö¤´«µÝ¸øº¯ÊýµÄµØÖ·ÎªÖÁÉÙ°ë×Ö¶ÔÆë  
+* ç‰¹æ®Šè¯´æ˜Ž: 1)ç”¨æˆ·åº”ä¿è¯å‡½æ•°æ‰§è¡Œè¿‡ç¨‹ä¸­å¯„å­˜å™¨å†™ä¿æŠ¤çŠ¶æ€ä»¥åŠFlashè§£é”çŠ¶æ€ä¸å˜
+*           2)ç”¨æˆ·åº”ä¿è¯ä¼ é€’ç»™å‡½æ•°çš„åœ°å€ä¸ºè‡³å°‘åŠå­—å¯¹é½  
 *********************************************************************************************************
 */
 void HT_Flash_HalfWordRead(uint16_t* pReadHalfWord, uint32_t Address, uint32_t Num)
@@ -189,11 +189,11 @@ void HT_Flash_HalfWordRead(uint16_t* pReadHalfWord, uint32_t Address, uint32_t N
     
     uint32_t i;
     
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flash¶Á                */
-    Address &= 0xFFFFFFFE;                                                 /*!< ±£Ö¤°ë×Ö¶ÔÆë           */
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flashè¯»                */
+    Address &= 0xFFFFFFFE;                                                 /*!< ä¿è¯åŠå­—å¯¹é½           */
     for(i=0; i<Num; i++)
     {
-        pReadHalfWord[i] = M16(Address+i*2);                               /*!< Ö´ÐÐFlash¶Á            */
+        pReadHalfWord[i] = M16(Address+i*2);                               /*!< æ‰§è¡ŒFlashè¯»            */
     }
      
 }
@@ -202,18 +202,18 @@ void HT_Flash_HalfWordRead(uint16_t* pReadHalfWord, uint32_t Address, uint32_t N
 *********************************************************************************************************
 *                                         FLASH WORD WRITE
 *
-* º¯ÊýËµÃ÷: Flash×ÖÐ´
+* å‡½æ•°è¯´æ˜Ž: Flashå­—å†™
 *
-* Èë¿Ú²ÎÊý: pWriteWord    Ö¸Ïò±»Ð´Êý¾ÝµÄÊ×µØÖ·
+* å…¥å£å‚æ•°: pWriteWord    æŒ‡å‘è¢«å†™æ•°æ®çš„é¦–åœ°å€
 *
-*           Address       Êý¾Ý½«ÒªÐ´µ½FlashµÄµØÖ·
+*           Address       æ•°æ®å°†è¦å†™åˆ°Flashçš„åœ°å€
 *
-*           Num           Ð´Êý¾Ý³¤¶È£¬ÒÔ×ÖÎªµ¥Î» 
+*           Num           å†™æ•°æ®é•¿åº¦ï¼Œä»¥å­—ä¸ºå•ä½ 
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: 1)ÓÃ»§Ó¦±£Ö¤º¯ÊýÖ´ÐÐ¹ý³ÌÖÐ¼Ä´æÆ÷Ð´±£»¤×´Ì¬ÒÔ¼°Flash½âËø×´Ì¬²»±ä
-*           2)ÓÃ»§Ó¦±£Ö¤´«µÝ¸øº¯ÊýµÄµØÖ·ÎªÖÁÉÙ×Ö¶ÔÆë
+* ç‰¹æ®Šè¯´æ˜Ž: 1)ç”¨æˆ·åº”ä¿è¯å‡½æ•°æ‰§è¡Œè¿‡ç¨‹ä¸­å¯„å­˜å™¨å†™ä¿æŠ¤çŠ¶æ€ä»¥åŠFlashè§£é”çŠ¶æ€ä¸å˜
+*           2)ç”¨æˆ·åº”ä¿è¯ä¼ é€’ç»™å‡½æ•°çš„åœ°å€ä¸ºè‡³å°‘å­—å¯¹é½
 *********************************************************************************************************
 */
 void HT_Flash_WordWrite(const uint32_t* pWriteWord, uint32_t Address, uint32_t Num)
@@ -221,25 +221,25 @@ void HT_Flash_WordWrite(const uint32_t* pWriteWord, uint32_t Address, uint32_t N
     /*  assert_param  */
     
     uint32_t i;
-    uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    /*!< ±£´æµ±Ç°Ð´±£»¤×´Ì¬     */
+    uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    /*!< ä¿å­˜å½“å‰å†™ä¿æŠ¤çŠ¶æ€     */
     
-    HT_CMU->WPREG = CMU_WPREG_UnProtected;                                 /*!< ¹Ø±ÕÐ´±£»¤¹¦ÄÜ         */
+    HT_CMU->WPREG = CMU_WPREG_UnProtected;                                 /*!< å…³é—­å†™ä¿æŠ¤åŠŸèƒ½         */
     
-    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_UnLocked;                            /*!< Flash½âËø              */
+    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_UnLocked;                            /*!< Flashè§£é”              */
     
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_WRITE;                             /*!< FlashÐ´                */
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_WRITE;                             /*!< Flashå†™                */
     
-    Address &= 0xFFFFFFFC;                                                 /*!< ±£Ö¤×Ö¶ÔÆë             */   
+    Address &= 0xFFFFFFFC;                                                 /*!< ä¿è¯å­—å¯¹é½             */   
     for(i=0; i<Num; i++)
     {
-        M32(Address+i*4) = pWriteWord[i];                                  /*!< Ö´ÐÐFlashÐ´            */
-        while(HT_CMU->FLASHCON & CMU_FLASHCON_BUSY);                       /*!< µÈ´ýÐ´Íê³É             */
+        M32(Address+i*4) = pWriteWord[i];                                  /*!< æ‰§è¡ŒFlashå†™            */
+        while(HT_CMU->FLASHCON & CMU_FLASHCON_BUSY);                       /*!< ç­‰å¾…å†™å®Œæˆ             */
     }
     
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flash¶Á                */
-    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_Locked;                              /*!< FlashËø¶¨              */
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flashè¯»                */
+    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_Locked;                              /*!< Flashé”å®š              */
     
-    HT_CMU->WPREG = writeProtect;                                          /*!< »Ö¸´Ö®Ç°Ð´±£»¤ÉèÖÃ     */
+    HT_CMU->WPREG = writeProtect;                                          /*!< æ¢å¤ä¹‹å‰å†™ä¿æŠ¤è®¾ç½®     */
      
 }
 
@@ -247,18 +247,18 @@ void HT_Flash_WordWrite(const uint32_t* pWriteWord, uint32_t Address, uint32_t N
 *********************************************************************************************************
 *                                         FLASH WORD READ
 *
-* º¯ÊýËµÃ÷: Flash×Ö¶Á
+* å‡½æ•°è¯´æ˜Ž: Flashå­—è¯»
 *
-* Èë¿Ú²ÎÊý: pReadWord     Ö¸Ïò´æ´¢¶Áµ½µÄÊý¾ÝµÄÊ×µØÖ·
+* å…¥å£å‚æ•°: pReadWord     æŒ‡å‘å­˜å‚¨è¯»åˆ°çš„æ•°æ®çš„é¦–åœ°å€
 *
-*           Address       ¶ÁFlashµÄÊ×µØÖ·
+*           Address       è¯»Flashçš„é¦–åœ°å€
 *
-*           Num           ¶ÁÊý¾Ý³¤¶È£¬ÒÔ×ÖÎªµ¥Î»
+*           Num           è¯»æ•°æ®é•¿åº¦ï¼Œä»¥å­—ä¸ºå•ä½
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: 1)ÓÃ»§Ó¦±£Ö¤º¯ÊýÖ´ÐÐ¹ý³ÌÖÐ¼Ä´æÆ÷Ð´±£»¤×´Ì¬ÒÔ¼°Flash½âËø×´Ì¬²»±ä
-*           2)ÓÃ»§Ó¦±£Ö¤´«µÝ¸øº¯ÊýµÄµØÖ·ÎªÖÁÉÙ×Ö¶ÔÆë
+* ç‰¹æ®Šè¯´æ˜Ž: 1)ç”¨æˆ·åº”ä¿è¯å‡½æ•°æ‰§è¡Œè¿‡ç¨‹ä¸­å¯„å­˜å™¨å†™ä¿æŠ¤çŠ¶æ€ä»¥åŠFlashè§£é”çŠ¶æ€ä¸å˜
+*           2)ç”¨æˆ·åº”ä¿è¯ä¼ é€’ç»™å‡½æ•°çš„åœ°å€ä¸ºè‡³å°‘å­—å¯¹é½
 *********************************************************************************************************
 */
 void HT_Flash_WordRead(uint32_t* pReadWord, uint32_t Address, uint32_t Num)
@@ -267,11 +267,11 @@ void HT_Flash_WordRead(uint32_t* pReadWord, uint32_t Address, uint32_t Num)
     
     uint32_t i;
     
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flash¶Á                */
-    Address &= 0xFFFFFFFC;                                                 /*!< ±£Ö¤×Ö¶ÔÆë             */     
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flashè¯»                */
+    Address &= 0xFFFFFFFC;                                                 /*!< ä¿è¯å­—å¯¹é½             */     
     for(i=0; i<Num; i++)
     {
-        pReadWord[i] = M32(Address+i*4);                                   /*!< Ö´ÐÐFlash¶Á            */
+        pReadWord[i] = M32(Address+i*4);                                   /*!< æ‰§è¡ŒFlashè¯»            */
     }
      
 }
@@ -280,35 +280,35 @@ void HT_Flash_WordRead(uint32_t* pReadWord, uint32_t Address, uint32_t Num)
 *********************************************************************************************************
 *                                         FLASH PAGE ERASE
 *
-* º¯ÊýËµÃ÷: FlashÒ³²Á³ý
+* å‡½æ•°è¯´æ˜Ž: Flashé¡µæ“¦é™¤
 *
-* Èë¿Ú²ÎÊý: EraseAddress    Ò³²Á³ýµØÖ·
+* å…¥å£å‚æ•°: EraseAddress    é¡µæ“¦é™¤åœ°å€
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÓÃ»§Ó¦±£Ö¤º¯ÊýÖ´ÐÐ¹ý³ÌÖÐ¼Ä´æÆ÷Ð´±£»¤×´Ì¬ÒÔ¼°Flash½âËø×´Ì¬²»±ä£¬1K bytes/page
+* ç‰¹æ®Šè¯´æ˜Ž: ç”¨æˆ·åº”ä¿è¯å‡½æ•°æ‰§è¡Œè¿‡ç¨‹ä¸­å¯„å­˜å™¨å†™ä¿æŠ¤çŠ¶æ€ä»¥åŠFlashè§£é”çŠ¶æ€ä¸å˜ï¼Œ1K bytes/page
 *********************************************************************************************************
 */
 void HT_Flash_PageErase(uint32_t EraseAddress)
 {
     /*  assert_param  */
     
-    uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    /*!< ±£´æµ±Ç°Ð´±£»¤×´Ì¬     */
+    uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    /*!< ä¿å­˜å½“å‰å†™ä¿æŠ¤çŠ¶æ€     */
     
-    HT_CMU->WPREG = CMU_WPREG_UnProtected;                                 /*!< ¹Ø±ÕÐ´±£»¤¹¦ÄÜ         */
+    HT_CMU->WPREG = CMU_WPREG_UnProtected;                                 /*!< å…³é—­å†™ä¿æŠ¤åŠŸèƒ½         */
     
-    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_UnLocked;                            /*!< Flash½âËø              */
+    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_UnLocked;                            /*!< Flashè§£é”              */
     
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_PAGEERASE;                         /*!< FlashÒ³²Á³ý            */  
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_PAGEERASE;                         /*!< Flashé¡µæ“¦é™¤            */  
     
-    EraseAddress &= 0xFFFFFFFC;                                            /*!< ±£Ö¤×Ö¶ÔÆë             */
-    M32(EraseAddress) = 0xFF;                                              /*!< Ö´ÐÐFlashÒ³²Á³ý        */
-    while(HT_CMU->FLASHCON & CMU_FLASHCON_BUSY);                           /*!< µÈ´ýÐ´Íê³É             */
+    EraseAddress &= 0xFFFFFFFC;                                            /*!< ä¿è¯å­—å¯¹é½             */
+    M32(EraseAddress) = 0xFF;                                              /*!< æ‰§è¡ŒFlashé¡µæ“¦é™¤        */
+    while(HT_CMU->FLASHCON & CMU_FLASHCON_BUSY);                           /*!< ç­‰å¾…å†™å®Œæˆ             */
 
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flash¶Á                */
-    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_Locked;                              /*!< FlashËø¶¨              */
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flashè¯»                */
+    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_Locked;                              /*!< Flashé”å®š              */
     
-    HT_CMU->WPREG = writeProtect;                                          /*!< »Ö¸´Ö®Ç°Ð´±£»¤ÉèÖÃ     */
+    HT_CMU->WPREG = writeProtect;                                          /*!< æ¢å¤ä¹‹å‰å†™ä¿æŠ¤è®¾ç½®     */
      
 }
 
@@ -316,34 +316,34 @@ void HT_Flash_PageErase(uint32_t EraseAddress)
 *********************************************************************************************************
 *                                         FLASH CHIP ERASE
 *
-* º¯ÊýËµÃ÷: FlashÈ«²Á³ý
+* å‡½æ•°è¯´æ˜Ž: Flashå…¨æ“¦é™¤
 *
-* Èë¿Ú²ÎÊý: ÎÞ
+* å…¥å£å‚æ•°: æ— 
 *
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÓÃ»§Ó¦±£Ö¤º¯ÊýÖ´ÐÐ¹ý³ÌÖÐ¼Ä´æÆ÷Ð´±£»¤×´Ì¬ÒÔ¼°Flash½âËø×´Ì¬²»±ä
+* ç‰¹æ®Šè¯´æ˜Ž: ç”¨æˆ·åº”ä¿è¯å‡½æ•°æ‰§è¡Œè¿‡ç¨‹ä¸­å¯„å­˜å™¨å†™ä¿æŠ¤çŠ¶æ€ä»¥åŠFlashè§£é”çŠ¶æ€ä¸å˜
 *********************************************************************************************************
 */
 void HT_Flash_ChipErase(void)
 {
     /*  assert_param  */
     
-    uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    /*!< ±£´æµ±Ç°Ð´±£»¤×´Ì¬     */
+    uint32_t writeProtect = RegisterWriteProtect[HT_CMU->WPREG & 0x01];    /*!< ä¿å­˜å½“å‰å†™ä¿æŠ¤çŠ¶æ€     */
     
-    HT_CMU->WPREG = CMU_WPREG_UnProtected;                                 /*!< ¹Ø±ÕÐ´±£»¤¹¦ÄÜ         */
+    HT_CMU->WPREG = CMU_WPREG_UnProtected;                                 /*!< å…³é—­å†™ä¿æŠ¤åŠŸèƒ½         */
     
-    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_UnLocked;                            /*!< Flash½âËø              */
+    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_UnLocked;                            /*!< Flashè§£é”              */
     
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_CHIPERASE;                         /*!< FlashÒ³²Á³ý            */  
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_CHIPERASE;                         /*!< Flashé¡µæ“¦é™¤            */  
 
-    M32(0x1000) = 0xFF;                                                    /*!< Ö´ÐÐFlashÈ«²Á³ý        */
-    while(HT_CMU->FLASHCON & CMU_FLASHCON_BUSY);                           /*!< µÈ´ýÐ´Íê³É             */
+    M32(0x1000) = 0xFF;                                                    /*!< æ‰§è¡ŒFlashå…¨æ“¦é™¤        */
+    while(HT_CMU->FLASHCON & CMU_FLASHCON_BUSY);                           /*!< ç­‰å¾…å†™å®Œæˆ             */
 
-    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flash¶Á                */
-    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_Locked;                              /*!< FlashËø¶¨              */
+    HT_CMU->FLASHCON = CMU_FLASHCON_FOP_READ;                              /*!< Flashè¯»                */
+    HT_CMU->FLASHLOCK = CMU_FLASHLOCK_Locked;                              /*!< Flashé”å®š              */
     
-    HT_CMU->WPREG = writeProtect;                                          /*!< »Ö¸´Ö®Ç°Ð´±£»¤ÉèÖÃ     */
+    HT_CMU->WPREG = writeProtect;                                          /*!< æ¢å¤ä¹‹å‰å†™ä¿æŠ¤è®¾ç½®     */
      
 }
 

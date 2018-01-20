@@ -21,7 +21,7 @@
 
 /*
 *********************************************************************************************************
-*                                           ±¾µØºê/½á¹¹Ìå
+*                                           æœ¬åœ°å®/ç»“æž„ä½“
 *********************************************************************************************************
 */
 
@@ -29,14 +29,14 @@
 
 /*
 *********************************************************************************************************
-*                                             ±¾µØ±äÁ¿
+*                                             æœ¬åœ°å˜é‡
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           ±¾µØº¯ÊýÉêÃ÷
+*                                           æœ¬åœ°å‡½æ•°ç”³æ˜Ž
 *********************************************************************************************************
 */
 
@@ -45,9 +45,9 @@
 *********************************************************************************************************
 *                                 ENABLE OR DISABLE EXTI RISE INTERRUPT    
 *
-* º¯ÊýËµÃ÷: Ê¹ÄÜ»òÕß¹Ø±ÕEXTIÉÏÉýÑØÖÐ¶Ï
+* å‡½æ•°è¯´æ˜Ž: ä½¿èƒ½æˆ–è€…å…³é—­EXTIä¸Šå‡æ²¿ä¸­æ–­
 *
-* Èë¿Ú²ÎÊý: ITEn       RTCÖÐ¶ÏÉèÖÃÎ»£¬¿ÉÒÔÎªÒÔÏÂ²ÎÊý»òÆä×éºÏ
+* å…¥å£å‚æ•°: ITEn       RTCä¸­æ–­è®¾ç½®ä½ï¼Œå¯ä»¥ä¸ºä»¥ä¸‹å‚æ•°æˆ–å…¶ç»„åˆ
 *                        @arg INT_EXTIE_RIE_INT0
 *                        @arg INT_EXTIE_RIE_INT1
 *                        @arg INT_EXTIE_RIE_INT2
@@ -62,11 +62,11 @@
 *                        @arg INT_EXTIE2_RIE
 *
 *
-*           NewState   = ENABLE£º Ê¹ÄÜÖÐ¶Ï
-*                      = DISABLE£º¹Ø±ÕÖÐ¶Ï
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+*           NewState   = ENABLEï¼š ä½¿èƒ½ä¸­æ–­
+*                      = DISABLEï¼šå…³é—­ä¸­æ–­
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 void HT_EXTIRise_ITConfig(uint32_t ITEn, FunctionalState NewState)
@@ -76,14 +76,14 @@ void HT_EXTIRise_ITConfig(uint32_t ITEn, FunctionalState NewState)
     uint32_t tempreg = (ITEn&INT_EXTIE2_RIE)>>16;
 #endif
     ITEn &= INT_EXTIE_RIE;
-    if (NewState != DISABLE)                        /*!< Ê¹ÄÜÖÐ¶Ï           */
+    if (NewState != DISABLE)                        /*!< ä½¿èƒ½ä¸­æ–­           */
     {       
         HT_INT->EXTIE |= ITEn;            
 #if  defined  HT6x2x 
         HT_INT->EXTIE2 |= tempreg;
 #endif        
     }
-    else                                            /*!< ¹Ø±ÕÖÐ¶Ï           */
+    else                                            /*!< å…³é—­ä¸­æ–­           */
     {
         HT_INT->EXTIE &= ~ITEn;          
 #if  defined  HT6x2x 
@@ -96,9 +96,9 @@ void HT_EXTIRise_ITConfig(uint32_t ITEn, FunctionalState NewState)
 *********************************************************************************************************
 *                                 ENABLE OR DISABLE EXTI FALL INTERRUPT    
 *
-* º¯ÊýËµÃ÷: Ê¹ÄÜ»òÕß¹Ø±ÕEXTIÏÂ½µÑØÖÐ¶Ï
+* å‡½æ•°è¯´æ˜Ž: ä½¿èƒ½æˆ–è€…å…³é—­EXTIä¸‹é™æ²¿ä¸­æ–­
 *
-* Èë¿Ú²ÎÊý: ITEn       RTCÖÐ¶ÏÉèÖÃÎ»£¬¿ÉÒÔÎªÒÔÏÂ²ÎÊý»òÆä×éºÏ
+* å…¥å£å‚æ•°: ITEn       RTCä¸­æ–­è®¾ç½®ä½ï¼Œå¯ä»¥ä¸ºä»¥ä¸‹å‚æ•°æˆ–å…¶ç»„åˆ
 *                        @arg INT_EXTIE_FIE_INT0
 *                        @arg INT_EXTIE_FIE_INT1
 *                        @arg INT_EXTIE_FIE_INT2
@@ -112,11 +112,11 @@ void HT_EXTIRise_ITConfig(uint32_t ITEn, FunctionalState NewState)
 *                        @arg INT_EXTIE2_FIE_INT9  (only for HT6x2x)
 *                        @arg INT_EXTIE2_FIE
 *
-*           NewState   = ENABLE£º Ê¹ÄÜÖÐ¶Ï
-*                      = DISABLE£º¹Ø±ÕÖÐ¶Ï
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+*           NewState   = ENABLEï¼š ä½¿èƒ½ä¸­æ–­
+*                      = DISABLEï¼šå…³é—­ä¸­æ–­
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 void HT_EXTIFall_ITConfig(uint32_t ITEn, FunctionalState NewState)
@@ -128,14 +128,14 @@ void HT_EXTIFall_ITConfig(uint32_t ITEn, FunctionalState NewState)
     ITEn &= INT_EXTIE_FIE;
     if (NewState != DISABLE)
     {       
-        HT_INT->EXTIE |= ITEn;            /*!< Ê¹ÄÜÖÐ¶Ï           */
+        HT_INT->EXTIE |= ITEn;            /*!< ä½¿èƒ½ä¸­æ–­           */
 #if  defined  HT6x2x 
         HT_INT->EXTIE2 |= tempreg;
 #endif          
     }
     else
     {
-        HT_INT->EXTIE &= ~ITEn;           /*!< ¹Ø±ÕÖÐ¶Ï           */
+        HT_INT->EXTIE &= ~ITEn;           /*!< å…³é—­ä¸­æ–­           */
 #if  defined  HT6x2x 
         HT_INT->EXTIE2 &= ~tempreg;
 #endif        
@@ -146,9 +146,9 @@ void HT_EXTIFall_ITConfig(uint32_t ITEn, FunctionalState NewState)
 *********************************************************************************************************
 *                            GET SPECIFIED EXTI RISE INTERRUPT FLAG STATUS
 *
-* º¯ÊýËµÃ÷: »ñÈ¡ÏàÓ¦EXTIÉÏÉýÑØÖÐ¶Ï±êÖ¾×´Ì¬
+* å‡½æ•°è¯´æ˜Ž: èŽ·å–ç›¸åº”EXTIä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—çŠ¶æ€
 *
-* Èë¿Ú²ÎÊý: ITFlag     ÏëÒª¼ì²éµÄÄ³¸öEXTIÉÏÉýÑØÖÐ¶Ï£¬¿ÉÒÔÎªÒÔÏÂ²ÎÊý:
+* å…¥å£å‚æ•°: ITFlag     æƒ³è¦æ£€æŸ¥çš„æŸä¸ªEXTIä¸Šå‡æ²¿ä¸­æ–­ï¼Œå¯ä»¥ä¸ºä»¥ä¸‹å‚æ•°:
 *                        @arg INT_EXTIF_RIF_INT0
 *                        @arg INT_EXTIF_RIF_INT1
 *                        @arg INT_EXTIF_RIF_INT2
@@ -160,10 +160,10 @@ void HT_EXTIFall_ITConfig(uint32_t ITEn, FunctionalState NewState)
 *                        @arg INT_EXTIF2_RIF_INT8   (only for HT6x2x)
 *                        @arg INT_EXTIF2_RIF_INT9   (only for HT6x2x)
 *
-* ·µ»Ø²ÎÊý: ITStatus    = SET£º  ÏàÓ¦ÖÐ¶Ï±êÖ¾²úÉú
-*                       = RESET£ºÏàÓ¦ÖÐ¶Ï±êÖ¾Î´²úÉú
+* è¿”å›žå‚æ•°: ITStatus    = SETï¼š  ç›¸åº”ä¸­æ–­æ ‡å¿—äº§ç”Ÿ
+*                       = RESETï¼šç›¸åº”ä¸­æ–­æ ‡å¿—æœªäº§ç”Ÿ
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 ITStatus HT_EXTIRise_ITFlagStatusGet(uint32_t ITFlag)
@@ -193,9 +193,9 @@ ITStatus HT_EXTIRise_ITFlagStatusGet(uint32_t ITFlag)
 *********************************************************************************************************
 *                          GET SPECIFIED EXTI FALL INTERRUPT FLAG STATUS
 *
-* º¯ÊýËµÃ÷: »ñÈ¡ÏàÓ¦EXTIÏÂ½µÑØÖÐ¶Ï±êÖ¾×´Ì¬
+* å‡½æ•°è¯´æ˜Ž: èŽ·å–ç›¸åº”EXTIä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—çŠ¶æ€
 *
-* Èë¿Ú²ÎÊý: ITFlag     ÏëÒª¼ì²éµÄÄ³¸öEXTIÏÂ½µÑØÖÐ¶Ï£¬¿ÉÒÔÎªÒÔÏÂ²ÎÊý:
+* å…¥å£å‚æ•°: ITFlag     æƒ³è¦æ£€æŸ¥çš„æŸä¸ªEXTIä¸‹é™æ²¿ä¸­æ–­ï¼Œå¯ä»¥ä¸ºä»¥ä¸‹å‚æ•°:
 *                        @arg INT_EXTIF_FIF_INT0
 *                        @arg INT_EXTIF_FIF_INT1
 *                        @arg INT_EXTIF_FIF_INT2
@@ -207,10 +207,10 @@ ITStatus HT_EXTIRise_ITFlagStatusGet(uint32_t ITFlag)
 *                        @arg INT_EXTIF2_FIF_INT8     (only for HT6x2x)
 *                        @arg INT_EXTIF2_FIF_INT9     (only for HT6x2x)
 *
-* ·µ»Ø²ÎÊý: ITStatus    = SET£º  ÏàÓ¦ÖÐ¶Ï±êÖ¾²úÉú
-*                       = RESET£ºÏàÓ¦ÖÐ¶Ï±êÖ¾Î´²úÉú
+* è¿”å›žå‚æ•°: ITStatus    = SETï¼š  ç›¸åº”ä¸­æ–­æ ‡å¿—äº§ç”Ÿ
+*                       = RESETï¼šç›¸åº”ä¸­æ–­æ ‡å¿—æœªäº§ç”Ÿ
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 ITStatus HT_EXTIFall_ITFlagStatusGet(uint32_t ITFlag)
@@ -239,9 +239,9 @@ ITStatus HT_EXTIFall_ITFlagStatusGet(uint32_t ITFlag)
 *********************************************************************************************************
 *                                   CLEAR EXTI RISE INTERRUPT FLAG
 *
-* º¯ÊýËµÃ÷: Çå³ýEXTIÉÏÉýÑØÖÐ¶Ï±êÖ¾
+* å‡½æ•°è¯´æ˜Ž: æ¸…é™¤EXTIä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—
 *
-* Èë¿Ú²ÎÊý: ITFlag     ÏëÒªÇå³ýµÄÄ³¸öEXTIÉÏÉýÑØÖÐ¶Ï±êÖ¾£¬¿ÉÒÔÎªÒÔÏÂ²ÎÊý»òÆä×éºÏ:
+* å…¥å£å‚æ•°: ITFlag     æƒ³è¦æ¸…é™¤çš„æŸä¸ªEXTIä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—ï¼Œå¯ä»¥ä¸ºä»¥ä¸‹å‚æ•°æˆ–å…¶ç»„åˆ:
 *                        @arg INT_EXTIF_RIF_INT0
 *                        @arg INT_EXTIF_RIF_INT1
 *                        @arg INT_EXTIF_RIF_INT2
@@ -253,9 +253,9 @@ ITStatus HT_EXTIFall_ITFlagStatusGet(uint32_t ITFlag)
 *                        @arg INT_EXTIF2_RIF_INT8   (only for HT6x2x)
 *                        @arg INT_EXTIF2_RIF_INT9   (only for HT6x2x)
 *
-* ·µ»Ø²ÎÊý: ÎÞ
+* è¿”å›žå‚æ•°: æ— 
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 void HT_EXTIRise_ClearITPendingBit(uint32_t ITFlag)
@@ -275,9 +275,9 @@ void HT_EXTIRise_ClearITPendingBit(uint32_t ITFlag)
 *********************************************************************************************************
 *                                   CLEAR EXTI FALL INTERRUPT FLAG
 *
-* º¯ÊýËµÃ÷: Çå³ýEXTIÏÂ½µÑØÖÐ¶Ï±êÖ¾
+* å‡½æ•°è¯´æ˜Ž: æ¸…é™¤EXTIä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—
 *
-* Èë¿Ú²ÎÊý: ITFlag     ÏëÒªÇå³ýµÄÄ³¸öEXTIÏÂ½µÑØÖÐ¶Ï±êÖ¾£¬¿ÉÒÔÎªÒÔÏÂ²ÎÊý»òÆä×éºÏ:
+* å…¥å£å‚æ•°: ITFlag     æƒ³è¦æ¸…é™¤çš„æŸä¸ªEXTIä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—ï¼Œå¯ä»¥ä¸ºä»¥ä¸‹å‚æ•°æˆ–å…¶ç»„åˆ:
 *                        @arg INT_EXTIF_FIF_INT0
 *                        @arg INT_EXTIF_FIF_INT1
 *                        @arg INT_EXTIF_FIF_INT2
@@ -289,9 +289,9 @@ void HT_EXTIRise_ClearITPendingBit(uint32_t ITFlag)
 *                        @arg INT_EXTIF2_FIF_INT8   (only for HT6x2x)
 *                        @arg INT_EXTIF2_FIF_INT9   (only for HT6x2x)
 *
-* ·µ»Ø²ÎÊý: ÎÞ
+* è¿”å›žå‚æ•°: æ— 
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 void HT_EXTIFall_ClearITPendingBit(uint32_t ITFlag)
@@ -310,9 +310,9 @@ void HT_EXTIFall_ClearITPendingBit(uint32_t ITFlag)
 *********************************************************************************************************
 *                                   ENABLE OR DISABLE EXTI DIGITAL FILTER
 *
-* º¯ÊýËµÃ÷: Ê¹ÄÜ»ò¹Ø±ÕÍâ²¿ÖÐ¶ÏµÄÊý×ÖÂË²¨¹¦ÄÜ
+* å‡½æ•°è¯´æ˜Ž: ä½¿èƒ½æˆ–å…³é—­å¤–éƒ¨ä¸­æ–­çš„æ•°å­—æ»¤æ³¢åŠŸèƒ½
 *
-* Èë¿Ú²ÎÊý: ITFLTEn     ÖÐ¶ÏÒý½ÅÊý×ÖÂË²¨ÉèÖÃÎ»£¬¿ÉÒÔÎªÒÔÏÂ²ÎÊý»òÆä×éºÏ
+* å…¥å£å‚æ•°: ITFLTEn     ä¸­æ–­å¼•è„šæ•°å­—æ»¤æ³¢è®¾ç½®ä½ï¼Œå¯ä»¥ä¸ºä»¥ä¸‹å‚æ•°æˆ–å…¶ç»„åˆ
 *                        @arg INT_PINFLT_INTFLT_INT0
 *                        @arg INT_PINFLT_INTFLT_INT1
 *                        @arg INT_PINFLT_INTFLT_INT2
@@ -324,11 +324,11 @@ void HT_EXTIFall_ClearITPendingBit(uint32_t ITFlag)
 *                        @arg INT_PINFLT2_INTFLT_INT8  (only for HT6x2x)
 *                        @arg INT_PINFLT2_INTFLT_INT9  (only for HT6x2x)
 *
-*           NewState   = ENABLE£º Ê¹ÄÜÖÐ¶Ï
-*                      = DISABLE£º¹Ø±ÕÖÐ¶Ï
-* ·µ»Ø²ÎÊý: ÎÞ                                      
+*           NewState   = ENABLEï¼š ä½¿èƒ½ä¸­æ–­
+*                      = DISABLEï¼šå…³é—­ä¸­æ–­
+* è¿”å›žå‚æ•°: æ—                                       
 * 
-* ÌØÊâËµÃ÷: ÎÞ
+* ç‰¹æ®Šè¯´æ˜Ž: æ— 
 *********************************************************************************************************
 */
 void HT_EXTI_FilterConfig(uint32_t ITFLTEn,FunctionalState NewState)
@@ -340,14 +340,14 @@ void HT_EXTI_FilterConfig(uint32_t ITFLTEn,FunctionalState NewState)
     ITFLTEn &= INT_PINFLT_INTFLT;  
     if (NewState != DISABLE)
     {       
-        HT_INT->PINFLT |= ITFLTEn;            /*!< Ê¹ÄÜÊý×ÖÂË²¨         */
+        HT_INT->PINFLT |= ITFLTEn;            /*!< ä½¿èƒ½æ•°å­—æ»¤æ³¢         */
 #if  defined  HT6x2x 
         HT_INT->PINFLT2 |= tempreg;
 #endif          
     }
     else
     {
-        HT_INT->PINFLT &= ~ITFLTEn;           /*!< ¹Ø±ÕÊý×ÖÂË²¨         */
+        HT_INT->PINFLT &= ~ITFLTEn;           /*!< å…³é—­æ•°å­—æ»¤æ³¢         */
 #if  defined  HT6x2x 
         HT_INT->PINFLT2 &= ~tempreg;
 #endif        

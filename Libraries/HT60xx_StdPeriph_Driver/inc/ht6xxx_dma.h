@@ -28,12 +28,12 @@ extern "C" {
     
 /*
 *********************************************************************************************************
-*                                           È«¾Öºê/½á¹¹Ìå
+*                                           å…¨å±€å®/ç»“æ„ä½“
 *********************************************************************************************************
 */
   
 /* 
-* @brief  DMAÄ£¿é³õÊ¼»¯½á¹¹¶¨Òå
+* @brief  DMAæ¨¡å—åˆå§‹åŒ–ç»“æ„å®šä¹‰
 */
 typedef struct
 {
@@ -52,21 +52,21 @@ typedef struct
 
 
 /* 
-* @brief  DMA_SourceAddrInc×ÔÔöÉèÖÃ
+* @brief  DMA_SourceAddrIncè‡ªå¢è®¾ç½®
 */
 #define DMA_SourceAddrInc_NoIncrease                ((uint32_t)0x00000000)
 #define DMA_SourceAddrInc_AutoIncrease              ((uint32_t)0x00000020)
 #define DMA_SourceAddrInc_BulkInternalIncrease      ((uint32_t)0x00000040)
 
 /* 
-* @brief  DMA_DestinationAddrInc×ÔÔöÉèÖÃ
+* @brief  DMA_DestinationAddrIncè‡ªå¢è®¾ç½®
 */
 #define DMA_DestinationAddrInc_NoIncrease           ((uint32_t)0x00000000)
 #define DMA_DestinationAddrInc_AutoIncrease         ((uint32_t)0x00000080)
 #define DMA_DestinationAddrInc_BulkInternalIncrease ((uint32_t)0x00000100)
 
 /* 
-* @brief  DMA_MemoryDataSize´óĞ¡ÉèÖÃ
+* @brief  DMA_MemoryDataSizeå¤§å°è®¾ç½®
 */
 
 #define DMA_MemoryDataSize_Byte                     ((uint32_t)0x00000000)
@@ -74,26 +74,26 @@ typedef struct
 #define DMA_MemoryDataSize_Word                     ((uint32_t)0x00000004)  
 
 /* 
-* @brief  DMA_TransferModeÀàĞÍÉèÖÃ
+* @brief  DMA_TransferModeç±»å‹è®¾ç½®
 */
 
 #define DMA_TransferMode_SingleTransfer             ((uint32_t)0x00000000)
 #define DMA_TransferMode_BulkTransfer               ((uint32_t)0x00000008)
 
 /* 
-* @brief  DMA_CycleModeÀàĞÍÉèÖÃ
+* @brief  DMA_CycleModeç±»å‹è®¾ç½®
 */
 #define DMA_CycleMode_NoCycleTransfer               ((uint32_t)0x00000000)
 #define DMA_CycleMode_CycleTransfer                 ((uint32_t)0x00000010)
 
 /* 
-* @brief  DMA_Channel_EnÍ¨µÀÊ¹ÄÜÉèÖÃ
+* @brief  DMA_Channel_Ené€šé“ä½¿èƒ½è®¾ç½®
 */
 #define DMA_Channel_Enable                          ((uint32_t)0x00000001)
 #define DMA_Channel_Disable                         ((uint32_t)0xFFFFFFFE)
 
 /* 
-* @brief  DMA_RequestÉèÖÃ
+* @brief  DMA_Requestè®¾ç½®
 */
 #define DMA_Request_Software                         ((uint32_t)0x00000000 << 9)
 #define DMA_Request_UART0_TX                         ((uint32_t)0x00000001 << 9)
@@ -133,14 +133,14 @@ typedef struct
 
 /*
 *********************************************************************************************************
-*                                             È«¾Ö±äÁ¿
+*                                             å…¨å±€å˜é‡
 *********************************************************************************************************
 */
 
 
 /*
 *********************************************************************************************************
-*                                           È«¾Öº¯ÊıÉêÃ÷
+*                                           å…¨å±€å‡½æ•°ç”³æ˜
 *********************************************************************************************************
 */
 
