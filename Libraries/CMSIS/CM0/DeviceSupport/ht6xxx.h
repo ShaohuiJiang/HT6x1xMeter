@@ -24,7 +24,7 @@ extern "C" {
   
 /*
 **********************************************************************************************************
-*                                             È«¾Öºê/½á¹¹Ìå
+*                                             å…¨å±€å®/ç»“æ„ä½“
 **********************************************************************************************************
 */
 #if !defined (HT6x2x) && !defined (HT6x1x) && !defined (HT501x)
@@ -46,9 +46,9 @@ extern "C" {
 /* 
 * @brief  General Bool State  
 */ 
-typedef enum {DISABLE = 0, ENABLE = !DISABLE}   FunctionalState;        /* ÓÃÓÚÊ¹ÄÜ/·ÇÊ¹ÄÜ            */
-typedef enum {RESET   = 0, SET    = !RESET  }   FlagStatus, ITStatus;   /* ÓÃÓÚ×´Ì¬»òÕßÖĞ¶Ï±êÖ¾ÖÃ1ÖÃ0 */
-typedef enum {FALSE   = 0, TRUE   = !FALSE  }   Bool;                   /* ÓÃÓÚº¯Êı·µ»Ø               */
+typedef enum {DISABLE = 0, ENABLE = !DISABLE}   FunctionalState;        /* ç”¨äºä½¿èƒ½/éä½¿èƒ½            */
+typedef enum {RESET   = 0, SET    = !RESET  }   FlagStatus, ITStatus;   /* ç”¨äºçŠ¶æ€æˆ–è€…ä¸­æ–­æ ‡å¿—ç½®1ç½®0 */
+typedef enum {FALSE   = 0, TRUE   = !FALSE  }   Bool;                   /* ç”¨äºå‡½æ•°è¿”å›               */
 
     
 /*
@@ -137,205 +137,205 @@ typedef enum IRQn
 
 /*****************************************  Timer Control Block  *****************************************/
 /* 
-* @brief  ¶¨Ê±Æ÷¼Ä´æÆ÷¶¨Òå
+* @brief  å®šæ—¶å™¨å¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {
-    __IO uint32_t TMRCON;                   /*!< Offset: 0x000 Í¨µÀ¿ØÖÆ¼Ä´æÆ÷      (R/W) */
-    __IO uint32_t TMRDIV;                   /*!< Offset: 0x004 Í¨µÀÔ¤·ÖÆµ¼Ä´æÆ÷    (R/W) */
-    __IO uint32_t TMRPRD;                   /*!< Offset: 0x008 Í¨µÀÖÜÆÚ¼Ä´æÆ÷      (R/W) */
-    __IO uint32_t TMRCAP;                   /*!< Offset: 0x00C Í¨µÀ²¶»ñÊı¾İ¼Ä´æÆ÷  (R/W) */
-    __IO uint32_t TMRCNT;                   /*!< Offset: 0x010 Í¨µÀ¼ÆÊıÆ÷¼Ä´æÆ÷    (R/W) */
-    __IO uint32_t TMRCMP;                   /*!< Offset: 0x014 Í¨µÀ±È½ÏÆ÷¼Ä´æÆ÷    (R/W) */
-    __IO uint32_t TMRIE;                    /*!< Offset: 0x018 Í¨µÀÖĞ¶ÏÊ¹ÄÜ¼Ä´æÆ÷  (R/W) */
-    __IO uint32_t TMRIF;                    /*!< Offset: 0x01C Í¨µÀÖĞ¶Ï±êÖ¾¼Ä´æÆ÷  (R/W) */
+    __IO uint32_t TMRCON;                   /*!< Offset: 0x000 é€šé“æ§åˆ¶å¯„å­˜å™¨      (R/W) */
+    __IO uint32_t TMRDIV;                   /*!< Offset: 0x004 é€šé“é¢„åˆ†é¢‘å¯„å­˜å™¨    (R/W) */
+    __IO uint32_t TMRPRD;                   /*!< Offset: 0x008 é€šé“å‘¨æœŸå¯„å­˜å™¨      (R/W) */
+    __IO uint32_t TMRCAP;                   /*!< Offset: 0x00C é€šé“æ•è·æ•°æ®å¯„å­˜å™¨  (R/W) */
+    __IO uint32_t TMRCNT;                   /*!< Offset: 0x010 é€šé“è®¡æ•°å™¨å¯„å­˜å™¨    (R/W) */
+    __IO uint32_t TMRCMP;                   /*!< Offset: 0x014 é€šé“æ¯”è¾ƒå™¨å¯„å­˜å™¨    (R/W) */
+    __IO uint32_t TMRIE;                    /*!< Offset: 0x018 é€šé“ä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨  (R/W) */
+    __IO uint32_t TMRIF;                    /*!< Offset: 0x01C é€šé“ä¸­æ–­æ ‡å¿—å¯„å­˜å™¨  (R/W) */
 } HT_TMR_TypeDef;                           /* end of group HT_TMR_TypeDef               */
 
 
 /*****************************************  UART Control Block  ******************************************/
 /* 
-* @brief  UART¼Ä´æÆ÷¶¨Òå
+* @brief  UARTå¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {          
-    __IO uint32_t MODESEL;                  /*!< Offset: 0x000 UART/7816¹¦ÄÜÑ¡Ôñ¼Ä´æÆ÷    (R/W) */
-    __IO uint32_t UARTCON;                  /*!< Offset: 0x004 ´®¿Ú¹¦ÄÜÅäÖÃ¼Ä´æÆ÷         (R/W) */
-    __IO uint32_t ISO7816CON;               /*!< Offset: 0x008 7816¹¦ÄÜÅäÖÃ¼Ä´æÆ÷         (R/W) */ 
-    __IO uint32_t SREL;                     /*!< Offset: 0x00C ´®¿Ú/7816²¨ÌØÂÊ·¢ÉúÆ÷ÖØÔØÖµ(R/W) */
-    __IO uint32_t SBUF;                     /*!< Offset: 0x010 ´®¿Ú/7816Êı¾İ»º³å¼Ä´æÆ÷    (R/W) */
-    __IO uint32_t UARTSTA;                  /*!< Offset: 0x014 ´®¿Ú×´Ì¬¼Ä´æÆ÷             (R/W) */
-    __IO uint32_t ISO7816STA;               /*!< Offset: 0x018 7816×´Ì¬¼Ä´æÆ÷             (R/W) */ 
+    __IO uint32_t MODESEL;                  /*!< Offset: 0x000 UART/7816åŠŸèƒ½é€‰æ‹©å¯„å­˜å™¨    (R/W) */
+    __IO uint32_t UARTCON;                  /*!< Offset: 0x004 ä¸²å£åŠŸèƒ½é…ç½®å¯„å­˜å™¨         (R/W) */
+    __IO uint32_t ISO7816CON;               /*!< Offset: 0x008 7816åŠŸèƒ½é…ç½®å¯„å­˜å™¨         (R/W) */ 
+    __IO uint32_t SREL;                     /*!< Offset: 0x00C ä¸²å£/7816æ³¢ç‰¹ç‡å‘ç”Ÿå™¨é‡è½½å€¼(R/W) */
+    __IO uint32_t SBUF;                     /*!< Offset: 0x010 ä¸²å£/7816æ•°æ®ç¼“å†²å¯„å­˜å™¨    (R/W) */
+    __IO uint32_t UARTSTA;                  /*!< Offset: 0x014 ä¸²å£çŠ¶æ€å¯„å­˜å™¨             (R/W) */
+    __IO uint32_t ISO7816STA;               /*!< Offset: 0x018 7816çŠ¶æ€å¯„å­˜å™¨             (R/W) */ 
     __I  uint32_t Reserved[5];  
-    __IO uint32_t IRCON;                    /*!< Offset: 0x030 ºìÍâµ÷ÖÆ¿ØÖÆ¼Ä´æÆ÷         (R/W) */ 
-    __IO uint32_t IRDUTY;                   /*!< Offset: 0x034 ºìÍâµ÷ÖÆÂö¿íµ÷Õû¼Ä´æÆ÷     (R/W) */ 
+    __IO uint32_t IRCON;                    /*!< Offset: 0x030 çº¢å¤–è°ƒåˆ¶æ§åˆ¶å¯„å­˜å™¨         (R/W) */ 
+    __IO uint32_t IRDUTY;                   /*!< Offset: 0x034 çº¢å¤–è°ƒåˆ¶è„‰å®½è°ƒæ•´å¯„å­˜å™¨     (R/W) */ 
 #if defined  HT6x2x    
-    __IO uint32_t LOGDETNUM;                /*!< Offset: 0x038 485Õı·´Âß¼­ÅĞ¶ÏÊı¾İ³¤¶ÈÉèÖÃ(R/W) */ 
+    __IO uint32_t LOGDETNUM;                /*!< Offset: 0x038 485æ­£åé€»è¾‘åˆ¤æ–­æ•°æ®é•¿åº¦è®¾ç½®(R/W) */ 
 #endif   
 } HT_UART_TypeDef, HT_ISO7816_TypeDef;      /* end of group HT_UART_TypeDef, HT_ISO7816_TypeDef */
 
 
 /*****************************************  I2C Control Block  *******************************************/
 /*
-* @brief  I2C¼Ä´æÆ÷¶¨Òå
+* @brief  I2Cå¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {
-    __IO uint32_t I2CDAT;                   /*!< Offset: 0x000 I2CÊı¾İ¼Ä´æÆ÷ (R/W) */
-    __IO uint32_t I2CADR;                   /*!< Offset: 0x004 I2CµØÖ·¼Ä´æÆ÷ (R/W) */
-    __IO uint32_t I2CCON;                   /*!< Offset: 0x008 I2C¿ØÖÆ¼Ä´æÆ÷ (R/W) */
-    __IO uint32_t I2CSTA;                   /*!< Offset: 0x00C I2C×´Ì¬¼Ä´æÆ÷ (R/W) */
+    __IO uint32_t I2CDAT;                   /*!< Offset: 0x000 I2Cæ•°æ®å¯„å­˜å™¨ (R/W) */
+    __IO uint32_t I2CADR;                   /*!< Offset: 0x004 I2Cåœ°å€å¯„å­˜å™¨ (R/W) */
+    __IO uint32_t I2CCON;                   /*!< Offset: 0x008 I2Cæ§åˆ¶å¯„å­˜å™¨ (R/W) */
+    __IO uint32_t I2CSTA;                   /*!< Offset: 0x00C I2CçŠ¶æ€å¯„å­˜å™¨ (R/W) */
 } HT_I2C_TypeDef;                           /* end of group HT_I2C_TypeDef         */
 
 
 /*****************************************  SPI Control Block  *******************************************/
 /*
-* @brief  SPI¼Ä´æÆ÷¶¨Òå
+* @brief  SPIå¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {
-    __IO uint32_t SPICON;                   /*!< Offset: 0x000 SPI¿ØÖÆ¼Ä´æÆ÷     (R/W) */
-    __IO uint32_t SPISTA;                   /*!< Offset: 0x004 SPI×´Ì¬¼Ä´æÆ÷     (R/W) */
-    __IO uint32_t SPIDAT;                   /*!< Offset: 0x008 SPIÊı¾İ¼Ä´æÆ÷     (R/W) */
-    __IO uint32_t SPISSN;                   /*!< Offset: 0x00C SPI´Ó»úÑ¡Ôñ¼Ä´æÆ÷ (R/W) */
+    __IO uint32_t SPICON;                   /*!< Offset: 0x000 SPIæ§åˆ¶å¯„å­˜å™¨     (R/W) */
+    __IO uint32_t SPISTA;                   /*!< Offset: 0x004 SPIçŠ¶æ€å¯„å­˜å™¨     (R/W) */
+    __IO uint32_t SPIDAT;                   /*!< Offset: 0x008 SPIæ•°æ®å¯„å­˜å™¨     (R/W) */
+    __IO uint32_t SPISSN;                   /*!< Offset: 0x00C SPIä»æœºé€‰æ‹©å¯„å­˜å™¨ (R/W) */
 } HT_SPI_TypeDef;                           /* end of group HT_SPI_TypeDef             */
         
         
 /*****************************************  RTC Control Block  *******************************************/
 /*
-* @brief  RTC¼Ä´æÆ÷¶¨Òå
+* @brief  RTCå¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {
-    __IO uint32_t RTCCON;                   /*!< Offset: 0x000 RTC¿ØÖÆ¼Ä´æÆ÷ (R/W)                     */
-    __IO uint32_t RTCIE;                    /*!< Offset: 0x004 RTCÖĞ¶ÏÊ¹ÄÜ¼Ä´æÆ÷ (R/W)                 */
-    __IO uint32_t RTCIF;                    /*!< Offset: 0x008 RTCÖĞ¶Ï±êÖ¾¼Ä´æÆ÷ (R/W)                 */
-    __IO uint32_t ALMR;                     /*!< Offset: 0x00C ÄÖÖÓ¼Ä´æÆ÷ (R/W)                        */
-    __IO uint32_t RTCTMR1;                  /*!< Offset: 0x010 RTC¶¨Ê±Æ÷1¼ÆÊıÉèÖÃ (R/W)                */
-    __IO uint32_t RTCTMR2;                  /*!< Offset: 0x014 RTC¶¨Ê±Æ÷2¼ÆÊıÉèÖÃ (R/W)                */
-    __IO uint32_t SECR;                     /*!< Offset: 0x018 Ãë¼Ä´æÆ÷ (R/W)                          */
-    __IO uint32_t MINR;                     /*!< Offset: 0x01C ·ÖÖÓ¼Ä´æÆ÷ (R/W)                        */
-    __IO uint32_t HOURR;                    /*!< Offset: 0x020 Ğ¡Ê±¼Ä´æÆ÷ (R/W)                        */
-    __IO uint32_t DAYR;                     /*!< Offset: 0x024 Ìì¼Ä´æÆ÷ (R/W)                          */
-    __IO uint32_t MONTHR;                   /*!< Offset: 0x028 ÔÂ¼Ä´æÆ÷ (R/W)                          */
-    __IO uint32_t YEARR;                    /*!< Offset: 0x02C Äê¼Ä´æÆ÷ (R/W)                          */
-    __IO uint32_t WEEKR;                    /*!< Offset: 0x030 ĞÇÆÚ¼Ä´æÆ÷ (R/W)                        */
-    __IO uint32_t RTCCNTH;                  /*!< Offset: 0x034 Ğ£Ê±´ÎÊı¼Ä´æÆ÷¸ß16Î» (R/W )             */
-    __IO uint32_t RTCCNTL;                  /*!< Offset: 0x038 Ğ£Ê±´ÎÊı¼Ä´æÆ÷µÍ16Î» (R/W )             */
-    __IO uint32_t RTCRD;                    /*!< Offset: 0x03C RTC¶Á¿ØÖÆ¼Ä´æÆ÷ (R/W )                  */
-    __IO uint32_t RTCWR;                    /*!< Offset: 0x040 RTCĞ´¿ØÖÆ¼Ä´æÆ÷ (R/W)                   */
+    __IO uint32_t RTCCON;                   /*!< Offset: 0x000 RTCæ§åˆ¶å¯„å­˜å™¨ (R/W)                     */
+    __IO uint32_t RTCIE;                    /*!< Offset: 0x004 RTCä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨ (R/W)                 */
+    __IO uint32_t RTCIF;                    /*!< Offset: 0x008 RTCä¸­æ–­æ ‡å¿—å¯„å­˜å™¨ (R/W)                 */
+    __IO uint32_t ALMR;                     /*!< Offset: 0x00C é—¹é’Ÿå¯„å­˜å™¨ (R/W)                        */
+    __IO uint32_t RTCTMR1;                  /*!< Offset: 0x010 RTCå®šæ—¶å™¨1è®¡æ•°è®¾ç½® (R/W)                */
+    __IO uint32_t RTCTMR2;                  /*!< Offset: 0x014 RTCå®šæ—¶å™¨2è®¡æ•°è®¾ç½® (R/W)                */
+    __IO uint32_t SECR;                     /*!< Offset: 0x018 ç§’å¯„å­˜å™¨ (R/W)                          */
+    __IO uint32_t MINR;                     /*!< Offset: 0x01C åˆ†é’Ÿå¯„å­˜å™¨ (R/W)                        */
+    __IO uint32_t HOURR;                    /*!< Offset: 0x020 å°æ—¶å¯„å­˜å™¨ (R/W)                        */
+    __IO uint32_t DAYR;                     /*!< Offset: 0x024 å¤©å¯„å­˜å™¨ (R/W)                          */
+    __IO uint32_t MONTHR;                   /*!< Offset: 0x028 æœˆå¯„å­˜å™¨ (R/W)                          */
+    __IO uint32_t YEARR;                    /*!< Offset: 0x02C å¹´å¯„å­˜å™¨ (R/W)                          */
+    __IO uint32_t WEEKR;                    /*!< Offset: 0x030 æ˜ŸæœŸå¯„å­˜å™¨ (R/W)                        */
+    __IO uint32_t RTCCNTH;                  /*!< Offset: 0x034 æ ¡æ—¶æ¬¡æ•°å¯„å­˜å™¨é«˜16ä½ (R/W )             */
+    __IO uint32_t RTCCNTL;                  /*!< Offset: 0x038 æ ¡æ—¶æ¬¡æ•°å¯„å­˜å™¨ä½16ä½ (R/W )             */
+    __IO uint32_t RTCRD;                    /*!< Offset: 0x03C RTCè¯»æ§åˆ¶å¯„å­˜å™¨ (R/W )                  */
+    __IO uint32_t RTCWR;                    /*!< Offset: 0x040 RTCå†™æ§åˆ¶å¯„å­˜å™¨ (R/W)                   */
     __I  uint32_t Reserved[3];  
-    __IO uint32_t DFAH;                     /*!< Offset: 0x050 MemsÊ±ÖÓÆµÂÊÊ±µÄ³£ÊıÏî£¨¸ß7Î»£© (R/W )  */
-    __IO uint32_t DFAL;                     /*!< Offset: 0x054 MemsÊ±ÖÓÆµÂÊÊ±µÄ³£ÊıÏî£¨µÍ16Î»£©(R/W )  */
-    __IO uint32_t DFBH;                     /*!< Offset: 0x058 MemsÊ±ÖÓÆµÂÊÊ±µÄÒ»´ÎÏî£¨¸ß7Î»£© (R/W )  */
-    __IO uint32_t DFBL;                     /*!< Offset: 0x05C MemsÊ±ÖÓÆµÂÊÊ±µÄÒ»´ÎÏî£¨µÍ16Î»£©(R/W )  */
-    __IO uint32_t DFCH;                     /*!< Offset: 0x060 MemsÊ±ÖÓÆµÂÊÊ±µÄ¶ş´ÎÏî£¨¸ß7Î»£© (R/W )  */
-    __IO uint32_t DFCL;                     /*!< Offset: 0x064 MemsÊ±ÖÓÆµÂÊÊ±µÄ¶ş´ÎÏî£¨µÍ16Î»£©(R/W )  */
-    __IO uint32_t DFDH;                     /*!< Offset: 0x068 MemsÊ±ÖÓÆµÂÊÊ±µÄÈı´ÎÏî£¨¸ß7Î»£© (R/W )  */
-    __IO uint32_t DFDL;                     /*!< Offset: 0x06C MemsÊ±ÖÓÆµÂÊÊ±µÄÈı´ÎÏî£¨µÍ16Î»£©(R/W )  */
-    __IO uint32_t DFEH;                     /*!< Offset: 0x070 MemsÊ±ÖÓÆµÂÊÊ±µÄËÄ´ÎÏî£¨¸ß7Î»£© (R/W )  */
-    __IO uint32_t DFEL;                     /*!< Offset: 0x074 MemsÊ±ÖÓÆµÂÊÊ±µÄËÄ´ÎÏî£¨µÍ16Î»£©(R/W )  */ 
-    __IO uint32_t Toff;                     /*!< Offset: 0x078 ÎÂ¶ÈÆ«ÖÃ¼Ä´æÆ÷ (R/W )                   */ 
-    __IO uint32_t MCON01;                   /*!< Offset: 0x07C Mems¿ØÖÆ¼Ä´æÆ÷01 (R/W )                 */
-    __IO uint32_t MCON23;                   /*!< Offset: 0x080 Mems¿ØÖÆ¼Ä´æÆ÷23 (R/W )                 */
-    __IO uint32_t MCON45;                   /*!< Offset: 0x084 Mems¿ØÖÆ¼Ä´æÆ÷45 (R/W )                 */
-    __IO uint32_t DFIH;                     /*!< Offset: 0x088 ÆµÂÊÎó²î¼Ä´æÆ÷£¨¸ß5Î»£© (R/W )          */
-    __IO uint32_t DFIL;                     /*!< Offset: 0x08C ÆµÂÊÎó²î¼Ä´æÆ÷£¨µÍ16Î»£© (R/W )         */
-    __IO uint32_t RTCRSTFLG;                /*!< Offset: 0x090 RTCÄ£¿é¸´Î»±êÖ¾¼Ä´æÆ÷ (R/W )            */
-    __IO uint32_t RTCRSTSET;                /*!< Offset: 0x094 RTCĞ´¸´Î»¼Ä´æÆ÷ (R/W )                  */
+    __IO uint32_t DFAH;                     /*!< Offset: 0x050 Memsæ—¶é’Ÿé¢‘ç‡æ—¶çš„å¸¸æ•°é¡¹ï¼ˆé«˜7ä½ï¼‰ (R/W )  */
+    __IO uint32_t DFAL;                     /*!< Offset: 0x054 Memsæ—¶é’Ÿé¢‘ç‡æ—¶çš„å¸¸æ•°é¡¹ï¼ˆä½16ä½ï¼‰(R/W )  */
+    __IO uint32_t DFBH;                     /*!< Offset: 0x058 Memsæ—¶é’Ÿé¢‘ç‡æ—¶çš„ä¸€æ¬¡é¡¹ï¼ˆé«˜7ä½ï¼‰ (R/W )  */
+    __IO uint32_t DFBL;                     /*!< Offset: 0x05C Memsæ—¶é’Ÿé¢‘ç‡æ—¶çš„ä¸€æ¬¡é¡¹ï¼ˆä½16ä½ï¼‰(R/W )  */
+    __IO uint32_t DFCH;                     /*!< Offset: 0x060 Memsæ—¶é’Ÿé¢‘ç‡æ—¶çš„äºŒæ¬¡é¡¹ï¼ˆé«˜7ä½ï¼‰ (R/W )  */
+    __IO uint32_t DFCL;                     /*!< Offset: 0x064 Memsæ—¶é’Ÿé¢‘ç‡æ—¶çš„äºŒæ¬¡é¡¹ï¼ˆä½16ä½ï¼‰(R/W )  */
+    __IO uint32_t DFDH;                     /*!< Offset: 0x068 Memsæ—¶é’Ÿé¢‘ç‡æ—¶çš„ä¸‰æ¬¡é¡¹ï¼ˆé«˜7ä½ï¼‰ (R/W )  */
+    __IO uint32_t DFDL;                     /*!< Offset: 0x06C Memsæ—¶é’Ÿé¢‘ç‡æ—¶çš„ä¸‰æ¬¡é¡¹ï¼ˆä½16ä½ï¼‰(R/W )  */
+    __IO uint32_t DFEH;                     /*!< Offset: 0x070 Memsæ—¶é’Ÿé¢‘ç‡æ—¶çš„å››æ¬¡é¡¹ï¼ˆé«˜7ä½ï¼‰ (R/W )  */
+    __IO uint32_t DFEL;                     /*!< Offset: 0x074 Memsæ—¶é’Ÿé¢‘ç‡æ—¶çš„å››æ¬¡é¡¹ï¼ˆä½16ä½ï¼‰(R/W )  */ 
+    __IO uint32_t Toff;                     /*!< Offset: 0x078 æ¸©åº¦åç½®å¯„å­˜å™¨ (R/W )                   */ 
+    __IO uint32_t MCON01;                   /*!< Offset: 0x07C Memsæ§åˆ¶å¯„å­˜å™¨01 (R/W )                 */
+    __IO uint32_t MCON23;                   /*!< Offset: 0x080 Memsæ§åˆ¶å¯„å­˜å™¨23 (R/W )                 */
+    __IO uint32_t MCON45;                   /*!< Offset: 0x084 Memsæ§åˆ¶å¯„å­˜å™¨45 (R/W )                 */
+    __IO uint32_t DFIH;                     /*!< Offset: 0x088 é¢‘ç‡è¯¯å·®å¯„å­˜å™¨ï¼ˆé«˜5ä½ï¼‰ (R/W )          */
+    __IO uint32_t DFIL;                     /*!< Offset: 0x08C é¢‘ç‡è¯¯å·®å¯„å­˜å™¨ï¼ˆä½16ä½ï¼‰ (R/W )         */
+    __IO uint32_t RTCRSTFLG;                /*!< Offset: 0x090 RTCæ¨¡å—å¤ä½æ ‡å¿—å¯„å­˜å™¨ (R/W )            */
+    __IO uint32_t RTCRSTSET;                /*!< Offset: 0x094 RTCå†™å¤ä½å¯„å­˜å™¨ (R/W )                  */
 #if defined  HT501x
     __I  uint32_t Reserved2[22];
 #elif defined  HT6x2x    
-    __I  uint32_t RTCCHKSUM;                /*!< Offset: 0x098 RTCĞ´¸´Î»¼Ä´æÆ÷ (R/W )                  */    
+    __I  uint32_t RTCCHKSUM;                /*!< Offset: 0x098 RTCå†™å¤ä½å¯„å­˜å™¨ (R/W )                  */    
     __I  uint32_t Reserved2[13];    
-    __IO uint32_t HRa;                      /*!< Offset: 0x0D0 HRC1Hz²¹³¥³£ÊıÏî (R/W)                  */
-    __IO uint32_t HRb;                      /*!< Offset: 0x0D4 HRC1Hz²¹³¥Ò»´ÎÏî (R/W)                  */  
-    __IO uint32_t HRc;                      /*!< Offset: 0x0D8 HRC1Hz²¹³¥¶ş´ÎÏî (R/W)                  */ 
-    __IO uint32_t HRd;                      /*!< Offset: 0x0DC HRC1Hz²¹³¥Èı´ÎÏî (R/W)                  */                    
-    __IO uint32_t HRe;                      /*!< Offset: 0x0E0 HRC1Hz²¹³¥ËÄ´ÎÏî (R/W)                  */ 
-    __IO uint32_t HDFi;                     /*!< Offset: 0x0E4 HRC1HzÆµÂÊÎó²î¼Ä´æÆ÷ (R/W)              */  
+    __IO uint32_t HRa;                      /*!< Offset: 0x0D0 HRC1Hzè¡¥å¿å¸¸æ•°é¡¹ (R/W)                  */
+    __IO uint32_t HRb;                      /*!< Offset: 0x0D4 HRC1Hzè¡¥å¿ä¸€æ¬¡é¡¹ (R/W)                  */  
+    __IO uint32_t HRc;                      /*!< Offset: 0x0D8 HRC1Hzè¡¥å¿äºŒæ¬¡é¡¹ (R/W)                  */ 
+    __IO uint32_t HRd;                      /*!< Offset: 0x0DC HRC1Hzè¡¥å¿ä¸‰æ¬¡é¡¹ (R/W)                  */                    
+    __IO uint32_t HRe;                      /*!< Offset: 0x0E0 HRC1Hzè¡¥å¿å››æ¬¡é¡¹ (R/W)                  */ 
+    __IO uint32_t HDFi;                     /*!< Offset: 0x0E4 HRC1Hzé¢‘ç‡è¯¯å·®å¯„å­˜å™¨ (R/W)              */  
     __I  uint32_t Reserved3[2]; 
 #endif
 #if defined  HT501x  || HT6x2x
-    __IO uint32_t HFCFG;                    /*!< Offset: 0x0F0 ²âÆµÄ£¿éÅäÖÃ¼Ä´æÆ÷ ¶ÔÓÃ»§²»¿ª·Å (R/W)   */ 
-    __IO uint32_t HFNUM;                    /*!< Offset: 0x0F4 ÉèÖÃ²âÆµÂö³åÖÜÆÚ¸öÊı ²»¿ª·Å(R/W)        */
-    __IO uint32_t HFCNTH;                   /*!< Offset: 0x0F8 ²âÆµ¸öÊı¸ß16Î» ²»¿ª·Å(R/W)              */
-    __IO uint32_t HFCNTL;                   /*!< Offset: 0x0FC ²âÆµ¸öÊıµÍ16Î» ²»¿ª·Å(R/W)              */                 
-    __IO uint32_t CTRLBYFLASH;              /*!< Offset: 0x100 ´Ë¼Ä´æÆ÷¶ÔÓÃ»§²»¿ª·Å (R/W )             */
-	  __IO uint32_t LRCCOMAND;                /*!< Offset: 0x104 ´Ë¼Ä´æÆ÷¶ÔÓÃ»§²»¿ª·Å (R/W )             */
+    __IO uint32_t HFCFG;                    /*!< Offset: 0x0F0 æµ‹é¢‘æ¨¡å—é…ç½®å¯„å­˜å™¨ å¯¹ç”¨æˆ·ä¸å¼€æ”¾ (R/W)   */ 
+    __IO uint32_t HFNUM;                    /*!< Offset: 0x0F4 è®¾ç½®æµ‹é¢‘è„‰å†²å‘¨æœŸä¸ªæ•° ä¸å¼€æ”¾(R/W)        */
+    __IO uint32_t HFCNTH;                   /*!< Offset: 0x0F8 æµ‹é¢‘ä¸ªæ•°é«˜16ä½ ä¸å¼€æ”¾(R/W)              */
+    __IO uint32_t HFCNTL;                   /*!< Offset: 0x0FC æµ‹é¢‘ä¸ªæ•°ä½16ä½ ä¸å¼€æ”¾(R/W)              */                 
+    __IO uint32_t CTRLBYFLASH;              /*!< Offset: 0x100 æ­¤å¯„å­˜å™¨å¯¹ç”¨æˆ·ä¸å¼€æ”¾ (R/W )             */
+	  __IO uint32_t LRCCOMAND;                /*!< Offset: 0x104 æ­¤å¯„å­˜å™¨å¯¹ç”¨æˆ·ä¸å¼€æ”¾ (R/W )             */
     __I  uint32_t Reserved4[62];                
-    __IO uint32_t SECR2;                    /*!< Offset: 0x200 Ãë¼Ä´æÆ÷ (R/W)                          */
-    __IO uint32_t MINR2;                    /*!< Offset: 0x204 ·ÖÖÓ¼Ä´æÆ÷ (R/W)                        */
-    __IO uint32_t HOURR2;                   /*!< Offset: 0x208 Ğ¡Ê±¼Ä´æÆ÷ (R/W)                        */
-    __IO uint32_t DAYR2;                    /*!< Offset: 0x20C Ìì¼Ä´æÆ÷ (R/W)                          */
-    __IO uint32_t MONTHR2;                  /*!< Offset: 0x210 ÔÂ¼Ä´æÆ÷ (R/W)                          */
-    __IO uint32_t YEARR2;                   /*!< Offset: 0x214 Äê¼Ä´æÆ÷ (R/W)                          */
-    __IO uint32_t WEEKR2;                   /*!< Offset: 0x218 ĞÇÆÚ¼Ä´æÆ÷ (R/W)                        */   
-    __IO uint32_t RTC2CAL;                  /*!< Offset: 0x21C LRC¼ÆÊ±µ÷Õû¼Ä´æÆ÷ (R/W)                 */
-		__IO uint32_t RTCRD2;                   /*!< Offset: 0x220 RTC¶Á¿ØÖÆ¼Ä´æÆ÷ (R/W )                  */ 
-    __IO uint32_t RTCWR2;                   /*!< Offset: 0x224 RTCĞ´¿ØÖÆ¼Ä´æÆ÷ (R/W )                  */ 
+    __IO uint32_t SECR2;                    /*!< Offset: 0x200 ç§’å¯„å­˜å™¨ (R/W)                          */
+    __IO uint32_t MINR2;                    /*!< Offset: 0x204 åˆ†é’Ÿå¯„å­˜å™¨ (R/W)                        */
+    __IO uint32_t HOURR2;                   /*!< Offset: 0x208 å°æ—¶å¯„å­˜å™¨ (R/W)                        */
+    __IO uint32_t DAYR2;                    /*!< Offset: 0x20C å¤©å¯„å­˜å™¨ (R/W)                          */
+    __IO uint32_t MONTHR2;                  /*!< Offset: 0x210 æœˆå¯„å­˜å™¨ (R/W)                          */
+    __IO uint32_t YEARR2;                   /*!< Offset: 0x214 å¹´å¯„å­˜å™¨ (R/W)                          */
+    __IO uint32_t WEEKR2;                   /*!< Offset: 0x218 æ˜ŸæœŸå¯„å­˜å™¨ (R/W)                        */   
+    __IO uint32_t RTC2CAL;                  /*!< Offset: 0x21C LRCè®¡æ—¶è°ƒæ•´å¯„å­˜å™¨ (R/W)                 */
+		__IO uint32_t RTCRD2;                   /*!< Offset: 0x220 RTCè¯»æ§åˆ¶å¯„å­˜å™¨ (R/W )                  */ 
+    __IO uint32_t RTCWR2;                   /*!< Offset: 0x224 RTCå†™æ§åˆ¶å¯„å­˜å™¨ (R/W )                  */ 
 #endif  
 #if defined  HT501x
-    __I  uint32_t FRE_LRC;                  /*!< Offset: 0x228 LRCÆµÂÊ²âÁ¿Öµ (R)                       */
+    __I  uint32_t FRE_LRC;                  /*!< Offset: 0x228 LRCé¢‘ç‡æµ‹é‡å€¼ (R)                       */
 #endif
 } HT_RTC_TypeDef;                           /* end of group HT_RTC_TypeDef                             */
 
 
 /*****************************************  LCD Control Block  *******************************************/
 /*
-* @brief  LCD¼Ä´æÆ÷¶¨Òå
+* @brief  LCDå¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {
-    __IO uint32_t LCDCLK;                   /*!< Offset: 0x000 LCDÊ±ÖÓÆµÂÊÑ¡Ôñ¼Ä´æÆ÷ (R/W)  */
-    __IO uint32_t LCDCON;                   /*!< Offset: 0x004 LCDÇı¶¯¿ØÖÆ¼Ä´æÆ÷ (R/W)      */
+    __IO uint32_t LCDCLK;                   /*!< Offset: 0x000 LCDæ—¶é’Ÿé¢‘ç‡é€‰æ‹©å¯„å­˜å™¨ (R/W)  */
+    __IO uint32_t LCDCON;                   /*!< Offset: 0x004 LCDé©±åŠ¨æ§åˆ¶å¯„å­˜å™¨ (R/W)      */
     __I  uint32_t Reserved[2];              
 #if defined  HT6x1x
-    __IO uint32_t LCDBUF[37];               /*!< Offset: 0x010 LCDÏÔÊ¾Êı¾İ¼Ä´æÆ÷ (R/W)      */
+    __IO uint32_t LCDBUF[37];               /*!< Offset: 0x010 LCDæ˜¾ç¤ºæ•°æ®å¯„å­˜å™¨ (R/W)      */
 #else
-    __IO uint32_t LCDBUF[43];               /*!< Offset: 0x010 LCDÏÔÊ¾Êı¾İ¼Ä´æÆ÷ (R/W)      */
+    __IO uint32_t LCDBUF[43];               /*!< Offset: 0x010 LCDæ˜¾ç¤ºæ•°æ®å¯„å­˜å™¨ (R/W)      */
 #endif
 } HT_LCD_TypeDef;                           /* end of group HT_LCD_TypeDef                  */
 
 
 /*****************************************  TBS Control Block  *******************************************/
 /*
-* @brief  TBS¼Ä´æÆ÷¶¨Òå
+* @brief  TBSå¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {
 #if defined HT501x
-    __IO uint32_t TBSCON;                   /*!< Offset: 0x000 TBSÉèÖÃ¼Ä´æÆ÷ (R/W)      */
-    __IO uint32_t TBSPRD;                   /*!< Offset: 0x004 ´ò¿ªÆµÂÊÉèÖÃ¼Ä´æÆ÷ (R/W) */    
-    __IO uint32_t TBSIE;                    /*!< Offset: 0x008 TBSÖĞ¶ÏÊ¹ÄÜ¼Ä´æÆ÷ (R/W)  */
-    __IO uint32_t TBSIF;                    /*!< Offset: 0x00C TBSÖĞ¶Ï±êÖ¾¼Ä´æÆ÷ (R/W)  */
-    __I  uint32_t TMPDAT;                   /*!< Offset: 0x010 ÎÂ¶È²âÁ¿Êä³öÖµ (R/)      */
-    __I  uint32_t VBATDAT;                  /*!< Offset: 0x014 ADCÍ¨µÀ2²âÁ¿Êä³öÖµ (R/)  */
-    __I  uint32_t VCCDAT;                   /*!< Offset: 0x018 µçÔ´µçÑ¹²âÁ¿Êä³öÖµ(R/)*/     
-    __I  uint32_t ADC0DAT;                  /*!< Offset: 0x01C ADCÍ¨µÀ0²âÁ¿Êä³öÖµ (R/)  */
-    __I  uint32_t ADC1DAT;                  /*!< Offset: 0x020 ADCÍ¨µÀ1²âÁ¿Êä³öÖµ (R/)  */
-    __I  uint32_t ADC2DAT;                  /*!< Offset: 0x024 ADCÍ¨µÀ2²âÁ¿Êä³öÖµ (R/)  */    
-    __IO uint32_t VBATCMP;                  /*!< Offset: 0x028 VBAT±È½Ï¼Ä´æÆ÷ (R/W)     */
+    __IO uint32_t TBSCON;                   /*!< Offset: 0x000 TBSè®¾ç½®å¯„å­˜å™¨ (R/W)      */
+    __IO uint32_t TBSPRD;                   /*!< Offset: 0x004 æ‰“å¼€é¢‘ç‡è®¾ç½®å¯„å­˜å™¨ (R/W) */    
+    __IO uint32_t TBSIE;                    /*!< Offset: 0x008 TBSä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨ (R/W)  */
+    __IO uint32_t TBSIF;                    /*!< Offset: 0x00C TBSä¸­æ–­æ ‡å¿—å¯„å­˜å™¨ (R/W)  */
+    __I  uint32_t TMPDAT;                   /*!< Offset: 0x010 æ¸©åº¦æµ‹é‡è¾“å‡ºå€¼ (R/)      */
+    __I  uint32_t VBATDAT;                  /*!< Offset: 0x014 ADCé€šé“2æµ‹é‡è¾“å‡ºå€¼ (R/)  */
+    __I  uint32_t VCCDAT;                   /*!< Offset: 0x018 ç”µæºç”µå‹æµ‹é‡è¾“å‡ºå€¼(R/)*/     
+    __I  uint32_t ADC0DAT;                  /*!< Offset: 0x01C ADCé€šé“0æµ‹é‡è¾“å‡ºå€¼ (R/)  */
+    __I  uint32_t ADC1DAT;                  /*!< Offset: 0x020 ADCé€šé“1æµ‹é‡è¾“å‡ºå€¼ (R/)  */
+    __I  uint32_t ADC2DAT;                  /*!< Offset: 0x024 ADCé€šé“2æµ‹é‡è¾“å‡ºå€¼ (R/)  */    
+    __IO uint32_t VBATCMP;                  /*!< Offset: 0x028 VBATæ¯”è¾ƒå¯„å­˜å™¨ (R/W)     */
     __I  uint32_t Reserved[2];             
-    __IO uint32_t ADC0CMP;                  /*!< Offset: 0x034 ADC0±È½Ï¼Ä´æÆ÷ (R/W)     */
-    __IO uint32_t ADC1CMP;                  /*!< Offset: 0x038 ADC1±È½Ï¼Ä´æÆ÷ (R/W)     */    
+    __IO uint32_t ADC0CMP;                  /*!< Offset: 0x034 ADC0æ¯”è¾ƒå¯„å­˜å™¨ (R/W)     */
+    __IO uint32_t ADC1CMP;                  /*!< Offset: 0x038 ADC1æ¯”è¾ƒå¯„å­˜å™¨ (R/W)     */    
 #else
-    __IO uint32_t TBSCON;                   /*!< Offset: 0x000 TBSÉèÖÃ¼Ä´æÆ÷ (R/W)      */
-    __IO uint32_t TBSIE;                    /*!< Offset: 0x004 TBSÖĞ¶ÏÊ¹ÄÜ¼Ä´æÆ÷ (R/W)  */
-    __IO uint32_t TBSIF;                    /*!< Offset: 0x008 TBSÖĞ¶Ï±êÖ¾¼Ä´æÆ÷ (R/W)  */
-    __I  uint32_t TMPDAT;                   /*!< Offset: 0x00C ÎÂ¶È²âÁ¿Êä³öÖµ (R/)      */
-    __I  uint32_t VBATDAT;                  /*!< Offset: 0x010 Vbat²âÁ¿Êä³öÖµ (R/)      */
-    __I  uint32_t ADC0DAT;                  /*!< Offset: 0x014 ADCÍ¨µÀ0²âÁ¿Êä³öÖµ (R/)  */
-    __I  uint32_t ADC1DAT;                  /*!< Offset: 0x018 ADCÍ¨µÀ1²âÁ¿Êä³öÖµ (R/)  */
-    __IO uint32_t VBATCMP;                  /*!< Offset: 0x01C VBAT±È½Ï¼Ä´æÆ÷ (R/W)     */
-    __IO uint32_t TBSPRD;                   /*!< Offset: 0x020 ´ò¿ªÆµÂÊÉèÖÃ¼Ä´æÆ÷ (R/W) */
-    __IO uint32_t TBSTEST;                  /*!< Offset: 0x024 TBS²âÊÔ¼Ä´æÆ÷ (R/W)      */
-    __I  uint32_t VCCDAT;                   /*!< Offset: 0x028 µçÔ´µçÑ¹²âÁ¿Êä³öÖµ(R/)*/
+    __IO uint32_t TBSCON;                   /*!< Offset: 0x000 TBSè®¾ç½®å¯„å­˜å™¨ (R/W)      */
+    __IO uint32_t TBSIE;                    /*!< Offset: 0x004 TBSä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨ (R/W)  */
+    __IO uint32_t TBSIF;                    /*!< Offset: 0x008 TBSä¸­æ–­æ ‡å¿—å¯„å­˜å™¨ (R/W)  */
+    __I  uint32_t TMPDAT;                   /*!< Offset: 0x00C æ¸©åº¦æµ‹é‡è¾“å‡ºå€¼ (R/)      */
+    __I  uint32_t VBATDAT;                  /*!< Offset: 0x010 Vbatæµ‹é‡è¾“å‡ºå€¼ (R/)      */
+    __I  uint32_t ADC0DAT;                  /*!< Offset: 0x014 ADCé€šé“0æµ‹é‡è¾“å‡ºå€¼ (R/)  */
+    __I  uint32_t ADC1DAT;                  /*!< Offset: 0x018 ADCé€šé“1æµ‹é‡è¾“å‡ºå€¼ (R/)  */
+    __IO uint32_t VBATCMP;                  /*!< Offset: 0x01C VBATæ¯”è¾ƒå¯„å­˜å™¨ (R/W)     */
+    __IO uint32_t TBSPRD;                   /*!< Offset: 0x020 æ‰“å¼€é¢‘ç‡è®¾ç½®å¯„å­˜å™¨ (R/W) */
+    __IO uint32_t TBSTEST;                  /*!< Offset: 0x024 TBSæµ‹è¯•å¯„å­˜å™¨ (R/W)      */
+    __I  uint32_t VCCDAT;                   /*!< Offset: 0x028 ç”µæºç”µå‹æµ‹é‡è¾“å‡ºå€¼(R/)*/
 #if defined  HT6x2x
-    __IO uint32_t ADC0CMP;                  /*!< Offset: 0x02C ADC0±È½Ï¼Ä´æÆ÷ (R/)      */  
-	__IO uint32_t ADC3DAT;                  /*!< Offset: 0x030 ADC3²âÁ¿Êä³öÖµ (R/)      */ 
-	__IO uint32_t ADC4DAT;                  /*!< Offset: 0x034 ADC4²âÁ¿Êä³öÖµ (R/)      */ 
-	__IO uint32_t ADC5DAT;                  /*!< Offset: 0x038 ADC5²âÁ¿Êä³öÖµ (R/)      */ 
-	__IO uint32_t TBSPRD2;                  /*!< Offset: 0x03C ´ò¿ªÆµÂÊÉèÖÃ¼Ä´æÆ÷ (R/W) */
+    __IO uint32_t ADC0CMP;                  /*!< Offset: 0x02C ADC0æ¯”è¾ƒå¯„å­˜å™¨ (R/)      */  
+	__IO uint32_t ADC3DAT;                  /*!< Offset: 0x030 ADC3æµ‹é‡è¾“å‡ºå€¼ (R/)      */ 
+	__IO uint32_t ADC4DAT;                  /*!< Offset: 0x034 ADC4æµ‹é‡è¾“å‡ºå€¼ (R/)      */ 
+	__IO uint32_t ADC5DAT;                  /*!< Offset: 0x038 ADC5æµ‹é‡è¾“å‡ºå€¼ (R/)      */ 
+	__IO uint32_t TBSPRD2;                  /*!< Offset: 0x03C æ‰“å¼€é¢‘ç‡è®¾ç½®å¯„å­˜å™¨ (R/W) */
 #endif  
 #endif    
 } HT_TBS_TypeDef;                           /* end of group HT_TBS_TypeDef              */
@@ -343,69 +343,69 @@ typedef struct
 
 /*****************************************  PMU Control Block  *******************************************/
 /*
-* @brief  PMU¼Ä´æÆ÷¶¨Òå
+* @brief  PMUå¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {
-    __IO uint32_t PMUCON;                   /*!< Offset: 0x000 PMUÅäÖÃ¼Ä´æÆ÷ (R/W)              */
-    __IO uint32_t VDETCFG;                  /*!< Offset: 0x004 µçÔ´¼ì²âãĞÖµÅäÖÃ¼Ä´æÆ÷ (R/W)     */
-    __IO uint32_t VDETPCFG;                 /*!< Offset: 0x008 µçÔ´¼ì²âÊ±¼äÖÜÆÚÅäÖÃ¼Ä´æÆ÷ (R/W) */
-    __IO uint32_t PMUIE;                    /*!< Offset: 0x00C PMUÖĞ¶ÏÊ¹ÄÜ¼Ä´æÆ÷ (R/W)          */
-    __IO uint32_t PMUIF;                    /*!< Offset: 0x010 PMUÖĞ¶Ï±êÖ¾¼Ä´æÆ÷ (R/W)          */
-    __IO uint32_t PMUSTA;                   /*!< Offset: 0x014 PMU×´Ì¬Ö¸Ê¾¼Ä´æÆ÷ (R/W)          */
-    __IO uint32_t WAKEIF;                   /*!< Offset: 0x018 »½ĞÑÔ´±êÖ¾¼Ä´æÆ÷ (R/W)           */
+    __IO uint32_t PMUCON;                   /*!< Offset: 0x000 PMUé…ç½®å¯„å­˜å™¨ (R/W)              */
+    __IO uint32_t VDETCFG;                  /*!< Offset: 0x004 ç”µæºæ£€æµ‹é˜ˆå€¼é…ç½®å¯„å­˜å™¨ (R/W)     */
+    __IO uint32_t VDETPCFG;                 /*!< Offset: 0x008 ç”µæºæ£€æµ‹æ—¶é—´å‘¨æœŸé…ç½®å¯„å­˜å™¨ (R/W) */
+    __IO uint32_t PMUIE;                    /*!< Offset: 0x00C PMUä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨ (R/W)          */
+    __IO uint32_t PMUIF;                    /*!< Offset: 0x010 PMUä¸­æ–­æ ‡å¿—å¯„å­˜å™¨ (R/W)          */
+    __IO uint32_t PMUSTA;                   /*!< Offset: 0x014 PMUçŠ¶æ€æŒ‡ç¤ºå¯„å­˜å™¨ (R/W)          */
+    __IO uint32_t WAKEIF;                   /*!< Offset: 0x018 å”¤é†’æºæ ‡å¿—å¯„å­˜å™¨ (R/W)           */
 #if defined HT6x2x	
-	__IO uint32_t PDTFLT;                   /*!< Offset: 0x01C POWÊı×ÖÂË²¨¼Ä´æÆ÷ (R/W)           */
+	__IO uint32_t PDTFLT;                   /*!< Offset: 0x01C POWæ•°å­—æ»¤æ³¢å¯„å­˜å™¨ (R/W)           */
     __I  uint32_t Reserved[4];
 #else 
     __I  uint32_t Reserved[5];
 #endif	
-    __IO uint32_t RSTSTA;                   /*!< Offset: 0x030 ¸´Î»±êÖ¾¼Ä´æÆ÷ (R/W)             */
+    __IO uint32_t RSTSTA;                   /*!< Offset: 0x030 å¤ä½æ ‡å¿—å¯„å­˜å™¨ (R/W)             */
 } HT_PMU_TypeDef;                           /* end of group HT_PMU_TypeDef                      */
 
 
 /*****************************************  CMU Control Block  *******************************************/
 /*
-* @brief  CMU¼Ä´æÆ÷¶¨Òå
+* @brief  CMUå¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {
-    __IO uint32_t WPREG;                    /*!< Offset: 0x000 Ğ´±£»¤¿ØÖÆ¼Ä´æÆ÷ (R/W)                    */
-    __IO uint32_t SYSCLKCFG;                /*!< Offset: 0x004 ÏµÍ³Ê±ÖÓÅäÖÃ¼Ä´æÆ÷ (R/W)                  */
-    __I  uint32_t JTAGSTA;                  /*!< Offset: 0x008 JTAG×´Ì¬Ö¸Ê¾ (R)                          */
-    __IO uint32_t LRCADJ;                   /*!< Offset: 0x00C µÍÆµRCÅäÖÃ¼Ä´æÆ÷ (R/W )                   */
-    __IO uint32_t HRCADJ;                   /*!< Offset: 0x010 ¸ßÆµRCÅäÖÃ¼Ä´æÆ÷ (R/W)                    */
-    __IO uint32_t HRCDIV;                   /*!< Offset: 0x014 ¸ßÆµRC·ÖÆµ¼Ä´æÆ÷ (R/W)                    */
-    __I  uint32_t CLKSTA;                   /*!< Offset: 0x018 Ê±ÖÓ×´Ì¬¼Ä´æÆ÷ (R)                        */
-    __IO uint32_t SYSCLKDIV;                /*!< Offset: 0x01C ÏµÍ³Ê±ÖÓ·ÖÆµ¼Ä´æÆ÷ (R/W)                  */
+    __IO uint32_t WPREG;                    /*!< Offset: 0x000 å†™ä¿æŠ¤æ§åˆ¶å¯„å­˜å™¨ (R/W)                    */
+    __IO uint32_t SYSCLKCFG;                /*!< Offset: 0x004 ç³»ç»Ÿæ—¶é’Ÿé…ç½®å¯„å­˜å™¨ (R/W)                  */
+    __I  uint32_t JTAGSTA;                  /*!< Offset: 0x008 JTAGçŠ¶æ€æŒ‡ç¤º (R)                          */
+    __IO uint32_t LRCADJ;                   /*!< Offset: 0x00C ä½é¢‘RCé…ç½®å¯„å­˜å™¨ (R/W )                   */
+    __IO uint32_t HRCADJ;                   /*!< Offset: 0x010 é«˜é¢‘RCé…ç½®å¯„å­˜å™¨ (R/W)                    */
+    __IO uint32_t HRCDIV;                   /*!< Offset: 0x014 é«˜é¢‘RCåˆ†é¢‘å¯„å­˜å™¨ (R/W)                    */
+    __I  uint32_t CLKSTA;                   /*!< Offset: 0x018 æ—¶é’ŸçŠ¶æ€å¯„å­˜å™¨ (R)                        */
+    __IO uint32_t SYSCLKDIV;                /*!< Offset: 0x01C ç³»ç»Ÿæ—¶é’Ÿåˆ†é¢‘å¯„å­˜å™¨ (R/W)                  */
     __I  uint32_t Reserved1[1];             
-    __IO uint32_t CLKOUTSEL;                /*!< Offset: 0x024 CLKOUTÊ±ÖÓÑ¡Ôñ¼Ä´æÆ÷ (R/W)                */
-    __IO uint32_t CLKOUTDIV;                /*!< Offset: 0x028 CLKOUTÊ±ÖÓ·ÖÆµ¼Ä´æÆ÷ (R/W)                */
-    __IO uint32_t CLKCTRL0;                 /*!< Offset: 0x02C ÄÚ²¿Ä£¿éÊ¹ÄÜ¼Ä´æÆ÷0 (R/W)                 */
-    __IO uint32_t CLKCTRL1;                 /*!< Offset: 0x030 ÄÚ²¿Ä£¿éÊ¹ÄÜ¼Ä´æÆ÷1 (R/W)                 */
-    __IO uint32_t FLASHCON;                 /*!< Offset: 0x034 Flash·ÃÎÊ¿ØÖÆ¼Ä´æÆ÷ (R/W)                 */
-    __O  uint32_t FLASHLOCK;                /*!< Offset: 0x038 FlashËø¶¨¼Ä´æÆ÷ (W)                       */
+    __IO uint32_t CLKOUTSEL;                /*!< Offset: 0x024 CLKOUTæ—¶é’Ÿé€‰æ‹©å¯„å­˜å™¨ (R/W)                */
+    __IO uint32_t CLKOUTDIV;                /*!< Offset: 0x028 CLKOUTæ—¶é’Ÿåˆ†é¢‘å¯„å­˜å™¨ (R/W)                */
+    __IO uint32_t CLKCTRL0;                 /*!< Offset: 0x02C å†…éƒ¨æ¨¡å—ä½¿èƒ½å¯„å­˜å™¨0 (R/W)                 */
+    __IO uint32_t CLKCTRL1;                 /*!< Offset: 0x030 å†…éƒ¨æ¨¡å—ä½¿èƒ½å¯„å­˜å™¨1 (R/W)                 */
+    __IO uint32_t FLASHCON;                 /*!< Offset: 0x034 Flashè®¿é—®æ§åˆ¶å¯„å­˜å™¨ (R/W)                 */
+    __O  uint32_t FLASHLOCK;                /*!< Offset: 0x038 Flashé”å®šå¯„å­˜å™¨ (W)                       */
 #if defined  HT6x2x     
-    __IO uint32_t PREFETCH;                 /*!< Offset: 0x03C Ö¸ÁîÔ¤È¡Ê¹ÄÜ¼Ä´æÆ÷ (R/W)                  */  
+    __IO uint32_t PREFETCH;                 /*!< Offset: 0x03C æŒ‡ä»¤é¢„å–ä½¿èƒ½å¯„å­˜å™¨ (R/W)                  */  
     __I  uint32_t Reserved2[4]; 
 #elif defined HT501x
-    __IO uint32_t FLASHDLY;                 /*!< Offset: 0x03C FlashÈ¡Ö¸ÁîµÈ´ı (R/W)                     */  
+    __IO uint32_t FLASHDLY;                 /*!< Offset: 0x03C Flashå–æŒ‡ä»¤ç­‰å¾… (R/W)                     */  
     __I  uint32_t Reserved2[4];     
 #else
     __I  uint32_t Reserved2[5]; 
 #endif      
-    __IO uint32_t INFOLOCK;                 /*!< Offset: 0x050 Info FlashËø¶¨¼Ä´æÆ÷(²»¿ª·Å¸øÓÃ»§) (R/W)  */
-    __IO uint32_t PORRSTSET;                /*!< Offset: 0x054 POR/LBOR¸´Î»¼Ä´æÆ÷(²»¿ª·Å¸øÓÃ»§) (R/W)    */
+    __IO uint32_t INFOLOCK;                 /*!< Offset: 0x050 Info Flashé”å®šå¯„å­˜å™¨(ä¸å¼€æ”¾ç»™ç”¨æˆ·) (R/W)  */
+    __IO uint32_t PORRSTSET;                /*!< Offset: 0x054 POR/LBORå¤ä½å¯„å­˜å™¨(ä¸å¼€æ”¾ç»™ç”¨æˆ·) (R/W)    */
 #if defined  HT501x    
     __I  uint32_t Reserved4[2+10*4+14*64];             
     __I  uint32_t CHIPID;                   /*!< Offset: 0xF00 ChipID (R)                                */    
 #elif defined  HT6x2x   
     __I  uint32_t Reserved3[2];
-    __IO uint32_t RCCALICON;                /*!< Offset: 0x060 RCĞ£ÕıÅäÖÃ¼Ä´æÆ÷ (R/W)                    */
-    __IO uint32_t RCCALIIE;                 /*!< Offset: 0x064 RC²âÆµÖĞ¶ÏÊ¹ÄÜ¼Ä´æÆ÷ (R/W)                */
-    __IO uint32_t RCCALIIF;                 /*!< Offset: 0x068 RC²âÆµÖĞ¶Ï±êÖ¾¼Ä´æÆ÷ (R/W)                */
-    __IO uint32_t HRCVALUE;                 /*!< Offset: 0x06C HRC²âÆµÖµ(24Î»ÎŞ·ûºÅÊı) (R/W)             */     
-    __IO uint32_t LRCVALUE;                 /*!< Offset: 0x070 LRC²âÆµÖµ(17Î»ÎŞ·ûºÅÊı) (R/W)             */ 
+    __IO uint32_t RCCALICON;                /*!< Offset: 0x060 RCæ ¡æ­£é…ç½®å¯„å­˜å™¨ (R/W)                    */
+    __IO uint32_t RCCALIIE;                 /*!< Offset: 0x064 RCæµ‹é¢‘ä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨ (R/W)                */
+    __IO uint32_t RCCALIIF;                 /*!< Offset: 0x068 RCæµ‹é¢‘ä¸­æ–­æ ‡å¿—å¯„å­˜å™¨ (R/W)                */
+    __IO uint32_t HRCVALUE;                 /*!< Offset: 0x06C HRCæµ‹é¢‘å€¼(24ä½æ— ç¬¦å·æ•°) (R/W)             */     
+    __IO uint32_t LRCVALUE;                 /*!< Offset: 0x070 LRCæµ‹é¢‘å€¼(17ä½æ— ç¬¦å·æ•°) (R/W)             */ 
     __I  uint32_t Reserved4[2+10*4+14*64-7];             
     __I  uint32_t CHIPID;                   /*!< Offset: 0xF00 ChipID (R)                                */
 #endif
@@ -414,120 +414,120 @@ typedef struct
 
 /*****************************************  WDT Control Block  *******************************************/
 /*
-* @brief  WDT¼Ä´æÆ÷¶¨Òå
+* @brief  WDTå¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {   
 #if defined HT6x1x	
-    __IO uint32_t WDTCFG;                   /*!< Offset: 0x000 ¿´ÃÅ¹·ÅäÖÃ¼Ä´æÆ÷ (R/W)           */ 
+    __IO uint32_t WDTCFG;                   /*!< Offset: 0x000 çœ‹é—¨ç‹—é…ç½®å¯„å­˜å™¨ (R/W)           */ 
 #else 
 		__I  uint32_t Reserved;
 #endif
-    __IO uint32_t WDTSET;                   /*!< Offset: 0x004 ¿´ÃÅ¹·Î¹¹·ÓëÊ±¼äÅäÖÃ¼Ä´æÆ÷ (R/W) */
-    __I  uint32_t WDTCNT;                   /*!< Offset: 0x008 ¿´ÃÅ¹·¼ÆÊı¼Ä´æÆ÷(R)              */
+    __IO uint32_t WDTSET;                   /*!< Offset: 0x004 çœ‹é—¨ç‹—å–‚ç‹—ä¸æ—¶é—´é…ç½®å¯„å­˜å™¨ (R/W) */
+    __I  uint32_t WDTCNT;                   /*!< Offset: 0x008 çœ‹é—¨ç‹—è®¡æ•°å¯„å­˜å™¨(R)              */
 } HT_WDT_TypeDef;                           /* end of group HT_WDT_TypeDef                      */
 
 
 /*****************************************  GPIO Control Block  ******************************************/
 /*
-* @brief GPIO¼Ä´æÆ÷¶¨Òå
+* @brief GPIOå¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {
-    __IO uint32_t IOCFG;                    /*!< Offset: 0x000 ¶Ë¿Ú¹¦ÄÜÅäÖÃ¼Ä´æÆ÷1 (R/W)  */
-    __IO uint32_t AFCFG;                    /*!< Offset: 0x004 ¶Ë¿Ú¹¦ÄÜÅäÖÃ¼Ä´æÆ÷2 (R/W)  */
-    __IO uint32_t PTDIR;                    /*!< Offset: 0x008 ¶Ë¿Ú·½ÏòÅäÖÃ¼Ä´æÆ÷ (R/W)   */
-    __IO uint32_t PTUP;                     /*!< Offset: 0x00C ¶Ë¿ÚÉÏÀ­ÅäÖÃ¼Ä´æÆ÷ (R/W)   */
-    __IO uint32_t PTDAT;                    /*!< Offset: 0x010 ¶Ë¿ÚÊı¾İ¼Ä´æÆ÷ (R/W)       */
-    __O  uint32_t PTSET;                    /*!< Offset: 0x014 ¶Ë¿ÚÉèÖÃ¼Ä´æÆ÷ ( /W)       */
-    __O  uint32_t PTCLR;                    /*!< Offset: 0x018 ¶Ë¿Ú¸´Î»¼Ä´æÆ÷ ( /W)       */
-    __O  uint32_t PTTOG;                    /*!< Offset: 0x01C ¶Ë¿Ú·­×ª¼Ä´æÆ÷ ( /W)       */
-    __IO uint32_t PTOD;                     /*!< Offset: 0x020 ¶Ë¿ÚOD¹¦ÄÜÅäÖÃ¼Ä´æÆ÷ (R/W) */
+    __IO uint32_t IOCFG;                    /*!< Offset: 0x000 ç«¯å£åŠŸèƒ½é…ç½®å¯„å­˜å™¨1 (R/W)  */
+    __IO uint32_t AFCFG;                    /*!< Offset: 0x004 ç«¯å£åŠŸèƒ½é…ç½®å¯„å­˜å™¨2 (R/W)  */
+    __IO uint32_t PTDIR;                    /*!< Offset: 0x008 ç«¯å£æ–¹å‘é…ç½®å¯„å­˜å™¨ (R/W)   */
+    __IO uint32_t PTUP;                     /*!< Offset: 0x00C ç«¯å£ä¸Šæ‹‰é…ç½®å¯„å­˜å™¨ (R/W)   */
+    __IO uint32_t PTDAT;                    /*!< Offset: 0x010 ç«¯å£æ•°æ®å¯„å­˜å™¨ (R/W)       */
+    __O  uint32_t PTSET;                    /*!< Offset: 0x014 ç«¯å£è®¾ç½®å¯„å­˜å™¨ ( /W)       */
+    __O  uint32_t PTCLR;                    /*!< Offset: 0x018 ç«¯å£å¤ä½å¯„å­˜å™¨ ( /W)       */
+    __O  uint32_t PTTOG;                    /*!< Offset: 0x01C ç«¯å£ç¿»è½¬å¯„å­˜å™¨ ( /W)       */
+    __IO uint32_t PTOD;                     /*!< Offset: 0x020 ç«¯å£ODåŠŸèƒ½é…ç½®å¯„å­˜å™¨ (R/W) */
 } HT_GPIO_TypeDef;                          /* end of group HT_GPIO_TypeDef               */
 
 
 /*****************************************  INT Control Block  *******************************************/
 /*
-* @brief INTÖĞ¶Ï¼Ä´æÆ÷¶¨Òå
+* @brief INTä¸­æ–­å¯„å­˜å™¨å®šä¹‰
 */
 typedef struct
 {
-    __IO uint32_t EXTIE;                    /*!< Offset: 0x000 Íâ²¿ÖĞ¶ÏÊ¹ÄÜ¼Ä´æÆ÷ (R/W) */
-    __IO uint32_t EXTIF;                    /*!< Offset: 0x004 Íâ²¿ÖĞ¶Ï±êÖ¾¼Ä´æÆ÷ (R/W) */
-  	__IO uint32_t PINFLT;                    /*!< Offset: 0x008 Òı½ÅÊı×ÖÂË²¨Ê¹ÄÜ¼Ä´æÆ÷ (R/W) */
+    __IO uint32_t EXTIE;                    /*!< Offset: 0x000 å¤–éƒ¨ä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨ (R/W) */
+    __IO uint32_t EXTIF;                    /*!< Offset: 0x004 å¤–éƒ¨ä¸­æ–­æ ‡å¿—å¯„å­˜å™¨ (R/W) */
+  	__IO uint32_t PINFLT;                    /*!< Offset: 0x008 å¼•è„šæ•°å­—æ»¤æ³¢ä½¿èƒ½å¯„å­˜å™¨ (R/W) */
 #if defined  HT6x2x 	
     __IO uint32_t Reserved[1];                            
-    __IO uint32_t EXTIE2;                   /*!< Offset: 0x010 Íâ²¿ÖĞ¶ÏÊ¹ÄÜ¼Ä´æÆ÷ (R/W) */
-    __IO uint32_t EXTIF2;                   /*!< Offset: 0x014 Íâ²¿ÖĞ¶Ï±êÖ¾¼Ä´æÆ÷ (R/W) */  
-	  __IO uint32_t PINFLT2;                  /*!< Offset: 0x0018 Òı½ÅÊı×ÖÂË²¨Ê¹ÄÜ¼Ä´æÆ÷ (R/W) */
+    __IO uint32_t EXTIE2;                   /*!< Offset: 0x010 å¤–éƒ¨ä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨ (R/W) */
+    __IO uint32_t EXTIF2;                   /*!< Offset: 0x014 å¤–éƒ¨ä¸­æ–­æ ‡å¿—å¯„å­˜å™¨ (R/W) */  
+	  __IO uint32_t PINFLT2;                  /*!< Offset: 0x0018 å¼•è„šæ•°å­—æ»¤æ³¢ä½¿èƒ½å¯„å­˜å™¨ (R/W) */
 #endif    
 } HT_INT_TypeDef;                           /* end of group HT_INT_TypeDef              */
 
 
 /*****************************************  DMA Control Block  *******************************************/
 /*
-* @brief DMA¼Ä´æÆ÷¶¨Òå
+* @brief DMAå¯„å­˜å™¨å®šä¹‰
 */
 #if defined HT501x || defined HT6x2x
 typedef struct
 {
-    __IO uint32_t DMAIE;                    /*!< Offset: 0x000 ÖĞ¶ÏÊ¹ÄÜ¼Ä´æÆ÷ (R/W)       */
-    __IO uint32_t DMAIF;                    /*!< Offset: 0x004 Í¨µÀÖĞ¶Ï±êÖ¾ (R/W)         */
-    __IO uint32_t CHNSTA;                   /*!< Offset: 0x008 ×´Ì¬¼Ä´æÆ÷ (R/W)           */
+    __IO uint32_t DMAIE;                    /*!< Offset: 0x000 ä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨ (R/W)       */
+    __IO uint32_t DMAIF;                    /*!< Offset: 0x004 é€šé“ä¸­æ–­æ ‡å¿— (R/W)         */
+    __IO uint32_t CHNSTA;                   /*!< Offset: 0x008 çŠ¶æ€å¯„å­˜å™¨ (R/W)           */
 } HT_DMA_TypeDef;                           /* end of group HT_DMA_TypeDef                */
 
 
 typedef struct
 {
-    __IO uint32_t CHNCTL;                   /*!< Offset: 0x000 Í¨µÀ¿ØÖÆ¼Ä´æÆ÷ (R/W)       */
-    __IO uint32_t CHNSRC;                   /*!< Offset: 0x004 Í¨µÀÔ´µØÖ·¼Ä´æÆ÷ (R/W)     */
-    __IO uint32_t CHNTAR;                   /*!< Offset: 0x008 Í¨µÀÄ¿µÄµØÖ·¼Ä´æÆ÷ (R/W)   */ 
-    __IO uint32_t CHNCNT;                   /*!< Offset: 0x00C Í¨µÀ´«ÊäÊıÁ¿ÉèÖÃ¼Ä´æÆ÷(R/W)*/
-    __IO uint32_t CHNTCCNT;                 /*!< Offset: 0x010 Í¨µÀ´«ÊäÍê³ÉÊı¾İ¸öÊı (R/W) */
-    __IO uint32_t CHNBULKNUM;               /*!< Offset: 0x014 Í¨µÀ¿é´«ÊäÄÚ¸öÊıÉèÖÃ (R/W) */               
+    __IO uint32_t CHNCTL;                   /*!< Offset: 0x000 é€šé“æ§åˆ¶å¯„å­˜å™¨ (R/W)       */
+    __IO uint32_t CHNSRC;                   /*!< Offset: 0x004 é€šé“æºåœ°å€å¯„å­˜å™¨ (R/W)     */
+    __IO uint32_t CHNTAR;                   /*!< Offset: 0x008 é€šé“ç›®çš„åœ°å€å¯„å­˜å™¨ (R/W)   */ 
+    __IO uint32_t CHNCNT;                   /*!< Offset: 0x00C é€šé“ä¼ è¾“æ•°é‡è®¾ç½®å¯„å­˜å™¨(R/W)*/
+    __IO uint32_t CHNTCCNT;                 /*!< Offset: 0x010 é€šé“ä¼ è¾“å®Œæˆæ•°æ®ä¸ªæ•° (R/W) */
+    __IO uint32_t CHNBULKNUM;               /*!< Offset: 0x014 é€šé“å—ä¼ è¾“å†…ä¸ªæ•°è®¾ç½® (R/W) */               
 } HT_DMA_Channel_TypeDef;                   /* end of group HT_DMA_Channel_TypeDef        */
 #endif
 
 
 /*****************************************  CRC Control Block  *******************************************/
 /*
-* @brief CRC¼Ä´æÆ÷¶¨Òå
+* @brief CRCå¯„å­˜å™¨å®šä¹‰
 */
 #if defined  HT6x2x
 typedef struct
 {
-    __IO uint32_t CRCCON;                    /*!< Offset: 0x000 CRC¿ØÖÆ¼Ä´æÆ÷ (R/W)        */
-    __IO uint32_t CRCDAT;                    /*!< Offset: 0x004 CRCÊı¾İ¼Ä´æÆ÷ (R/W)        */          
+    __IO uint32_t CRCCON;                    /*!< Offset: 0x000 CRCæ§åˆ¶å¯„å­˜å™¨ (R/W)        */
+    __IO uint32_t CRCDAT;                    /*!< Offset: 0x004 CRCæ•°æ®å¯„å­˜å™¨ (R/W)        */          
 } HT_CRC_TypeDef;                            /* end of group HT_CRC_TypeDef              	 */
 #endif
 
 
 /*****************************************  AES Control Block  *******************************************/
 /*
-* @brief AES¼Ä´æÆ÷¶¨Òå
+* @brief AESå¯„å­˜å™¨å®šä¹‰
 */
 #if defined HT501x || defined HT6x2x
 typedef struct
 {
-    __IO uint32_t AESCON;                    /*!< Offset: 0x000 AESÅäÖÃ¼Ä´æÆ÷ (R/W)                       */
-    __O  uint32_t AESSTR;                    /*!< Offset: 0x004 AESÆô¶¯ÃüÁî¼Ä´æÆ÷ (W)                     */   
-    __IO uint32_t AESFLG;                    /*!< Offset: 0x008 AES±êÖ¾¼Ä´æÆ÷ (R/W)                       */
-    __IO uint32_t AESINLL;                   /*!< Offset: 0x00C AESÊäÈë´ı¼ÓÃÜ/½âÃØÊı¾İµÍÎ»¼Ä´æÆ÷ (R/W)    */  
-    __IO uint32_t AESINML;                   /*!< Offset: 0x010 AESÊäÈë´ı¼ÓÃÜ/½âÃØÊı¾İÖĞµÍÎ»¼Ä´æÆ÷ (R/W)  */  
-    __IO uint32_t AESINHM;                   /*!< Offset: 0x014 AESÊäÈë´ı¼ÓÃÜ/½âÃØÊı¾İÖĞ¸ßÎ»¼Ä´æÆ÷ (R/W)  */
-    __IO uint32_t AESINHH;                   /*!< Offset: 0x018 AESÊäÈë´ı¼ÓÃÜ/½âÃØÊı¾İ¸ßÎ»¼Ä´æÆ÷ (R/W)    */ 
-    __IO uint32_t AESOUTLL;                  /*!< Offset: 0x02C AESÊä³öÒÑ¼ÓÃÜ/½âÃØÊı¾İµÍÎ»¼Ä´æÆ÷ (R/W)    */
-    __IO uint32_t AESOUTML;                  /*!< Offset: 0x020 AESÊä³öÒÑ¼ÓÃÜ/½âÃØÊı¾İÖĞµÍÎ»¼Ä´æÆ÷ (R/W)  */ 
-    __IO uint32_t AESOUTHM;                  /*!< Offset: 0x024 AESÊä³öÒÑ¼ÓÃÜ/½âÃØÊı¾İÖĞ¸ßÎ»¼Ä´æÆ÷ (R/W)  */ 
-    __IO uint32_t AESOUTHH;                  /*!< Offset: 0x028 AESÊä³öÒÑ¼ÓÃÜ/½âÃØÊı¾İ¸ßÎ»¼Ä´æÆ÷ (R/W)    */
-    __IO uint32_t AESKEY0;                   /*!< Offset: 0x02C AESÊäÈëÃÜÔ¿¼Ä´æÆ÷ (R/W)                   */	
-    __IO uint32_t AESKEY1;                   /*!< Offset: 0x030 AESÊäÈëÃÜÔ¿¼Ä´æÆ÷ (R/W)                   */
-    __IO uint32_t AESKEY2;                   /*!< Offset: 0x034 AESÊäÈëÃÜÔ¿¼Ä´æÆ÷ (R/W)                   */
-    __IO uint32_t AESKEY3;                   /*!< Offset: 0x038 AESÊäÈëÃÜÔ¿¼Ä´æÆ÷ (R/W)                   */
-    __IO uint32_t AESKEY4;                   /*!< Offset: 0x03C AESÊäÈëÃÜÔ¿¼Ä´æÆ÷ (R/W)                   */
-    __IO uint32_t AESKEY5;                   /*!< Offset: 0x040 AESÊäÈëÃÜÔ¿¼Ä´æÆ÷ (R/W)                   */
-    __IO uint32_t AESKEY6;                   /*!< Offset: 0x044 AESÊäÈëÃÜÔ¿¼Ä´æÆ÷ (R/W)                   */
-    __IO uint32_t AESKEY7;                   /*!< Offset: 0x048 AESÊäÈëÃÜÔ¿¼Ä´æÆ÷ (R/W)                   */
+    __IO uint32_t AESCON;                    /*!< Offset: 0x000 AESé…ç½®å¯„å­˜å™¨ (R/W)                       */
+    __O  uint32_t AESSTR;                    /*!< Offset: 0x004 AESå¯åŠ¨å‘½ä»¤å¯„å­˜å™¨ (W)                     */   
+    __IO uint32_t AESFLG;                    /*!< Offset: 0x008 AESæ ‡å¿—å¯„å­˜å™¨ (R/W)                       */
+    __IO uint32_t AESINLL;                   /*!< Offset: 0x00C AESè¾“å…¥å¾…åŠ å¯†/è§£ç§˜æ•°æ®ä½ä½å¯„å­˜å™¨ (R/W)    */  
+    __IO uint32_t AESINML;                   /*!< Offset: 0x010 AESè¾“å…¥å¾…åŠ å¯†/è§£ç§˜æ•°æ®ä¸­ä½ä½å¯„å­˜å™¨ (R/W)  */  
+    __IO uint32_t AESINHM;                   /*!< Offset: 0x014 AESè¾“å…¥å¾…åŠ å¯†/è§£ç§˜æ•°æ®ä¸­é«˜ä½å¯„å­˜å™¨ (R/W)  */
+    __IO uint32_t AESINHH;                   /*!< Offset: 0x018 AESè¾“å…¥å¾…åŠ å¯†/è§£ç§˜æ•°æ®é«˜ä½å¯„å­˜å™¨ (R/W)    */ 
+    __IO uint32_t AESOUTLL;                  /*!< Offset: 0x02C AESè¾“å‡ºå·²åŠ å¯†/è§£ç§˜æ•°æ®ä½ä½å¯„å­˜å™¨ (R/W)    */
+    __IO uint32_t AESOUTML;                  /*!< Offset: 0x020 AESè¾“å‡ºå·²åŠ å¯†/è§£ç§˜æ•°æ®ä¸­ä½ä½å¯„å­˜å™¨ (R/W)  */ 
+    __IO uint32_t AESOUTHM;                  /*!< Offset: 0x024 AESè¾“å‡ºå·²åŠ å¯†/è§£ç§˜æ•°æ®ä¸­é«˜ä½å¯„å­˜å™¨ (R/W)  */ 
+    __IO uint32_t AESOUTHH;                  /*!< Offset: 0x028 AESè¾“å‡ºå·²åŠ å¯†/è§£ç§˜æ•°æ®é«˜ä½å¯„å­˜å™¨ (R/W)    */
+    __IO uint32_t AESKEY0;                   /*!< Offset: 0x02C AESè¾“å…¥å¯†é’¥å¯„å­˜å™¨ (R/W)                   */	
+    __IO uint32_t AESKEY1;                   /*!< Offset: 0x030 AESè¾“å…¥å¯†é’¥å¯„å­˜å™¨ (R/W)                   */
+    __IO uint32_t AESKEY2;                   /*!< Offset: 0x034 AESè¾“å…¥å¯†é’¥å¯„å­˜å™¨ (R/W)                   */
+    __IO uint32_t AESKEY3;                   /*!< Offset: 0x038 AESè¾“å…¥å¯†é’¥å¯„å­˜å™¨ (R/W)                   */
+    __IO uint32_t AESKEY4;                   /*!< Offset: 0x03C AESè¾“å…¥å¯†é’¥å¯„å­˜å™¨ (R/W)                   */
+    __IO uint32_t AESKEY5;                   /*!< Offset: 0x040 AESè¾“å…¥å¯†é’¥å¯„å­˜å™¨ (R/W)                   */
+    __IO uint32_t AESKEY6;                   /*!< Offset: 0x044 AESè¾“å…¥å¯†é’¥å¯„å­˜å™¨ (R/W)                   */
+    __IO uint32_t AESKEY7;                   /*!< Offset: 0x048 AESè¾“å…¥å¯†é’¥å¯„å­˜å™¨ (R/W)                   */
 } HT_AES_TypeDef;                            /* end of group HT_AES_TypeDef                               */
 #endif
 
@@ -535,8 +535,8 @@ typedef struct
 #if defined  HT6x2x
 typedef struct
 {
-    __IO uint32_t RANDSTR;                    /*!< Offset: 0x000 ÕæËæ»úÊıÆô¶¯ÃüÁî¼Ä´æÆ÷ (R/W)             */
-    __IO uint32_t RANDDAT;                    /*!< Offset: 0x004 ÕæËæ»úÊıÊı¾İ¼Ä´æÆ÷ (R/W)                 */   
+    __IO uint32_t RANDSTR;                    /*!< Offset: 0x000 çœŸéšæœºæ•°å¯åŠ¨å‘½ä»¤å¯„å­˜å™¨ (R/W)             */
+    __IO uint32_t RANDDAT;                    /*!< Offset: 0x004 çœŸéšæœºæ•°æ•°æ®å¯„å­˜å™¨ (R/W)                 */   
 } HT_RAND_TypeDef;                            /* end of group HT_RAND_TypeDef                             */
 #endif
 
@@ -544,22 +544,22 @@ typedef struct
 #if defined HT501x || defined HT6x2x
 typedef struct
 {
-    __O  uint32_t GHASHSTR;                   /*!< Offset: 0x000 GHASHÆô¶¯ÃüÁî¼Ä´æÆ÷ (W)                   */
-    __IO uint32_t GHASHFLG;                   /*!< Offset: 0x004 GHASH±êÖ¾¼Ä´æÆ÷ (R/W)                     */   
-    __IO uint32_t INPUT1LL;                   /*!< Offset: 0x008 GHASHÊäÈëÊı¾İ1µÍÎ» (R/W)                  */
-    __IO uint32_t INPUT1ML;                   /*!< Offset: 0x00C GHASHÊäÈëÊı¾İ1ÖĞµÍÎ» (R/W)                */
-    __IO uint32_t INPUT1HM;                   /*!< Offset: 0x010 GHASHÊäÈëÊı¾İ1ÖĞ¸ßÎ» (R/W)                */		
-    __IO uint32_t INPUT1HH;                   /*!< Offset: 0x014 GHASHÊäÈëÊı¾İ1¸ßÎ» (R/W)                  */
-    __IO uint32_t INPUT2LL;                   /*!< Offset: 0x018 GHASHÊäÈëÊı¾İ2µÍÎ» (R/W)                  */
-    __IO uint32_t INPUT2ML;                   /*!< Offset: 0x01C GHASHÊäÈëÊı¾İ2ÖĞµÍÎ» (R/W)                */
-    __IO uint32_t INPUT2HM;                   /*!< Offset: 0x020 GHASHÊäÈëÊı¾İ2ÖĞ¸ßÎ» (R/W)                */
-    __IO uint32_t INPUT2HH;                   /*!< Offset: 0x024 GHASHÊäÈëÊı¾İ2¸ßÎ» (R/W)                  */
-    __IO uint32_t OUTPUTLL;                   /*!< Offset: 0x028 GHASHÊä³öÊı¾İµÍÎ» (R/W)                   */
-    __IO uint32_t OUTPUTML;                   /*!< Offset: 0x02C GHASHÊä³öÊı¾İÖĞµÍÎ» (R/W)                 */
-    __IO uint32_t OUTPUTHM;                   /*!< Offset: 0x030 GHASHÊä³öÊı¾İÖĞ¸ßÎ» (R/W)                 */
-    __IO uint32_t OUTPUTHH;                   /*!< Offset: 0x034 GHASHÊä³öÊı¾İ¸ßÎ» (R/W)                   */
-    __IO uint32_t AESGHASHIE;                 /*!< Offset: 0x038 AES/GHASHÖĞ¶ÏÊ¹ÄÜÎ» (R/W)                 */
-    __IO uint32_t AESGHASHIF;                 /*!< Offset: 0x03C AES/GHASHÖĞ¶Ï±êÖ¾Î» (R/W)                 */
+    __O  uint32_t GHASHSTR;                   /*!< Offset: 0x000 GHASHå¯åŠ¨å‘½ä»¤å¯„å­˜å™¨ (W)                   */
+    __IO uint32_t GHASHFLG;                   /*!< Offset: 0x004 GHASHæ ‡å¿—å¯„å­˜å™¨ (R/W)                     */   
+    __IO uint32_t INPUT1LL;                   /*!< Offset: 0x008 GHASHè¾“å…¥æ•°æ®1ä½ä½ (R/W)                  */
+    __IO uint32_t INPUT1ML;                   /*!< Offset: 0x00C GHASHè¾“å…¥æ•°æ®1ä¸­ä½ä½ (R/W)                */
+    __IO uint32_t INPUT1HM;                   /*!< Offset: 0x010 GHASHè¾“å…¥æ•°æ®1ä¸­é«˜ä½ (R/W)                */		
+    __IO uint32_t INPUT1HH;                   /*!< Offset: 0x014 GHASHè¾“å…¥æ•°æ®1é«˜ä½ (R/W)                  */
+    __IO uint32_t INPUT2LL;                   /*!< Offset: 0x018 GHASHè¾“å…¥æ•°æ®2ä½ä½ (R/W)                  */
+    __IO uint32_t INPUT2ML;                   /*!< Offset: 0x01C GHASHè¾“å…¥æ•°æ®2ä¸­ä½ä½ (R/W)                */
+    __IO uint32_t INPUT2HM;                   /*!< Offset: 0x020 GHASHè¾“å…¥æ•°æ®2ä¸­é«˜ä½ (R/W)                */
+    __IO uint32_t INPUT2HH;                   /*!< Offset: 0x024 GHASHè¾“å…¥æ•°æ®2é«˜ä½ (R/W)                  */
+    __IO uint32_t OUTPUTLL;                   /*!< Offset: 0x028 GHASHè¾“å‡ºæ•°æ®ä½ä½ (R/W)                   */
+    __IO uint32_t OUTPUTML;                   /*!< Offset: 0x02C GHASHè¾“å‡ºæ•°æ®ä¸­ä½ä½ (R/W)                 */
+    __IO uint32_t OUTPUTHM;                   /*!< Offset: 0x030 GHASHè¾“å‡ºæ•°æ®ä¸­é«˜ä½ (R/W)                 */
+    __IO uint32_t OUTPUTHH;                   /*!< Offset: 0x034 GHASHè¾“å‡ºæ•°æ®é«˜ä½ (R/W)                   */
+    __IO uint32_t AESGHASHIE;                 /*!< Offset: 0x038 AES/GHASHä¸­æ–­ä½¿èƒ½ä½ (R/W)                 */
+    __IO uint32_t AESGHASHIF;                 /*!< Offset: 0x03C AES/GHASHä¸­æ–­æ ‡å¿—ä½ (R/W)                 */
 } HT_GHASH_TypeDef;                           /* end of group HT_GHASH_TypeDef                             */
 #endif
 
@@ -567,129 +567,129 @@ typedef struct
 
 /*****************************************  EMU Control Block  *******************************************/
 /*
-* @brief EMU EPR¶¨Òå
+* @brief EMU EPRå®šä¹‰
 */
 #if defined  HT501x
 typedef struct
 {										 
-  __I uint32_t SPLI1;                       /*!< Offset: 0x000  µçÁ÷Í¨µÀ1ADC²ÉÑùÊı¾İ (R) */
-  __I uint32_t SPLI2;                       /*!< Offset: 0x004  µçÁ÷Í¨µÀ2ADC²ÉÑùÊı¾İ (R) */
-  __I uint32_t SPLU;                        /*!< Offset: 0x008  µçÑ¹Í¨µÀADC²ÉÑùÊı¾İ (R)  */
-  __I uint32_t SPLP;                        /*!< Offset: 0x00C  ÓĞ¹¦¹¦ÂÊ²¨ĞÎÊı¾İ (R)     */
-  __I uint32_t SPLQ;                        /*!< Offset: 0x010  ÎŞ¹¦¹¦ÂÊ²¨ĞÎÊı¾İ (R)     */
-  __I uint32_t FASTRMSI1;                   /*!< Offset: 0x014  ¿ìËÙµçÁ÷Í¨µÀ1µÄÓĞĞ§Öµ (R)*/
-  __I uint32_t FASTRMSI2;                   /*!< Offset: 0x018  ¿ìËÙµçÁ÷Í¨µÀ2µÄÓĞĞ§Öµ (R)*/
-  __I uint32_t FASTRMSU;                    /*!< Offset: 0x01C  ¿ìËÙµçÑ¹Í¨µÀµÄÓĞĞ§Öµ (R) */
-  __I uint32_t FREQU;                       /*!< Offset: 0x020  µçÑ¹ÆµÂÊ (R)             */
-  __I uint32_t FASTPOWERP1;                 /*!< Offset: 0x024  ¿ìËÙµÚÒ»Â·ÓĞ¹¦¹¦ÂÊ (R)   */
-  __I uint32_t FASTPOWERQ1;                 /*!< Offset: 0x028  ¿ìËÙµÚÒ»Â·ÎŞ¹¦¹¦ÂÊ (R)   */
-  __I uint32_t FASTPOWERP2;                 /*!< Offset: 0x02C  ¿ìËÙµÚ¶şÂ·ÓĞ¹¦¹¦ÂÊ (R)   */
-  __I uint32_t FASTPOWERQ2;                 /*!< Offset: 0x030  ¿ìËÙµÚ¶şÂ·ÎŞ¹¦¹¦ÂÊ (R)   */
-  __I uint32_t FASTPOWERS1;                 /*!< Offset: 0x034  ¿ìËÙµÚÒ»Â·ÊÓÔÚ¹¦ÂÊ (R)   */
-  __I uint32_t FASTPOWERS2;                 /*!< Offset: 0x038  ¿ìËÙµÚ¶şÂ·ÊÓÔÚ¹¦ÂÊ (R)   */
-  __I uint32_t RMSI1;                       /*!< Offset: 0x03C  ÂıËÙµçÁ÷Í¨µÀ1µÄÓĞĞ§Öµ (R)*/
-  __I uint32_t RMSI2;                       /*!< Offset: 0x040  ÂıËÙµçÁ÷Í¨µÀ2µÄÓĞĞ§Öµ (R)*/
-  __I uint32_t RMSU;                        /*!< Offset: 0x044  ÂıËÙµçÑ¹Í¨µÀµÄÓĞĞ§Öµ (R) */
-  __I uint32_t POWERP1;                     /*!< Offset: 0x048  ÂıËÙµÚÒ»Â·ÓĞ¹¦¹¦ÂÊ (R)   */
-  __I uint32_t POWERQ1;                     /*!< Offset: 0x04C  ÂıËÙµÚÒ»Â·ÎŞ¹¦¹¦ÂÊ (R)   */
-  __I uint32_t POWERP2;                     /*!< Offset: 0x050  ÂıËÙµÚ¶şÂ·ÓĞ¹¦¹¦ÂÊ (R)   */
-  __I uint32_t POWERQ2;                     /*!< Offset: 0x054  ÂıËÙµÚ¶şÂ·ÎŞ¹¦¹¦ÂÊ (R)   */
-  __I uint32_t POWERS1;                     /*!< Offset: 0x058  ÂıËÙµÚÒ»Â·ÊÓÔÚ¹¦ÂÊ (R)   */
-  __I uint32_t POWERS2;                     /*!< Offset: 0x05C  ÂıËÙµÚ¶şÂ·ÊÓÔÚ¹¦ÂÊ (R)   */ 
-  __I uint32_t ENERGYP;                     /*!< Offset: 0x060  ÓĞ¹¦ÄÜÁ¿ (R)             */
-  __I uint32_t ENERGYQ;                     /*!< Offset: 0x064  ÎŞ¹¦ÄÜÁ¿ (R)             */
-  __I uint32_t ENERGYS;                     /*!< Offset: 0x068  ÊÓÔÚÄÜÁ¿ (R)             */
-  __I uint32_t ENERGYPC;                    /*!< Offset: 0x06C  ¶ÁºóÇå0ĞÍÓĞ¹¦ÄÜÁ¿ (R)    */
-  __I uint32_t ENERGYQC;                    /*!< Offset: 0x070  ¶ÁºóÇå0ĞÍÎŞ¹¦ÄÜÁ¿ (R)    */
-  __I uint32_t ENERGYSC;                    /*!< Offset: 0x074  ¶ÁºóÇå0ĞÍÊÓÔÚÄÜÁ¿ (R)    */
-  __I uint32_t DC_UAVERAGE;                 /*!< Offset: 0x078  Ö±Á÷µçÑ¹Æ½¾ùÖµ (R)       */
-  __I uint32_t DC_I1AVERAGE;                /*!< Offset: 0x07C  Ö±Á÷µçÁ÷Í¨µÀ1Æ½¾ùÖµ (R)  */
-  __I uint32_t DC_I2AVERAGE;                /*!< Offset: 0x080  Ö±Á÷µçÁ÷Í¨µÀ2Æ½¾ùÖµ (R)  */
-  __I uint32_t CHECKSUM;                    /*!< Offset: 0x084  Ğ£ÑéºÍ¼Ä´æÆ÷ (R)         */
-  __I uint32_t UPEAK;                       /*!< Offset: 0x088  µçÑ¹²¨ĞÎ·åÖµ¼Ä´æÆ÷ (R)   */
-  __I uint32_t I1PEAK;                      /*!< Offset: 0x08C  I1µçÁ÷²¨ĞÎ·åÖµ¼Ä´æÆ÷ (R) */ 
-  __I uint32_t I2PEAK;                      /*!< Offset: 0x090  I2µçÁ÷²¨ĞÎ·åÖµ¼Ä´æÆ÷ (R) */  
-  __I uint32_t PFCNT_PHOTO;                 /*!< Offset: 0x094  PFCNT¿ìÕÕ (R)            */
-  __I uint32_t QFCNT_PHOTO;                 /*!< Offset: 0x098  QFCNT¿ìÕÕ (R)            */ 
-  __I uint32_t SFCNT_PHOTO;                 /*!< Offset: 0x09C  SFCNT¿ìÕÕ (R)            */    
-  __I uint32_t AUTOUGAIN;                   /*!< Offset: 0x0A0  UÍ¨µÀÎÂ¶È×Ô¶¯²¹³¥ÏµÊı (R)*/
-  __I uint32_t AUTOI1GAIN;                  /*!< Offset: 0x0A4  I1Í¨µÀÎÂ¶È×Ô¶¯²¹³¥ÏµÊı(R)*/ 
-  __I uint32_t AUTOI2GAIN;                  /*!< Offset: 0x0A8  I2Í¨µÀÎÂ¶È×Ô¶¯²¹³¥ÏµÊı(R)*/   
+  __I uint32_t SPLI1;                       /*!< Offset: 0x000  ç”µæµé€šé“1ADCé‡‡æ ·æ•°æ® (R) */
+  __I uint32_t SPLI2;                       /*!< Offset: 0x004  ç”µæµé€šé“2ADCé‡‡æ ·æ•°æ® (R) */
+  __I uint32_t SPLU;                        /*!< Offset: 0x008  ç”µå‹é€šé“ADCé‡‡æ ·æ•°æ® (R)  */
+  __I uint32_t SPLP;                        /*!< Offset: 0x00C  æœ‰åŠŸåŠŸç‡æ³¢å½¢æ•°æ® (R)     */
+  __I uint32_t SPLQ;                        /*!< Offset: 0x010  æ— åŠŸåŠŸç‡æ³¢å½¢æ•°æ® (R)     */
+  __I uint32_t FASTRMSI1;                   /*!< Offset: 0x014  å¿«é€Ÿç”µæµé€šé“1çš„æœ‰æ•ˆå€¼ (R)*/
+  __I uint32_t FASTRMSI2;                   /*!< Offset: 0x018  å¿«é€Ÿç”µæµé€šé“2çš„æœ‰æ•ˆå€¼ (R)*/
+  __I uint32_t FASTRMSU;                    /*!< Offset: 0x01C  å¿«é€Ÿç”µå‹é€šé“çš„æœ‰æ•ˆå€¼ (R) */
+  __I uint32_t FREQU;                       /*!< Offset: 0x020  ç”µå‹é¢‘ç‡ (R)             */
+  __I uint32_t FASTPOWERP1;                 /*!< Offset: 0x024  å¿«é€Ÿç¬¬ä¸€è·¯æœ‰åŠŸåŠŸç‡ (R)   */
+  __I uint32_t FASTPOWERQ1;                 /*!< Offset: 0x028  å¿«é€Ÿç¬¬ä¸€è·¯æ— åŠŸåŠŸç‡ (R)   */
+  __I uint32_t FASTPOWERP2;                 /*!< Offset: 0x02C  å¿«é€Ÿç¬¬äºŒè·¯æœ‰åŠŸåŠŸç‡ (R)   */
+  __I uint32_t FASTPOWERQ2;                 /*!< Offset: 0x030  å¿«é€Ÿç¬¬äºŒè·¯æ— åŠŸåŠŸç‡ (R)   */
+  __I uint32_t FASTPOWERS1;                 /*!< Offset: 0x034  å¿«é€Ÿç¬¬ä¸€è·¯è§†åœ¨åŠŸç‡ (R)   */
+  __I uint32_t FASTPOWERS2;                 /*!< Offset: 0x038  å¿«é€Ÿç¬¬äºŒè·¯è§†åœ¨åŠŸç‡ (R)   */
+  __I uint32_t RMSI1;                       /*!< Offset: 0x03C  æ…¢é€Ÿç”µæµé€šé“1çš„æœ‰æ•ˆå€¼ (R)*/
+  __I uint32_t RMSI2;                       /*!< Offset: 0x040  æ…¢é€Ÿç”µæµé€šé“2çš„æœ‰æ•ˆå€¼ (R)*/
+  __I uint32_t RMSU;                        /*!< Offset: 0x044  æ…¢é€Ÿç”µå‹é€šé“çš„æœ‰æ•ˆå€¼ (R) */
+  __I uint32_t POWERP1;                     /*!< Offset: 0x048  æ…¢é€Ÿç¬¬ä¸€è·¯æœ‰åŠŸåŠŸç‡ (R)   */
+  __I uint32_t POWERQ1;                     /*!< Offset: 0x04C  æ…¢é€Ÿç¬¬ä¸€è·¯æ— åŠŸåŠŸç‡ (R)   */
+  __I uint32_t POWERP2;                     /*!< Offset: 0x050  æ…¢é€Ÿç¬¬äºŒè·¯æœ‰åŠŸåŠŸç‡ (R)   */
+  __I uint32_t POWERQ2;                     /*!< Offset: 0x054  æ…¢é€Ÿç¬¬äºŒè·¯æ— åŠŸåŠŸç‡ (R)   */
+  __I uint32_t POWERS1;                     /*!< Offset: 0x058  æ…¢é€Ÿç¬¬ä¸€è·¯è§†åœ¨åŠŸç‡ (R)   */
+  __I uint32_t POWERS2;                     /*!< Offset: 0x05C  æ…¢é€Ÿç¬¬äºŒè·¯è§†åœ¨åŠŸç‡ (R)   */ 
+  __I uint32_t ENERGYP;                     /*!< Offset: 0x060  æœ‰åŠŸèƒ½é‡ (R)             */
+  __I uint32_t ENERGYQ;                     /*!< Offset: 0x064  æ— åŠŸèƒ½é‡ (R)             */
+  __I uint32_t ENERGYS;                     /*!< Offset: 0x068  è§†åœ¨èƒ½é‡ (R)             */
+  __I uint32_t ENERGYPC;                    /*!< Offset: 0x06C  è¯»åæ¸…0å‹æœ‰åŠŸèƒ½é‡ (R)    */
+  __I uint32_t ENERGYQC;                    /*!< Offset: 0x070  è¯»åæ¸…0å‹æ— åŠŸèƒ½é‡ (R)    */
+  __I uint32_t ENERGYSC;                    /*!< Offset: 0x074  è¯»åæ¸…0å‹è§†åœ¨èƒ½é‡ (R)    */
+  __I uint32_t DC_UAVERAGE;                 /*!< Offset: 0x078  ç›´æµç”µå‹å¹³å‡å€¼ (R)       */
+  __I uint32_t DC_I1AVERAGE;                /*!< Offset: 0x07C  ç›´æµç”µæµé€šé“1å¹³å‡å€¼ (R)  */
+  __I uint32_t DC_I2AVERAGE;                /*!< Offset: 0x080  ç›´æµç”µæµé€šé“2å¹³å‡å€¼ (R)  */
+  __I uint32_t CHECKSUM;                    /*!< Offset: 0x084  æ ¡éªŒå’Œå¯„å­˜å™¨ (R)         */
+  __I uint32_t UPEAK;                       /*!< Offset: 0x088  ç”µå‹æ³¢å½¢å³°å€¼å¯„å­˜å™¨ (R)   */
+  __I uint32_t I1PEAK;                      /*!< Offset: 0x08C  I1ç”µæµæ³¢å½¢å³°å€¼å¯„å­˜å™¨ (R) */ 
+  __I uint32_t I2PEAK;                      /*!< Offset: 0x090  I2ç”µæµæ³¢å½¢å³°å€¼å¯„å­˜å™¨ (R) */  
+  __I uint32_t PFCNT_PHOTO;                 /*!< Offset: 0x094  PFCNTå¿«ç…§ (R)            */
+  __I uint32_t QFCNT_PHOTO;                 /*!< Offset: 0x098  QFCNTå¿«ç…§ (R)            */ 
+  __I uint32_t SFCNT_PHOTO;                 /*!< Offset: 0x09C  SFCNTå¿«ç…§ (R)            */    
+  __I uint32_t AUTOUGAIN;                   /*!< Offset: 0x0A0  Ué€šé“æ¸©åº¦è‡ªåŠ¨è¡¥å¿ç³»æ•° (R)*/
+  __I uint32_t AUTOI1GAIN;                  /*!< Offset: 0x0A4  I1é€šé“æ¸©åº¦è‡ªåŠ¨è¡¥å¿ç³»æ•°(R)*/ 
+  __I uint32_t AUTOI2GAIN;                  /*!< Offset: 0x0A8  I2é€šé“æ¸©åº¦è‡ªåŠ¨è¡¥å¿ç³»æ•°(R)*/   
 } HT_EMU_EPR_TypeDef;                       /* end of group HT_EMU_EPR_TypeDef           */
 /*
-* @brief EMU ECR¶¨Òå
+* @brief EMU ECRå®šä¹‰
 */
 typedef struct
 {										 
-  __IO uint32_t EMUSR;                     /*!< Offset: 0x000  EMU×´Ì¬±êÖ¾¼Ä´æÆ÷ (R/W)                              */
-  __IO uint32_t EMUIE;                     /*!< Offset: 0x004  EMUÖĞ¶ÏÊ¹ÄÜ¼Ä´æÆ÷ (R/W)                              */
-  __IO uint32_t EMUIF;                     /*!< Offset: 0x008  EMUÖĞ¶Ï±êÖ¾¼Ä´æÆ÷ (R/W)                              */
-  __IO uint32_t GP1;                       /*!< Offset: 0x00C  Í¨µÀ1µÄÓĞ¹¦¹¦ÂÊĞ£Õı (R/W)                            */
-  __IO uint32_t GQ1;                       /*!< Offset: 0x010  Í¨µÀ1µÄÎŞ¹¦¹¦ÂÊĞ£Õı (R/W)                            */
-  __IO uint32_t GS1;                       /*!< Offset: 0x014  Í¨µÀ1µÄÊÓÔÚ¹¦ÂÊĞ£Õı (R/W)                            */
-  __IO uint32_t GPHS1;                     /*!< Offset: 0x018  Í¨µÀ1µÄÏàÎ»Ğ£Õı      (R/W)                           */
-  __IO uint32_t GP2;                       /*!< Offset: 0x01C  Í¨µÀ2µÄÓĞ¹¦¹¦ÂÊĞ£Õı  (R/W)                           */
-  __IO uint32_t GQ2;                       /*!< Offset: 0x020  Í¨µÀ2µÄÎŞ¹¦¹¦ÂÊĞ£Õı  (R/W)                           */
-  __IO uint32_t GS2;                       /*!< Offset: 0x024  Í¨µÀ2µÄÊÓÔÚ¹¦ÂÊĞ£Õı  (R/W)                           */
-  __IO uint32_t GPHS2;                     /*!< Offset: 0x028  Í¨µÀ2µÄÏàÎ»Ğ£Õı      (R/W)                           */
-  __IO uint32_t QPHSCAL;                   /*!< Offset: 0x02C  ÎŞ¹¦ÏàÎ»²¹³¥         (R/W)                           */
-  __IO uint32_t I2GAIN;                    /*!< Offset: 0x030  µçÁ÷Í¨µÀ2ÔöÒæ²¹³¥    (R/W)                           */
-  __IO uint32_t I1OFF;                     /*!< Offset: 0x034  µçÁ÷Í¨µÀ1µÄÆ«ÖÃĞ£Õı  (R/W)                           */
-  __IO uint32_t I2OFF;                     /*!< Offset: 0x038  µçÁ÷Í¨µÀ2µÄÆ«ÖÃĞ£Õı  (R/W)                           */
-  __IO uint32_t UOFF;                      /*!< Offset: 0x03C  µçÑ¹Í¨µÀµÄÆ«ÖÃĞ£Õı   (R/W)                           */
-  __IO uint32_t PSTART;                    /*!< Offset: 0x040  Æğ¶¯¹¦ÂÊÉèÖÃ         (R/W)                           */
-  __IO uint32_t QSTART;                    /*!< Offset: 0x044  Æğ¶¯¹¦ÂÊÉèÖÃ         (R/W)                           */
-  __IO uint32_t SSTART;                    /*!< Offset: 0x048  Æğ¶¯¹¦ÂÊÉèÖÃ         (R/W)                           */
-  __IO uint32_t HFCONST;                   /*!< Offset: 0x04C  Êä³öÂö³åÆµÂÊÉèÖÃ     (R/W)                           */
-  __IO uint32_t ADCCFG;                    /*!< Offset: 0x050  ADC¿ØÖÆ¼Ä´æÆ÷        (R/W)                           */
-  __IO uint32_t CHNLCR;                    /*!< Offset: 0x054  Í¨µÀ¿ØÖÆ¼Ä´æÆ÷       (R/W)                           */
-  __IO uint32_t EMCON;                     /*!< Offset: 0x058  ÄÜÁ¿¼ÆÁ¿¿ØÖÆ¼Ä´æÆ÷   (R/W)                           */
-  __IO uint32_t PFCNT;                     /*!< Offset: 0x05C  ¿ìËÙÓĞ¹¦Âö³å¼ÆÊı     (R/W)                           */
-  __IO uint32_t QFCNT;                     /*!< Offset: 0x060  ¿ìËÙÎŞ¹¦Âö³å¼ÆÊı     (R/W)                           */   
-  __IO uint32_t SFCNT;                     /*!< Offset: 0x064  ¿ìËÙÊÓÔÚÂö³å¼ÆÊı     (R/W)                           */
-  __IO uint32_t ADCCON;                    /*!< Offset: 0x068  ADCÍ¨µÀÔöÒæÑ¡Ôñ      (R/W)                           */
-  __IO uint32_t IPTAMP;                    /*!< Offset: 0x06C  ÇÔµç¼ì²âÓòÖµ         (R/W)                           */
-  __IO uint32_t ICHK;                      /*!< Offset: 0x070  ÇÔµçãĞÖµÉèÖÃ         (R/W)                           */
-  __IO uint32_t EMUCTRL;                   /*!< Offset: 0x074  EMU¿ØÖÆ¼Ä´æÆ÷        (R/W)                           */
-  __IO uint32_t P1OFFSET;                  /*!< Offset: 0x078  Í¨µÀ1ÓĞ¹¦¹¦ÂÊĞ¡ĞÅºÅÆ«ÖÃĞ£Õı     (R/W)                */
-  __IO uint32_t P2OFFSET;                  /*!< Offset: 0x07C  Í¨µÀ2ÓĞ¹¦¹¦ÂÊĞ¡ĞÅºÅÆ«ÖÃĞ£Õı     (R/W)                */
-  __IO uint32_t Q1OFFSET;                  /*!< Offset: 0x080  Í¨µÀ1ÎŞ¹¦¹¦ÂÊĞ¡ĞÅºÅÆ«ÖÃĞ£Õı     (R/W)                */
-  __IO uint32_t Q2OFFSET;                  /*!< Offset: 0x084  Í¨µÀ2ÎŞ¹¦¹¦ÂÊĞ¡ĞÅºÅÆ«ÖÃĞ£Õı     (R/W)                */
-  __IO uint32_t I1RMSOFFSET;               /*!< Offset: 0x088  µçÁ÷Í¨µÀ1ÓĞĞ§ÖµĞ¡ĞÅºÅĞ£Õı¼Ä´æÆ÷ (R/W)                */
-  __IO uint32_t I2RMSOFFSET;               /*!< Offset: 0x08C  µçÁ÷Í¨µÀ2ÓĞĞ§ÖµĞ¡ĞÅºÅĞ£Õı¼Ä´æÆ÷ (R/W)                */
-  __IO uint32_t URMSOFFSET;                /*!< Offset: 0x090  µçÑ¹Í¨µÀÓĞĞ§ÖµĞ¡ĞÅºÅĞ£Õı¼Ä´æÆ÷  (R/W)                */
-  __IO uint32_t ROSICTRL;                  /*!< Offset: 0x094  ÂŞÊÏÏßÈ¦Ê¹ÄÜ¿ØÖÆÎ»              (R/W)                */
-  __IO uint32_t ANACTRL;                   /*!< Offset: 0x098  Ä£Äâ¿ØÖÆ¼Ä´æÆ÷                  (R/W)                */
-  __IO uint32_t UCONST;                    /*!< Offset: 0x09C  Ê§Ñ¹Çé¿öÏÂ²ÎÓë¼ÆÁ¿µÄµçÑ¹£¬¶ÏÏà·ÂÇÔµç  (R/W)          */
-  __IO uint32_t LPIDELTIME;                /*!< Offset: 0x0A0  µÍ¹¦ºÄ¼ÆÁ¿Ä£Ê½ÏÂ£¬·ÖÊ±Ä£Ê½¿ÕÏĞÊ±¼äÉèÖÃ¼Ä´æÆ÷ (R/W)   */
-  __IO uint32_t USAGLVL;                   /*!< Offset: 0x0A4  µçÑ¹µøÂä¼ì²âãĞÖµ¼Ä´æÆ÷                       (R/W)   */
-  __IO uint32_t USAGCYC;                   /*!< Offset: 0x0A8  µçÑ¹µøÂä¼ì²âADC°ëÖÜ²¨ÊıÉèÖÃ¼Ä´æÆ÷            (R/W)   */
-  __IO uint32_t UOVLVL;                    /*!< Offset: 0x0AC  µçÑ¹·åÖµ¼ì²âãĞÖµ¼Ä´æÆ÷                       (R/W)   */
-  __IO uint32_t OVCYC;                     /*!< Offset: 0x0B0  ·åÖµ¼ì²âADC°ëÖÜ²¨ÊıÉèÖÃ¼Ä´æÆ÷                (R/W)   */
-  __IO uint32_t IOVLVL;                    /*!< Offset: 0x0B4  µçÁ÷·åÖµãĞÖµ¼Ä´æÆ÷                           (R/W)   */
-  __IO uint32_t ZXILVL;                    /*!< Offset: 0x0B8  µçÁ÷¹ıÁããĞÖµ¼Ä´æÆ÷                           (R/W)   */
-  __IO uint32_t PDATCPH;                   /*!< Offset: 0x0BC  ³£ÊıÓĞ¹¦¹¦ÂÊ¼Ä´æÆ÷¸ß16bit                    (R/W)   */
-  __IO uint32_t PDATCPL;                   /*!< Offset: 0x0C0  ³£ÊıÓĞ¹¦¹¦ÂÊ¼Ä´æÆ÷µÍ16bit                    (R/W)   */
-  __IO uint32_t QDATCPH;                   /*!< Offset: 0x0C4  ³£ÊıÎŞ¹¦¹¦ÂÊ¼Ä´æÆ÷¸ß16bit                    (R/W)   */
-  __IO uint32_t QDATCPL;                   /*!< Offset: 0x0C8  ³£ÊıÎŞ¹¦¹¦ÂÊ¼Ä´æÆ÷µÍ16bit                    (R/W)   */
-  __IO uint32_t SDATCPH;                   /*!< Offset: 0x0CC  ³£ÊıÊÓÔÚ¹¦ÂÊ¼Ä´æÆ÷¸ß16bit                    (R/W)   */
-  __IO uint32_t SDATCPL;                   /*!< Offset: 0x0D0  ³£Êı¹¦ÂÊ¼Ä´æÆ÷µÍ16bit                        (R/W)   */
-  __IO uint32_t FILTERCTRL;                /*!< Offset: 0x0D4  ¸ßÍ¨µÍÍ¨µÈÂË²¨Æ÷ÏµÊıÑ¡Ôñ¿ØÖÆ                 (R/W)   */ 
-  __IO uint32_t TUGAIN;                    /*!< Offset: 0x0D8  µçÑ¹Í¨µÀÊÖ¶¯ÎÂ¶È²¹³¥ÏµÊı                     (R/W)   */   
-  __IO uint32_t TI1GAIN;                   /*!< Offset: 0x0DC  µçÁ÷I1Í¨µÀÊÖ¶¯ÎÂ¶È²¹³¥ÏµÊı                   (R/W)   */
-  __IO uint32_t TI2GAIN;                   /*!< Offset: 0x0E0  µçÁ÷I2Í¨µÀÊÖ¶¯ÎÂ¶È²¹³¥ÏµÊı                   (R/W)   */
-  __IO uint32_t UTCCOFFA;                  /*!< Offset: 0x0E4  VrefgainµÄ¶ş´ÎÏµÊı                           (R/W)   */   
-  __IO uint32_t UTCCOFFB;                  /*!< Offset: 0x0E8  VrefgainµÄÒ»´ÎÏµÊı                           (R/W)   */
-  __IO uint32_t UTCCOFFC;                  /*!< Offset: 0x0EC  VrefgainµÄ³£ÊıÏî                             (R/W)   */
-  __IO uint32_t I1TCCOFFA;                 /*!< Offset: 0x0F0  VrefgainµÄ¶ş´ÎÏµÊı                           (R/W)   */   
-  __IO uint32_t I1TCCOFFB;                 /*!< Offset: 0x0F4  VrefgainµÄÒ»´ÎÏµÊı                           (R/W)   */
-  __IO uint32_t I1TCCOFFC;                 /*!< Offset: 0x0F8  VrefgainµÄ³£ÊıÏî                             (R/W)   */
-  __IO uint32_t I2TCCOFFA;                 /*!< Offset: 0x0FC  VrefgainµÄ¶ş´ÎÏµÊı                           (R/W)   */   
-  __IO uint32_t I2TCCOFFB;                 /*!< Offset: 0x100  VrefgainµÄÒ»´ÎÏµÊı                           (R/W)   */
-  __IO uint32_t I2TCCOFFC;                 /*!< Offset: 0x104  VrefgainµÄ³£ÊıÏî                             (R/W)   */
-  __IO uint32_t LOADDATACP;                /*!< Offset: 0x108  µ±ÓÃ»§Ïò¸Ã¼Ä´æÆ÷Ğ´0x00BCÊ± (R/W)                     */    
-  __I  uint32_t Reserved[2];               /*!<                ³£Êı¼ÆÁ¿DATACP load½øÈëÀÛ¼ÓÔ´                        */                                 
-  __IO uint32_t SRSTREG; 			   	   /*!< Offset: 0x114  Èí¼ş¸´Î»¼Ä´æÆ÷,Ğ´0x55ÓÃÓÚ¸´Î»Ğ£±í¼Ä´æÆ÷  (R/W)       */    								  	
+  __IO uint32_t EMUSR;                     /*!< Offset: 0x000  EMUçŠ¶æ€æ ‡å¿—å¯„å­˜å™¨ (R/W)                              */
+  __IO uint32_t EMUIE;                     /*!< Offset: 0x004  EMUä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨ (R/W)                              */
+  __IO uint32_t EMUIF;                     /*!< Offset: 0x008  EMUä¸­æ–­æ ‡å¿—å¯„å­˜å™¨ (R/W)                              */
+  __IO uint32_t GP1;                       /*!< Offset: 0x00C  é€šé“1çš„æœ‰åŠŸåŠŸç‡æ ¡æ­£ (R/W)                            */
+  __IO uint32_t GQ1;                       /*!< Offset: 0x010  é€šé“1çš„æ— åŠŸåŠŸç‡æ ¡æ­£ (R/W)                            */
+  __IO uint32_t GS1;                       /*!< Offset: 0x014  é€šé“1çš„è§†åœ¨åŠŸç‡æ ¡æ­£ (R/W)                            */
+  __IO uint32_t GPHS1;                     /*!< Offset: 0x018  é€šé“1çš„ç›¸ä½æ ¡æ­£      (R/W)                           */
+  __IO uint32_t GP2;                       /*!< Offset: 0x01C  é€šé“2çš„æœ‰åŠŸåŠŸç‡æ ¡æ­£  (R/W)                           */
+  __IO uint32_t GQ2;                       /*!< Offset: 0x020  é€šé“2çš„æ— åŠŸåŠŸç‡æ ¡æ­£  (R/W)                           */
+  __IO uint32_t GS2;                       /*!< Offset: 0x024  é€šé“2çš„è§†åœ¨åŠŸç‡æ ¡æ­£  (R/W)                           */
+  __IO uint32_t GPHS2;                     /*!< Offset: 0x028  é€šé“2çš„ç›¸ä½æ ¡æ­£      (R/W)                           */
+  __IO uint32_t QPHSCAL;                   /*!< Offset: 0x02C  æ— åŠŸç›¸ä½è¡¥å¿         (R/W)                           */
+  __IO uint32_t I2GAIN;                    /*!< Offset: 0x030  ç”µæµé€šé“2å¢ç›Šè¡¥å¿    (R/W)                           */
+  __IO uint32_t I1OFF;                     /*!< Offset: 0x034  ç”µæµé€šé“1çš„åç½®æ ¡æ­£  (R/W)                           */
+  __IO uint32_t I2OFF;                     /*!< Offset: 0x038  ç”µæµé€šé“2çš„åç½®æ ¡æ­£  (R/W)                           */
+  __IO uint32_t UOFF;                      /*!< Offset: 0x03C  ç”µå‹é€šé“çš„åç½®æ ¡æ­£   (R/W)                           */
+  __IO uint32_t PSTART;                    /*!< Offset: 0x040  èµ·åŠ¨åŠŸç‡è®¾ç½®         (R/W)                           */
+  __IO uint32_t QSTART;                    /*!< Offset: 0x044  èµ·åŠ¨åŠŸç‡è®¾ç½®         (R/W)                           */
+  __IO uint32_t SSTART;                    /*!< Offset: 0x048  èµ·åŠ¨åŠŸç‡è®¾ç½®         (R/W)                           */
+  __IO uint32_t HFCONST;                   /*!< Offset: 0x04C  è¾“å‡ºè„‰å†²é¢‘ç‡è®¾ç½®     (R/W)                           */
+  __IO uint32_t ADCCFG;                    /*!< Offset: 0x050  ADCæ§åˆ¶å¯„å­˜å™¨        (R/W)                           */
+  __IO uint32_t CHNLCR;                    /*!< Offset: 0x054  é€šé“æ§åˆ¶å¯„å­˜å™¨       (R/W)                           */
+  __IO uint32_t EMCON;                     /*!< Offset: 0x058  èƒ½é‡è®¡é‡æ§åˆ¶å¯„å­˜å™¨   (R/W)                           */
+  __IO uint32_t PFCNT;                     /*!< Offset: 0x05C  å¿«é€Ÿæœ‰åŠŸè„‰å†²è®¡æ•°     (R/W)                           */
+  __IO uint32_t QFCNT;                     /*!< Offset: 0x060  å¿«é€Ÿæ— åŠŸè„‰å†²è®¡æ•°     (R/W)                           */   
+  __IO uint32_t SFCNT;                     /*!< Offset: 0x064  å¿«é€Ÿè§†åœ¨è„‰å†²è®¡æ•°     (R/W)                           */
+  __IO uint32_t ADCCON;                    /*!< Offset: 0x068  ADCé€šé“å¢ç›Šé€‰æ‹©      (R/W)                           */
+  __IO uint32_t IPTAMP;                    /*!< Offset: 0x06C  çªƒç”µæ£€æµ‹åŸŸå€¼         (R/W)                           */
+  __IO uint32_t ICHK;                      /*!< Offset: 0x070  çªƒç”µé˜ˆå€¼è®¾ç½®         (R/W)                           */
+  __IO uint32_t EMUCTRL;                   /*!< Offset: 0x074  EMUæ§åˆ¶å¯„å­˜å™¨        (R/W)                           */
+  __IO uint32_t P1OFFSET;                  /*!< Offset: 0x078  é€šé“1æœ‰åŠŸåŠŸç‡å°ä¿¡å·åç½®æ ¡æ­£     (R/W)                */
+  __IO uint32_t P2OFFSET;                  /*!< Offset: 0x07C  é€šé“2æœ‰åŠŸåŠŸç‡å°ä¿¡å·åç½®æ ¡æ­£     (R/W)                */
+  __IO uint32_t Q1OFFSET;                  /*!< Offset: 0x080  é€šé“1æ— åŠŸåŠŸç‡å°ä¿¡å·åç½®æ ¡æ­£     (R/W)                */
+  __IO uint32_t Q2OFFSET;                  /*!< Offset: 0x084  é€šé“2æ— åŠŸåŠŸç‡å°ä¿¡å·åç½®æ ¡æ­£     (R/W)                */
+  __IO uint32_t I1RMSOFFSET;               /*!< Offset: 0x088  ç”µæµé€šé“1æœ‰æ•ˆå€¼å°ä¿¡å·æ ¡æ­£å¯„å­˜å™¨ (R/W)                */
+  __IO uint32_t I2RMSOFFSET;               /*!< Offset: 0x08C  ç”µæµé€šé“2æœ‰æ•ˆå€¼å°ä¿¡å·æ ¡æ­£å¯„å­˜å™¨ (R/W)                */
+  __IO uint32_t URMSOFFSET;                /*!< Offset: 0x090  ç”µå‹é€šé“æœ‰æ•ˆå€¼å°ä¿¡å·æ ¡æ­£å¯„å­˜å™¨  (R/W)                */
+  __IO uint32_t ROSICTRL;                  /*!< Offset: 0x094  ç½—æ°çº¿åœˆä½¿èƒ½æ§åˆ¶ä½              (R/W)                */
+  __IO uint32_t ANACTRL;                   /*!< Offset: 0x098  æ¨¡æ‹Ÿæ§åˆ¶å¯„å­˜å™¨                  (R/W)                */
+  __IO uint32_t UCONST;                    /*!< Offset: 0x09C  å¤±å‹æƒ…å†µä¸‹å‚ä¸è®¡é‡çš„ç”µå‹ï¼Œæ–­ç›¸ä»¿çªƒç”µ  (R/W)          */
+  __IO uint32_t LPIDELTIME;                /*!< Offset: 0x0A0  ä½åŠŸè€—è®¡é‡æ¨¡å¼ä¸‹ï¼Œåˆ†æ—¶æ¨¡å¼ç©ºé—²æ—¶é—´è®¾ç½®å¯„å­˜å™¨ (R/W)   */
+  __IO uint32_t USAGLVL;                   /*!< Offset: 0x0A4  ç”µå‹è·Œè½æ£€æµ‹é˜ˆå€¼å¯„å­˜å™¨                       (R/W)   */
+  __IO uint32_t USAGCYC;                   /*!< Offset: 0x0A8  ç”µå‹è·Œè½æ£€æµ‹ADCåŠå‘¨æ³¢æ•°è®¾ç½®å¯„å­˜å™¨            (R/W)   */
+  __IO uint32_t UOVLVL;                    /*!< Offset: 0x0AC  ç”µå‹å³°å€¼æ£€æµ‹é˜ˆå€¼å¯„å­˜å™¨                       (R/W)   */
+  __IO uint32_t OVCYC;                     /*!< Offset: 0x0B0  å³°å€¼æ£€æµ‹ADCåŠå‘¨æ³¢æ•°è®¾ç½®å¯„å­˜å™¨                (R/W)   */
+  __IO uint32_t IOVLVL;                    /*!< Offset: 0x0B4  ç”µæµå³°å€¼é˜ˆå€¼å¯„å­˜å™¨                           (R/W)   */
+  __IO uint32_t ZXILVL;                    /*!< Offset: 0x0B8  ç”µæµè¿‡é›¶é˜ˆå€¼å¯„å­˜å™¨                           (R/W)   */
+  __IO uint32_t PDATCPH;                   /*!< Offset: 0x0BC  å¸¸æ•°æœ‰åŠŸåŠŸç‡å¯„å­˜å™¨é«˜16bit                    (R/W)   */
+  __IO uint32_t PDATCPL;                   /*!< Offset: 0x0C0  å¸¸æ•°æœ‰åŠŸåŠŸç‡å¯„å­˜å™¨ä½16bit                    (R/W)   */
+  __IO uint32_t QDATCPH;                   /*!< Offset: 0x0C4  å¸¸æ•°æ— åŠŸåŠŸç‡å¯„å­˜å™¨é«˜16bit                    (R/W)   */
+  __IO uint32_t QDATCPL;                   /*!< Offset: 0x0C8  å¸¸æ•°æ— åŠŸåŠŸç‡å¯„å­˜å™¨ä½16bit                    (R/W)   */
+  __IO uint32_t SDATCPH;                   /*!< Offset: 0x0CC  å¸¸æ•°è§†åœ¨åŠŸç‡å¯„å­˜å™¨é«˜16bit                    (R/W)   */
+  __IO uint32_t SDATCPL;                   /*!< Offset: 0x0D0  å¸¸æ•°åŠŸç‡å¯„å­˜å™¨ä½16bit                        (R/W)   */
+  __IO uint32_t FILTERCTRL;                /*!< Offset: 0x0D4  é«˜é€šä½é€šç­‰æ»¤æ³¢å™¨ç³»æ•°é€‰æ‹©æ§åˆ¶                 (R/W)   */ 
+  __IO uint32_t TUGAIN;                    /*!< Offset: 0x0D8  ç”µå‹é€šé“æ‰‹åŠ¨æ¸©åº¦è¡¥å¿ç³»æ•°                     (R/W)   */   
+  __IO uint32_t TI1GAIN;                   /*!< Offset: 0x0DC  ç”µæµI1é€šé“æ‰‹åŠ¨æ¸©åº¦è¡¥å¿ç³»æ•°                   (R/W)   */
+  __IO uint32_t TI2GAIN;                   /*!< Offset: 0x0E0  ç”µæµI2é€šé“æ‰‹åŠ¨æ¸©åº¦è¡¥å¿ç³»æ•°                   (R/W)   */
+  __IO uint32_t UTCCOFFA;                  /*!< Offset: 0x0E4  Vrefgainçš„äºŒæ¬¡ç³»æ•°                           (R/W)   */   
+  __IO uint32_t UTCCOFFB;                  /*!< Offset: 0x0E8  Vrefgainçš„ä¸€æ¬¡ç³»æ•°                           (R/W)   */
+  __IO uint32_t UTCCOFFC;                  /*!< Offset: 0x0EC  Vrefgainçš„å¸¸æ•°é¡¹                             (R/W)   */
+  __IO uint32_t I1TCCOFFA;                 /*!< Offset: 0x0F0  Vrefgainçš„äºŒæ¬¡ç³»æ•°                           (R/W)   */   
+  __IO uint32_t I1TCCOFFB;                 /*!< Offset: 0x0F4  Vrefgainçš„ä¸€æ¬¡ç³»æ•°                           (R/W)   */
+  __IO uint32_t I1TCCOFFC;                 /*!< Offset: 0x0F8  Vrefgainçš„å¸¸æ•°é¡¹                             (R/W)   */
+  __IO uint32_t I2TCCOFFA;                 /*!< Offset: 0x0FC  Vrefgainçš„äºŒæ¬¡ç³»æ•°                           (R/W)   */   
+  __IO uint32_t I2TCCOFFB;                 /*!< Offset: 0x100  Vrefgainçš„ä¸€æ¬¡ç³»æ•°                           (R/W)   */
+  __IO uint32_t I2TCCOFFC;                 /*!< Offset: 0x104  Vrefgainçš„å¸¸æ•°é¡¹                             (R/W)   */
+  __IO uint32_t LOADDATACP;                /*!< Offset: 0x108  å½“ç”¨æˆ·å‘è¯¥å¯„å­˜å™¨å†™0x00BCæ—¶ (R/W)                     */    
+  __I  uint32_t Reserved[2];               /*!<                å¸¸æ•°è®¡é‡DATACP loadè¿›å…¥ç´¯åŠ æº                        */                                 
+  __IO uint32_t SRSTREG; 			   	   /*!< Offset: 0x114  è½¯ä»¶å¤ä½å¯„å­˜å™¨,å†™0x55ç”¨äºå¤ä½æ ¡è¡¨å¯„å­˜å™¨  (R/W)       */    								  	
 } HT_EMU_ECR_TypeDef;                      /* end of group HT_EMU_ECR_TypeDef                                       */
 #endif
 
@@ -698,15 +698,15 @@ typedef struct
 #if defined  HT501x
 typedef struct
 {
-    __IO uint32_t KEYSTA;                    /*!< Offset: 0x000 KEYSCAN×´Ì¬¼Ä´æÆ÷ (R/W)       */
-    __IO uint32_t KEYIF;                     /*!< Offset: 0x004 °´¼üÖĞ¶Ï±êÖ¾¼Ä´æÆ÷(R/W)       */   
+    __IO uint32_t KEYSTA;                    /*!< Offset: 0x000 KEYSCANçŠ¶æ€å¯„å­˜å™¨ (R/W)       */
+    __IO uint32_t KEYIF;                     /*!< Offset: 0x004 æŒ‰é”®ä¸­æ–­æ ‡å¿—å¯„å­˜å™¨(R/W)       */   
 } HT_KEY_TypeDef;                            /* end of group HT_KEY_TypeDef                   */
 #endif
 
 
 /*****************************************  Info Control Block  ******************************************/
 /*
-* @brief  RTCÏµÊıÔÚInfoÖĞ¶¨Òå
+* @brief  RTCç³»æ•°åœ¨Infoä¸­å®šä¹‰
 */
 typedef union
 {
@@ -870,7 +870,7 @@ typedef union
 #define HT_GPIOC             ((HT_GPIO_TypeDef   *) HT_GPIOC_BASE)
 #define HT_GPIOD             ((HT_GPIO_TypeDef   *) HT_GPIOD_BASE)
 #define HT_GPIOE             ((HT_GPIO_TypeDef   *) HT_GPIOE_BASE)
-#define HT_GPIOHDPORT        (*((uint32_t        *) 0x40011500)  )            /*!< ´óµçÁ÷¶Ë¿ÚÉèÖÃ       */
+#define HT_GPIOHDPORT        (*((uint32_t        *) 0x40011500)  )            /*!< å¤§ç”µæµç«¯å£è®¾ç½®       */
 #if defined  HT501x
 #define HT_GPIOF             ((HT_GPIO_TypeDef   *) HT_GPIOF_BASE)
 #elif defined  HT6x2x
@@ -899,7 +899,7 @@ typedef union
 #endif
 
 
-#define HT_INFO              ((HT_INFO_TypeDef   *) (HT_INFO_BASE + 0x104) )    /*!< RTCÏµÊı´æ´¢ÔÚInfoÖĞ  */        
+#define HT_INFO              ((HT_INFO_TypeDef   *) (HT_INFO_BASE + 0x104) )    /*!< RTCç³»æ•°å­˜å‚¨åœ¨Infoä¸­  */        
 /*
 **********************************************************************************************************
 *                               Bits Definition For HT6x1x HT6x2x HT501x
@@ -914,13 +914,13 @@ typedef union
 */  
 /************************  Bit definition for TMRCON register of HT_TMR_TypeDef  ************************/
 #if defined HT6x2x  
-#define  TMR_TMRCON                        		 ((uint32_t)0x07ff)           /*!<  ¶¨Ê±Æ÷¿ØÖÆ¼Ä´æÆ÷	  */
+#define  TMR_TMRCON                        		 ((uint32_t)0x07ff)           /*!<  å®šæ—¶å™¨æ§åˆ¶å¯„å­˜å™¨	  */
 #else
-#define  TMR_TMRCON                        		 ((uint32_t)0x00ff)           /*!<  ¶¨Ê±Æ÷¿ØÖÆ¼Ä´æÆ÷	  */
+#define  TMR_TMRCON                        		 ((uint32_t)0x00ff)           /*!<  å®šæ—¶å™¨æ§åˆ¶å¯„å­˜å™¨	  */
 #endif
-#define  TMR_TMRCON_CNTEN                        ((uint32_t)0x0001)           /*!<  ¶¨Ê±Æ÷¼ÆÊı¹¦ÄÜÊ¹ÄÜ  */
+#define  TMR_TMRCON_CNTEN                        ((uint32_t)0x0001)           /*!<  å®šæ—¶å™¨è®¡æ•°åŠŸèƒ½ä½¿èƒ½  */
 
-#define  TMR_TMRCON_MODE                         ((uint32_t)0x0006)           /*!<  ¶¨Ê±Æ÷¹¤×÷Ä£Ê½      */
+#define  TMR_TMRCON_MODE                         ((uint32_t)0x0006)           /*!<  å®šæ—¶å™¨å·¥ä½œæ¨¡å¼      */
 #if defined HT6x1x  ||  defined HT501x                                                                            
 #define  TMR_TMRCON_MODE_NONE                    ((uint32_t)0x0000)           /*!<Timer mode none       */
 #define  TMR_TMRCON_MODE_PWM                     ((uint32_t)0x0002)           /*!<Timer mode pwm        */
@@ -933,73 +933,73 @@ typedef union
 #define  TMR_TMRCON_MODE_TIMING                  ((uint32_t)0x0006)           /*!<Timer mode timing only*/
 #endif
 
-#define  TMR_TMRCON_CCMODE                       ((uint32_t)0x0008)           /*!<²¶»ñ/ÊÂ¼şµçÆ½ÑØÑ¡Ôñ   */
-#define  TMR_TMRCON_CCMODE_RISE                  ((uint32_t)0x0000)           /*!<²¶»ñ/ÊÂ¼şµçÆ½ÉÏÉıÑØ   */
-#define  TMR_TMRCON_CCMODE_FALL                  ((uint32_t)0x0008)           /*!<²¶»ñ/ÊÂ¼şµçÆ½ÏÂ½µÑØ   */
+#define  TMR_TMRCON_CCMODE                       ((uint32_t)0x0008)           /*!<æ•è·/äº‹ä»¶ç”µå¹³æ²¿é€‰æ‹©   */
+#define  TMR_TMRCON_CCMODE_RISE                  ((uint32_t)0x0000)           /*!<æ•è·/äº‹ä»¶ç”µå¹³ä¸Šå‡æ²¿   */
+#define  TMR_TMRCON_CCMODE_FALL                  ((uint32_t)0x0008)           /*!<æ•è·/äº‹ä»¶ç”µå¹³ä¸‹é™æ²¿   */
 
-#define  TMR_TMRCON_PWMC                         ((uint32_t)0x0030)           /*!<PWM¼ÆÊı·½Ê½           */
-#define  TMR_TMRCON_PWMC_UP                      ((uint32_t)0x0000)           /*!<PWMÏòÉÏ¼ÆÊı           */
-#define  TMR_TMRCON_PWMC_DOWM                    ((uint32_t)0x0010)           /*!<PWMÏòÏÂ¼ÆÊı           */
-#define  TMR_TMRCON_PWMC_CENTER                  ((uint32_t)0x0020)           /*!<PWMÖĞÑë¶ÔÆë·½Ê½       */
+#define  TMR_TMRCON_PWMC                         ((uint32_t)0x0030)           /*!<PWMè®¡æ•°æ–¹å¼           */
+#define  TMR_TMRCON_PWMC_UP                      ((uint32_t)0x0000)           /*!<PWMå‘ä¸Šè®¡æ•°           */
+#define  TMR_TMRCON_PWMC_DOWM                    ((uint32_t)0x0010)           /*!<PWMå‘ä¸‹è®¡æ•°           */
+#define  TMR_TMRCON_PWMC_CENTER                  ((uint32_t)0x0020)           /*!<PWMä¸­å¤®å¯¹é½æ–¹å¼       */
 
-#define  TMR_TMRCON_PWMHL                        ((uint32_t)0x0040)           /*!<PWM³õÊ¼µçÆ½Ñ¡Ôñ       */
-#define  TMR_TMRCON_PWMHL_HIGH                   ((uint32_t)0x0000)           /*!<PWM³õÊ¼µçÆ½¸ß         */
-#define  TMR_TMRCON_PWMHL_LOW                    ((uint32_t)0x0040)           /*!<PWM³õÊ¼µçÆ½µÍ         */
+#define  TMR_TMRCON_PWMHL                        ((uint32_t)0x0040)           /*!<PWMåˆå§‹ç”µå¹³é€‰æ‹©       */
+#define  TMR_TMRCON_PWMHL_HIGH                   ((uint32_t)0x0000)           /*!<PWMåˆå§‹ç”µå¹³é«˜         */
+#define  TMR_TMRCON_PWMHL_LOW                    ((uint32_t)0x0040)           /*!<PWMåˆå§‹ç”µå¹³ä½         */
 
 #if defined  HT6x1x  ||  defined HT501x                                                          
-#define  TMR_TMRCON_CMPMODE                      ((uint32_t)0x0080)           /*!<Êä³ö±È½ÏÄ£Ê½Ñ¡Ôñ      */
-#define  TMR_TMRCON_CMPMODE_0                    ((uint32_t)0x0000)           /*!<Êä³ö±È½ÏÄ£Ê½0         */
-#define  TMR_TMRCON_CMPMODE_1                    ((uint32_t)0x0080)           /*!<Êä³ö±È½ÏÄ£Ê½1         */
+#define  TMR_TMRCON_CMPMODE                      ((uint32_t)0x0080)           /*!<è¾“å‡ºæ¯”è¾ƒæ¨¡å¼é€‰æ‹©      */
+#define  TMR_TMRCON_CMPMODE_0                    ((uint32_t)0x0000)           /*!<è¾“å‡ºæ¯”è¾ƒæ¨¡å¼0         */
+#define  TMR_TMRCON_CMPMODE_1                    ((uint32_t)0x0080)           /*!<è¾“å‡ºæ¯”è¾ƒæ¨¡å¼1         */
 #endif
 
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
-#define  TMR_TMRCON_CLKSEL                       ((uint32_t)0x0700)           /*!<TMR4&5Ê±ÖÓÔ´Ñ¡Ôñ      */
-#define  TMR_TMRCON_CLKSEL_LRC                   ((uint32_t)0x0000)           /*!<Ñ¡ÔñLRC               */
-#define  TMR_TMRCON_CLKSEL_LF                    ((uint32_t)0x0100)           /*!<Ñ¡ÔñLF                */
-#define  TMR_TMRCON_CLKSEL_HRC                   ((uint32_t)0x0200)           /*!<Ñ¡ÔñHRC               */
-#define  TMR_TMRCON_CLKSEL_PLL                   ((uint32_t)0x0300)           /*!<Ñ¡ÔñPLL               */
-#define  TMR_TMRCON_CLKSEL_MEMS                  ((uint32_t)0x0400)           /*!<Ñ¡ÔñMEMS              */
+#define  TMR_TMRCON_CLKSEL                       ((uint32_t)0x0700)           /*!<TMR4&5æ—¶é’Ÿæºé€‰æ‹©      */
+#define  TMR_TMRCON_CLKSEL_LRC                   ((uint32_t)0x0000)           /*!<é€‰æ‹©LRC               */
+#define  TMR_TMRCON_CLKSEL_LF                    ((uint32_t)0x0100)           /*!<é€‰æ‹©LF                */
+#define  TMR_TMRCON_CLKSEL_HRC                   ((uint32_t)0x0200)           /*!<é€‰æ‹©HRC               */
+#define  TMR_TMRCON_CLKSEL_PLL                   ((uint32_t)0x0300)           /*!<é€‰æ‹©PLL               */
+#define  TMR_TMRCON_CLKSEL_MEMS                  ((uint32_t)0x0400)           /*!<é€‰æ‹©MEMS              */
 #endif                                                                        /*!<Only for timer4&5     */
 
 /************************  Bit definition for TMRDIV register of HT_TMR_TypeDef  ************************/
-#define  TMR_TMRDIV                              ((uint32_t)0xffff)           /*!<Í¨µÀÔ¤·ÖÆµ¼Ä´æÆ÷      */
+#define  TMR_TMRDIV                              ((uint32_t)0xffff)           /*!<é€šé“é¢„åˆ†é¢‘å¯„å­˜å™¨      */
 
 /************************  Bit definition for TMRPRD register of HT_TMR_TypeDef  ************************/
-#define  TMR_TMRPRD                              ((uint32_t)0xffff)           /*!<Í¨µÀÖÜÆÚ¼Ä´æÆ÷        */
+#define  TMR_TMRPRD                              ((uint32_t)0xffff)           /*!<é€šé“å‘¨æœŸå¯„å­˜å™¨        */
 
 /************************  Bit definition for TMRCAP register of HT_TMR_TypeDef  ************************/
-#define  TMR_TMRCAP                              ((uint32_t)0xffff)           /*!<Í¨µÀ²¶»ñÊı¾İ¼Ä´æÆ÷    */
+#define  TMR_TMRCAP                              ((uint32_t)0xffff)           /*!<é€šé“æ•è·æ•°æ®å¯„å­˜å™¨    */
 
 /************************  Bit definition for TMRCNT register of HT_TMR_TypeDef  ************************/
-#define  TMR_TMRCNT                              ((uint32_t)0xffff)           /*!<Í¨µÀ¼ÆÊıÆ÷¼Ä´æÆ÷      */
+#define  TMR_TMRCNT                              ((uint32_t)0xffff)           /*!<é€šé“è®¡æ•°å™¨å¯„å­˜å™¨      */
 
 /************************  Bit definition for TMRCMP register of HT_TMR_TypeDef  ************************/
-#define  TMR_TMRCMP                              ((uint32_t)0xffff)           /*!<Í¨µÀ±È½ÏÆ÷¼Ä´æÆ÷      */
+#define  TMR_TMRCMP                              ((uint32_t)0xffff)           /*!<é€šé“æ¯”è¾ƒå™¨å¯„å­˜å™¨      */
 
 /************************  Bit definition for TMRIE register of HT_TMR_TypeDef   ************************/
 #if  defined  HT6x2x
-#define  TMR_TMRIE		                         ((uint32_t)0x000f)           /*!<TMRÖĞ¶ÏÊ¹ÄÜ          */
+#define  TMR_TMRIE		                         ((uint32_t)0x000f)           /*!<TMRä¸­æ–­ä½¿èƒ½          */
 #else
-#define  TMR_TMRIE		                         ((uint32_t)0x0007)           /*!<TMRÖĞ¶ÏÊ¹ÄÜ          */
+#define  TMR_TMRIE		                         ((uint32_t)0x0007)           /*!<TMRä¸­æ–­ä½¿èƒ½          */
 #endif
-#define  TMR_TMRIE_PRDIE                         ((uint32_t)0x0001)           /*!<ÖÜÆÚÖĞ¶ÏÊ¹ÄÜ          */
-#define  TMR_TMRIE_CAPIE                         ((uint32_t)0x0002)           /*!<²¶»ñÖĞ¶ÏÊ¹ÄÜ          */
-#define  TMR_TMRIE_CMPIE                         ((uint32_t)0x0004)           /*!<±È½ÏÖĞ¶ÏÊ¹ÄÜ          */
+#define  TMR_TMRIE_PRDIE                         ((uint32_t)0x0001)           /*!<å‘¨æœŸä¸­æ–­ä½¿èƒ½          */
+#define  TMR_TMRIE_CAPIE                         ((uint32_t)0x0002)           /*!<æ•è·ä¸­æ–­ä½¿èƒ½          */
+#define  TMR_TMRIE_CMPIE                         ((uint32_t)0x0004)           /*!<æ¯”è¾ƒä¸­æ–­ä½¿èƒ½          */
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
-#define  TMR_TMRIE_ACIE                          ((uint32_t)0x0008)           /*!<ÊÂ¼ş¼ÆÊıÖĞ¶ÏÊ¹ÄÜ      */
+#define  TMR_TMRIE_ACIE                          ((uint32_t)0x0008)           /*!<äº‹ä»¶è®¡æ•°ä¸­æ–­ä½¿èƒ½      */
 #endif
 
 /************************  Bit definition for TMRIF register of HT_TMR_TypeDef   ************************/
 #if  defined  HT6x2x
-#define  TMR_TMRIF		                         ((uint32_t)0x000f)           /*!<TMRÖĞ¶ÏÊ¹ÄÜ          */
+#define  TMR_TMRIF		                         ((uint32_t)0x000f)           /*!<TMRä¸­æ–­ä½¿èƒ½          */
 #else
-#define  TMR_TMRIF		                         ((uint32_t)0x0007)           /*!<TMRÖĞ¶ÏÊ¹ÄÜ          */
+#define  TMR_TMRIF		                         ((uint32_t)0x0007)           /*!<TMRä¸­æ–­ä½¿èƒ½          */
 #endif
-#define  TMR_TMRIF_PRDIF                         ((uint32_t)0x0001)           /*!<ÖÜÆÚÖĞ¶Ï±êÖ¾          */
-#define  TMR_TMRIF_CAPIF                         ((uint32_t)0x0002)           /*!<²¶»ñÖĞ¶Ï±êÖ¾          */
-#define  TMR_TMRIF_CMPIF                         ((uint32_t)0x0004)           /*!<±È½ÏÖĞ¶Ï±êÖ¾          */
+#define  TMR_TMRIF_PRDIF                         ((uint32_t)0x0001)           /*!<å‘¨æœŸä¸­æ–­æ ‡å¿—          */
+#define  TMR_TMRIF_CAPIF                         ((uint32_t)0x0002)           /*!<æ•è·ä¸­æ–­æ ‡å¿—          */
+#define  TMR_TMRIF_CMPIF                         ((uint32_t)0x0004)           /*!<æ¯”è¾ƒä¸­æ–­æ ‡å¿—          */
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
-#define  TMR_TMRIF_ACIF                          ((uint32_t)0x0008)           /*!<ÊÂ¼ş¼ÆÊıÖĞ¶Ï±êÖ¾      */
+#define  TMR_TMRIF_ACIF                          ((uint32_t)0x0008)           /*!<äº‹ä»¶è®¡æ•°ä¸­æ–­æ ‡å¿—      */
 #endif
 
 /*
@@ -1008,122 +1008,122 @@ typedef union
 **********************************************************************************************************
 */  
 /************************  Bit definition for MODESEL register of HT_UART_TypeDef ***********************/
-#define  UART_MODESEL                            ((uint32_t)0x0001)           /*!<´®¿Ú¹¦ÄÜÑ¡Ôñ¿ØÖÆÎ»    */
-#define  UART_MODESEL_UART                       ((uint32_t)0x0000)           /*!<Ñ¡ÔñUart¹¦ÄÜ          */
-#define  UART_MODESEL_7816                       ((uint32_t)0x0001)           /*!<Ñ¡Ôñ7816¹¦ÄÜ          */
+#define  UART_MODESEL                            ((uint32_t)0x0001)           /*!<ä¸²å£åŠŸèƒ½é€‰æ‹©æ§åˆ¶ä½    */
+#define  UART_MODESEL_UART                       ((uint32_t)0x0000)           /*!<é€‰æ‹©UartåŠŸèƒ½          */
+#define  UART_MODESEL_7816                       ((uint32_t)0x0001)           /*!<é€‰æ‹©7816åŠŸèƒ½          */
                                                                               /*!<Uart3&4 only          */
 /************************  Bit definition for UARTCON register of HT_UART_TypeDef ***********************/                                                                            
 #if  defined  HT6x2x
-#define  UART_UARTCON		                     ((uint32_t)0x87ff)           /*!<Uart¿ØÖÆ¼Ä´æÆ÷         */
+#define  UART_UARTCON		                     ((uint32_t)0x87ff)           /*!<Uartæ§åˆ¶å¯„å­˜å™¨         */
 #else
-#define  UART_UARTCON		                     ((uint32_t)0x03ff)           /*!<Uart¿ØÖÆ¼Ä´æÆ÷         */
+#define  UART_UARTCON		                     ((uint32_t)0x03ff)           /*!<Uartæ§åˆ¶å¯„å­˜å™¨         */
 #endif
-#define  UART_UARTCON_TXEN                       ((uint32_t)0x0001)           /*!<Uart·¢ËÍÊ¹ÄÜ          */
-#define  UART_UARTCON_RXEN                       ((uint32_t)0x0002)           /*!<Uart½ÓÊÕÊ¹ÄÜ          */
-#define  UART_UARTCON_TXIE                       ((uint32_t)0x0004)           /*!<Uart·¢ËÍÖĞ¶ÏÊ¹ÄÜ      */
-#define  UART_UARTCON_RXIE                       ((uint32_t)0x0008)           /*!<Uart½ÓÊÕÖĞ¶ÏÊ¹ÄÜ      */
-#define  UART_UARTCON_PARITYEN                   ((uint32_t)0x0010)           /*!<UartÆæÅ¼Ğ£ÑéÊ¹ÄÜ      */
+#define  UART_UARTCON_TXEN                       ((uint32_t)0x0001)           /*!<Uartå‘é€ä½¿èƒ½          */
+#define  UART_UARTCON_RXEN                       ((uint32_t)0x0002)           /*!<Uartæ¥æ”¶ä½¿èƒ½          */
+#define  UART_UARTCON_TXIE                       ((uint32_t)0x0004)           /*!<Uartå‘é€ä¸­æ–­ä½¿èƒ½      */
+#define  UART_UARTCON_RXIE                       ((uint32_t)0x0008)           /*!<Uartæ¥æ”¶ä¸­æ–­ä½¿èƒ½      */
+#define  UART_UARTCON_PARITYEN                   ((uint32_t)0x0010)           /*!<Uartå¥‡å¶æ ¡éªŒä½¿èƒ½      */
 
-#define  UART_UARTCON_PARITYSEL                  ((uint32_t)0x0060)           /*!<UartÆæÅ¼Ğ£ÑéÑ¡Ôñ      */
-#define  UART_UARTCON_PARITYSEL_1                ((uint32_t)0x0060)           /*!<UartÆæÅ¼Ğ£ÑéºãÎª1     */
-#define  UART_UARTCON_PARITYSEL_0                ((uint32_t)0x0000)           /*!<UartÆæÅ¼Ğ£ÑéºãÎª0     */
-#define  UART_UARTCON_PARITYSEL_ODD              ((uint32_t)0x0020)           /*!<UartÆæÅ¼Ğ£ÑéÎªÆæ      */
-#define  UART_UARTCON_PARITYSEL_EVEN             ((uint32_t)0x0040)           /*!<UartÆæÅ¼Ğ£ÑéÎªÅ¼      */
+#define  UART_UARTCON_PARITYSEL                  ((uint32_t)0x0060)           /*!<Uartå¥‡å¶æ ¡éªŒé€‰æ‹©      */
+#define  UART_UARTCON_PARITYSEL_1                ((uint32_t)0x0060)           /*!<Uartå¥‡å¶æ ¡éªŒæ’ä¸º1     */
+#define  UART_UARTCON_PARITYSEL_0                ((uint32_t)0x0000)           /*!<Uartå¥‡å¶æ ¡éªŒæ’ä¸º0     */
+#define  UART_UARTCON_PARITYSEL_ODD              ((uint32_t)0x0020)           /*!<Uartå¥‡å¶æ ¡éªŒä¸ºå¥‡      */
+#define  UART_UARTCON_PARITYSEL_EVEN             ((uint32_t)0x0040)           /*!<Uartå¥‡å¶æ ¡éªŒä¸ºå¶      */
 
-#define  UART_UARTCON_LENSEL                     ((uint32_t)0x0080)           /*!<Uart³¤¶ÈÑ¡ÔñÎ»        */
-#define  UART_UARTCON_LENSEL_7Bit                ((uint32_t)0x0080)           /*!<UartÍ¨Ñ¶Êı¾İ³¤¶ÈÎª7Î» */
-#define  UART_UARTCON_LENSEL_8Bit                ((uint32_t)0x0000)           /*!<UartÍ¨Ñ¶Êı¾İ³¤¶ÈÎª8Î» */
+#define  UART_UARTCON_LENSEL                     ((uint32_t)0x0080)           /*!<Uarté•¿åº¦é€‰æ‹©ä½        */
+#define  UART_UARTCON_LENSEL_7Bit                ((uint32_t)0x0080)           /*!<Uarté€šè®¯æ•°æ®é•¿åº¦ä¸º7ä½ */
+#define  UART_UARTCON_LENSEL_8Bit                ((uint32_t)0x0000)           /*!<Uarté€šè®¯æ•°æ®é•¿åº¦ä¸º8ä½ */
 
-#define  UART_UARTCON_STOPSEL                    ((uint32_t)0x0100)           /*!<Uart³¤¶ÈÑ¡ÔñÎ»        */
-#define  UART_UARTCON_STOPSEL_2Bit               ((uint32_t)0x0100)           /*!<UartÍ¨Ñ¶Í£Ö¹Î»Îª2Î»   */
-#define  UART_UARTCON_STOPSEL_1Bit               ((uint32_t)0x0000)           /*!<UartÍ¨Ñ¶Í£Ö¹Î»Îª1Î»   */
+#define  UART_UARTCON_STOPSEL                    ((uint32_t)0x0100)           /*!<Uarté•¿åº¦é€‰æ‹©ä½        */
+#define  UART_UARTCON_STOPSEL_2Bit               ((uint32_t)0x0100)           /*!<Uarté€šè®¯åœæ­¢ä½ä¸º2ä½   */
+#define  UART_UARTCON_STOPSEL_1Bit               ((uint32_t)0x0000)           /*!<Uarté€šè®¯åœæ­¢ä½ä¸º1ä½   */
 
-#define  UART_UARTCON_UNEG                       ((uint32_t)0x0200)           /*!<UartÍ¨Ñ¶Âß¼­Ñ¡ÔñÎ»    */
-#define  UART_UARTCON_UNEG_NEGETIVE              ((uint32_t)0x0200)           /*!<UartÍ¨Ñ¶Îª¸ºÂß¼­      */
-#define  UART_UARTCON_UNEG_POSITIVE              ((uint32_t)0x0000)           /*!<UartÍ¨Ñ¶ÎªÕıÂß¼­      */
+#define  UART_UARTCON_UNEG                       ((uint32_t)0x0200)           /*!<Uarté€šè®¯é€»è¾‘é€‰æ‹©ä½    */
+#define  UART_UARTCON_UNEG_NEGETIVE              ((uint32_t)0x0200)           /*!<Uarté€šè®¯ä¸ºè´Ÿé€»è¾‘      */
+#define  UART_UARTCON_UNEG_POSITIVE              ((uint32_t)0x0000)           /*!<Uarté€šè®¯ä¸ºæ­£é€»è¾‘      */
 
 #if  defined  HT6x2x                                                          
-#define  UART_UARTCON_UNEG_AUTO                  ((uint32_t)0x0400)           /*!<UartÍ¨Ñ¶Âß¼­ÅĞ¶Ï¿ØÖÆ  */ 
-#define  UART_UARTCON_PRDIE                      ((uint32_t)0x8000)           /*!<UartÉÏÒçÖĞ¶ÏÊ¹ÄÜ      */
+#define  UART_UARTCON_UNEG_AUTO                  ((uint32_t)0x0400)           /*!<Uarté€šè®¯é€»è¾‘åˆ¤æ–­æ§åˆ¶  */ 
+#define  UART_UARTCON_PRDIE                      ((uint32_t)0x8000)           /*!<Uartä¸Šæº¢ä¸­æ–­ä½¿èƒ½      */
 #endif
 
 
 /**********************  Bit definition for ISO7816CON register of HT_UART_TypeDef **********************/
-#define  UART_ISO7816CON	                     ((uint32_t)0x03ff)           /*!<ISO7816¿ØÖÆ¼Ä´æÆ÷     */
+#define  UART_ISO7816CON	                     ((uint32_t)0x03ff)           /*!<ISO7816æ§åˆ¶å¯„å­˜å™¨     */
 
-#define  UART_ISO7816CON_IEALL                   ((uint32_t)0x0007)           /*!<ISO7816ÖĞ¶ÏÊ¹ÄÜÎ»     */
-#define  UART_ISO7816CON_TXIE                    ((uint32_t)0x0001)           /*!<·¢ËÍÖĞ¶ÏÊ¹ÄÜÎ»        */
-#define  UART_ISO7816CON_RXIE                    ((uint32_t)0x0002)           /*!<½ÓÊÕÖĞ¶ÏÊ¹ÄÜÎ»        */
-#define  UART_ISO7816CON_PRDIE                   ((uint32_t)0x0004)           /*!<ÉÏÒçÖĞ¶ÏÊ¹ÄÜÎ»        */
+#define  UART_ISO7816CON_IEALL                   ((uint32_t)0x0007)           /*!<ISO7816ä¸­æ–­ä½¿èƒ½ä½     */
+#define  UART_ISO7816CON_TXIE                    ((uint32_t)0x0001)           /*!<å‘é€ä¸­æ–­ä½¿èƒ½ä½        */
+#define  UART_ISO7816CON_RXIE                    ((uint32_t)0x0002)           /*!<æ¥æ”¶ä¸­æ–­ä½¿èƒ½ä½        */
+#define  UART_ISO7816CON_PRDIE                   ((uint32_t)0x0004)           /*!<ä¸Šæº¢ä¸­æ–­ä½¿èƒ½ä½        */
 
-#define  UART_ISO7816CON_ACKLEN                  ((uint32_t)0x0018)           /*!<ACKÏìÓ¦³¤¶È¿ØÖÆÎ»     */
-#define  UART_ISO7816CON_ACKLEN_1Bit             ((uint32_t)0x0000)           /*!<ACKÏìÓ¦³¤¶È1Bit       */
-#define  UART_ISO7816CON_ACKLEN_1P5Bit           ((uint32_t)0x0008)           /*!<ACKÏìÓ¦³¤¶È1.5Bit     */
-#define  UART_ISO7816CON_ACKLEN_2Bit             ((uint32_t)0x0010)           /*!<ACKÏìÓ¦³¤¶È2Bit       */
+#define  UART_ISO7816CON_ACKLEN                  ((uint32_t)0x0018)           /*!<ACKå“åº”é•¿åº¦æ§åˆ¶ä½     */
+#define  UART_ISO7816CON_ACKLEN_1Bit             ((uint32_t)0x0000)           /*!<ACKå“åº”é•¿åº¦1Bit       */
+#define  UART_ISO7816CON_ACKLEN_1P5Bit           ((uint32_t)0x0008)           /*!<ACKå“åº”é•¿åº¦1.5Bit     */
+#define  UART_ISO7816CON_ACKLEN_2Bit             ((uint32_t)0x0010)           /*!<ACKå“åº”é•¿åº¦2Bit       */
 
-#define  UART_ISO7816CON_REPTR                   ((uint32_t)0x0060)           /*!<×Ô¶¯ÖØÊÕÖØ·¢´ÎÊıÉÏÏŞ  */
-#define  UART_ISO7816CON_REPTR_0                 ((uint32_t)0x0000)           /*!<×Ô¶¯ÖØÊÕÖØ·¢0´Î       */
-#define  UART_ISO7816CON_REPTR_1                 ((uint32_t)0x0020)           /*!<×Ô¶¯ÖØÊÕÖØ·¢1´Î       */
-#define  UART_ISO7816CON_REPTR_2                 ((uint32_t)0x0040)           /*!<×Ô¶¯ÖØÊÕÖØ·¢2´Î       */
-#define  UART_ISO7816CON_REPTR_3                 ((uint32_t)0x0060)           /*!<×Ô¶¯ÖØÊÕÖØ·¢3´Î       */
+#define  UART_ISO7816CON_REPTR                   ((uint32_t)0x0060)           /*!<è‡ªåŠ¨é‡æ”¶é‡å‘æ¬¡æ•°ä¸Šé™  */
+#define  UART_ISO7816CON_REPTR_0                 ((uint32_t)0x0000)           /*!<è‡ªåŠ¨é‡æ”¶é‡å‘0æ¬¡       */
+#define  UART_ISO7816CON_REPTR_1                 ((uint32_t)0x0020)           /*!<è‡ªåŠ¨é‡æ”¶é‡å‘1æ¬¡       */
+#define  UART_ISO7816CON_REPTR_2                 ((uint32_t)0x0040)           /*!<è‡ªåŠ¨é‡æ”¶é‡å‘2æ¬¡       */
+#define  UART_ISO7816CON_REPTR_3                 ((uint32_t)0x0060)           /*!<è‡ªåŠ¨é‡æ”¶é‡å‘3æ¬¡       */
 
-#define  UART_ISO7816CON_AUTOTXEN                ((uint32_t)0x0080)           /*!<×Ô¶¯ÖØ·¢Ê¹ÄÜÎ»        */
-#define  UART_ISO7816CON_AUTORXEN                ((uint32_t)0x0100)           /*!<×Ô¶¯ÖØÊÕÊ¹ÄÜÎ»        */
+#define  UART_ISO7816CON_AUTOTXEN                ((uint32_t)0x0080)           /*!<è‡ªåŠ¨é‡å‘ä½¿èƒ½ä½        */
+#define  UART_ISO7816CON_AUTORXEN                ((uint32_t)0x0100)           /*!<è‡ªåŠ¨é‡æ”¶ä½¿èƒ½ä½        */
 
-#define  UART_ISO7816CON_7816PARITY              ((uint32_t)0x0200)           /*!<ÆæÅ¼Ğ£ÑéÑ¡ÔñÎ»        */
-#define  UART_ISO7816CON_7816PARITY_ODD          ((uint32_t)0x0200)           /*!<ÆæĞ£Ñé                */
-#define  UART_ISO7816CON_7816PARITY_EVEN         ((uint32_t)0x0000)           /*!<Å¼Ğ£Ñé                */
+#define  UART_ISO7816CON_7816PARITY              ((uint32_t)0x0200)           /*!<å¥‡å¶æ ¡éªŒé€‰æ‹©ä½        */
+#define  UART_ISO7816CON_7816PARITY_ODD          ((uint32_t)0x0200)           /*!<å¥‡æ ¡éªŒ                */
+#define  UART_ISO7816CON_7816PARITY_EVEN         ((uint32_t)0x0000)           /*!<å¶æ ¡éªŒ                */
                                                                               /*!<Uart3&4 only          */
 /*************************  Bit definition for SREL register of HT_UART_TypeDef *************************/
-#define  UART_SREL                               ((uint32_t)0xffff)           /*!<´®¿Ú²¨ÌØÂÊ·¢ÉúÆ÷      */
+#define  UART_SREL                               ((uint32_t)0xffff)           /*!<ä¸²å£æ³¢ç‰¹ç‡å‘ç”Ÿå™¨      */
 
 /*************************  Bit definition for SBUF register of HT_UART_TypeDef *************************/
-#define  UART_SBUF                               ((uint32_t)0x00ff)           /*!<´®¿ÚÊı¾İ»º³å¼Ä´æÆ÷    */
+#define  UART_SBUF                               ((uint32_t)0x00ff)           /*!<ä¸²å£æ•°æ®ç¼“å†²å¯„å­˜å™¨    */
 
 /************************  Bit definition for UARTSTA register of HT_UART_TypeDef ***********************/
 #if  defined  HT6x2x
-#define  UART_UARTSTA                       	 ((uint32_t)0x001f)           /*!<uart×´Ì¬¼Ä´æÆ÷         */
+#define  UART_UARTSTA                       	 ((uint32_t)0x001f)           /*!<uartçŠ¶æ€å¯„å­˜å™¨         */
 #else
-#define  UART_UARTSTA                       	 ((uint32_t)0x0007)           /*!<uart×´Ì¬¼Ä´æÆ÷         */
+#define  UART_UARTSTA                       	 ((uint32_t)0x0007)           /*!<uartçŠ¶æ€å¯„å­˜å™¨         */
 #endif
-#define  UART_UARTSTA_TXIF                       ((uint32_t)0x0001)           /*!<·¢ËÍÖĞ¶Ï±êÖ¾          */
-#define  UART_UARTSTA_RXIF                       ((uint32_t)0x0002)           /*!<½ÓÊÕÖĞ¶Ï±êÖ¾          */
-#define  UART_UARTSTA_PARITY                     ((uint32_t)0x0004)           /*!<ÆæÅ¼Ğ£Ñé³ö´í±êÖ¾      */
+#define  UART_UARTSTA_TXIF                       ((uint32_t)0x0001)           /*!<å‘é€ä¸­æ–­æ ‡å¿—          */
+#define  UART_UARTSTA_RXIF                       ((uint32_t)0x0002)           /*!<æ¥æ”¶ä¸­æ–­æ ‡å¿—          */
+#define  UART_UARTSTA_PARITY                     ((uint32_t)0x0004)           /*!<å¥‡å¶æ ¡éªŒå‡ºé”™æ ‡å¿—      */
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
-#define  UART_UARTSTA_PRDIF                      ((uint32_t)0x0008)           /*!<½ÓÊÕÉÏÒçÖĞ¶Ï±êÖ¾      */
+#define  UART_UARTSTA_PRDIF                      ((uint32_t)0x0008)           /*!<æ¥æ”¶ä¸Šæº¢ä¸­æ–­æ ‡å¿—      */
 
-#define  UART_UARTSTA_POLASTA                    ((uint32_t)0x0010)           /*!<¼«ĞÔ×´Ì¬Î»            */
-#define  UART_UARTSTA_POLASTA_POSITIVE           ((uint32_t)0x0000)           /*!<¼«ĞÔ×´Ì¬ÎªÕı          */
-#define  UART_UARTSTA_POLASTA_NEGETIVE           ((uint32_t)0x0010)           /*!<¼«ĞÔ×´Ì¬Îª¸º          */
+#define  UART_UARTSTA_POLASTA                    ((uint32_t)0x0010)           /*!<ææ€§çŠ¶æ€ä½            */
+#define  UART_UARTSTA_POLASTA_POSITIVE           ((uint32_t)0x0000)           /*!<ææ€§çŠ¶æ€ä¸ºæ­£          */
+#define  UART_UARTSTA_POLASTA_NEGETIVE           ((uint32_t)0x0010)           /*!<ææ€§çŠ¶æ€ä¸ºè´Ÿ          */
 #endif   
 
 /**********************  Bit definition for ISO7816STA register of HT_UART_TypeDef **********************/
-#define  UART_ISO7816STA	                     ((uint32_t)0x001f)           /*!<7816×´Ì¬¼Ä´æÆ÷         */
-#define  UART_ISO7816STA_TXIF                    ((uint32_t)0x0001)           /*!<·¢ËÍÖĞ¶Ï±êÖ¾          */
-#define  UART_ISO7816STA_RXIF                    ((uint32_t)0x0002)           /*!<½ÓÊÕÖĞ¶Ï±êÖ¾          */
-#define  UART_ISO7816STA_PRDIF                   ((uint32_t)0x0004)           /*!<½ÓÊÕÉÏÒçÖĞ¶Ï±êÖ¾      */
-#define  UART_ISO7816STA_TXERRSTAT               ((uint32_t)0x0008)           /*!<·¢ËÍÊı¾İ³ö´í±êÖ¾      */
-#define  UART_ISO7816STA_RXERRSTAT               ((uint32_t)0x0010)           /*!<½ÓÊÕÊı¾İ³ö´í±êÖ¾      */
+#define  UART_ISO7816STA	                     ((uint32_t)0x001f)           /*!<7816çŠ¶æ€å¯„å­˜å™¨         */
+#define  UART_ISO7816STA_TXIF                    ((uint32_t)0x0001)           /*!<å‘é€ä¸­æ–­æ ‡å¿—          */
+#define  UART_ISO7816STA_RXIF                    ((uint32_t)0x0002)           /*!<æ¥æ”¶ä¸­æ–­æ ‡å¿—          */
+#define  UART_ISO7816STA_PRDIF                   ((uint32_t)0x0004)           /*!<æ¥æ”¶ä¸Šæº¢ä¸­æ–­æ ‡å¿—      */
+#define  UART_ISO7816STA_TXERRSTAT               ((uint32_t)0x0008)           /*!<å‘é€æ•°æ®å‡ºé”™æ ‡å¿—      */
+#define  UART_ISO7816STA_RXERRSTAT               ((uint32_t)0x0010)           /*!<æ¥æ”¶æ•°æ®å‡ºé”™æ ‡å¿—      */
                                                                               /*!<Uart3&4 only          */
 /*************************  Bit definition for IRCON register of HT_UART_TypeDef ************************/
-#define  UART_IRCON		                         ((uint32_t)0x0007)           /*!<ºìÍâµ÷ÖÆ¿ØÖÆ¼Ä´æÆ÷	  */
-#define  UART_IRCON_IRTX                         ((uint32_t)0x0001)           /*!<ºìÍâµ÷ÖÆ¹¦ÄÜÊ¹ÄÜ¿ØÖÆ  */
+#define  UART_IRCON		                         ((uint32_t)0x0007)           /*!<çº¢å¤–è°ƒåˆ¶æ§åˆ¶å¯„å­˜å™¨	  */
+#define  UART_IRCON_IRTX                         ((uint32_t)0x0001)           /*!<çº¢å¤–è°ƒåˆ¶åŠŸèƒ½ä½¿èƒ½æ§åˆ¶  */
 
-#define  UART_IRCON_IRLVL                        ((uint32_t)0x0002)           /*!<ºìÍâµ÷ÖÆÊä³ö¼«ĞÔÑ¡Ôñ  */
-#define  UART_IRCON_IRLVL_NEGETIVE               ((uint32_t)0x0002)           /*!<¸º¼«ĞÔ                */
-#define  UART_IRCON_IRLVL_POSITIVE               ((uint32_t)0x0000)           /*!<Õı¼«ĞÔ                */
+#define  UART_IRCON_IRLVL                        ((uint32_t)0x0002)           /*!<çº¢å¤–è°ƒåˆ¶è¾“å‡ºææ€§é€‰æ‹©  */
+#define  UART_IRCON_IRLVL_NEGETIVE               ((uint32_t)0x0002)           /*!<è´Ÿææ€§                */
+#define  UART_IRCON_IRLVL_POSITIVE               ((uint32_t)0x0000)           /*!<æ­£ææ€§                */
 
 /*************************  Bit definition for IRDUTY register of HT_UART_TypeDef ***********************/
-#define  UART_IRDUTY	                         ((uint32_t)0x0003)           /*!<ºìÍâµ÷ÖÆÂö¿í¼Ä´æÆ÷    */
-#define  UART_IRDUTY_IRDUTY                      ((uint32_t)0x0003)           /*!<µ÷ÖÆ²¨ĞÎÕ¼¿Õ±ÈÉèÖÃ    */
-#define  UART_IRDUTY_IRDUTY_50                   ((uint32_t)0x0000)           /*!<ºìÍâµ÷ÖÆ²¨ĞÎÕ¼¿Õ±È50% */
-#define  UART_IRDUTY_IRDUTY_25                   ((uint32_t)0x0001)           /*!<µ÷ÖÆ²¨ĞÎÕ¼¿Õ±È25%     */
-#define  UART_IRDUTY_IRDUTY_12P5                 ((uint32_t)0x0002)           /*!<µ÷ÖÆ²¨ĞÎÕ¼¿Õ±È12.5%   */
-#define  UART_IRDUTY_IRDUTY_6P25                 ((uint32_t)0x0003)           /*!<µ÷ÖÆ²¨ĞÎÕ¼¿Õ±È6.25%   */
+#define  UART_IRDUTY	                         ((uint32_t)0x0003)           /*!<çº¢å¤–è°ƒåˆ¶è„‰å®½å¯„å­˜å™¨    */
+#define  UART_IRDUTY_IRDUTY                      ((uint32_t)0x0003)           /*!<è°ƒåˆ¶æ³¢å½¢å ç©ºæ¯”è®¾ç½®    */
+#define  UART_IRDUTY_IRDUTY_50                   ((uint32_t)0x0000)           /*!<çº¢å¤–è°ƒåˆ¶æ³¢å½¢å ç©ºæ¯”50% */
+#define  UART_IRDUTY_IRDUTY_25                   ((uint32_t)0x0001)           /*!<è°ƒåˆ¶æ³¢å½¢å ç©ºæ¯”25%     */
+#define  UART_IRDUTY_IRDUTY_12P5                 ((uint32_t)0x0002)           /*!<è°ƒåˆ¶æ³¢å½¢å ç©ºæ¯”12.5%   */
+#define  UART_IRDUTY_IRDUTY_6P25                 ((uint32_t)0x0003)           /*!<è°ƒåˆ¶æ³¢å½¢å ç©ºæ¯”6.25%   */
 
 /************************  Bit definition for LOGDETNUM register of HT_UART_TypeDef *********************/
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
-#define  UART_NEGDETLEN                          ((uint32_t)0xffff)           /*!<Âß¼­ÅĞ¶ÏÊ±³¤ÉèÖÃ      */
+#define  UART_NEGDETLEN                          ((uint32_t)0xffff)           /*!<é€»è¾‘åˆ¤æ–­æ—¶é•¿è®¾ç½®      */
 #endif
 /*
 **********************************************************************************************************
@@ -1131,22 +1131,22 @@ typedef union
 **********************************************************************************************************
 */  
 /*************************  Bit definition for I2CDAT register of HT_I2C_TypeDef ************************/
-#define  I2C_I2CDAT                              ((uint32_t)0x00ff)           /*!<I2CÊı¾İ¼Ä´æÆ÷         */
+#define  I2C_I2CDAT                              ((uint32_t)0x00ff)           /*!<I2Cæ•°æ®å¯„å­˜å™¨         */
 
 /*************************  Bit definition for I2CADR register of HT_I2C_TypeDef ************************/
-#define  I2C_I2CADR                              ((uint32_t)0x00ff)           /*!<I2CµØÖ·¼Ä´æÆ÷         */
+#define  I2C_I2CADR                              ((uint32_t)0x00ff)           /*!<I2Cåœ°å€å¯„å­˜å™¨         */
 
 /*************************  Bit definition for I2CCON register of HT_I2C_TypeDef ************************/
-#define  I2C_I2CCON   	                         ((uint32_t)0x7fff)           /*!<I2C¿ØÖÆ¼Ä´æÆ÷         */
-#define  I2C_I2CCON_AA                           ((uint32_t)0x0004)           /*!<I2CÓ¦´ğÉú³ÉÎ»         */
-#define  I2C_I2CCON_SI                           ((uint32_t)0x0008)           /*!<I2CÖĞ¶Ï±êÖ¾Î»         */
-#define  I2C_I2CCON_STO                          ((uint32_t)0x0010)           /*!<I2CÍ£Ö¹Éú³ÉÎ»         */
-#define  I2C_I2CCON_STA                          ((uint32_t)0x0020)           /*!<I2C¿ªÊ¼Éú³ÉÎ»         */
-#define  I2C_I2CCON_ENS1                         ((uint32_t)0x0040)           /*!<I2CÄ£¿éÊ¹ÄÜÎ»         */
-#define  I2C_I2CCON_CR                           ((uint32_t)0x7f83)           /*!<I2CÊ±ÖÓÆµÂÊ¿ØÖÆÎ»     */
+#define  I2C_I2CCON   	                         ((uint32_t)0x7fff)           /*!<I2Cæ§åˆ¶å¯„å­˜å™¨         */
+#define  I2C_I2CCON_AA                           ((uint32_t)0x0004)           /*!<I2Cåº”ç­”ç”Ÿæˆä½         */
+#define  I2C_I2CCON_SI                           ((uint32_t)0x0008)           /*!<I2Cä¸­æ–­æ ‡å¿—ä½         */
+#define  I2C_I2CCON_STO                          ((uint32_t)0x0010)           /*!<I2Cåœæ­¢ç”Ÿæˆä½         */
+#define  I2C_I2CCON_STA                          ((uint32_t)0x0020)           /*!<I2Cå¼€å§‹ç”Ÿæˆä½         */
+#define  I2C_I2CCON_ENS1                         ((uint32_t)0x0040)           /*!<I2Cæ¨¡å—ä½¿èƒ½ä½         */
+#define  I2C_I2CCON_CR                           ((uint32_t)0x7f83)           /*!<I2Cæ—¶é’Ÿé¢‘ç‡æ§åˆ¶ä½     */
 
 /*************************  Bit definition for I2CSTA register of HT_I2C_TypeDef ************************/
-#define  I2C_I2CSTA                              ((uint32_t)0x00f8)           /*!<I2C×´Ì¬¼Ä´æÆ÷         */
+#define  I2C_I2CSTA                              ((uint32_t)0x00f8)           /*!<I2CçŠ¶æ€å¯„å­˜å™¨         */
 
 
 /*
@@ -1155,26 +1155,26 @@ typedef union
 **********************************************************************************************************
 */  
 /*************************  Bit definition for SPICON register of HT_SPI_TypeDef ************************/
-#define  SPI_SPICON		                         ((uint32_t)0x00ff)           /*!<SPI¿ØÖÆ¼Ä´æÆ÷         */
-#define  SPI_SPICON_SPIEN                        ((uint32_t)0x0001)           /*!<SPIÄ£¿éÊ¹ÄÜÎ»         */
-#define  SPI_SPICON_MSTR                         ((uint32_t)0x0002)           /*!<SPIÖ÷´ÓÄ£Ê½Ñ¡ÔñÎ»     */
-#define  SPI_SPICON_CPOL                         ((uint32_t)0x0004)           /*!<SPIÊ±ÖÓ¼«ĞÔÑ¡Ôñ       */
-#define  SPI_SPICON_CPHA                         ((uint32_t)0x0008)           /*!<SPIÊ±ÖÓÏàÎ»           */
-#define  SPI_SPICON_SPR                          ((uint32_t)0x0070)           /*!<SPIÊ±ÖÓËÙÂÊ¿ØÖÆ       */
-#define  SPI_SPICON_SSDIS                        ((uint32_t)0x0080)           /*!<SS¿ØÖÆÎ»              */
+#define  SPI_SPICON		                         ((uint32_t)0x00ff)           /*!<SPIæ§åˆ¶å¯„å­˜å™¨         */
+#define  SPI_SPICON_SPIEN                        ((uint32_t)0x0001)           /*!<SPIæ¨¡å—ä½¿èƒ½ä½         */
+#define  SPI_SPICON_MSTR                         ((uint32_t)0x0002)           /*!<SPIä¸»ä»æ¨¡å¼é€‰æ‹©ä½     */
+#define  SPI_SPICON_CPOL                         ((uint32_t)0x0004)           /*!<SPIæ—¶é’Ÿææ€§é€‰æ‹©       */
+#define  SPI_SPICON_CPHA                         ((uint32_t)0x0008)           /*!<SPIæ—¶é’Ÿç›¸ä½           */
+#define  SPI_SPICON_SPR                          ((uint32_t)0x0070)           /*!<SPIæ—¶é’Ÿé€Ÿç‡æ§åˆ¶       */
+#define  SPI_SPICON_SSDIS                        ((uint32_t)0x0080)           /*!<SSæ§åˆ¶ä½              */
 
 /*************************  Bit definition for SPISTA register of HT_SPI_TypeDef ************************/
-#define  SPI_SPISTA		                         ((uint32_t)0x000f)           /*!<SPI×´Ì¬¼Ä´æÆ÷    */
-#define  SPI_SPISTA_MODF                         ((uint32_t)0x0001)           /*!<SPIÄ£Ê½¹ÊÕÏ±êÖ¾Î»     */
-#define  SPI_SPISTA_SSERR                        ((uint32_t)0x0002)           /*!<SPIÍ¬²½´Ó»ú´íÎó±êÖ¾Î» */
-#define  SPI_SPISTA_WCOL                         ((uint32_t)0x0004)           /*!<SPIĞ´³åÍ»±êÖ¾Î»       */
-#define  SPI_SPISTA_SPIF                         ((uint32_t)0x0008)           /*!<SPIÊı¾İ´«ÊäÍê³É±êÖ¾Î» */
+#define  SPI_SPISTA		                         ((uint32_t)0x000f)           /*!<SPIçŠ¶æ€å¯„å­˜å™¨    */
+#define  SPI_SPISTA_MODF                         ((uint32_t)0x0001)           /*!<SPIæ¨¡å¼æ•…éšœæ ‡å¿—ä½     */
+#define  SPI_SPISTA_SSERR                        ((uint32_t)0x0002)           /*!<SPIåŒæ­¥ä»æœºé”™è¯¯æ ‡å¿—ä½ */
+#define  SPI_SPISTA_WCOL                         ((uint32_t)0x0004)           /*!<SPIå†™å†²çªæ ‡å¿—ä½       */
+#define  SPI_SPISTA_SPIF                         ((uint32_t)0x0008)           /*!<SPIæ•°æ®ä¼ è¾“å®Œæˆæ ‡å¿—ä½ */
 
 /*************************  Bit definition for SPIDAT register of HT_SPI_TypeDef ************************/
-#define  SPI_SPIDAT                              ((uint32_t)0x00ff)           /*!<SPIÊı¾İ¼Ä´æÆ÷         */
+#define  SPI_SPIDAT                              ((uint32_t)0x00ff)           /*!<SPIæ•°æ®å¯„å­˜å™¨         */
 
 /*************************  Bit definition for SPISSN register of HT_SPI_TypeDef ************************/
-#define  SPI_SPISSN_CS                           ((uint32_t)0x0001)           /*!<SPI´Ó»úÑ¡Ôñ¿ØÖÆ       */
+#define  SPI_SPISSN_CS                           ((uint32_t)0x0001)           /*!<SPIä»æœºé€‰æ‹©æ§åˆ¶       */
 
 /*
 **********************************************************************************************************
@@ -1182,142 +1182,142 @@ typedef union
 **********************************************************************************************************
 */  
 /*************************  Bit definition for RTCCON register of HT_RTC_TypeDef ************************/
-#define  RTC_RTCCON		                         ((uint32_t)0x007f)           /*!<RTC¿ØÖÆ¼Ä´æÆ÷  */
-#define  RTC_RTCCON_AUTOC                        ((uint32_t)0x0001)           /*!<×Ô¶¯ÊÖ¶¯²¹³¥Ñ¡Ôñ¿ØÖÆ  */
+#define  RTC_RTCCON		                         ((uint32_t)0x007f)           /*!<RTCæ§åˆ¶å¯„å­˜å™¨  */
+#define  RTC_RTCCON_AUTOC                        ((uint32_t)0x0001)           /*!<è‡ªåŠ¨æ‰‹åŠ¨è¡¥å¿é€‰æ‹©æ§åˆ¶  */
                                                                                                         
-#define  RTC_RTCCON_TOUT                         ((uint32_t)0x001E)           /*!<ToutÊä³ö¿ØÖÆ          */
-#define  RTC_RTCCON_TOUT_LOW                     ((uint32_t)0x0000)           /*!<ToutÊä³öµÍ            */
-#define  RTC_RTCCON_TOUT_HIGH                    ((uint32_t)0x0002)           /*!<ToutÊä³ö¸ß            */
-#define  RTC_RTCCON_TOUT_LF                      ((uint32_t)0x0004)           /*!<ToutÊä³öµÍÆµÊ±ÖÓ      */
-#define  RTC_RTCCON_TOUT_1HZ                     ((uint32_t)0x0006)           /*!<ToutÊä³ö¸ßÆµ²¹³¥1hz   */
-#define  RTC_RTCCON_TOUT_2HZ                     ((uint32_t)0x0008)           /*!<ToutÊä³ö¸ßÆµ²¹³¥2hz   */
-#define  RTC_RTCCON_TOUT_4HZ                     ((uint32_t)0x000A)           /*!<ToutÊä³ö¸ßÆµ²¹³¥4hz   */
-#define  RTC_RTCCON_TOUT_8HZ                     ((uint32_t)0x000C)           /*!<ToutÊä³ö¸ßÆµ²¹³¥8hz   */
-#define  RTC_RTCCON_TOUT_16HZ                    ((uint32_t)0x000E)           /*!<ToutÊä³ö¸ßÆµ²¹³¥16hz  */
-#define  RTC_RTCCON_TOUT_32HZ                    ((uint32_t)0x0010)           /*!<ToutÊä³ö¸ßÆµ²¹³¥32hz  */
-#define  RTC_RTCCON_TOUT_64HZ                    ((uint32_t)0x0012)           /*!<ToutÊä³ö¸ßÆµ²¹³¥64hz  */
-#define  RTC_RTCCON_TOUT_128HZ                   ((uint32_t)0x0014)           /*!<ToutÊä³ö¸ßÆµ²¹³¥128hz */
+#define  RTC_RTCCON_TOUT                         ((uint32_t)0x001E)           /*!<Toutè¾“å‡ºæ§åˆ¶          */
+#define  RTC_RTCCON_TOUT_LOW                     ((uint32_t)0x0000)           /*!<Toutè¾“å‡ºä½            */
+#define  RTC_RTCCON_TOUT_HIGH                    ((uint32_t)0x0002)           /*!<Toutè¾“å‡ºé«˜            */
+#define  RTC_RTCCON_TOUT_LF                      ((uint32_t)0x0004)           /*!<Toutè¾“å‡ºä½é¢‘æ—¶é’Ÿ      */
+#define  RTC_RTCCON_TOUT_1HZ                     ((uint32_t)0x0006)           /*!<Toutè¾“å‡ºé«˜é¢‘è¡¥å¿1hz   */
+#define  RTC_RTCCON_TOUT_2HZ                     ((uint32_t)0x0008)           /*!<Toutè¾“å‡ºé«˜é¢‘è¡¥å¿2hz   */
+#define  RTC_RTCCON_TOUT_4HZ                     ((uint32_t)0x000A)           /*!<Toutè¾“å‡ºé«˜é¢‘è¡¥å¿4hz   */
+#define  RTC_RTCCON_TOUT_8HZ                     ((uint32_t)0x000C)           /*!<Toutè¾“å‡ºé«˜é¢‘è¡¥å¿8hz   */
+#define  RTC_RTCCON_TOUT_16HZ                    ((uint32_t)0x000E)           /*!<Toutè¾“å‡ºé«˜é¢‘è¡¥å¿16hz  */
+#define  RTC_RTCCON_TOUT_32HZ                    ((uint32_t)0x0010)           /*!<Toutè¾“å‡ºé«˜é¢‘è¡¥å¿32hz  */
+#define  RTC_RTCCON_TOUT_64HZ                    ((uint32_t)0x0012)           /*!<Toutè¾“å‡ºé«˜é¢‘è¡¥å¿64hz  */
+#define  RTC_RTCCON_TOUT_128HZ                   ((uint32_t)0x0014)           /*!<Toutè¾“å‡ºé«˜é¢‘è¡¥å¿128hz */
 
-#define  RTC_RTCCON_RTC1EN                       ((uint32_t)0x0020)           /*!<RTC¶¨Ê±Æ÷1Ê¹ÄÜÎ»      */
-#define  RTC_RTCCON_RTC2EN                       ((uint32_t)0x0040)           /*!<RTC¶¨Ê±Æ÷2Ê¹ÄÜÎ»      */
+#define  RTC_RTCCON_RTC1EN                       ((uint32_t)0x0020)           /*!<RTCå®šæ—¶å™¨1ä½¿èƒ½ä½      */
+#define  RTC_RTCCON_RTC2EN                       ((uint32_t)0x0040)           /*!<RTCå®šæ—¶å™¨2ä½¿èƒ½ä½      */
 
 
 /*************************  Bit definition for RTCIE register of HT_RTC_TypeDef *************************/
-#define  RTC_RTCIE                               ((uint32_t)0x00ff)           /*!<RTCÖĞ¶ÏÊ¹ÄÜÎ»         */
-#define  RTC_RTCIE_SECIE                         ((uint32_t)0x0001)           /*!<RTCÃëÖĞ¶ÏÊ¹ÄÜÎ»       */
-#define  RTC_RTCIE_MINIE                         ((uint32_t)0x0002)           /*!<RTC·ÖÖÓÖĞ¶ÏÊ¹ÄÜÎ»     */
-#define  RTC_RTCIE_HRIE                          ((uint32_t)0x0004)           /*!<RTCĞ¡Ê±ÖĞ¶ÏÊ¹ÄÜÎ»     */
-#define  RTC_RTCIE_DAYIE                         ((uint32_t)0x0008)           /*!<RTCÈÕÖĞ¶ÏÊ¹ÄÜÎ»       */
-#define  RTC_RTCIE_MTHIE                         ((uint32_t)0x0010)           /*!<RTCÔÂÖĞ¶ÏÊ¹ÄÜÎ»       */
-#define  RTC_RTCIE_RTC1IE                        ((uint32_t)0x0020)           /*!<RTC¶¨Ê±Æ÷1ÖĞ¶ÏÊ¹ÄÜÎ»  */
-#define  RTC_RTCIE_RTC2IE                        ((uint32_t)0x0040)           /*!<RTC¶¨Ê±Æ÷2ÖĞ¶ÏÊ¹ÄÜÎ»  */
-#define  RTC_RTCIE_ALMIE                         ((uint32_t)0x0080)           /*!<RTCÄÖÁåÖĞ¶ÏÊ¹ÄÜÎ»     */
+#define  RTC_RTCIE                               ((uint32_t)0x00ff)           /*!<RTCä¸­æ–­ä½¿èƒ½ä½         */
+#define  RTC_RTCIE_SECIE                         ((uint32_t)0x0001)           /*!<RTCç§’ä¸­æ–­ä½¿èƒ½ä½       */
+#define  RTC_RTCIE_MINIE                         ((uint32_t)0x0002)           /*!<RTCåˆ†é’Ÿä¸­æ–­ä½¿èƒ½ä½     */
+#define  RTC_RTCIE_HRIE                          ((uint32_t)0x0004)           /*!<RTCå°æ—¶ä¸­æ–­ä½¿èƒ½ä½     */
+#define  RTC_RTCIE_DAYIE                         ((uint32_t)0x0008)           /*!<RTCæ—¥ä¸­æ–­ä½¿èƒ½ä½       */
+#define  RTC_RTCIE_MTHIE                         ((uint32_t)0x0010)           /*!<RTCæœˆä¸­æ–­ä½¿èƒ½ä½       */
+#define  RTC_RTCIE_RTC1IE                        ((uint32_t)0x0020)           /*!<RTCå®šæ—¶å™¨1ä¸­æ–­ä½¿èƒ½ä½  */
+#define  RTC_RTCIE_RTC2IE                        ((uint32_t)0x0040)           /*!<RTCå®šæ—¶å™¨2ä¸­æ–­ä½¿èƒ½ä½  */
+#define  RTC_RTCIE_ALMIE                         ((uint32_t)0x0080)           /*!<RTCé—¹é“ƒä¸­æ–­ä½¿èƒ½ä½     */
 
 /*************************  Bit definition for RTCIF register of HT_RTC_TypeDef *************************/
-#define  RTC_RTCIF                               ((uint32_t)0x00ff)           /*!<RTCÖĞ¶Ï±êÖ¾Î»         */
-#define  RTC_RTCIF_SECIF                         ((uint32_t)0x0001)           /*!<RTCÃëÖĞ¶Ï±êÖ¾Î»       */
-#define  RTC_RTCIF_MINIF                         ((uint32_t)0x0002)           /*!<RTC·ÖÖÓÖĞ¶Ï±êÖ¾Î»     */
-#define  RTC_RTCIF_HRIF                          ((uint32_t)0x0004)           /*!<RTCĞ¡Ê±ÖĞ¶Ï±êÖ¾Î»     */
-#define  RTC_RTCIF_DAYIF                         ((uint32_t)0x0008)           /*!<RTCÈÕÖĞ¶Ï±êÖ¾Î»       */
-#define  RTC_RTCIF_MTHIF                         ((uint32_t)0x0010)           /*!<RTCÔÂÖĞ¶Ï±êÖ¾Î»       */
-#define  RTC_RTCIF_RTC1IF                        ((uint32_t)0x0020)           /*!<RTC¶¨Ê±Æ÷1ÖĞ¶Ï±êÖ¾Î»  */
-#define  RTC_RTCIF_RTC2IF                        ((uint32_t)0x0040)           /*!<RTC¶¨Ê±Æ÷2ÖĞ¶Ï±êÖ¾Î»  */
-#define  RTC_RTCIF_ALMIF                         ((uint32_t)0x0080)           /*!<RTCÄÖÁåÖĞ¶Ï±êÖ¾Î»     */
+#define  RTC_RTCIF                               ((uint32_t)0x00ff)           /*!<RTCä¸­æ–­æ ‡å¿—ä½         */
+#define  RTC_RTCIF_SECIF                         ((uint32_t)0x0001)           /*!<RTCç§’ä¸­æ–­æ ‡å¿—ä½       */
+#define  RTC_RTCIF_MINIF                         ((uint32_t)0x0002)           /*!<RTCåˆ†é’Ÿä¸­æ–­æ ‡å¿—ä½     */
+#define  RTC_RTCIF_HRIF                          ((uint32_t)0x0004)           /*!<RTCå°æ—¶ä¸­æ–­æ ‡å¿—ä½     */
+#define  RTC_RTCIF_DAYIF                         ((uint32_t)0x0008)           /*!<RTCæ—¥ä¸­æ–­æ ‡å¿—ä½       */
+#define  RTC_RTCIF_MTHIF                         ((uint32_t)0x0010)           /*!<RTCæœˆä¸­æ–­æ ‡å¿—ä½       */
+#define  RTC_RTCIF_RTC1IF                        ((uint32_t)0x0020)           /*!<RTCå®šæ—¶å™¨1ä¸­æ–­æ ‡å¿—ä½  */
+#define  RTC_RTCIF_RTC2IF                        ((uint32_t)0x0040)           /*!<RTCå®šæ—¶å™¨2ä¸­æ–­æ ‡å¿—ä½  */
+#define  RTC_RTCIF_ALMIF                         ((uint32_t)0x0080)           /*!<RTCé—¹é“ƒä¸­æ–­æ ‡å¿—ä½     */
 
 /*************************  Bit definition for ALMR register of HT_RTC_TypeDef **************************/
-#define  RTC_ALMR                                ((uint32_t)0x1f3f)           /*!<RTCÄÖÁå¼Ä´æÆ÷         */
+#define  RTC_ALMR                                ((uint32_t)0x1f3f)           /*!<RTCé—¹é“ƒå¯„å­˜å™¨         */
 
 /************************  Bit definition for RTCTMR1 register of HT_RTC_TypeDef ************************/
-#define  RTC_RTCTMR1                             ((uint32_t)0xffff)           /*!<RTC¶¨Ê±Æ÷1¼Ä´æÆ÷      */
+#define  RTC_RTCTMR1                             ((uint32_t)0xffff)           /*!<RTCå®šæ—¶å™¨1å¯„å­˜å™¨      */
 
 /************************  Bit definition for RTCTMR2 register of HT_RTC_TypeDef ************************/
-#define  RTC_RTCTMR2                             ((uint32_t)0xffff)           /*!<RTC¶¨Ê±Æ÷2¼Ä´æÆ÷      */
+#define  RTC_RTCTMR2                             ((uint32_t)0xffff)           /*!<RTCå®šæ—¶å™¨2å¯„å­˜å™¨      */
 
 /**************************  Bit definition for SECR register of HT_RTC_TypeDef *************************/
-#define  RTC_SECR                                ((uint32_t)0x003f)           /*!<RTCÃë¼Ä´æÆ÷           */
+#define  RTC_SECR                                ((uint32_t)0x003f)           /*!<RTCç§’å¯„å­˜å™¨           */
 
 /**************************  Bit definition for MINR register of HT_RTC_TypeDef *************************/
-#define  RTC_MINR                                ((uint32_t)0x003f)           /*!<RTC·ÖÖÓ¼Ä´æÆ÷         */
+#define  RTC_MINR                                ((uint32_t)0x003f)           /*!<RTCåˆ†é’Ÿå¯„å­˜å™¨         */
 
 /*************************  Bit definition for HOURR register of HT_RTC_TypeDef *************************/
-#define  RTC_HOURR                               ((uint32_t)0x001f)           /*!<RTCĞ¡Ê±¼Ä´æÆ÷         */
+#define  RTC_HOURR                               ((uint32_t)0x001f)           /*!<RTCå°æ—¶å¯„å­˜å™¨         */
 
 /**************************  Bit definition for DAYR register of HT_RTC_TypeDef *************************/
-#define  RTC_DAYR                                ((uint32_t)0x001f)           /*!<RTCÈÕ¼Ä´æÆ÷           */
+#define  RTC_DAYR                                ((uint32_t)0x001f)           /*!<RTCæ—¥å¯„å­˜å™¨           */
 
 /*************************  Bit definition for MONTHR register of HT_RTC_TypeDef ************************/
-#define  RTC_MONTHR                              ((uint32_t)0x000f)           /*!<RTCÔÂ¼Ä´æÆ÷           */
+#define  RTC_MONTHR                              ((uint32_t)0x000f)           /*!<RTCæœˆå¯„å­˜å™¨           */
 
 /*************************  Bit definition for YEARR register of HT_RTC_TypeDef *************************/
-#define  RTC_YEARR                               ((uint32_t)0x007f)           /*!<RTCÄê¼Ä´æÆ÷           */
+#define  RTC_YEARR                               ((uint32_t)0x007f)           /*!<RTCå¹´å¯„å­˜å™¨           */
 
 /*************************  Bit definition for WEEKR register of HT_RTC_TypeDef *************************/
-#define  RTC_WEEKR                               ((uint32_t)0x0007)           /*!<RTCÖÜ¼Ä´æÆ÷           */
+#define  RTC_WEEKR                               ((uint32_t)0x0007)           /*!<RTCå‘¨å¯„å­˜å™¨           */
 
 /************************  Bit definition for RTCCNTH register of HT_RTC_TypeDef ************************/
-#define  RTC_RTCCNTH                             ((uint32_t)0xffff)           /*!<RTCĞ£Ê±´ÎÊı¸ß16Î»     */
+#define  RTC_RTCCNTH                             ((uint32_t)0xffff)           /*!<RTCæ ¡æ—¶æ¬¡æ•°é«˜16ä½     */
 
 /************************  Bit definition for RTCCNTL register of HT_RTC_TypeDef ************************/
-#define  RTC_RTCCNTL                             ((uint32_t)0xffff)           /*!<RTCĞ£Ê±´ÎÊıµÍ16Î»     */
+#define  RTC_RTCCNTL                             ((uint32_t)0xffff)           /*!<RTCæ ¡æ—¶æ¬¡æ•°ä½16ä½     */
 
 /*************************  Bit definition for RTCRD register of HT_RTC_TypeDef *************************/
-#define  RTC_RTCRD_READFLAG                      ((uint32_t)0x0001)           /*!<RTC¶Á¿ØÖÆÎ»           */
+#define  RTC_RTCRD_READFLAG                      ((uint32_t)0x0001)           /*!<RTCè¯»æ§åˆ¶ä½           */
 
 /*************************  Bit definition for RTCWR register of HT_RTC_TypeDef *************************/
-#define  RTC_RTCWR_UPDATE                        ((uint32_t)0x0001)           /*!<RTCĞ´¿ØÖÆÎ»           */
-#define  RTC_RTCWR_CLEAR                         ((uint32_t)0x0000)           /*!<RTCĞ´¿ØÖÆÎ»ÇåÁã       */
+#define  RTC_RTCWR_UPDATE                        ((uint32_t)0x0001)           /*!<RTCå†™æ§åˆ¶ä½           */
+#define  RTC_RTCWR_CLEAR                         ((uint32_t)0x0000)           /*!<RTCå†™æ§åˆ¶ä½æ¸…é›¶       */
 
 /***********************  Bit definition for RTCRSTFLG register of HT_RTC_TypeDef ***********************/
-#define  RTC_RTCRSTFLG_SOFTReset                 ((uint32_t)0x0001)           /*!<RTCÈí¸´Î»±êÖ¾         */
-#define  RTC_RTCRSTFLG_PORReset                  ((uint32_t)0x0002)           /*!<RTCPOR¸´Î»±êÖ¾        */
+#define  RTC_RTCRSTFLG_SOFTReset                 ((uint32_t)0x0001)           /*!<RTCè½¯å¤ä½æ ‡å¿—         */
+#define  RTC_RTCRSTFLG_PORReset                  ((uint32_t)0x0002)           /*!<RTCPORå¤ä½æ ‡å¿—        */
 
 /***********************  Bit definition for RTCRSTSET register of HT_RTC_TypeDef ***********************/
-#define  RTC_RTCRSTSET                           ((uint32_t)0xffff)           /*!<RTCĞ´¸´Î»¼Ä´æÆ÷       */
+#define  RTC_RTCRSTSET                           ((uint32_t)0xffff)           /*!<RTCå†™å¤ä½å¯„å­˜å™¨       */
 
 
 /***********************  Bit definition for RTCCHKSUM register of HT_RTC_TypeDef ***********************/
 #if  defined  HT6x2x                                                          
-#define  RTC_RTCCHKSUM                           ((uint32_t)0xffff)           /*!<RTCĞ£ÑéºÍ¼Ä´æÆ÷       */
+#define  RTC_RTCCHKSUM                           ((uint32_t)0xffff)           /*!<RTCæ ¡éªŒå’Œå¯„å­˜å™¨       */
 #endif
 
 #if  defined  HT6x2x || defined HT501x
 /**************************  Bit definition for SECR2 register of HT_RTC_TypeDef ************************/
-#define  RTC_SECR2                               ((uint32_t)0x003f)           /*!<RTC2Ãë¼Ä´æÆ÷          */
+#define  RTC_SECR2                               ((uint32_t)0x003f)           /*!<RTC2ç§’å¯„å­˜å™¨          */
 
 /**************************  Bit definition for MINR2 register of HT_RTC_TypeDef ************************/
-#define  RTC_MINR2                               ((uint32_t)0x003f)           /*!<RTC2·ÖÖÓ¼Ä´æÆ÷        */
+#define  RTC_MINR2                               ((uint32_t)0x003f)           /*!<RTC2åˆ†é’Ÿå¯„å­˜å™¨        */
 
 /*************************  Bit definition for HOURR2 register of HT_RTC_TypeDef ************************/
-#define  RTC_HOURR2                              ((uint32_t)0x001f)           /*!<RTC2Ğ¡Ê±¼Ä´æÆ÷        */
+#define  RTC_HOURR2                              ((uint32_t)0x001f)           /*!<RTC2å°æ—¶å¯„å­˜å™¨        */
 
 /**************************  Bit definition for DAYR2 register of HT_RTC_TypeDef ************************/
-#define  RTC_DAYR2                               ((uint32_t)0x001f)           /*!<RTC2ÈÕ¼Ä´æÆ÷          */
+#define  RTC_DAYR2                               ((uint32_t)0x001f)           /*!<RTC2æ—¥å¯„å­˜å™¨          */
 
 /*************************  Bit definition for MONTHR2 register of HT_RTC_TypeDef ***********************/
-#define  RTC_MONTHR2                             ((uint32_t)0x000f)           /*!<RTC2ÔÂ¼Ä´æÆ÷          */
+#define  RTC_MONTHR2                             ((uint32_t)0x000f)           /*!<RTC2æœˆå¯„å­˜å™¨          */
 
 /*************************  Bit definition for YEARR2 register of HT_RTC_TypeDef ************************/
-#define  RTC_YEARR2                              ((uint32_t)0x007f)           /*!<RTC2Äê¼Ä´æÆ÷          */
+#define  RTC_YEARR2                              ((uint32_t)0x007f)           /*!<RTC2å¹´å¯„å­˜å™¨          */
 
 /*************************  Bit definition for WEEKR2 register of HT_RTC_TypeDef ************************/
-#define  RTC_WEEKR2                              ((uint32_t)0x0007)           /*!<RTC2ÖÜ¼Ä´æÆ÷          */
+#define  RTC_WEEKR2                              ((uint32_t)0x0007)           /*!<RTC2å‘¨å¯„å­˜å™¨          */
 
 /*************************  Bit definition for RTC2CAL register of HT_RTC_TypeDef ***********************/
-#define  RTC_RTC2CAL                             ((uint32_t)0x1ffff)          /*!<LRC RTCĞ£Õı¼Ä´æÆ÷     */
+#define  RTC_RTC2CAL                             ((uint32_t)0x1ffff)          /*!<LRC RTCæ ¡æ­£å¯„å­˜å™¨     */
 #endif
 
 /*************************  Bit definition for FRE_LRC register of HT_RTC_TypeDef ***********************/
 #if  defined HT501x
-#define  RTC_FRELRC                              ((uint32_t)0x1ffff)          /*!<LRC²âÆµÖµ             */
+#define  RTC_FRELRC                              ((uint32_t)0x1ffff)          /*!<LRCæµ‹é¢‘å€¼             */
 #endif
 
 #if  defined  HT6x2x
 /*************************  Bit definition for RTCRD2 register of HT_RTC_TypeDef ************************/
-#define  RTC_RTCRD2_READFLAG                     ((uint32_t)0x0001)           /*!<RTC2¶Á¿ØÖÆÎ»          */
+#define  RTC_RTCRD2_READFLAG                     ((uint32_t)0x0001)           /*!<RTC2è¯»æ§åˆ¶ä½          */
 
 /*************************  Bit definition for RTCWR2 register of HT_RTC_TypeDef ************************/
-#define  RTC_RTCWR2_UPDATE                       ((uint32_t)0x0001)           /*!<RTC2Ğ´¿ØÖÆÎ»          */
-#define  RTC_RTCWR2_CLEAR                        ((uint32_t)0x0000)           /*!<RTC2Ğ´¿ØÖÆÎ»ÇåÁã      */
+#define  RTC_RTCWR2_UPDATE                       ((uint32_t)0x0001)           /*!<RTC2å†™æ§åˆ¶ä½          */
+#define  RTC_RTCWR2_CLEAR                        ((uint32_t)0x0000)           /*!<RTC2å†™æ§åˆ¶ä½æ¸…é›¶      */
 #endif
 
 /*
@@ -1326,36 +1326,36 @@ typedef union
 **********************************************************************************************************
 */  
 /*************************  Bit definition for LCDCLK register of HT_LCD_TypeDef ************************/
-#define  LCD_LCDCLK                       	     ((uint32_t)0x009f)           /*!<LCDÊ±ÖÓ¼Ä´æÆ÷		    */
+#define  LCD_LCDCLK                       	     ((uint32_t)0x009f)           /*!<LCDæ—¶é’Ÿå¯„å­˜å™¨		    */
 
-#define  LCD_LCDCLK_LCLK                         ((uint32_t)0x0007)           /*!<LCDÉ¨ÃèÆµÂÊÑ¡ÔñÎ»     */
+#define  LCD_LCDCLK_LCLK                         ((uint32_t)0x0007)           /*!<LCDæ‰«æé¢‘ç‡é€‰æ‹©ä½     */
 #define  LCD_LCDCLK_LCLK_DIV64                   ((uint32_t)0x0004)           /*!<Divide Radio = 64     */
 #define  LCD_LCDCLK_LCLK_DIV128                  ((uint32_t)0x0000)           /*!<Divide Radio = 128    */
 #define  LCD_LCDCLK_LCLK_DIV256                  ((uint32_t)0x0001)           /*!<Divide Radio = 256    */
 #define  LCD_LCDCLK_LCLK_DIV512                  ((uint32_t)0x0002)           /*!<Divide Radio = 512    */
 #define  LCD_LCDCLK_LCLK_DIV1024                 ((uint32_t)0x0003)           /*!<Divide Radio = 1024   */
                                                                                                         
-#define  LCD_LCDCLK_DUTY                         ((uint32_t)0x0018)           /*!<LCDDuty¿ØÖÆÑ¡ÔñÎ»     */
+#define  LCD_LCDCLK_DUTY                         ((uint32_t)0x0018)           /*!<LCDDutyæ§åˆ¶é€‰æ‹©ä½     */
 #define  LCD_LCDCLK_DUTY_COM4                    ((uint32_t)0x0000)           /*!<4Com                  */
 #define  LCD_LCDCLK_DUTY_COM6                    ((uint32_t)0x0008)           /*!<6Com                  */
 #define  LCD_LCDCLK_DUTY_COM8                    ((uint32_t)0x0010)           /*!<8Com                  */
                                                                                                         
-#define  LCD_LCDCLK_BIASCTL                      ((uint32_t)0x0080)           /*!<Æ«Ñ¹Çı¶¯Ñ¡Ôñ          */
-#define  LCD_LCDCLK_BIASCTL_3                    ((uint32_t)0x0080)           /*!<1/3 biasÆ«Ñ¹Çı¶¯      */
-#define  LCD_LCDCLK_BIASCTL_4                    ((uint32_t)0x0000)           /*!<1/4 biasÆ«Ñ¹Çı¶¯      */
+#define  LCD_LCDCLK_BIASCTL                      ((uint32_t)0x0080)           /*!<åå‹é©±åŠ¨é€‰æ‹©          */
+#define  LCD_LCDCLK_BIASCTL_3                    ((uint32_t)0x0080)           /*!<1/3 biasåå‹é©±åŠ¨      */
+#define  LCD_LCDCLK_BIASCTL_4                    ((uint32_t)0x0000)           /*!<1/4 biasåå‹é©±åŠ¨      */
 
 /*************************  Bit definition for LCDCON register of HT_LCD_TypeDef ************************/
-#define  LCD_LCDCON		                         ((uint32_t)0x00ff)           /*!<LCD¿ØÖÆ¼Ä´æÆ÷         */
+#define  LCD_LCDCON		                         ((uint32_t)0x00ff)           /*!<LCDæ§åˆ¶å¯„å­˜å™¨         */
 
-#define  LCD_LCDCON_VRSEL                        ((uint32_t)0x000f)           /*!<LCD¶Ô±È¶Èµ÷½Ú         */
-#define  LCD_LCDCON_LC                           ((uint32_t)0x0010)           /*!<LCDÂıËÙ³äµçÄ£Ê½Ñ¡ÔñÎ» */
-#define  LCD_LCDCON_FC                           ((uint32_t)0x0020)           /*!<LCD¿ìËÙ³äµçÄ£Ê½Ñ¡ÔñÎ» */
+#define  LCD_LCDCON_VRSEL                        ((uint32_t)0x000f)           /*!<LCDå¯¹æ¯”åº¦è°ƒèŠ‚         */
+#define  LCD_LCDCON_LC                           ((uint32_t)0x0010)           /*!<LCDæ…¢é€Ÿå……ç”µæ¨¡å¼é€‰æ‹©ä½ */
+#define  LCD_LCDCON_FC                           ((uint32_t)0x0020)           /*!<LCDå¿«é€Ÿå……ç”µæ¨¡å¼é€‰æ‹©ä½ */
                                                                                                         
-#define  LCD_LCDCON_FCSET                        ((uint32_t)0x00c0)           /*!<LCD¿ìËÙ³äµçÊ±¼äÑ¡ÔñÎ» */
-#define  LCD_LCDCON_FCSET_8                      ((uint32_t)0x0000)           /*!<³äµçÊ±¼ä = 1/8flcd    */
-#define  LCD_LCDCON_FCSET_16                     ((uint32_t)0x0040)           /*!<³äµçÊ±¼ä = 1/16flcd   */
-#define  LCD_LCDCON_FCSET_32                     ((uint32_t)0x0080)           /*!<³äµçÊ±¼ä = 1/32flcd   */
-#define  LCD_LCDCON_FCSET_64                     ((uint32_t)0x00c0)           /*!<³äµçÊ±¼ä = 1/64flcd   */
+#define  LCD_LCDCON_FCSET                        ((uint32_t)0x00c0)           /*!<LCDå¿«é€Ÿå……ç”µæ—¶é—´é€‰æ‹©ä½ */
+#define  LCD_LCDCON_FCSET_8                      ((uint32_t)0x0000)           /*!<å……ç”µæ—¶é—´ = 1/8flcd    */
+#define  LCD_LCDCON_FCSET_16                     ((uint32_t)0x0040)           /*!<å……ç”µæ—¶é—´ = 1/16flcd   */
+#define  LCD_LCDCON_FCSET_32                     ((uint32_t)0x0080)           /*!<å……ç”µæ—¶é—´ = 1/32flcd   */
+#define  LCD_LCDCON_FCSET_64                     ((uint32_t)0x00c0)           /*!<å……ç”µæ—¶é—´ = 1/64flcd   */
 
 
 /*
@@ -1365,231 +1365,231 @@ typedef union
 */  
 /*************************  Bit definition for TBSCON register of HT_TBS_TypeDef ************************/
 #if  defined  HT501x
-#define  TBS_TBSCON		                         ((uint32_t)0xff1b)           /*!<TBS¿ØÖÆ¼Ä´æÆ÷	      */
-#define  TBS_TBSCON_TMPEn                        ((uint32_t)0x0001)           /*!<ÎÂ¶È²âÁ¿¹¦ÄÜÊ¹ÄÜ      */
-#define  TBS_TBSCON_VBATEn                       ((uint32_t)0x0002)           /*!<µç³ØµçÑ¹²âÁ¿¹¦ÄÜÊ¹ÄÜ  */
-#define  TBS_TBSCON_VCCEn                        ((uint32_t)0x0004)           /*!<µç³ØµçÑ¹²âÁ¿¹¦ÄÜÊ¹ÄÜ  */
-#define  TBS_TBSCON_ADC0En                       ((uint32_t)0x0008)           /*!<ADC0²âÁ¿¹¦ÄÜÊ¹ÄÜ      */
-#define  TBS_TBSCON_ADC1En                       ((uint32_t)0x0010)           /*!<ADC1²âÁ¿¹¦ÄÜÊ¹ÄÜ      */
-#define  TBS_TBSCON_ADC2En                       ((uint32_t)0x0020)           /*!<ADC2²âÁ¿¹¦ÄÜÊ¹ÄÜ      */
-#define  TBS_TBSCON_VBATCMPEn                    ((uint32_t)0x0040)           /*!<Vbat±È½Ï¹¦ÄÜÊ¹ÄÜ      */
-#define  TBS_TBSCON_ADC0CMPEn                    ((uint32_t)0x0800)           /*!<ADC0±È½Ï¹¦ÄÜÊ¹ÄÜ      */
-#define  TBS_TBSCON_ADC1CMPEn                    ((uint32_t)0x1000)           /*!<ADC1±È½Ï¹¦ÄÜÊ¹ÄÜ      */
-#define  TBS_TBSCON_xEn                          ((uint32_t)0x183f)           /*!<TBS×ÓÄ£¿éÊ¹ÄÜÎ»       */
+#define  TBS_TBSCON		                         ((uint32_t)0xff1b)           /*!<TBSæ§åˆ¶å¯„å­˜å™¨	      */
+#define  TBS_TBSCON_TMPEn                        ((uint32_t)0x0001)           /*!<æ¸©åº¦æµ‹é‡åŠŸèƒ½ä½¿èƒ½      */
+#define  TBS_TBSCON_VBATEn                       ((uint32_t)0x0002)           /*!<ç”µæ± ç”µå‹æµ‹é‡åŠŸèƒ½ä½¿èƒ½  */
+#define  TBS_TBSCON_VCCEn                        ((uint32_t)0x0004)           /*!<ç”µæ± ç”µå‹æµ‹é‡åŠŸèƒ½ä½¿èƒ½  */
+#define  TBS_TBSCON_ADC0En                       ((uint32_t)0x0008)           /*!<ADC0æµ‹é‡åŠŸèƒ½ä½¿èƒ½      */
+#define  TBS_TBSCON_ADC1En                       ((uint32_t)0x0010)           /*!<ADC1æµ‹é‡åŠŸèƒ½ä½¿èƒ½      */
+#define  TBS_TBSCON_ADC2En                       ((uint32_t)0x0020)           /*!<ADC2æµ‹é‡åŠŸèƒ½ä½¿èƒ½      */
+#define  TBS_TBSCON_VBATCMPEn                    ((uint32_t)0x0040)           /*!<Vbatæ¯”è¾ƒåŠŸèƒ½ä½¿èƒ½      */
+#define  TBS_TBSCON_ADC0CMPEn                    ((uint32_t)0x0800)           /*!<ADC0æ¯”è¾ƒåŠŸèƒ½ä½¿èƒ½      */
+#define  TBS_TBSCON_ADC1CMPEn                    ((uint32_t)0x1000)           /*!<ADC1æ¯”è¾ƒåŠŸèƒ½ä½¿èƒ½      */
+#define  TBS_TBSCON_xEn                          ((uint32_t)0x183f)           /*!<TBSå­æ¨¡å—ä½¿èƒ½ä½       */
 #else
-#define  TBS_TBSCON		                         ((uint32_t)0x3ffff)           /*!<TBS¿ØÖÆ¼Ä´æÆ÷	      */
-#define  TBS_TBSCON_TMPEn                        ((uint32_t)0x0001)           /*!<ÎÂ¶È²âÁ¿¹¦ÄÜÊ¹ÄÜ      */
-#define  TBS_TBSCON_VBATEn                       ((uint32_t)0x0002)           /*!<µç³ØµçÑ¹²âÁ¿¹¦ÄÜÊ¹ÄÜ  */
-#define  TBS_TBSCON_ADC0En                       ((uint32_t)0x0004)           /*!<ADC0²âÁ¿¹¦ÄÜÊ¹ÄÜ      */
-#define  TBS_TBSCON_ADC1En                       ((uint32_t)0x0008)           /*!<ADC1²âÁ¿¹¦ÄÜÊ¹ÄÜ      */
-#define  TBS_TBSCON_VCCEn                        ((uint32_t)0x0010)           /*!<VCC²âÁ¿¹¦ÄÜÊ¹ÄÜ       */
-#define  TBS_TBSCON_xEn                          ((uint32_t)0x001f)           /*!<TBS×ÓÄ£¿éÊ¹ÄÜÎ»       */  
+#define  TBS_TBSCON		                         ((uint32_t)0x3ffff)           /*!<TBSæ§åˆ¶å¯„å­˜å™¨	      */
+#define  TBS_TBSCON_TMPEn                        ((uint32_t)0x0001)           /*!<æ¸©åº¦æµ‹é‡åŠŸèƒ½ä½¿èƒ½      */
+#define  TBS_TBSCON_VBATEn                       ((uint32_t)0x0002)           /*!<ç”µæ± ç”µå‹æµ‹é‡åŠŸèƒ½ä½¿èƒ½  */
+#define  TBS_TBSCON_ADC0En                       ((uint32_t)0x0004)           /*!<ADC0æµ‹é‡åŠŸèƒ½ä½¿èƒ½      */
+#define  TBS_TBSCON_ADC1En                       ((uint32_t)0x0008)           /*!<ADC1æµ‹é‡åŠŸèƒ½ä½¿èƒ½      */
+#define  TBS_TBSCON_VCCEn                        ((uint32_t)0x0010)           /*!<VCCæµ‹é‡åŠŸèƒ½ä½¿èƒ½       */
+#define  TBS_TBSCON_xEn                          ((uint32_t)0x001f)           /*!<TBSå­æ¨¡å—ä½¿èƒ½ä½       */  
 #endif
 
 /*************************  Bit definition for TBSIE register of HT_TBS_TypeDef *************************/
 #if  defined  HT501x
-#define  TBS_TBSIE                               ((uint32_t)0x03ff)           /*!<TBSÖĞ¶ÏÊ¹ÄÜ           */
-#define  TBS_TBSIE_TMPIE                         ((uint32_t)0x0001)           /*!<ÎÂ¶È²âÁ¿ÖĞ¶ÏÊ¹ÄÜ      */
-#define  TBS_TBSIE_VBATIE                        ((uint32_t)0x0002)           /*!<µç³ØµçÑ¹²âÁ¿ÖĞ¶ÏÊ¹ÄÜ  */
-#define  TBS_TBSIE_VCCIE                         ((uint32_t)0x0004)           /*!<VCC²âÁ¿ÖĞ¶ÏÊ¹ÄÜ       */
-#define  TBS_TBSIE_ADC0IE                        ((uint32_t)0x0008)           /*!<ADC0²âÁ¿ÖĞ¶ÏÊ¹ÄÜ      */
-#define  TBS_TBSIE_ADC1IE                        ((uint32_t)0x0010)           /*!<ADC1²âÁ¿ÖĞ¶ÏÊ¹ÄÜ      */
-#define  TBS_TBSIE_ADC2IE                        ((uint32_t)0x0020)           /*!<ADC2²âÁ¿ÖĞ¶ÏÊ¹ÄÜ      */
-#define  TBS_TBSIE_VBATCMPIE                     ((uint32_t)0x0040)           /*!<µç³ØµçÑ¹±È½ÏÖĞ¶ÏÊ¹ÄÜ  */
-#define  TBS_TBSIE_VREFIE                        ((uint32_t)0x0080)           /*!<VREF²âÁ¿ÖĞ¶ÏÊ¹ÄÜ      */
-#define  TBS_TBSIE_ADC0CMPIE                     ((uint32_t)0x0100)           /*!<ADC0±È½ÏÖĞ¶ÏÊ¹ÄÜ      */
-#define  TBS_TBSIE_ADC1CMPIE                     ((uint32_t)0x0200)           /*!<ADC1±È½ÏÖĞ¶ÏÊ¹ÄÜ      */
+#define  TBS_TBSIE                               ((uint32_t)0x03ff)           /*!<TBSä¸­æ–­ä½¿èƒ½           */
+#define  TBS_TBSIE_TMPIE                         ((uint32_t)0x0001)           /*!<æ¸©åº¦æµ‹é‡ä¸­æ–­ä½¿èƒ½      */
+#define  TBS_TBSIE_VBATIE                        ((uint32_t)0x0002)           /*!<ç”µæ± ç”µå‹æµ‹é‡ä¸­æ–­ä½¿èƒ½  */
+#define  TBS_TBSIE_VCCIE                         ((uint32_t)0x0004)           /*!<VCCæµ‹é‡ä¸­æ–­ä½¿èƒ½       */
+#define  TBS_TBSIE_ADC0IE                        ((uint32_t)0x0008)           /*!<ADC0æµ‹é‡ä¸­æ–­ä½¿èƒ½      */
+#define  TBS_TBSIE_ADC1IE                        ((uint32_t)0x0010)           /*!<ADC1æµ‹é‡ä¸­æ–­ä½¿èƒ½      */
+#define  TBS_TBSIE_ADC2IE                        ((uint32_t)0x0020)           /*!<ADC2æµ‹é‡ä¸­æ–­ä½¿èƒ½      */
+#define  TBS_TBSIE_VBATCMPIE                     ((uint32_t)0x0040)           /*!<ç”µæ± ç”µå‹æ¯”è¾ƒä¸­æ–­ä½¿èƒ½  */
+#define  TBS_TBSIE_VREFIE                        ((uint32_t)0x0080)           /*!<VREFæµ‹é‡ä¸­æ–­ä½¿èƒ½      */
+#define  TBS_TBSIE_ADC0CMPIE                     ((uint32_t)0x0100)           /*!<ADC0æ¯”è¾ƒä¸­æ–­ä½¿èƒ½      */
+#define  TBS_TBSIE_ADC1CMPIE                     ((uint32_t)0x0200)           /*!<ADC1æ¯”è¾ƒä¸­æ–­ä½¿èƒ½      */
 #else
 #if  defined HT6x1x
-#define  TBS_TBSIE                               ((uint32_t)0x003f)           /*!<TBSÖĞ¶ÏÊ¹ÄÜ           */
+#define  TBS_TBSIE                               ((uint32_t)0x003f)           /*!<TBSä¸­æ–­ä½¿èƒ½           */
 #elif defined HT6x2x
-#define  TBS_TBSIE                               ((uint32_t)0x03ff)           /*!<TBSÖĞ¶ÏÊ¹ÄÜ           */
+#define  TBS_TBSIE                               ((uint32_t)0x03ff)           /*!<TBSä¸­æ–­ä½¿èƒ½           */
 #endif
-#define  TBS_TBSIE_TMPIE                         ((uint32_t)0x0001)           /*!<ÎÂ¶È²âÁ¿ÖĞ¶ÏÊ¹ÄÜ      */
-#define  TBS_TBSIE_VBATIE                        ((uint32_t)0x0002)           /*!<µç³ØµçÑ¹²âÁ¿ÖĞ¶ÏÊ¹ÄÜ  */
-#define  TBS_TBSIE_ADC0IE                        ((uint32_t)0x0004)           /*!<ADC0²âÁ¿ÖĞ¶ÏÊ¹ÄÜ      */
-#define  TBS_TBSIE_ADC1IE                        ((uint32_t)0x0008)           /*!<ADC1²âÁ¿ÖĞ¶ÏÊ¹ÄÜ      */
-#define  TBS_TBSIE_VBATCMPIE                     ((uint32_t)0x0010)           /*!<µç³ØµçÑ¹±È½ÏÖĞ¶ÏÊ¹ÄÜ  */
-#define  TBS_TBSIE_VCCIE                         ((uint32_t)0x0020)           /*!<VCC²âÁ¿ÖĞ¶ÏÊ¹ÄÜ       */
+#define  TBS_TBSIE_TMPIE                         ((uint32_t)0x0001)           /*!<æ¸©åº¦æµ‹é‡ä¸­æ–­ä½¿èƒ½      */
+#define  TBS_TBSIE_VBATIE                        ((uint32_t)0x0002)           /*!<ç”µæ± ç”µå‹æµ‹é‡ä¸­æ–­ä½¿èƒ½  */
+#define  TBS_TBSIE_ADC0IE                        ((uint32_t)0x0004)           /*!<ADC0æµ‹é‡ä¸­æ–­ä½¿èƒ½      */
+#define  TBS_TBSIE_ADC1IE                        ((uint32_t)0x0008)           /*!<ADC1æµ‹é‡ä¸­æ–­ä½¿èƒ½      */
+#define  TBS_TBSIE_VBATCMPIE                     ((uint32_t)0x0010)           /*!<ç”µæ± ç”µå‹æ¯”è¾ƒä¸­æ–­ä½¿èƒ½  */
+#define  TBS_TBSIE_VCCIE                         ((uint32_t)0x0020)           /*!<VCCæµ‹é‡ä¸­æ–­ä½¿èƒ½       */
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
-#define  TBS_TBSIE_ADC0CMPIE                     ((uint32_t)0x0040)           /*!<ADC0²âÁ¿±È½ÏÖĞ¶ÏÊ¹ÄÜ  */
-#define  TBS_TBSIE_ADC3IE                        ((uint32_t)0x0080)           /*!<ADC3²âÁ¿ÖĞ¶ÏÊ¹ÄÜ      */
-#define  TBS_TBSIE_ADC4IE                        ((uint32_t)0x0100)           /*!<ADC4²âÁ¿ÖĞ¶ÏÊ¹ÄÜ      */
-#define  TBS_TBSIE_ADC5IE                        ((uint32_t)0x0200)           /*!<ADC5²âÁ¿ÖĞ¶ÏÊ¹ÄÜ      */
+#define  TBS_TBSIE_ADC0CMPIE                     ((uint32_t)0x0040)           /*!<ADC0æµ‹é‡æ¯”è¾ƒä¸­æ–­ä½¿èƒ½  */
+#define  TBS_TBSIE_ADC3IE                        ((uint32_t)0x0080)           /*!<ADC3æµ‹é‡ä¸­æ–­ä½¿èƒ½      */
+#define  TBS_TBSIE_ADC4IE                        ((uint32_t)0x0100)           /*!<ADC4æµ‹é‡ä¸­æ–­ä½¿èƒ½      */
+#define  TBS_TBSIE_ADC5IE                        ((uint32_t)0x0200)           /*!<ADC5æµ‹é‡ä¸­æ–­ä½¿èƒ½      */
 #endif
 #endif
 
 /*************************  Bit definition for TBSIF register of HT_TBS_TypeDef *************************/
 #if  defined  HT501x
-#define  TBS_TBSIF                               ((uint32_t)0x03ff)           /*!<TBSÖĞ¶Ï±êÖ¾           */
-#define  TBS_TBSIF_TMPIF                         ((uint32_t)0x0001)           /*!<ÎÂ¶È²âÁ¿ÖĞ¶Ï±êÖ¾      */
-#define  TBS_TBSIF_VBATIF                        ((uint32_t)0x0002)           /*!<µç³ØµçÑ¹²âÁ¿ÖĞ¶Ï±êÖ¾  */
-#define  TBS_TBSIF_VCCIF                         ((uint32_t)0x0004)           /*!<VCC²âÁ¿ÖĞ¶Ï±êÖ¾       */
-#define  TBS_TBSIF_ADC0IF                        ((uint32_t)0x0008)           /*!<ADC0²âÁ¿ÖĞ¶Ï±êÖ¾      */
-#define  TBS_TBSIF_ADC1IF                        ((uint32_t)0x0010)           /*!<ADC1²âÁ¿ÖĞ¶Ï±êÖ¾      */
-#define  TBS_TBSIF_ADC2IF                        ((uint32_t)0x0020)           /*!<ADC2²âÁ¿ÖĞ¶Ï±êÖ¾      */
-#define  TBS_TBSIF_VBATCMPIF                     ((uint32_t)0x0040)           /*!<µç³ØµçÑ¹±È½ÏÖĞ¶Ï±êÖ¾  */
-#define  TBS_TBSIF_VREFIF                        ((uint32_t)0x0080)           /*!<VREF²âÁ¿ÖĞ¶Ï±êÖ¾      */
-#define  TBS_TBSIF_ADC0CMPIF                     ((uint32_t)0x0100)           /*!<ADC0±È½ÏÖĞ¶Ï±êÖ¾      */
-#define  TBS_TBSIF_ADC1CMPIF                     ((uint32_t)0x0200)           /*!<ADC1±È½ÏÖĞ¶Ï±êÖ¾      */
+#define  TBS_TBSIF                               ((uint32_t)0x03ff)           /*!<TBSä¸­æ–­æ ‡å¿—           */
+#define  TBS_TBSIF_TMPIF                         ((uint32_t)0x0001)           /*!<æ¸©åº¦æµ‹é‡ä¸­æ–­æ ‡å¿—      */
+#define  TBS_TBSIF_VBATIF                        ((uint32_t)0x0002)           /*!<ç”µæ± ç”µå‹æµ‹é‡ä¸­æ–­æ ‡å¿—  */
+#define  TBS_TBSIF_VCCIF                         ((uint32_t)0x0004)           /*!<VCCæµ‹é‡ä¸­æ–­æ ‡å¿—       */
+#define  TBS_TBSIF_ADC0IF                        ((uint32_t)0x0008)           /*!<ADC0æµ‹é‡ä¸­æ–­æ ‡å¿—      */
+#define  TBS_TBSIF_ADC1IF                        ((uint32_t)0x0010)           /*!<ADC1æµ‹é‡ä¸­æ–­æ ‡å¿—      */
+#define  TBS_TBSIF_ADC2IF                        ((uint32_t)0x0020)           /*!<ADC2æµ‹é‡ä¸­æ–­æ ‡å¿—      */
+#define  TBS_TBSIF_VBATCMPIF                     ((uint32_t)0x0040)           /*!<ç”µæ± ç”µå‹æ¯”è¾ƒä¸­æ–­æ ‡å¿—  */
+#define  TBS_TBSIF_VREFIF                        ((uint32_t)0x0080)           /*!<VREFæµ‹é‡ä¸­æ–­æ ‡å¿—      */
+#define  TBS_TBSIF_ADC0CMPIF                     ((uint32_t)0x0100)           /*!<ADC0æ¯”è¾ƒä¸­æ–­æ ‡å¿—      */
+#define  TBS_TBSIF_ADC1CMPIF                     ((uint32_t)0x0200)           /*!<ADC1æ¯”è¾ƒä¸­æ–­æ ‡å¿—      */
 #else    /*!<HT6x1x && HT6x2x      */
 #if  defined HT6x1x
-#define  TBS_TBSIE                               ((uint32_t)0x003f)           /*!<TBSÖĞ¶Ï±êÖ¾           */
+#define  TBS_TBSIE                               ((uint32_t)0x003f)           /*!<TBSä¸­æ–­æ ‡å¿—           */
 #elif defined HT6x2x
-#define  TBS_TBSIE                               ((uint32_t)0x03ff)           /*!<TBSÖĞ¶Ï±êÖ¾           */
+#define  TBS_TBSIE                               ((uint32_t)0x03ff)           /*!<TBSä¸­æ–­æ ‡å¿—           */
 #endif
-#define  TBS_TBSIF_TMPIF                         ((uint32_t)0x0001)           /*!<ÎÂ¶È²âÁ¿ÖĞ¶Ï±êÖ¾      */
-#define  TBS_TBSIF_VBATIF                        ((uint32_t)0x0002)           /*!<µç³ØµçÑ¹²âÁ¿ÖĞ¶Ï±êÖ¾  */
-#define  TBS_TBSIF_ADC0IF                        ((uint32_t)0x0004)           /*!<ADC0²âÁ¿ÖĞ¶Ï±êÖ¾      */
-#define  TBS_TBSIF_ADC1IF                        ((uint32_t)0x0008)           /*!<ADC1²âÁ¿ÖĞ¶Ï±êÖ¾      */
-#define  TBS_TBSIF_VBATCMPIF                     ((uint32_t)0x0010)           /*!<µç³ØµçÑ¹±È½ÏÖĞ¶Ï±êÖ¾  */
-#define  TBS_TBSIF_VCCIF                         ((uint32_t)0x0020)           /*!<VCC²âÁ¿ÖĞ¶Ï±êÖ¾       */
+#define  TBS_TBSIF_TMPIF                         ((uint32_t)0x0001)           /*!<æ¸©åº¦æµ‹é‡ä¸­æ–­æ ‡å¿—      */
+#define  TBS_TBSIF_VBATIF                        ((uint32_t)0x0002)           /*!<ç”µæ± ç”µå‹æµ‹é‡ä¸­æ–­æ ‡å¿—  */
+#define  TBS_TBSIF_ADC0IF                        ((uint32_t)0x0004)           /*!<ADC0æµ‹é‡ä¸­æ–­æ ‡å¿—      */
+#define  TBS_TBSIF_ADC1IF                        ((uint32_t)0x0008)           /*!<ADC1æµ‹é‡ä¸­æ–­æ ‡å¿—      */
+#define  TBS_TBSIF_VBATCMPIF                     ((uint32_t)0x0010)           /*!<ç”µæ± ç”µå‹æ¯”è¾ƒä¸­æ–­æ ‡å¿—  */
+#define  TBS_TBSIF_VCCIF                         ((uint32_t)0x0020)           /*!<VCCæµ‹é‡ä¸­æ–­æ ‡å¿—       */
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
-#define  TBS_TBSIF_ADC0CMPIF                     ((uint32_t)0x0040)           /*!<ADC0²âÁ¿±È½ÏÖĞ¶Ï±êÖ¾  */
-#define  TBS_TBSIF_ADC3IF                        ((uint32_t)0x0080)           /*!<ADC3²âÁ¿ÖĞ¶Ï±êÖ¾      */
-#define  TBS_TBSIF_ADC4IF                        ((uint32_t)0x0100)           /*!<ADC4²âÁ¿ÖĞ¶Ï±êÖ¾      */
-#define  TBS_TBSIF_ADC5IF                        ((uint32_t)0x0200)           /*!<ADC5²âÁ¿ÖĞ¶Ï±êÖ¾      */
+#define  TBS_TBSIF_ADC0CMPIF                     ((uint32_t)0x0040)           /*!<ADC0æµ‹é‡æ¯”è¾ƒä¸­æ–­æ ‡å¿—  */
+#define  TBS_TBSIF_ADC3IF                        ((uint32_t)0x0080)           /*!<ADC3æµ‹é‡ä¸­æ–­æ ‡å¿—      */
+#define  TBS_TBSIF_ADC4IF                        ((uint32_t)0x0100)           /*!<ADC4æµ‹é‡ä¸­æ–­æ ‡å¿—      */
+#define  TBS_TBSIF_ADC5IF                        ((uint32_t)0x0200)           /*!<ADC5æµ‹é‡ä¸­æ–­æ ‡å¿—      */
 #endif
 #endif
 
 /************************  Bit definition for TMPDAT register of HT_TBS_TypeDef *************************/
-#define  TBS_TMPDAT                              ((uint32_t)0xffff)           /*!<ÎÂ¶È²âÁ¿Êä³ö¼Ä´æÆ÷    */
+#define  TBS_TMPDAT                              ((uint32_t)0xffff)           /*!<æ¸©åº¦æµ‹é‡è¾“å‡ºå¯„å­˜å™¨    */
 
 /************************  Bit definition for VBATDAT register of HT_TBS_TypeDef ************************/
-#define  TBS_VBATDAT                             ((uint32_t)0xffff)           /*!<µç³ØµçÑ¹²âÁ¿¼Ä´æÆ÷    */
+#define  TBS_VBATDAT                             ((uint32_t)0xffff)           /*!<ç”µæ± ç”µå‹æµ‹é‡å¯„å­˜å™¨    */
 
 /************************  Bit definition for ADC0DAT register of HT_TBS_TypeDef ************************/
-#define  TBS_ADC0DAT                             ((uint32_t)0xffff)           /*!<ADC0²âÁ¿¼Ä´æÆ÷        */
+#define  TBS_ADC0DAT                             ((uint32_t)0xffff)           /*!<ADC0æµ‹é‡å¯„å­˜å™¨        */
 
 /************************  Bit definition for ADC1DAT register of HT_TBS_TypeDef ************************/
-#define  TBS_ADC1DAT                             ((uint32_t)0xffff)           /*!<ADC1²âÁ¿¼Ä´æÆ÷        */
+#define  TBS_ADC1DAT                             ((uint32_t)0xffff)           /*!<ADC1æµ‹é‡å¯„å­˜å™¨        */
 
 /***********************  Bit definition for VBATCMP register of HT_TBS_TypeDef *************************/
-#define  TBS_VBATCMP                             ((uint32_t)0xffff)           /*!<µç³ØµçÑ¹±È½Ï¼Ä´æÆ÷    */
+#define  TBS_VBATCMP                             ((uint32_t)0xffff)           /*!<ç”µæ± ç”µå‹æ¯”è¾ƒå¯„å­˜å™¨    */
 
 #if  defined  HT501x  
 /***********************  Bit definition for ADC2DAT register of HT_TBS_TypeDef *************************/
-#define  TBS_ADC2DAT                             ((uint32_t)0xffff)           /*!<ADC2²âÁ¿¼Ä´æÆ÷        */
+#define  TBS_ADC2DAT                             ((uint32_t)0xffff)           /*!<ADC2æµ‹é‡å¯„å­˜å™¨        */
 
 /***********************  Bit definition for VREFDAT register of HT_TBS_TypeDef *************************/
-#define  TBS_VREFDAT                             ((uint32_t)0xffff)           /*!<Vref²âÁ¿¼Ä´æÆ÷        */
+#define  TBS_VREFDAT                             ((uint32_t)0xffff)           /*!<Vrefæµ‹é‡å¯„å­˜å™¨        */
 
 /************************  Bit definition for ADC0CMP register of HT_TBS_TypeDef ************************/
-#define  TBS_ADC0CMP                             ((uint32_t)0xffff)           /*!<ADC0±È½Ï¼Ä´æÆ÷        */
+#define  TBS_ADC0CMP                             ((uint32_t)0xffff)           /*!<ADC0æ¯”è¾ƒå¯„å­˜å™¨        */
 
 /************************  Bit definition for ADC1CMP register of HT_TBS_TypeDef ************************/                                                        
-#define  TBS_ADC1CMP                             ((uint32_t)0xffff)           /*!<ADC1±È½Ï¼Ä´æÆ÷        */
+#define  TBS_ADC1CMP                             ((uint32_t)0xffff)           /*!<ADC1æ¯”è¾ƒå¯„å­˜å™¨        */
 #endif
 
 /************************  Bit definition for TBSPRD register of HT_TBS_TypeDef *************************/
 #if  defined  HT501x 
-#define  TBS_TBSPRD_TMPPRD                       ((uint32_t)0x0003)           /*!<TMPÖÜÆÚÉèÖÃ           */
-#define  TBS_TBSPRD_TMPPRD_1S                    ((uint32_t)0x0000)           /*!<TMPÖÜÆÚ = 1s          */
-#define  TBS_TBSPRD_TMPPRD_8S                    ((uint32_t)0x0001)           /*!<TMPÖÜÆÚ = 8s          */
-#define  TBS_TBSPRD_TMPPRD_32S                   ((uint32_t)0x0002)           /*!<TMPÖÜÆÚ = 32s         */
-#define  TBS_TBSPRD_TMPPRD_125mS                 ((uint32_t)0x0003)           /*!<TMPÖÜÆÚ = 1/8s        */
+#define  TBS_TBSPRD_TMPPRD                       ((uint32_t)0x0003)           /*!<TMPå‘¨æœŸè®¾ç½®           */
+#define  TBS_TBSPRD_TMPPRD_1S                    ((uint32_t)0x0000)           /*!<TMPå‘¨æœŸ = 1s          */
+#define  TBS_TBSPRD_TMPPRD_8S                    ((uint32_t)0x0001)           /*!<TMPå‘¨æœŸ = 8s          */
+#define  TBS_TBSPRD_TMPPRD_32S                   ((uint32_t)0x0002)           /*!<TMPå‘¨æœŸ = 32s         */
+#define  TBS_TBSPRD_TMPPRD_125mS                 ((uint32_t)0x0003)           /*!<TMPå‘¨æœŸ = 1/8s        */
 
-#define  TBS_TBSPRD_VBATPRD                      ((uint32_t)0x000C)           /*!<Vbat¼ì²âÖÜÆÚÉèÖÃ      */
-#define  TBS_TBSPRD_VBATPRD_1S                   ((uint32_t)0x0000)           /*!<Vbat¼ì²âÖÜÆÚ = 1s     */
-#define  TBS_TBSPRD_VBATPRD_4S                   ((uint32_t)0x0004)           /*!<Vbat¼ì²âÖÜÆÚ = 4s     */
-#define  TBS_TBSPRD_VBATPRD_8S                   ((uint32_t)0x0008)           /*!<Vbat¼ì²âÖÜÆÚ = 8s     */
-#define  TBS_TBSPRD_VBATPRD_32S                  ((uint32_t)0x000C)           /*!<Vbat¼ì²âÖÜÆÚ = 32s    */
+#define  TBS_TBSPRD_VBATPRD                      ((uint32_t)0x000C)           /*!<Vbatæ£€æµ‹å‘¨æœŸè®¾ç½®      */
+#define  TBS_TBSPRD_VBATPRD_1S                   ((uint32_t)0x0000)           /*!<Vbatæ£€æµ‹å‘¨æœŸ = 1s     */
+#define  TBS_TBSPRD_VBATPRD_4S                   ((uint32_t)0x0004)           /*!<Vbatæ£€æµ‹å‘¨æœŸ = 4s     */
+#define  TBS_TBSPRD_VBATPRD_8S                   ((uint32_t)0x0008)           /*!<Vbatæ£€æµ‹å‘¨æœŸ = 8s     */
+#define  TBS_TBSPRD_VBATPRD_32S                  ((uint32_t)0x000C)           /*!<Vbatæ£€æµ‹å‘¨æœŸ = 32s    */
 
-#define  TBS_TBSPRD_VCCPRD                       ((uint32_t)0x0030)           /*!<VCC¼ì²âÖÜÆÚÉèÖÃ       */
-#define  TBS_TBSPRD_VCCPRD_1S                    ((uint32_t)0x0000)           /*!<VCC¼ì²âÖÜÆÚ = 1s      */
-#define  TBS_TBSPRD_VCCPRD_4S                    ((uint32_t)0x0010)           /*!<VCC¼ì²âÖÜÆÚ = 4s      */
-#define  TBS_TBSPRD_VCCPRD_8S                    ((uint32_t)0x0020)           /*!<VCC¼ì²âÖÜÆÚ = 8s      */
-#define  TBS_TBSPRD_VCCPRD_32S                   ((uint32_t)0x0030)           /*!<VCC¼ì²âÖÜÆÚ = 32s     */
+#define  TBS_TBSPRD_VCCPRD                       ((uint32_t)0x0030)           /*!<VCCæ£€æµ‹å‘¨æœŸè®¾ç½®       */
+#define  TBS_TBSPRD_VCCPRD_1S                    ((uint32_t)0x0000)           /*!<VCCæ£€æµ‹å‘¨æœŸ = 1s      */
+#define  TBS_TBSPRD_VCCPRD_4S                    ((uint32_t)0x0010)           /*!<VCCæ£€æµ‹å‘¨æœŸ = 4s      */
+#define  TBS_TBSPRD_VCCPRD_8S                    ((uint32_t)0x0020)           /*!<VCCæ£€æµ‹å‘¨æœŸ = 8s      */
+#define  TBS_TBSPRD_VCCPRD_32S                   ((uint32_t)0x0030)           /*!<VCCæ£€æµ‹å‘¨æœŸ = 32s     */
                                                                                                         
-#define  TBS_TBSPRD_ADC0PRD                      ((uint32_t)0x00C0)           /*!<ADC0¼ì²âÖÜÆÚÉèÖÃ      */
-#define  TBS_TBSPRD_ADC0PRD_1S                   ((uint32_t)0x0000)           /*!<ADC0¼ì²âÖÜÆÚ = 1s     */
-#define  TBS_TBSPRD_ADC0PRD_4S                   ((uint32_t)0x0040)           /*!<ADC0¼ì²âÖÜÆÚ = 4s     */
-#define  TBS_TBSPRD_ADC0PRD_8S                   ((uint32_t)0x0080)           /*!<ADC0¼ì²âÖÜÆÚ = 8s     */
-#define  TBS_TBSPRD_ADC0PRD_32S                  ((uint32_t)0x00C0)           /*!<ADC0¼ì²âÖÜÆÚ = 32s    */
+#define  TBS_TBSPRD_ADC0PRD                      ((uint32_t)0x00C0)           /*!<ADC0æ£€æµ‹å‘¨æœŸè®¾ç½®      */
+#define  TBS_TBSPRD_ADC0PRD_1S                   ((uint32_t)0x0000)           /*!<ADC0æ£€æµ‹å‘¨æœŸ = 1s     */
+#define  TBS_TBSPRD_ADC0PRD_4S                   ((uint32_t)0x0040)           /*!<ADC0æ£€æµ‹å‘¨æœŸ = 4s     */
+#define  TBS_TBSPRD_ADC0PRD_8S                   ((uint32_t)0x0080)           /*!<ADC0æ£€æµ‹å‘¨æœŸ = 8s     */
+#define  TBS_TBSPRD_ADC0PRD_32S                  ((uint32_t)0x00C0)           /*!<ADC0æ£€æµ‹å‘¨æœŸ = 32s    */
                                                                                                         
-#define  TBS_TBSPRD_ADC1PRD                      ((uint32_t)0x0300)           /*!<ADC1¼ì²âÖÜÆÚÉèÖÃ      */
-#define  TBS_TBSPRD_ADC1PRD_1S                   ((uint32_t)0x0000)           /*!<ADC1¼ì²âÖÜÆÚ = 1s     */
-#define  TBS_TBSPRD_ADC1PRD_4S                   ((uint32_t)0x0100)           /*!<ADC1¼ì²âÖÜÆÚ = 4s     */
-#define  TBS_TBSPRD_ADC1PRD_8S                   ((uint32_t)0x0200)           /*!<ADC1¼ì²âÖÜÆÚ = 8s     */
-#define  TBS_TBSPRD_ADC1PRD_32S                  ((uint32_t)0x0300)           /*!<ADC1¼ì²âÖÜÆÚ = 32s    */
+#define  TBS_TBSPRD_ADC1PRD                      ((uint32_t)0x0300)           /*!<ADC1æ£€æµ‹å‘¨æœŸè®¾ç½®      */
+#define  TBS_TBSPRD_ADC1PRD_1S                   ((uint32_t)0x0000)           /*!<ADC1æ£€æµ‹å‘¨æœŸ = 1s     */
+#define  TBS_TBSPRD_ADC1PRD_4S                   ((uint32_t)0x0100)           /*!<ADC1æ£€æµ‹å‘¨æœŸ = 4s     */
+#define  TBS_TBSPRD_ADC1PRD_8S                   ((uint32_t)0x0200)           /*!<ADC1æ£€æµ‹å‘¨æœŸ = 8s     */
+#define  TBS_TBSPRD_ADC1PRD_32S                  ((uint32_t)0x0300)           /*!<ADC1æ£€æµ‹å‘¨æœŸ = 32s    */
                                                                                                       
-#define  TBS_TBSPRD_ADC2PRD                      ((uint32_t)0x0C00)           /*!<ADC2¼ì²âÖÜÆÚÉèÖÃ      */
-#define  TBS_TBSPRD_ADC2PRD_1S                   ((uint32_t)0x0000)           /*!<ADC2¼ì²âÖÜÆÚ = 1s     */
-#define  TBS_TBSPRD_ADC2PRD_4S                   ((uint32_t)0x0400)           /*!<ADC2¼ì²âÖÜÆÚ = 4s     */
-#define  TBS_TBSPRD_ADC2PRD_8S                   ((uint32_t)0x0800)           /*!<ADC2¼ì²âÖÜÆÚ = 8s     */
-#define  TBS_TBSPRD_ADC2PRD_32S                  ((uint32_t)0x0C00)           /*!<ADC2¼ì²âÖÜÆÚ = 32s    */
+#define  TBS_TBSPRD_ADC2PRD                      ((uint32_t)0x0C00)           /*!<ADC2æ£€æµ‹å‘¨æœŸè®¾ç½®      */
+#define  TBS_TBSPRD_ADC2PRD_1S                   ((uint32_t)0x0000)           /*!<ADC2æ£€æµ‹å‘¨æœŸ = 1s     */
+#define  TBS_TBSPRD_ADC2PRD_4S                   ((uint32_t)0x0400)           /*!<ADC2æ£€æµ‹å‘¨æœŸ = 4s     */
+#define  TBS_TBSPRD_ADC2PRD_8S                   ((uint32_t)0x0800)           /*!<ADC2æ£€æµ‹å‘¨æœŸ = 8s     */
+#define  TBS_TBSPRD_ADC2PRD_32S                  ((uint32_t)0x0C00)           /*!<ADC2æ£€æµ‹å‘¨æœŸ = 32s    */
                                                                                                         
-#define  TBS_TBSPRD_VREFPRD                      ((uint32_t)0x3000)           /*!<Vref¼ì²âÖÜÆÚÉèÖÃ      */
-#define  TBS_TBSPRD_VREFPRD_1S                   ((uint32_t)0x0000)           /*!<Verf¼ì²âÖÜÆÚ = 1s     */
-#define  TBS_TBSPRD_VREFPRD_4S                   ((uint32_t)0x1000)           /*!<Vref¼ì²âÖÜÆÚ = 4s     */
-#define  TBS_TBSPRD_VREFPRD_8S                   ((uint32_t)0x2000)           /*!<Vref¼ì²âÖÜÆÚ = 8s     */
-#define  TBS_TBSPRD_VREFPRD_32S                  ((uint32_t)0x3000)           /*!<Vref¼ì²âÖÜÆÚ = 32s    */
+#define  TBS_TBSPRD_VREFPRD                      ((uint32_t)0x3000)           /*!<Vrefæ£€æµ‹å‘¨æœŸè®¾ç½®      */
+#define  TBS_TBSPRD_VREFPRD_1S                   ((uint32_t)0x0000)           /*!<Verfæ£€æµ‹å‘¨æœŸ = 1s     */
+#define  TBS_TBSPRD_VREFPRD_4S                   ((uint32_t)0x1000)           /*!<Vrefæ£€æµ‹å‘¨æœŸ = 4s     */
+#define  TBS_TBSPRD_VREFPRD_8S                   ((uint32_t)0x2000)           /*!<Vrefæ£€æµ‹å‘¨æœŸ = 8s     */
+#define  TBS_TBSPRD_VREFPRD_32S                  ((uint32_t)0x3000)           /*!<Vrefæ£€æµ‹å‘¨æœŸ = 32s    */
 
 #else    /*!<HT6x1x && HT6x2x      */
 
-#define  TBS_TBSPRD_TMPPRD                       ((uint32_t)0x0007)           /*!<TMPÖÜÆÚÉèÖÃ           */
-#define  TBS_TBSPRD_TMPPRD_OSC0P5S_MEM8S         ((uint32_t)0x0000)           /*!<TMPÖÜÆÚ = 0.5s / 8s   */
-#define  TBS_TBSPRD_TMPPRD_OSC1S_MEM4S           ((uint32_t)0x0001)           /*!<TMPÖÜÆÚ = 1s   / 4s   */
-#define  TBS_TBSPRD_TMPPRD_OSC2S_MEM2S           ((uint32_t)0x0002)           /*!<TMPÖÜÆÚ = 2s   / 2s   */
-#define  TBS_TBSPRD_TMPPRD_OSC4S_MEM1S           ((uint32_t)0x0003)           /*!<TMPÖÜÆÚ = 4s   / 1s   */
-#define  TBS_TBSPRD_TMPPRD_OSC8S_MEM0P5S         ((uint32_t)0x0004)           /*!<TMPÖÜÆÚ = 8s   / 0.5s */
-#define  TBS_TBSPRD_TMPPRD_OSC16S_MEM125mS       ((uint32_t)0x0005)           /*!<TMPÖÜÆÚ = 16s  / 125mS*/
-#define  TBS_TBSPRD_TMPPRD_OSC32S_MEM31mS        ((uint32_t)0x0006)           /*!<TMPÖÜÆÚ = 32s  / 31mS */
-#define  TBS_TBSPRD_TMPPRD_OSC64S_MEM8mS         ((uint32_t)0x0007)           /*!<TMPÖÜÆÚ = 64s  / 8mS  */
+#define  TBS_TBSPRD_TMPPRD                       ((uint32_t)0x0007)           /*!<TMPå‘¨æœŸè®¾ç½®           */
+#define  TBS_TBSPRD_TMPPRD_OSC0P5S_MEM8S         ((uint32_t)0x0000)           /*!<TMPå‘¨æœŸ = 0.5s / 8s   */
+#define  TBS_TBSPRD_TMPPRD_OSC1S_MEM4S           ((uint32_t)0x0001)           /*!<TMPå‘¨æœŸ = 1s   / 4s   */
+#define  TBS_TBSPRD_TMPPRD_OSC2S_MEM2S           ((uint32_t)0x0002)           /*!<TMPå‘¨æœŸ = 2s   / 2s   */
+#define  TBS_TBSPRD_TMPPRD_OSC4S_MEM1S           ((uint32_t)0x0003)           /*!<TMPå‘¨æœŸ = 4s   / 1s   */
+#define  TBS_TBSPRD_TMPPRD_OSC8S_MEM0P5S         ((uint32_t)0x0004)           /*!<TMPå‘¨æœŸ = 8s   / 0.5s */
+#define  TBS_TBSPRD_TMPPRD_OSC16S_MEM125mS       ((uint32_t)0x0005)           /*!<TMPå‘¨æœŸ = 16s  / 125mS*/
+#define  TBS_TBSPRD_TMPPRD_OSC32S_MEM31mS        ((uint32_t)0x0006)           /*!<TMPå‘¨æœŸ = 32s  / 31mS */
+#define  TBS_TBSPRD_TMPPRD_OSC64S_MEM8mS         ((uint32_t)0x0007)           /*!<TMPå‘¨æœŸ = 64s  / 8mS  */
 
-#define  TBS_TBSPRD_VBATPRD                      ((uint32_t)0x0018)           /*!<Vbat¼ì²âÖÜÆÚÉèÖÃ      */
-#define  TBS_TBSPRD_VBATPRD_1S                   ((uint32_t)0x0000)           /*!<Vbat¼ì²âÖÜÆÚ = 1s     */
-#define  TBS_TBSPRD_VBATPRD_2S                   ((uint32_t)0x0008)           /*!<Vbat¼ì²âÖÜÆÚ = 2s     */
-#define  TBS_TBSPRD_VBATPRD_8S                   ((uint32_t)0x0010)           /*!<Vbat¼ì²âÖÜÆÚ = 8s     */
-#define  TBS_TBSPRD_VBATPRD_16S                  ((uint32_t)0x0018)           /*!<Vbat¼ì²âÖÜÆÚ = 16s    */
+#define  TBS_TBSPRD_VBATPRD                      ((uint32_t)0x0018)           /*!<Vbatæ£€æµ‹å‘¨æœŸè®¾ç½®      */
+#define  TBS_TBSPRD_VBATPRD_1S                   ((uint32_t)0x0000)           /*!<Vbatæ£€æµ‹å‘¨æœŸ = 1s     */
+#define  TBS_TBSPRD_VBATPRD_2S                   ((uint32_t)0x0008)           /*!<Vbatæ£€æµ‹å‘¨æœŸ = 2s     */
+#define  TBS_TBSPRD_VBATPRD_8S                   ((uint32_t)0x0010)           /*!<Vbatæ£€æµ‹å‘¨æœŸ = 8s     */
+#define  TBS_TBSPRD_VBATPRD_16S                  ((uint32_t)0x0018)           /*!<Vbatæ£€æµ‹å‘¨æœŸ = 16s    */
                                                                                                         
-#define  TBS_TBSPRD_ADC0PRD                      ((uint32_t)0x0060)           /*!<ADC0¼ì²âÖÜÆÚÉèÖÃ      */
-#define  TBS_TBSPRD_ADC0PRD_1S                   ((uint32_t)0x0000)           /*!<ADC0¼ì²âÖÜÆÚ = 1s     */
-#define  TBS_TBSPRD_ADC0PRD_2S                   ((uint32_t)0x0020)           /*!<ADC0¼ì²âÖÜÆÚ = 2s     */
-#define  TBS_TBSPRD_ADC0PRD_8S                   ((uint32_t)0x0040)           /*!<ADC0¼ì²âÖÜÆÚ = 8s     */
-#define  TBS_TBSPRD_ADC0PRD_16S                  ((uint32_t)0x0060)           /*!<ADC0¼ì²âÖÜÆÚ = 16s    */
+#define  TBS_TBSPRD_ADC0PRD                      ((uint32_t)0x0060)           /*!<ADC0æ£€æµ‹å‘¨æœŸè®¾ç½®      */
+#define  TBS_TBSPRD_ADC0PRD_1S                   ((uint32_t)0x0000)           /*!<ADC0æ£€æµ‹å‘¨æœŸ = 1s     */
+#define  TBS_TBSPRD_ADC0PRD_2S                   ((uint32_t)0x0020)           /*!<ADC0æ£€æµ‹å‘¨æœŸ = 2s     */
+#define  TBS_TBSPRD_ADC0PRD_8S                   ((uint32_t)0x0040)           /*!<ADC0æ£€æµ‹å‘¨æœŸ = 8s     */
+#define  TBS_TBSPRD_ADC0PRD_16S                  ((uint32_t)0x0060)           /*!<ADC0æ£€æµ‹å‘¨æœŸ = 16s    */
                                                                                                         
-#define  TBS_TBSPRD_ADC1PRD                      ((uint32_t)0x0180)           /*!<ADC1¼ì²âÖÜÆÚÉèÖÃ      */
-#define  TBS_TBSPRD_ADC1PRD_1S                   ((uint32_t)0x0000)           /*!<ADC1¼ì²âÖÜÆÚ = 1s     */
-#define  TBS_TBSPRD_ADC1PRD_2S                   ((uint32_t)0x0080)           /*!<ADC1¼ì²âÖÜÆÚ = 2s     */
-#define  TBS_TBSPRD_ADC1PRD_8S                   ((uint32_t)0x0100)           /*!<ADC1¼ì²âÖÜÆÚ = 8s     */
-#define  TBS_TBSPRD_ADC1PRD_16S                  ((uint32_t)0x0180)           /*!<ADC1¼ì²âÖÜÆÚ = 16s    */
+#define  TBS_TBSPRD_ADC1PRD                      ((uint32_t)0x0180)           /*!<ADC1æ£€æµ‹å‘¨æœŸè®¾ç½®      */
+#define  TBS_TBSPRD_ADC1PRD_1S                   ((uint32_t)0x0000)           /*!<ADC1æ£€æµ‹å‘¨æœŸ = 1s     */
+#define  TBS_TBSPRD_ADC1PRD_2S                   ((uint32_t)0x0080)           /*!<ADC1æ£€æµ‹å‘¨æœŸ = 2s     */
+#define  TBS_TBSPRD_ADC1PRD_8S                   ((uint32_t)0x0100)           /*!<ADC1æ£€æµ‹å‘¨æœŸ = 8s     */
+#define  TBS_TBSPRD_ADC1PRD_16S                  ((uint32_t)0x0180)           /*!<ADC1æ£€æµ‹å‘¨æœŸ = 16s    */
 
-#define  TBS_TBSPRD_VCCPRD                       ((uint32_t)0x0600)           /*!<VCC¼ì²âÖÜÆÚÉèÖÃ       */
-#define  TBS_TBSPRD_VCCPRD_1S                    ((uint32_t)0x0000)           /*!<VCC¼ì²âÖÜÆÚ = 1s      */
-#define  TBS_TBSPRD_VCCPRD_2S                    ((uint32_t)0x0200)           /*!<VCC¼ì²âÖÜÆÚ = 2s      */
-#define  TBS_TBSPRD_VCCPRD_8S                    ((uint32_t)0x0400)           /*!<VCC¼ì²âÖÜÆÚ = 8s      */
-#define  TBS_TBSPRD_VCCPRD_16S                   ((uint32_t)0x0600)           /*!<VCC¼ì²âÖÜÆÚ = 16s     */
+#define  TBS_TBSPRD_VCCPRD                       ((uint32_t)0x0600)           /*!<VCCæ£€æµ‹å‘¨æœŸè®¾ç½®       */
+#define  TBS_TBSPRD_VCCPRD_1S                    ((uint32_t)0x0000)           /*!<VCCæ£€æµ‹å‘¨æœŸ = 1s      */
+#define  TBS_TBSPRD_VCCPRD_2S                    ((uint32_t)0x0200)           /*!<VCCæ£€æµ‹å‘¨æœŸ = 2s      */
+#define  TBS_TBSPRD_VCCPRD_8S                    ((uint32_t)0x0400)           /*!<VCCæ£€æµ‹å‘¨æœŸ = 8s      */
+#define  TBS_TBSPRD_VCCPRD_16S                   ((uint32_t)0x0600)           /*!<VCCæ£€æµ‹å‘¨æœŸ = 16s     */
 #if defined HT6x2x 
-#define  TBS_TBSPRD_ADC3PRD                      ((uint32_t)0x1800)           /*!<ADC3¼ì²âÖÜÆÚÉèÖÃ      */
-#define  TBS_TBSPRD_ADC3PRD_1S                   ((uint32_t)0x0000)           /*!<ADC3¼ì²âÖÜÆÚ = 1s     */
-#define  TBS_TBSPRD_ADC3PRD_2S                   ((uint32_t)0x0800)           /*!<ADC3¼ì²âÖÜÆÚ = 2s     */
-#define  TBS_TBSPRD_ADC3PRD_8S                   ((uint32_t)0x1000)           /*!<ADC3¼ì²âÖÜÆÚ = 8s     */
-#define  TBS_TBSPRD_ADC3PRD_16S                  ((uint32_t)0x1800)           /*!<ADC3¼ì²âÖÜÆÚ = 16s    */
+#define  TBS_TBSPRD_ADC3PRD                      ((uint32_t)0x1800)           /*!<ADC3æ£€æµ‹å‘¨æœŸè®¾ç½®      */
+#define  TBS_TBSPRD_ADC3PRD_1S                   ((uint32_t)0x0000)           /*!<ADC3æ£€æµ‹å‘¨æœŸ = 1s     */
+#define  TBS_TBSPRD_ADC3PRD_2S                   ((uint32_t)0x0800)           /*!<ADC3æ£€æµ‹å‘¨æœŸ = 2s     */
+#define  TBS_TBSPRD_ADC3PRD_8S                   ((uint32_t)0x1000)           /*!<ADC3æ£€æµ‹å‘¨æœŸ = 8s     */
+#define  TBS_TBSPRD_ADC3PRD_16S                  ((uint32_t)0x1800)           /*!<ADC3æ£€æµ‹å‘¨æœŸ = 16s    */
 
-#define  TBS_TBSPRD_ADC4PRD                      ((uint32_t)0x6000)           /*!<ADC4¼ì²âÖÜÆÚÉèÖÃ      */
-#define  TBS_TBSPRD_ADC4PRD_1S                   ((uint32_t)0x0000)           /*!<ADC4¼ì²âÖÜÆÚ = 1s     */
-#define  TBS_TBSPRD_ADC4PRD_2S                   ((uint32_t)0x2000)           /*!<ADC4¼ì²âÖÜÆÚ = 2s     */
-#define  TBS_TBSPRD_ADC4PRD_8S                   ((uint32_t)0x4000)           /*!<ADC4¼ì²âÖÜÆÚ = 8s     */
-#define  TBS_TBSPRD_ADC4PRD_16S                  ((uint32_t)0x6000)           /*!<ADC4¼ì²âÖÜÆÚ = 16s    */
+#define  TBS_TBSPRD_ADC4PRD                      ((uint32_t)0x6000)           /*!<ADC4æ£€æµ‹å‘¨æœŸè®¾ç½®      */
+#define  TBS_TBSPRD_ADC4PRD_1S                   ((uint32_t)0x0000)           /*!<ADC4æ£€æµ‹å‘¨æœŸ = 1s     */
+#define  TBS_TBSPRD_ADC4PRD_2S                   ((uint32_t)0x2000)           /*!<ADC4æ£€æµ‹å‘¨æœŸ = 2s     */
+#define  TBS_TBSPRD_ADC4PRD_8S                   ((uint32_t)0x4000)           /*!<ADC4æ£€æµ‹å‘¨æœŸ = 8s     */
+#define  TBS_TBSPRD_ADC4PRD_16S                  ((uint32_t)0x6000)           /*!<ADC4æ£€æµ‹å‘¨æœŸ = 16s    */
 
-#define  TBS_TBSPRD_ADC5PRD                      ((uint32_t)0x18000)           /*!<ADC5¼ì²âÖÜÆÚÉèÖÃ      */
-#define  TBS_TBSPRD_ADC5PRD_1S                   ((uint32_t)0x00000)           /*!<ADC5¼ì²âÖÜÆÚ = 1s     */
-#define  TBS_TBSPRD_ADC5PRD_2S                   ((uint32_t)0x08000)           /*!<ADC5¼ì²âÖÜÆÚ = 2s     */
-#define  TBS_TBSPRD_ADC5PRD_8S                   ((uint32_t)0x10000)           /*!<ADC5¼ì²âÖÜÆÚ = 8s     */
-#define  TBS_TBSPRD_ADC5PRD_16S                  ((uint32_t)0x18000)           /*!<ADC5¼ì²âÖÜÆÚ = 16s    */
+#define  TBS_TBSPRD_ADC5PRD                      ((uint32_t)0x18000)           /*!<ADC5æ£€æµ‹å‘¨æœŸè®¾ç½®      */
+#define  TBS_TBSPRD_ADC5PRD_1S                   ((uint32_t)0x00000)           /*!<ADC5æ£€æµ‹å‘¨æœŸ = 1s     */
+#define  TBS_TBSPRD_ADC5PRD_2S                   ((uint32_t)0x08000)           /*!<ADC5æ£€æµ‹å‘¨æœŸ = 2s     */
+#define  TBS_TBSPRD_ADC5PRD_8S                   ((uint32_t)0x10000)           /*!<ADC5æ£€æµ‹å‘¨æœŸ = 8s     */
+#define  TBS_TBSPRD_ADC5PRD_16S                  ((uint32_t)0x18000)           /*!<ADC5æ£€æµ‹å‘¨æœŸ = 16s    */
 #endif
 #endif
 
 /*************************  Bit definition for VCCDAT register of HT_TBS_TypeDef ************************/
-#define  TBS_VCCDAT                              ((uint32_t)0xffff)           /*!<VCC²âÁ¿¼Ä´æÆ÷         */
+#define  TBS_VCCDAT                              ((uint32_t)0xffff)           /*!<VCCæµ‹é‡å¯„å­˜å™¨         */
                                                          /*!< HT6x2x               */
 /************************  Bit definition for ADC0CMP register of HT_TBS_TypeDef ************************/
 #if  defined  HT6x2x                                                          
-#define  TBS_ADC0CMP                             ((uint32_t)0xffff)           /*!<ADC0±È½Ï¼Ä´æÆ÷        */
-#define  TBS_ADC3CMP                             ((uint32_t)0xffff)           /*!<ADC3±È½Ï¼Ä´æÆ÷        */
-#define  TBS_ADC4CMP                             ((uint32_t)0xffff)           /*!<ADC4±È½Ï¼Ä´æÆ÷        */
-#define  TBS_ADC5CMP                             ((uint32_t)0xffff)           /*!<ADC5±È½Ï¼Ä´æÆ÷        */
+#define  TBS_ADC0CMP                             ((uint32_t)0xffff)           /*!<ADC0æ¯”è¾ƒå¯„å­˜å™¨        */
+#define  TBS_ADC3CMP                             ((uint32_t)0xffff)           /*!<ADC3æ¯”è¾ƒå¯„å­˜å™¨        */
+#define  TBS_ADC4CMP                             ((uint32_t)0xffff)           /*!<ADC4æ¯”è¾ƒå¯„å­˜å™¨        */
+#define  TBS_ADC5CMP                             ((uint32_t)0xffff)           /*!<ADC5æ¯”è¾ƒå¯„å­˜å™¨        */
 #endif
 
 
@@ -1600,202 +1600,202 @@ typedef union
 */  
 /*************************  Bit definition for PMUCON register of HT_PMU_TypeDef ************************/
 #if defined HT6x2x
-#define  PMU_PMUCON			                     ((uint32_t)0x803f)           /*!<PMU¿ØÖÆ¼Ä´æÆ÷	      */
+#define  PMU_PMUCON			                     ((uint32_t)0x803f)           /*!<PMUæ§åˆ¶å¯„å­˜å™¨	      */
 #elif defined  HT501x
-#define  PMU_PMUCON			                     ((uint32_t)0x801f)           /*!<PMU¿ØÖÆ¼Ä´æÆ÷	      */
+#define  PMU_PMUCON			                     ((uint32_t)0x801f)           /*!<PMUæ§åˆ¶å¯„å­˜å™¨	      */
 #elif defined HT6x1x
-#define  PMU_PMUCON			                     ((uint32_t)0x0017)           /*!<PMU¿ØÖÆ¼Ä´æÆ÷	      */
+#define  PMU_PMUCON			                     ((uint32_t)0x0017)           /*!<PMUæ§åˆ¶å¯„å­˜å™¨	      */
 #endif
-#define  PMU_PMUCON_BORDETEN                     ((uint32_t)0x0001)           /*!<BOR_DET Ä£¿éÊ¹ÄÜ      */
-#define  PMU_PMUCON_BORRST                       ((uint32_t)0x0002)           /*!<BORÖĞ¶Ï/¸´Î»Ñ¡Ôñ      */
-#define  PMU_PMUCON_LVD0DETEN                    ((uint32_t)0x0004)           /*!<LVDIN0Ä£¿éÊ¹ÄÜ        */
+#define  PMU_PMUCON_BORDETEN                     ((uint32_t)0x0001)           /*!<BOR_DET æ¨¡å—ä½¿èƒ½      */
+#define  PMU_PMUCON_BORRST                       ((uint32_t)0x0002)           /*!<BORä¸­æ–­/å¤ä½é€‰æ‹©      */
+#define  PMU_PMUCON_LVD0DETEN                    ((uint32_t)0x0004)           /*!<LVDIN0æ¨¡å—ä½¿èƒ½        */
 #if  defined  HT6x2x  ||  defined  HT501x                                                     
-#define  PMU_PMUCON_LVD1DETEN                    ((uint32_t)0x0008)           /*!<LVDIN1Ä£¿éÊ¹ÄÜ        */
+#define  PMU_PMUCON_LVD1DETEN                    ((uint32_t)0x0008)           /*!<LVDIN1æ¨¡å—ä½¿èƒ½        */
 #endif
-#define  PMU_PMUCON_HoldLDO                      ((uint32_t)0x0010)           /*!<HoldÏÂ´ó¹¦ºÄLDO´ò¿ª   */
+#define  PMU_PMUCON_HoldLDO                      ((uint32_t)0x0010)           /*!<Holdä¸‹å¤§åŠŸè€—LDOæ‰“å¼€   */
 #if  defined  HT6x2x  
-#define  PMU_PMUCON_POWDETEN                     ((uint32_t)0x0020)           /*!<POW_DETÄ£¿éÊ¹ÄÜ       */
+#define  PMU_PMUCON_POWDETEN                     ((uint32_t)0x0020)           /*!<POW_DETæ¨¡å—ä½¿èƒ½       */
 #endif
 #if  defined  HT6x2x  ||  defined HT501x
-#define  PMU_PMUCON_DisChargeEN                  ((uint32_t)0x8000)           /*!<µç³Ø¶Û»¯¹¦ÄÜÊ¹ÄÜ      */
+#define  PMU_PMUCON_DisChargeEN                  ((uint32_t)0x8000)           /*!<ç”µæ± é’åŒ–åŠŸèƒ½ä½¿èƒ½      */
 #endif
 
 /*************************  Bit definition for VDETCFG register of HT_PMU_TypeDef ***********************/
 #if defined HT6x2x
-#define  PMU_VDETCFG		                     ((uint32_t)0xc1ff)           /*!<µçÔ´¼ì²â·§ÖµÅäÖÃ¼Ä´æÆ÷  */
+#define  PMU_VDETCFG		                     ((uint32_t)0xc1ff)           /*!<ç”µæºæ£€æµ‹é˜€å€¼é…ç½®å¯„å­˜å™¨  */
 #elif  defined  HT501x
-#define  PMU_VDETCFG		                     ((uint32_t)0x800f)           /*!<µçÔ´¼ì²â·§ÖµÅäÖÃ¼Ä´æÆ÷  */
+#define  PMU_VDETCFG		                     ((uint32_t)0x800f)           /*!<ç”µæºæ£€æµ‹é˜€å€¼é…ç½®å¯„å­˜å™¨  */
 #elif  defined HT6x1x
-#define  PMU_VDETCFG		                     ((uint32_t)0x003f)           /*!<µçÔ´¼ì²â·§ÖµÅäÖÃ¼Ä´æÆ÷  */
+#define  PMU_VDETCFG		                     ((uint32_t)0x003f)           /*!<ç”µæºæ£€æµ‹é˜€å€¼é…ç½®å¯„å­˜å™¨  */
 #endif
-#define  PMU_VDETCFG_BORLVL                      ((uint32_t)0x0003)           /*!<BOR_DET ¼ì²âãĞÖµÉè¶¨  */
-#define  PMU_VDETCFG_BORLVL_2V2                  ((uint32_t)0x0000)           /*!<¼ì²âãĞÖµ = 2.2v       */
-#define  PMU_VDETCFG_BORLVL_2V4                  ((uint32_t)0x0001)           /*!<¼ì²âãĞÖµ = 2.4v       */
-#define  PMU_VDETCFG_BORLVL_2V6                  ((uint32_t)0x0002)           /*!<¼ì²âãĞÖµ = 2.6v       */
-#define  PMU_VDETCFG_BORLVL_2V8                  ((uint32_t)0x0003)           /*!<¼ì²âãĞÖµ = 2.8v       */
+#define  PMU_VDETCFG_BORLVL                      ((uint32_t)0x0003)           /*!<BOR_DET æ£€æµ‹é˜ˆå€¼è®¾å®š  */
+#define  PMU_VDETCFG_BORLVL_2V2                  ((uint32_t)0x0000)           /*!<æ£€æµ‹é˜ˆå€¼ = 2.2v       */
+#define  PMU_VDETCFG_BORLVL_2V4                  ((uint32_t)0x0001)           /*!<æ£€æµ‹é˜ˆå€¼ = 2.4v       */
+#define  PMU_VDETCFG_BORLVL_2V6                  ((uint32_t)0x0002)           /*!<æ£€æµ‹é˜ˆå€¼ = 2.6v       */
+#define  PMU_VDETCFG_BORLVL_2V8                  ((uint32_t)0x0003)           /*!<æ£€æµ‹é˜ˆå€¼ = 2.8v       */
 
 #if  defined  HT501x
-#define  PMU_VDETCFG_VCCLVL                      ((uint32_t)0x000c)           /*!<VCC_DET ¼ì²âãĞÖµÉè¶¨  */
-#define  PMU_VDETCFG_VCCLVL_2V4                  ((uint32_t)0x0000)           /*!<¼ì²âãĞÖµ = 2.4V       */
-#define  PMU_VDETCFG_VCCLVL_2V6                  ((uint32_t)0x0004)           /*!<¼ì²âãĞÖµ = 2.6V       */
-#define  PMU_VDETCFG_VCCLVL_2V8                  ((uint32_t)0x0008)           /*!<¼ì²âãĞÖµ = 2.8V       */
-#define  PMU_VDETCFG_VCCLVL_3V0                  ((uint32_t)0x000c)           /*!<¼ì²âãĞÖµ = 3.0V       */
+#define  PMU_VDETCFG_VCCLVL                      ((uint32_t)0x000c)           /*!<VCC_DET æ£€æµ‹é˜ˆå€¼è®¾å®š  */
+#define  PMU_VDETCFG_VCCLVL_2V4                  ((uint32_t)0x0000)           /*!<æ£€æµ‹é˜ˆå€¼ = 2.4V       */
+#define  PMU_VDETCFG_VCCLVL_2V6                  ((uint32_t)0x0004)           /*!<æ£€æµ‹é˜ˆå€¼ = 2.6V       */
+#define  PMU_VDETCFG_VCCLVL_2V8                  ((uint32_t)0x0008)           /*!<æ£€æµ‹é˜ˆå€¼ = 2.8V       */
+#define  PMU_VDETCFG_VCCLVL_3V0                  ((uint32_t)0x000c)           /*!<æ£€æµ‹é˜ˆå€¼ = 3.0V       */
 #else    /*!<HT6x1x && HT6x2x      */
-#define  PMU_VDETCFG_VCCLVL                      ((uint32_t)0x003c)           /*!<VCC_DET ¼ì²âãĞÖµÉè¶¨  */
-#define  PMU_VDETCFG_VCCLVL_2V4                  ((uint32_t)0x0000)           /*!<¼ì²âãĞÖµ = 2.4V       */
-#define  PMU_VDETCFG_VCCLVL_2V6                  ((uint32_t)0x0004)           /*!<¼ì²âãĞÖµ = 2.6V       */
-#define  PMU_VDETCFG_VCCLVL_2V8                  ((uint32_t)0x0008)           /*!<¼ì²âãĞÖµ = 2.8V       */
-#define  PMU_VDETCFG_VCCLVL_3V0                  ((uint32_t)0x000c)           /*!<¼ì²âãĞÖµ = 3.0V       */
-#define  PMU_VDETCFG_VCCLVL_3V2                  ((uint32_t)0x0010)           /*!<¼ì²âãĞÖµ = 3.2V       */
-#define  PMU_VDETCFG_VCCLVL_3V4                  ((uint32_t)0x0014)           /*!<¼ì²âãĞÖµ = 3.4V       */
-#define  PMU_VDETCFG_VCCLVL_3V6                  ((uint32_t)0x0018)           /*!<¼ì²âãĞÖµ = 3.6V       */
-#define  PMU_VDETCFG_VCCLVL_3V8                  ((uint32_t)0x001c)           /*!<¼ì²âãĞÖµ = 3.8V       */
-#define  PMU_VDETCFG_VCCLVL_4V0                  ((uint32_t)0x0020)           /*!<¼ì²âãĞÖµ = 4.0V       */
-#define  PMU_VDETCFG_VCCLVL_4V2                  ((uint32_t)0x0024)           /*!<¼ì²âãĞÖµ = 4.2V       */
-#define  PMU_VDETCFG_VCCLVL_4V4                  ((uint32_t)0x0028)           /*!<¼ì²âãĞÖµ = 4.4V       */
-#define  PMU_VDETCFG_VCCLVL_4V6                  ((uint32_t)0x002c)           /*!<¼ì²âãĞÖµ = 4.6V       */
-#define  PMU_VDETCFG_VCCLVL_4V8                  ((uint32_t)0x0030)           /*!<¼ì²âãĞÖµ = 4.8V       */
-#define  PMU_VDETCFG_VCCLVL_5V0                  ((uint32_t)0x0034)           /*!<¼ì²âãĞÖµ = 5.0V       */
+#define  PMU_VDETCFG_VCCLVL                      ((uint32_t)0x003c)           /*!<VCC_DET æ£€æµ‹é˜ˆå€¼è®¾å®š  */
+#define  PMU_VDETCFG_VCCLVL_2V4                  ((uint32_t)0x0000)           /*!<æ£€æµ‹é˜ˆå€¼ = 2.4V       */
+#define  PMU_VDETCFG_VCCLVL_2V6                  ((uint32_t)0x0004)           /*!<æ£€æµ‹é˜ˆå€¼ = 2.6V       */
+#define  PMU_VDETCFG_VCCLVL_2V8                  ((uint32_t)0x0008)           /*!<æ£€æµ‹é˜ˆå€¼ = 2.8V       */
+#define  PMU_VDETCFG_VCCLVL_3V0                  ((uint32_t)0x000c)           /*!<æ£€æµ‹é˜ˆå€¼ = 3.0V       */
+#define  PMU_VDETCFG_VCCLVL_3V2                  ((uint32_t)0x0010)           /*!<æ£€æµ‹é˜ˆå€¼ = 3.2V       */
+#define  PMU_VDETCFG_VCCLVL_3V4                  ((uint32_t)0x0014)           /*!<æ£€æµ‹é˜ˆå€¼ = 3.4V       */
+#define  PMU_VDETCFG_VCCLVL_3V6                  ((uint32_t)0x0018)           /*!<æ£€æµ‹é˜ˆå€¼ = 3.6V       */
+#define  PMU_VDETCFG_VCCLVL_3V8                  ((uint32_t)0x001c)           /*!<æ£€æµ‹é˜ˆå€¼ = 3.8V       */
+#define  PMU_VDETCFG_VCCLVL_4V0                  ((uint32_t)0x0020)           /*!<æ£€æµ‹é˜ˆå€¼ = 4.0V       */
+#define  PMU_VDETCFG_VCCLVL_4V2                  ((uint32_t)0x0024)           /*!<æ£€æµ‹é˜ˆå€¼ = 4.2V       */
+#define  PMU_VDETCFG_VCCLVL_4V4                  ((uint32_t)0x0028)           /*!<æ£€æµ‹é˜ˆå€¼ = 4.4V       */
+#define  PMU_VDETCFG_VCCLVL_4V6                  ((uint32_t)0x002c)           /*!<æ£€æµ‹é˜ˆå€¼ = 4.6V       */
+#define  PMU_VDETCFG_VCCLVL_4V8                  ((uint32_t)0x0030)           /*!<æ£€æµ‹é˜ˆå€¼ = 4.8V       */
+#define  PMU_VDETCFG_VCCLVL_5V0                  ((uint32_t)0x0034)           /*!<æ£€æµ‹é˜ˆå€¼ = 5.0V       */
 #if defined  HT6x2x                                                                                                      
-#define  PMU_VDETCFG_POWLVL                      ((uint32_t)0x01c0)           /*!<POW_DET ¼ì²âãĞÖµÉè¶¨  */
-#define  PMU_VDETCFG_POWLVL_1P25mV               ((uint32_t)0x0000)           /*!<¼ì²âãĞÖµ = 1.25mV     */
-#define  PMU_VDETCFG_POWLVL_2P5mV                ((uint32_t)0x0040)           /*!<¼ì²âãĞÖµ = 2.5mV      */
-#define  PMU_VDETCFG_POWLVL_3P75mV               ((uint32_t)0x0080)           /*!<¼ì²âãĞÖµ = 3.75mV     */
-#define  PMU_VDETCFG_POWLVL_5mV                  ((uint32_t)0x00c0)           /*!<¼ì²âãĞÖµ = 5mV        */
-#define  PMU_VDETCFG_POWLVL_6P25mV               ((uint32_t)0x0100)           /*!<¼ì²âãĞÖµ = 6.25mV     */
-#define  PMU_VDETCFG_POWLVL_7P5mV                ((uint32_t)0x0140)           /*!<¼ì²âãĞÖµ = 7.5mV      */
-#define  PMU_VDETCFG_POWLVL_8P75mV               ((uint32_t)0x0180)           /*!<¼ì²âãĞÖµ = 8.75mV     */
-#define  PMU_VDETCFG_POWLVL_10mV                 ((uint32_t)0x01c0)           /*!<¼ì²âãĞÖµ = 10mV       */
+#define  PMU_VDETCFG_POWLVL                      ((uint32_t)0x01c0)           /*!<POW_DET æ£€æµ‹é˜ˆå€¼è®¾å®š  */
+#define  PMU_VDETCFG_POWLVL_1P25mV               ((uint32_t)0x0000)           /*!<æ£€æµ‹é˜ˆå€¼ = 1.25mV     */
+#define  PMU_VDETCFG_POWLVL_2P5mV                ((uint32_t)0x0040)           /*!<æ£€æµ‹é˜ˆå€¼ = 2.5mV      */
+#define  PMU_VDETCFG_POWLVL_3P75mV               ((uint32_t)0x0080)           /*!<æ£€æµ‹é˜ˆå€¼ = 3.75mV     */
+#define  PMU_VDETCFG_POWLVL_5mV                  ((uint32_t)0x00c0)           /*!<æ£€æµ‹é˜ˆå€¼ = 5mV        */
+#define  PMU_VDETCFG_POWLVL_6P25mV               ((uint32_t)0x0100)           /*!<æ£€æµ‹é˜ˆå€¼ = 6.25mV     */
+#define  PMU_VDETCFG_POWLVL_7P5mV                ((uint32_t)0x0140)           /*!<æ£€æµ‹é˜ˆå€¼ = 7.5mV      */
+#define  PMU_VDETCFG_POWLVL_8P75mV               ((uint32_t)0x0180)           /*!<æ£€æµ‹é˜ˆå€¼ = 8.75mV     */
+#define  PMU_VDETCFG_POWLVL_10mV                 ((uint32_t)0x01c0)           /*!<æ£€æµ‹é˜ˆå€¼ = 10mV       */
 #endif
 #endif
 
 #if  defined HT6x2x  
-#define  PMU_VDETCFG_DisChargeCTRL               ((uint32_t)0xc000)           /*!<µç³Ø¶Û»¯µçÁ÷´óĞ¡Ñ¡Ôñ   */
-#define  PMU_VDETCFG_DisChargeCTRL_1mA           ((uint32_t)0x0000)           /*!<µç³Ø¶Û»¯µçÁ÷1mA       */
-#define  PMU_VDETCFG_DisChargeCTRL_2mA           ((uint32_t)0x8000)           /*!<µç³Ø¶Û»¯µçÁ÷2mA       */
-#define  PMU_VDETCFG_DisChargeCTRL_50uA          ((uint32_t)0x4000)           /*!<µç³Ø¶Û»¯µçÁ÷50uA      */
-#define  PMU_VDETCFG_DisChargeCTRL_100uA         ((uint32_t)0xc000)           /*!<µç³Ø¶Û»¯µçÁ÷100uA     */
+#define  PMU_VDETCFG_DisChargeCTRL               ((uint32_t)0xc000)           /*!<ç”µæ± é’åŒ–ç”µæµå¤§å°é€‰æ‹©   */
+#define  PMU_VDETCFG_DisChargeCTRL_1mA           ((uint32_t)0x0000)           /*!<ç”µæ± é’åŒ–ç”µæµ1mA       */
+#define  PMU_VDETCFG_DisChargeCTRL_2mA           ((uint32_t)0x8000)           /*!<ç”µæ± é’åŒ–ç”µæµ2mA       */
+#define  PMU_VDETCFG_DisChargeCTRL_50uA          ((uint32_t)0x4000)           /*!<ç”µæ± é’åŒ–ç”µæµ50uA      */
+#define  PMU_VDETCFG_DisChargeCTRL_100uA         ((uint32_t)0xc000)           /*!<ç”µæ± é’åŒ–ç”µæµ100uA     */
 #elif  defined HT501x
-#define  PMU_VDETCFG_DisChargeCTRL               ((uint32_t)0x8000)           /*!<µç³Ø¶Û»¯µçÁ÷´óĞ¡Ñ¡Ôñ   */
-#define  PMU_VDETCFG_DisChargeCTRL_1mA           ((uint32_t)0x0000)           /*!<µç³Ø¶Û»¯µçÁ÷1mA       */
-#define  PMU_VDETCFG_DisChargeCTRL_2mA           ((uint32_t)0x8000)           /*!<µç³Ø¶Û»¯µçÁ÷2mA       */
+#define  PMU_VDETCFG_DisChargeCTRL               ((uint32_t)0x8000)           /*!<ç”µæ± é’åŒ–ç”µæµå¤§å°é€‰æ‹©   */
+#define  PMU_VDETCFG_DisChargeCTRL_1mA           ((uint32_t)0x0000)           /*!<ç”µæ± é’åŒ–ç”µæµ1mA       */
+#define  PMU_VDETCFG_DisChargeCTRL_2mA           ((uint32_t)0x8000)           /*!<ç”µæ± é’åŒ–ç”µæµ2mA       */
 #endif
 
 /************************  Bit definition for VDETPCFG register of HT_PMU_TypeDef ***********************/
-#define  PMU_VDETPCFG		                     ((uint32_t)0x001f)           /*!<µçÔ´¼ì²âÖÜÆÚ¼Ä´æÆ÷      */
+#define  PMU_VDETPCFG		                     ((uint32_t)0x001f)           /*!<ç”µæºæ£€æµ‹å‘¨æœŸå¯„å­˜å™¨      */
 
-#define  PMU_VDETPCFG_VDETPRD                    ((uint32_t)0x0007)           /*!<·ÖÊ±¼ì²âÖÜÆÚÉè¶¨      */
-#define  PMU_VDETPCFG_VDETPRD_16P5mS             ((uint32_t)0x0000)           /*!<·ÖÊ±¼ì²âÖÜÆÚ= 16.5ms  */
-#define  PMU_VDETPCFG_VDETPRD_33mS               ((uint32_t)0x0001)           /*!<·ÖÊ±¼ì²âÖÜÆÚ= 33ms    */
-#define  PMU_VDETPCFG_VDETPRD_67mS               ((uint32_t)0x0002)           /*!<·ÖÊ±¼ì²âÖÜÆÚ= 67ms    */
-#define  PMU_VDETPCFG_VDETPRD_134mS              ((uint32_t)0x0003)           /*!<·ÖÊ±¼ì²âÖÜÆÚ= 134ms   */
-#define  PMU_VDETPCFG_VDETPRD_268mS              ((uint32_t)0x0004)           /*!<·ÖÊ±¼ì²âÖÜÆÚ= 268ms   */
-#define  PMU_VDETPCFG_VDETPRD_536mS              ((uint32_t)0x0005)           /*!<·ÖÊ±¼ì²âÖÜÆÚ= 536ms   */
-#define  PMU_VDETPCFG_VDETPRD_1072mS             ((uint32_t)0x0006)           /*!<·ÖÊ±¼ì²âÖÜÆÚ= 1072ms  */
-#define  PMU_VDETPCFG_VDETPRD_2144mS             ((uint32_t)0x0007)           /*!<·ÖÊ±¼ì²âÖÜÆÚ= 2144ms  */
+#define  PMU_VDETPCFG_VDETPRD                    ((uint32_t)0x0007)           /*!<åˆ†æ—¶æ£€æµ‹å‘¨æœŸè®¾å®š      */
+#define  PMU_VDETPCFG_VDETPRD_16P5mS             ((uint32_t)0x0000)           /*!<åˆ†æ—¶æ£€æµ‹å‘¨æœŸ= 16.5ms  */
+#define  PMU_VDETPCFG_VDETPRD_33mS               ((uint32_t)0x0001)           /*!<åˆ†æ—¶æ£€æµ‹å‘¨æœŸ= 33ms    */
+#define  PMU_VDETPCFG_VDETPRD_67mS               ((uint32_t)0x0002)           /*!<åˆ†æ—¶æ£€æµ‹å‘¨æœŸ= 67ms    */
+#define  PMU_VDETPCFG_VDETPRD_134mS              ((uint32_t)0x0003)           /*!<åˆ†æ—¶æ£€æµ‹å‘¨æœŸ= 134ms   */
+#define  PMU_VDETPCFG_VDETPRD_268mS              ((uint32_t)0x0004)           /*!<åˆ†æ—¶æ£€æµ‹å‘¨æœŸ= 268ms   */
+#define  PMU_VDETPCFG_VDETPRD_536mS              ((uint32_t)0x0005)           /*!<åˆ†æ—¶æ£€æµ‹å‘¨æœŸ= 536ms   */
+#define  PMU_VDETPCFG_VDETPRD_1072mS             ((uint32_t)0x0006)           /*!<åˆ†æ—¶æ£€æµ‹å‘¨æœŸ= 1072ms  */
+#define  PMU_VDETPCFG_VDETPRD_2144mS             ((uint32_t)0x0007)           /*!<åˆ†æ—¶æ£€æµ‹å‘¨æœŸ= 2144ms  */
                                                                                                         
-#define  PMU_VDETPCFG_VDETTIME                   ((uint32_t)0x0018)           /*!<·ÖÊ±¼ì²âÊ±¼äÉè¶¨      */
-#define  PMU_VDETPCFG_VDETTIME_300uS             ((uint32_t)0x0000)           /*!<·ÖÊ±¼ì²âÊ±¼ä = 300us  */
-#define  PMU_VDETPCFG_VDETTIME_360uS             ((uint32_t)0x0008)           /*!<·ÖÊ±¼ì²âÊ±¼ä = 360us  */
-#define  PMU_VDETPCFG_VDETTIME_480uS             ((uint32_t)0x0010)           /*!<·ÖÊ±¼ì²âÊ±¼ä = 480us  */
-#define  PMU_VDETPCFG_VDETTIME_1120uS            ((uint32_t)0x0018)           /*!<·ÖÊ±¼ì²âÊ±¼ä = 1120us  */
+#define  PMU_VDETPCFG_VDETTIME                   ((uint32_t)0x0018)           /*!<åˆ†æ—¶æ£€æµ‹æ—¶é—´è®¾å®š      */
+#define  PMU_VDETPCFG_VDETTIME_300uS             ((uint32_t)0x0000)           /*!<åˆ†æ—¶æ£€æµ‹æ—¶é—´ = 300us  */
+#define  PMU_VDETPCFG_VDETTIME_360uS             ((uint32_t)0x0008)           /*!<åˆ†æ—¶æ£€æµ‹æ—¶é—´ = 360us  */
+#define  PMU_VDETPCFG_VDETTIME_480uS             ((uint32_t)0x0010)           /*!<åˆ†æ—¶æ£€æµ‹æ—¶é—´ = 480us  */
+#define  PMU_VDETPCFG_VDETTIME_1120uS            ((uint32_t)0x0018)           /*!<åˆ†æ—¶æ£€æµ‹æ—¶é—´ = 1120us  */
 
 /**************************  Bit definition for PMUIE register of HT_PMU_TypeDef ************************/
 #if defined  HT6x2x   
-#define  PMU_PMUIE                               ((uint32_t)0x001f)           /*!<PMUÖĞ¶ÏÊ¹ÄÜ           */
+#define  PMU_PMUIE                               ((uint32_t)0x001f)           /*!<PMUä¸­æ–­ä½¿èƒ½           */
 #elif defined  HT501x
-#define  PMU_PMUIE                               ((uint32_t)0x000f)           /*!<PMUÖĞ¶ÏÊ¹ÄÜ           */
+#define  PMU_PMUIE                               ((uint32_t)0x000f)           /*!<PMUä¸­æ–­ä½¿èƒ½           */
 #elif defined  HT6x1x
-#define  PMU_PMUIE                               ((uint32_t)0x0007)           /*!<PMUÖĞ¶ÏÊ¹ÄÜ           */
+#define  PMU_PMUIE                               ((uint32_t)0x0007)           /*!<PMUä¸­æ–­ä½¿èƒ½           */
 #endif
-#define  PMU_PMUIE_VCCIE                         ((uint32_t)0x0001)           /*!<VCC¼ì²âÖĞ¶ÏÊ¹ÄÜ       */
-#define  PMU_PMUIE_BORIE                         ((uint32_t)0x0002)           /*!<BOR¼ì²âÖĞ¶ÏÊ¹ÄÜ       */
-#define  PMU_PMUIE_LVD0IE                        ((uint32_t)0x0004)           /*!<LVDIN0¼ì²âÖĞ¶ÏÊ¹ÄÜ    */
+#define  PMU_PMUIE_VCCIE                         ((uint32_t)0x0001)           /*!<VCCæ£€æµ‹ä¸­æ–­ä½¿èƒ½       */
+#define  PMU_PMUIE_BORIE                         ((uint32_t)0x0002)           /*!<BORæ£€æµ‹ä¸­æ–­ä½¿èƒ½       */
+#define  PMU_PMUIE_LVD0IE                        ((uint32_t)0x0004)           /*!<LVDIN0æ£€æµ‹ä¸­æ–­ä½¿èƒ½    */
 #if  defined  HT6x2x  ||  defined  HT501x                                      
-#define  PMU_PMUIE_LVD1IE                        ((uint32_t)0x0008)           /*!<LVDIN1¼ì²âÖĞ¶ÏÊ¹ÄÜ    */
+#define  PMU_PMUIE_LVD1IE                        ((uint32_t)0x0008)           /*!<LVDIN1æ£€æµ‹ä¸­æ–­ä½¿èƒ½    */
 #endif
 #if  defined  HT6x2x
-#define  PMU_PMUIE_POWIE                         ((uint32_t)0x0010)           /*!<POW¼ì²âÖĞ¶ÏÊ¹ÄÜ       */
+#define  PMU_PMUIE_POWIE                         ((uint32_t)0x0010)           /*!<POWæ£€æµ‹ä¸­æ–­ä½¿èƒ½       */
 #endif
 /**************************  Bit definition for PMUIF register of HT_PMU_TypeDef ************************/
 #if defined  HT6x2x  
-#define  PMU_PMUIF								 ((uint32_t)0x001f)           /*!<PMUÖĞ¶Ï±êÖ¾     	  */
+#define  PMU_PMUIF								 ((uint32_t)0x001f)           /*!<PMUä¸­æ–­æ ‡å¿—     	  */
 #elif defined  HT501x
-#define  PMU_PMUIF								 ((uint32_t)0x000f)           /*!<PMUÖĞ¶Ï±êÖ¾     	  */
+#define  PMU_PMUIF								 ((uint32_t)0x000f)           /*!<PMUä¸­æ–­æ ‡å¿—     	  */
 #elif defined  HT6x1x
-#define  PMU_PMUIF								 ((uint32_t)0x0007)           /*!<PMUÖĞ¶Ï±êÖ¾     	  */
+#define  PMU_PMUIF								 ((uint32_t)0x0007)           /*!<PMUä¸­æ–­æ ‡å¿—     	  */
 #endif
-#define  PMU_PMUIF_VCCIF                         ((uint32_t)0x0001)           /*!<VCC¼ì²âÖĞ¶Ï±êÖ¾       */
-#define  PMU_PMUIF_BORIF                         ((uint32_t)0x0002)           /*!<BOR¼ì²âÖĞ¶Ï±êÖ¾       */
-#define  PMU_PMUIF_LVD0IF                        ((uint32_t)0x0004)           /*!<LVDIN0¼ì²âÖĞ¶Ï±êÖ¾    */
+#define  PMU_PMUIF_VCCIF                         ((uint32_t)0x0001)           /*!<VCCæ£€æµ‹ä¸­æ–­æ ‡å¿—       */
+#define  PMU_PMUIF_BORIF                         ((uint32_t)0x0002)           /*!<BORæ£€æµ‹ä¸­æ–­æ ‡å¿—       */
+#define  PMU_PMUIF_LVD0IF                        ((uint32_t)0x0004)           /*!<LVDIN0æ£€æµ‹ä¸­æ–­æ ‡å¿—    */
 #if  defined  HT6x2x   ||  defined  HT501x                                                            
-#define  PMU_PMUIF_LVD1IF                        ((uint32_t)0x0008)           /*!<LVDIN1¼ì²âÖĞ¶Ï±êÖ¾    */
+#define  PMU_PMUIF_LVD1IF                        ((uint32_t)0x0008)           /*!<LVDIN1æ£€æµ‹ä¸­æ–­æ ‡å¿—    */
 #endif
 #if  defined  HT6x2x  
-#define  PMU_PMUIF_POWIF                         ((uint32_t)0x0010)           /*!<POW¼ì²âÖĞ¶Ï±êÖ¾       */
+#define  PMU_PMUIF_POWIF                         ((uint32_t)0x0010)           /*!<POWæ£€æµ‹ä¸­æ–­æ ‡å¿—       */
 #endif
 /*************************  Bit definition for PMUSTA register of HT_PMU_TypeDef ************************/
 #if defined  HT6x2x 
-#define  PMU_PMUSTA								 ((uint32_t)0x001f)           /*!<PMU×´Ì¬±êÖ¾     	  */
+#define  PMU_PMUSTA								 ((uint32_t)0x001f)           /*!<PMUçŠ¶æ€æ ‡å¿—     	  */
 #elif defined  HT501x
-#define  PMU_PMUSTA								 ((uint32_t)0x000f)           /*!<PMU×´Ì¬±êÖ¾     	  */
+#define  PMU_PMUSTA								 ((uint32_t)0x000f)           /*!<PMUçŠ¶æ€æ ‡å¿—     	  */
 #elif defined  HT6x1x
-#define  PMU_PMUSTA								 ((uint32_t)0x0007)           /*!<PMU×´Ì¬±êÖ¾     	  */
+#define  PMU_PMUSTA								 ((uint32_t)0x0007)           /*!<PMUçŠ¶æ€æ ‡å¿—     	  */
 #endif
-#define  PMU_PMUSTA_VCCFLG                       ((uint32_t)0x0001)           /*!<VCCµçÑ¹×´Ì¬@VCCLVL    */
-#define  PMU_PMUSTA_BORFLG                       ((uint32_t)0x0002)           /*!<VCCµçÑ¹×´Ì¬@BORLVL    */
-#define  PMU_PMUSTA_LVD0FLG                      ((uint32_t)0x0004)           /*!<LVDIN0Òı½Å×´Ì¬        */
+#define  PMU_PMUSTA_VCCFLG                       ((uint32_t)0x0001)           /*!<VCCç”µå‹çŠ¶æ€@VCCLVL    */
+#define  PMU_PMUSTA_BORFLG                       ((uint32_t)0x0002)           /*!<VCCç”µå‹çŠ¶æ€@BORLVL    */
+#define  PMU_PMUSTA_LVD0FLG                      ((uint32_t)0x0004)           /*!<LVDIN0å¼•è„šçŠ¶æ€        */
 #if  defined  HT6x2x   ||  defined  HT501x                                                               
-#define  PMU_PMUSTA_LVD1FLG                      ((uint32_t)0x0008)           /*!<LVDIN1Òı½Å×´Ì¬        */
+#define  PMU_PMUSTA_LVD1FLG                      ((uint32_t)0x0008)           /*!<LVDIN1å¼•è„šçŠ¶æ€        */
 #endif
 #if  defined  HT6x2x   
-#define  PMU_PMUSTA_POWFLG                       ((uint32_t)0x0010)           /*!<POWINÒı½Å×´Ì¬         */
-                                                                              /*!< bit=1£º´óÓÚÉè¶¨ãĞÖµ  */
+#define  PMU_PMUSTA_POWFLG                       ((uint32_t)0x0010)           /*!<POWINå¼•è„šçŠ¶æ€         */
+                                                                              /*!< bit=1ï¼šå¤§äºè®¾å®šé˜ˆå€¼  */
 #endif
 /*************************  Bit definition for WAKEIF register of HT_PMU_TypeDef ************************/
-#define  PMU_WAKEIF                              ((uint32_t)0xffffff)         /*!<»½ĞÑ±êÖ¾              */
-#define  PMU_WAKEIF_PMUWKIF                      ((uint32_t)0x0001)           /*!<PMU»½ĞÑ±êÖ¾           */
-#define  PMU_WAKEIF_INT0WKIF                     ((uint32_t)0x0004)           /*!<INT0»½ĞÑ±êÖ¾          */
-#define  PMU_WAKEIF_INT1WKIF                     ((uint32_t)0x0008)           /*!<INT1»½ĞÑ±êÖ¾          */
-#define  PMU_WAKEIF_INT2WKIF                     ((uint32_t)0x0010)           /*!<INT2»½ĞÑ±êÖ¾          */
-#define  PMU_WAKEIF_INT3WKIF                     ((uint32_t)0x0020)           /*!<INT3»½ĞÑ±êÖ¾          */
-#define  PMU_WAKEIF_INT4WKIF                     ((uint32_t)0x0040)           /*!<INT4»½ĞÑ±êÖ¾          */
-#define  PMU_WAKEIF_INT5WKIF                     ((uint32_t)0x0080)           /*!<INT5»½ĞÑ±êÖ¾          */
-#define  PMU_WAKEIF_INT6WKIF                     ((uint32_t)0x0100)           /*!<INT6»½ĞÑ±êÖ¾          */
-#define  PMU_WAKEIF_RX0WKIF                      ((uint32_t)0x0200)           /*!<RX0»½ĞÑ±êÖ¾           */
-#define  PMU_WAKEIF_RX1WKIF                      ((uint32_t)0x0400)           /*!<RX1»½ĞÑ±êÖ¾           */
-#define  PMU_WAKEIF_RX2WKIF                      ((uint32_t)0x0800)           /*!<RX2»½ĞÑ±êÖ¾           */
-#define  PMU_WAKEIF_RX3WKIF                      ((uint32_t)0x1000)           /*!<RX3»½ĞÑ±êÖ¾           */
-#define  PMU_WAKEIF_RX4WKIF                      ((uint32_t)0x2000)           /*!<RX4»½ĞÑ±êÖ¾           */
-#define  PMU_WAKEIF_RX5WKIF                      ((uint32_t)0x4000)           /*!<RX5»½ĞÑ±êÖ¾           */
+#define  PMU_WAKEIF                              ((uint32_t)0xffffff)         /*!<å”¤é†’æ ‡å¿—              */
+#define  PMU_WAKEIF_PMUWKIF                      ((uint32_t)0x0001)           /*!<PMUå”¤é†’æ ‡å¿—           */
+#define  PMU_WAKEIF_INT0WKIF                     ((uint32_t)0x0004)           /*!<INT0å”¤é†’æ ‡å¿—          */
+#define  PMU_WAKEIF_INT1WKIF                     ((uint32_t)0x0008)           /*!<INT1å”¤é†’æ ‡å¿—          */
+#define  PMU_WAKEIF_INT2WKIF                     ((uint32_t)0x0010)           /*!<INT2å”¤é†’æ ‡å¿—          */
+#define  PMU_WAKEIF_INT3WKIF                     ((uint32_t)0x0020)           /*!<INT3å”¤é†’æ ‡å¿—          */
+#define  PMU_WAKEIF_INT4WKIF                     ((uint32_t)0x0040)           /*!<INT4å”¤é†’æ ‡å¿—          */
+#define  PMU_WAKEIF_INT5WKIF                     ((uint32_t)0x0080)           /*!<INT5å”¤é†’æ ‡å¿—          */
+#define  PMU_WAKEIF_INT6WKIF                     ((uint32_t)0x0100)           /*!<INT6å”¤é†’æ ‡å¿—          */
+#define  PMU_WAKEIF_RX0WKIF                      ((uint32_t)0x0200)           /*!<RX0å”¤é†’æ ‡å¿—           */
+#define  PMU_WAKEIF_RX1WKIF                      ((uint32_t)0x0400)           /*!<RX1å”¤é†’æ ‡å¿—           */
+#define  PMU_WAKEIF_RX2WKIF                      ((uint32_t)0x0800)           /*!<RX2å”¤é†’æ ‡å¿—           */
+#define  PMU_WAKEIF_RX3WKIF                      ((uint32_t)0x1000)           /*!<RX3å”¤é†’æ ‡å¿—           */
+#define  PMU_WAKEIF_RX4WKIF                      ((uint32_t)0x2000)           /*!<RX4å”¤é†’æ ‡å¿—           */
+#define  PMU_WAKEIF_RX5WKIF                      ((uint32_t)0x4000)           /*!<RX5å”¤é†’æ ‡å¿—           */
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
-#define  PMU_WAKEIF_TMR4WKIF                     ((uint32_t)0x20000)          /*!<Timer4»½ĞÑ±êÖ¾        */
-#define  PMU_WAKEIF_TMR5WKIF                     ((uint32_t)0x40000)          /*!<Timer5»½ĞÑ±êÖ¾        */
+#define  PMU_WAKEIF_TMR4WKIF                     ((uint32_t)0x20000)          /*!<Timer4å”¤é†’æ ‡å¿—        */
+#define  PMU_WAKEIF_TMR5WKIF                     ((uint32_t)0x40000)          /*!<Timer5å”¤é†’æ ‡å¿—        */
 #endif
-#define  PMU_WAKEIF_TBSWKIF                      ((uint32_t)0x80000)          /*!<TBS»½ĞÑ±êÖ¾           */
-#define  PMU_WAKEIF_RTCWKIF                      ((uint32_t)0x100000)         /*!<RTC»½ĞÑ±êÖ¾           */
+#define  PMU_WAKEIF_TBSWKIF                      ((uint32_t)0x80000)          /*!<TBSå”¤é†’æ ‡å¿—           */
+#define  PMU_WAKEIF_RTCWKIF                      ((uint32_t)0x100000)         /*!<RTCå”¤é†’æ ‡å¿—           */
 #if  defined  HT6x1x ||  defined HT501x
-#define  PMU_WAKEIF_WDTWKIF                      ((uint32_t)0x800000)         /*!<WDT»½ĞÑ±êÖ¾           */
+#define  PMU_WAKEIF_WDTWKIF                      ((uint32_t)0x800000)         /*!<WDTå”¤é†’æ ‡å¿—           */
 #endif
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
-#define  PMU_WAKEIF_RX6WKIF                      ((uint32_t)0x8000000)        /*!<RX6»½ĞÑ±êÖ¾           */
-#define  PMU_WAKEIF_INT7WKIF                     ((uint32_t)0x10000000)       /*!<INT7»½ĞÑ±êÖ¾          */
-#define  PMU_WAKEIF_INT8WKIF                     ((uint32_t)0x20000000)       /*!<INT8»½ĞÑ±êÖ¾          */
-#define  PMU_WAKEIF_INT9WKIF                     ((uint32_t)0x40000000)       /*!<INT9»½ĞÑ±êÖ¾          */
+#define  PMU_WAKEIF_RX6WKIF                      ((uint32_t)0x8000000)        /*!<RX6å”¤é†’æ ‡å¿—           */
+#define  PMU_WAKEIF_INT7WKIF                     ((uint32_t)0x10000000)       /*!<INT7å”¤é†’æ ‡å¿—          */
+#define  PMU_WAKEIF_INT8WKIF                     ((uint32_t)0x20000000)       /*!<INT8å”¤é†’æ ‡å¿—          */
+#define  PMU_WAKEIF_INT9WKIF                     ((uint32_t)0x40000000)       /*!<INT9å”¤é†’æ ‡å¿—          */
 #endif
 
 /*************************  Bit definition for RSTSTA register of HT_PMU_TypeDef ************************/
-#define  PMU_RSTSTA                              ((uint32_t)0xffff)           /*!<¸´Î»±êÖ¾Î»            */
-#define  PMU_RSTSTA_PORRST                       ((uint32_t)0x0001)           /*!<POR¸´Î»±êÖ¾Î»         */
-#define  PMU_RSTSTA_LBORRST                      ((uint32_t)0x0002)           /*!<LBOR¸´Î»±êÖ¾Î»        */
-#define  PMU_RSTSTA_WDTRST                       ((uint32_t)0x0004)           /*!<WDT¸´Î»±êÖ¾Î»         */
-#define  PMU_RSTSTA_WakeupRST                    ((uint32_t)0x0008)           /*!<WakeUp¸´Î»±êÖ¾        */
-#define  PMU_RSTSTA_ExtRST                       ((uint32_t)0x0020)           /*!<Íâ²¿RST¸´Î»±êÖ¾       */
-#define  PMU_RSTSTA_SoftRST                      ((uint32_t)0x0040)           /*!<Èí¸´Î»±êÖ¾            */
-#define  PMU_RSTSTA_DebugRST                     ((uint32_t)0x0080)           /*!<µ÷ÊÔ¸´Î»±êÖ¾          */
-#define  PMU_RSTSTA_BORRST                       ((uint32_t)0x0100)           /*!<BOR¸´Î»±êÖ¾           */
-#define  PMU_RSTSTA_SleepFlag                    ((uint32_t)0x4000)           /*!<Sleep»½ĞÑ¸´Î»±êÖ¾     */
-#define  PMU_RSTSTA_HoldFlag                     ((uint32_t)0x8000)           /*!<Hold»½ĞÑ±êÖ¾          */
+#define  PMU_RSTSTA                              ((uint32_t)0xffff)           /*!<å¤ä½æ ‡å¿—ä½            */
+#define  PMU_RSTSTA_PORRST                       ((uint32_t)0x0001)           /*!<PORå¤ä½æ ‡å¿—ä½         */
+#define  PMU_RSTSTA_LBORRST                      ((uint32_t)0x0002)           /*!<LBORå¤ä½æ ‡å¿—ä½        */
+#define  PMU_RSTSTA_WDTRST                       ((uint32_t)0x0004)           /*!<WDTå¤ä½æ ‡å¿—ä½         */
+#define  PMU_RSTSTA_WakeupRST                    ((uint32_t)0x0008)           /*!<WakeUpå¤ä½æ ‡å¿—        */
+#define  PMU_RSTSTA_ExtRST                       ((uint32_t)0x0020)           /*!<å¤–éƒ¨RSTå¤ä½æ ‡å¿—       */
+#define  PMU_RSTSTA_SoftRST                      ((uint32_t)0x0040)           /*!<è½¯å¤ä½æ ‡å¿—            */
+#define  PMU_RSTSTA_DebugRST                     ((uint32_t)0x0080)           /*!<è°ƒè¯•å¤ä½æ ‡å¿—          */
+#define  PMU_RSTSTA_BORRST                       ((uint32_t)0x0100)           /*!<BORå¤ä½æ ‡å¿—           */
+#define  PMU_RSTSTA_SleepFlag                    ((uint32_t)0x4000)           /*!<Sleepå”¤é†’å¤ä½æ ‡å¿—     */
+#define  PMU_RSTSTA_HoldFlag                     ((uint32_t)0x8000)           /*!<Holdå”¤é†’æ ‡å¿—          */
 
 
 /*
@@ -1804,86 +1804,86 @@ typedef union
 **********************************************************************************************************
 */  
 /**************************  Bit definition for WPREG register of HT_CMU_TypeDef ************************/
-#define  CMU_WPREG                               ((uint32_t)0xffff)           /*!<Ğ´±£»¤¼Ä´æÆ÷          */
-#define  CMU_WPREG_UnProtected                   ((uint32_t)0xA55A)           /*!<¹Ø±ÕĞ´±£»¤¹¦ÄÜ        */
-#define  CMU_WPREG_Protected                     ((uint32_t)0x0000)           /*!<´ò¿ªĞ´±£»¤¹¦ÄÜ        */
+#define  CMU_WPREG                               ((uint32_t)0xffff)           /*!<å†™ä¿æŠ¤å¯„å­˜å™¨          */
+#define  CMU_WPREG_UnProtected                   ((uint32_t)0xA55A)           /*!<å…³é—­å†™ä¿æŠ¤åŠŸèƒ½        */
+#define  CMU_WPREG_Protected                     ((uint32_t)0x0000)           /*!<æ‰“å¼€å†™ä¿æŠ¤åŠŸèƒ½        */
                                                                               /*!<0xA55A: Unprotected   */
                                                                               /*!<other : Protected     */
 /************************  Bit definition for SYSCLKCFG register of HT_CMU_TypeDef **********************/
 #if  defined  HT6x2x  ||  defined  HT6x1x
-#define  CMU_SYSCLKCFG_CLKSEL                    ((uint32_t)0x0007)           /*!<ÏµÍ³Ê±ÖÓÑ¡Ôñ¿ØÖÆÎ»    */
+#define  CMU_SYSCLKCFG_CLKSEL                    ((uint32_t)0x0007)           /*!<ç³»ç»Ÿæ—¶é’Ÿé€‰æ‹©æ§åˆ¶ä½    */
 #elif defined HT501x
-#define  CMU_SYSCLKCFG_CLKSEL                    ((uint32_t)0x0003)           /*!<ÏµÍ³Ê±ÖÓÑ¡Ôñ¿ØÖÆÎ»    */
+#define  CMU_SYSCLKCFG_CLKSEL                    ((uint32_t)0x0003)           /*!<ç³»ç»Ÿæ—¶é’Ÿé€‰æ‹©æ§åˆ¶ä½    */
 #endif
-#define  CMU_SYSCLKCFG_CLKSEL_LRC                ((uint32_t)0x0000)           /*!<Ñ¡Ôñlrc               */
-#define  CMU_SYSCLKCFG_CLKSEL_LF                 ((uint32_t)0x0001)           /*!<Ñ¡ÔñµÍÆµosc           */
-#define  CMU_SYSCLKCFG_CLKSEL_HRC                ((uint32_t)0x0002)           /*!<Ñ¡Ôñhrc               */
-#define  CMU_SYSCLKCFG_CLKSEL_PLL                ((uint32_t)0x0003)           /*!<Ñ¡ÔñPLL               */
+#define  CMU_SYSCLKCFG_CLKSEL_LRC                ((uint32_t)0x0000)           /*!<é€‰æ‹©lrc               */
+#define  CMU_SYSCLKCFG_CLKSEL_LF                 ((uint32_t)0x0001)           /*!<é€‰æ‹©ä½é¢‘osc           */
+#define  CMU_SYSCLKCFG_CLKSEL_HRC                ((uint32_t)0x0002)           /*!<é€‰æ‹©hrc               */
+#define  CMU_SYSCLKCFG_CLKSEL_PLL                ((uint32_t)0x0003)           /*!<é€‰æ‹©PLL               */
 #if  defined  HT6x2x  ||  defined  HT6x1x
-#define  CMU_SYSCLKCFG_CLKSEL_MEMS               ((uint32_t)0x0004)           /*!<Ñ¡Ôñmems              */
+#define  CMU_SYSCLKCFG_CLKSEL_MEMS               ((uint32_t)0x0004)           /*!<é€‰æ‹©mems              */
 #endif
-#define  CMU_SYSCLKCFG_WCLKEN                    ((uint32_t)0x0080)           /*!<Ê±ÖÓÅäÖÃĞ´±£»¤Î»      */
+#define  CMU_SYSCLKCFG_WCLKEN                    ((uint32_t)0x0080)           /*!<æ—¶é’Ÿé…ç½®å†™ä¿æŠ¤ä½      */
 
 /*************************  Bit definition for JTAGSTA register of HT_CMU_TypeDef ***********************/
-#define  CMU_JTAGSTA                             ((uint32_t)0x0001)           /*!<JTAG×´Ì¬Ö¸Ê¾          */
+#define  CMU_JTAGSTA                             ((uint32_t)0x0001)           /*!<JTAGçŠ¶æ€æŒ‡ç¤º          */
 
 /*************************  Bit definition for LRCADJ register of HT_CMU_TypeDef ************************/
 #if defined  HT6x1x ||  defined  HT501x
-#define  CMU_LRCADJ                              ((uint32_t)0x000f)           /*!<lrcÊä³öÆµÂÊµ÷ÖÆÎ»     */
+#define  CMU_LRCADJ                              ((uint32_t)0x000f)           /*!<lrcè¾“å‡ºé¢‘ç‡è°ƒåˆ¶ä½     */
 #elif  defined  HT6x2x 
-#define  CMU_LRCADJ                              ((uint32_t)0x00ff)           /*!<lrcÊä³öÆµÂÊµ÷ÖÆÎ»     */
-#endif                                                                            /*!<HT6x2x³¤¶È´ı¶¨        */
+#define  CMU_LRCADJ                              ((uint32_t)0x00ff)           /*!<lrcè¾“å‡ºé¢‘ç‡è°ƒåˆ¶ä½     */
+#endif                                                                            /*!<HT6x2xé•¿åº¦å¾…å®š        */
 /*************************  Bit definition for HRCADJ register of HT_CMU_TypeDef ************************/
 #if defined  HT6x1x ||  defined  HT501x
-#define  CMU_HRCADJ                              ((uint32_t)0x003f)           /*!<hrcÊä³öÆµÂÊµ÷ÖÆÎ»     */
+#define  CMU_HRCADJ                              ((uint32_t)0x003f)           /*!<hrcè¾“å‡ºé¢‘ç‡è°ƒåˆ¶ä½     */
 #elif  defined  HT6x2x 
-#define  CMU_HRCADJ                              ((uint32_t)0x007f)           /*!<hrcÊä³öÆµÂÊµ÷ÖÆÎ»     */
-#endif                                                                              /*!<HT6x2x³¤¶È´ı¶¨        */
+#define  CMU_HRCADJ                              ((uint32_t)0x007f)           /*!<hrcè¾“å‡ºé¢‘ç‡è°ƒåˆ¶ä½     */
+#endif                                                                              /*!<HT6x2xé•¿åº¦å¾…å®š        */
 /*************************  Bit definition for HRCDIV register of HT_CMU_TypeDef ************************/
 #if defined  HT6x1x ||  defined  HT6x2x 
-#define  CMU_HRCDIV                              ((uint32_t)0x0003)           /*!<hrcÊ±ÖÓ·ÖÆµÉèÖÃ       */
-#define  CMU_HRCDIV_1                            ((uint32_t)0x0000)           /*!<·ÖÆµÏµÊı = 1          */
-#define  CMU_HRCDIV_2                            ((uint32_t)0x0001)           /*!<·ÖÆµÏµÊı = 2          */
-#define  CMU_HRCDIV_4                            ((uint32_t)0x0002)           /*!<·ÖÆµÏµÊı = 4          */
-#define  CMU_HRCDIV_8                            ((uint32_t)0x0003)           /*!<·ÖÆµÏµÊı = 8          */
+#define  CMU_HRCDIV                              ((uint32_t)0x0003)           /*!<hrcæ—¶é’Ÿåˆ†é¢‘è®¾ç½®       */
+#define  CMU_HRCDIV_1                            ((uint32_t)0x0000)           /*!<åˆ†é¢‘ç³»æ•° = 1          */
+#define  CMU_HRCDIV_2                            ((uint32_t)0x0001)           /*!<åˆ†é¢‘ç³»æ•° = 2          */
+#define  CMU_HRCDIV_4                            ((uint32_t)0x0002)           /*!<åˆ†é¢‘ç³»æ•° = 4          */
+#define  CMU_HRCDIV_8                            ((uint32_t)0x0003)           /*!<åˆ†é¢‘ç³»æ•° = 8          */
 #endif
 
 /*************************  Bit definition for CLKSTA register of HT_CMU_TypeDef ************************/
 #if  defined  HT6x2x
-#define  CMU_CLKSTA		                         ((uint32_t)0x003b)           /*!<MCUÊ±ÖÓ×´Ì¬¼Ä´æÆ÷       */
+#define  CMU_CLKSTA		                         ((uint32_t)0x003b)           /*!<MCUæ—¶é’ŸçŠ¶æ€å¯„å­˜å™¨       */
 #elif defined HT501x
-#define  CMU_CLKSTA		                         ((uint32_t)0x0039)           /*!<MCUÊ±ÖÓ×´Ì¬¼Ä´æÆ÷       */
+#define  CMU_CLKSTA		                         ((uint32_t)0x0039)           /*!<MCUæ—¶é’ŸçŠ¶æ€å¯„å­˜å™¨       */
 #elif defined  HT6x1x
-#define  CMU_CLKSTA		                         ((uint32_t)0x001b)           /*!<MCUÊ±ÖÓ×´Ì¬¼Ä´æÆ÷       */
+#define  CMU_CLKSTA		                         ((uint32_t)0x001b)           /*!<MCUæ—¶é’ŸçŠ¶æ€å¯„å­˜å™¨       */
 #endif
-#define  CMU_CLKSTA_LFFLAG                       ((uint32_t)0x0001)           /*!<LFÍ£Õñ±êÖ¾            */
+#define  CMU_CLKSTA_LFFLAG                       ((uint32_t)0x0001)           /*!<LFåœæŒ¯æ ‡å¿—            */
 #if  defined  HT6x2x  ||  defined  HT6x1x
 #define  CMU_CLKSTA_LFSEL                        ((uint32_t)0x0002)           /*!<0:osc 1:mems          */
 #elif defined HT501x
 #define  CMU_CLKSTA_LFSEL                        ((uint32_t)0x0000)           /*!<0:osc osc only        */
 #endif
-#define  CMU_CLKSTA_HRCFLAG                      ((uint32_t)0x0008)           /*!<HRCÍ£Õñ±êÖ¾           */
-#define  CMU_CLKSTA_PLLFLAG                      ((uint32_t)0x0010)           /*!<PLLÍ£Õñ±êÖ¾           */
+#define  CMU_CLKSTA_HRCFLAG                      ((uint32_t)0x0008)           /*!<HRCåœæŒ¯æ ‡å¿—           */
+#define  CMU_CLKSTA_PLLFLAG                      ((uint32_t)0x0010)           /*!<PLLåœæŒ¯æ ‡å¿—           */
 #if defined  HT6x2x   ||  defined  HT501x
-#define  CMU_CLKSTA_PLLLOCK                      ((uint32_t)0x0020)           /*!<PLLËø¶¨×´Ì¬±êÖ¾           */
+#define  CMU_CLKSTA_PLLLOCK                      ((uint32_t)0x0020)           /*!<PLLé”å®šçŠ¶æ€æ ‡å¿—           */
 #endif
 /***********************  Bit definition for SYSCLKDIV register of HT_CMU_TypeDef ***********************/  
-#define  CMU_SYSCLKDIV                           ((uint32_t)0x0007)           /*!<ÏµÍ³Ê±ÖÓ·ÖÆµÉèÖÃ      */
+#define  CMU_SYSCLKDIV                           ((uint32_t)0x0007)           /*!<ç³»ç»Ÿæ—¶é’Ÿåˆ†é¢‘è®¾ç½®      */
 #if  defined  HT501x || HT6x2x
-#define  CMU_SYSCLKDIV_SEL20M                    ((uint32_t)0x0000)           /*!<PLLÊä³ö20MÊ±ÖÓ        */
-#define  CMU_SYSCLKDIV_SEL40M                    ((uint32_t)0x0008)           /*!<PLLÊä³ö40MÊ±ÖÓ        */
+#define  CMU_SYSCLKDIV_SEL20M                    ((uint32_t)0x0000)           /*!<PLLè¾“å‡º20Mæ—¶é’Ÿ        */
+#define  CMU_SYSCLKDIV_SEL40M                    ((uint32_t)0x0008)           /*!<PLLè¾“å‡º40Mæ—¶é’Ÿ        */
 #endif
-#define  CMU_CPUCLKDIV_1                         ((uint32_t)0x0000)           /*!<·ÖÆµÏµÊı = 1          */
-#define  CMU_CPUCLKDIV_2                         ((uint32_t)0x0001)           /*!<·ÖÆµÏµÊı = 2          */
-#define  CMU_CPUCLKDIV_4                         ((uint32_t)0x0002)           /*!<·ÖÆµÏµÊı = 4          */
-#define  CMU_CPUCLKDIV_8                         ((uint32_t)0x0003)           /*!<·ÖÆµÏµÊı = 8          */
-#define  CMU_CPUCLKDIV_16                        ((uint32_t)0x0004)           /*!<·ÖÆµÏµÊı = 16         */
-#define  CMU_CPUCLKDIV_32                        ((uint32_t)0x0005)           /*!<·ÖÆµÏµÊı = 32         */
-#define  CMU_CPUCLKDIV_64                        ((uint32_t)0x0006)           /*!<·ÖÆµÏµÊı = 64         */
-#define  CMU_CPUCLKDIV_128                       ((uint32_t)0x0007)           /*!<·ÖÆµÏµÊı = 128        */
+#define  CMU_CPUCLKDIV_1                         ((uint32_t)0x0000)           /*!<åˆ†é¢‘ç³»æ•° = 1          */
+#define  CMU_CPUCLKDIV_2                         ((uint32_t)0x0001)           /*!<åˆ†é¢‘ç³»æ•° = 2          */
+#define  CMU_CPUCLKDIV_4                         ((uint32_t)0x0002)           /*!<åˆ†é¢‘ç³»æ•° = 4          */
+#define  CMU_CPUCLKDIV_8                         ((uint32_t)0x0003)           /*!<åˆ†é¢‘ç³»æ•° = 8          */
+#define  CMU_CPUCLKDIV_16                        ((uint32_t)0x0004)           /*!<åˆ†é¢‘ç³»æ•° = 16         */
+#define  CMU_CPUCLKDIV_32                        ((uint32_t)0x0005)           /*!<åˆ†é¢‘ç³»æ•° = 32         */
+#define  CMU_CPUCLKDIV_64                        ((uint32_t)0x0006)           /*!<åˆ†é¢‘ç³»æ•° = 64         */
+#define  CMU_CPUCLKDIV_128                       ((uint32_t)0x0007)           /*!<åˆ†é¢‘ç³»æ•° = 128        */
 
 /***********************  Bit definition for CLKOUTSEL register of HT_CMU_TypeDef ***********************/
-#define  CMU_CLKOUTSEL                           ((uint32_t)0x0007)           /*!<CLKOUTÊä³öÊ±ÖÓÉèÖÃ    */
+#define  CMU_CLKOUTSEL                           ((uint32_t)0x0007)           /*!<CLKOUTè¾“å‡ºæ—¶é’Ÿè®¾ç½®    */
 #define  CMU_CLKOUTSEL_LRC                       ((uint32_t)0x0000)           /*!<LRC --> CLKOUT        */
 #define  CMU_CLKOUTSEL_LF                        ((uint32_t)0x0001)           /*!<OSC --> CLKOUT        */
 #define  CMU_CLKOUTSEL_HRC                       ((uint32_t)0x0002)           /*!<HRC --> CLKOUT        */
@@ -1891,138 +1891,138 @@ typedef union
 #define  CMU_CLKOUTSEL_MEMS                      ((uint32_t)0x0004)           /*!<MEMS--> CLKOUT        */
 
 /***********************  Bit definition for CLKOUTDIV register of HT_CMU_TypeDef ***********************/
-#define  CMU_CLKOUTDIV                           ((uint32_t)0x000f)           /*!<CLKOUTÊä³öÊ±ÖÓÉèÖÃ    */
-                                                                              /*!<·ÖÆµÏµÊı = 2*(N+1)    */
+#define  CMU_CLKOUTDIV                           ((uint32_t)0x000f)           /*!<CLKOUTè¾“å‡ºæ—¶é’Ÿè®¾ç½®    */
+                                                                              /*!<åˆ†é¢‘ç³»æ•° = 2*(N+1)    */
 /************************  Bit definition for CLKCTRL0 register of HT_CMU_TypeDef ***********************/
 #if   defined  HT6x1x                                                         
-#define  CMU_CLKCTRL0                            ((uint32_t)0x7ffe)           /*!<CLKCTRL0¼Ä´æÆ÷        */
+#define  CMU_CLKCTRL0                            ((uint32_t)0x7ffe)           /*!<CLKCTRL0å¯„å­˜å™¨        */
 #elif defined  HT501x
-#define  CMU_CLKCTRL0                            ((uint32_t)0xfffe)           /*!<CLKCTRL0¼Ä´æÆ÷        */
+#define  CMU_CLKCTRL0                            ((uint32_t)0xfffe)           /*!<CLKCTRL0å¯„å­˜å™¨        */
 #elif defined  HT6x2x
-#define  CMU_CLKCTRL0                            ((uint32_t)0xf7fe)           /*!<CLKCTRL0¼Ä´æÆ÷        */
+#define  CMU_CLKCTRL0                            ((uint32_t)0xf7fe)           /*!<CLKCTRL0å¯„å­˜å™¨        */
 #endif
-#define  CMU_CLKCTRL0_LCDEN                      ((uint32_t)0x0002)           /*!<LCDÄ£¿éÊ±ÖÓÊ¹ÄÜ       */
-#define  CMU_CLKCTRL0_SPI0EN                     ((uint32_t)0x0004)           /*!<SPI0Ä£¿éÊ±ÖÓÊ¹ÄÜ      */
-#define  CMU_CLKCTRL0_I2CEN                      ((uint32_t)0x0008)           /*!<I2CÄ£¿éÊ±ÖÓÊ¹ÄÜ       */
-#define  CMU_CLKCTRL0_PLLEN                      ((uint32_t)0x0010)           /*!<PLLÄ£¿éÊ±ÖÓÊ¹ÄÜ       */
-#define  CMU_CLKCTRL0_HRCEN                      ((uint32_t)0x0020)           /*!<HRCÄ£¿éÊ±ÖÓÊ¹ÄÜ       */
+#define  CMU_CLKCTRL0_LCDEN                      ((uint32_t)0x0002)           /*!<LCDæ¨¡å—æ—¶é’Ÿä½¿èƒ½       */
+#define  CMU_CLKCTRL0_SPI0EN                     ((uint32_t)0x0004)           /*!<SPI0æ¨¡å—æ—¶é’Ÿä½¿èƒ½      */
+#define  CMU_CLKCTRL0_I2CEN                      ((uint32_t)0x0008)           /*!<I2Cæ¨¡å—æ—¶é’Ÿä½¿èƒ½       */
+#define  CMU_CLKCTRL0_PLLEN                      ((uint32_t)0x0010)           /*!<PLLæ¨¡å—æ—¶é’Ÿä½¿èƒ½       */
+#define  CMU_CLKCTRL0_HRCEN                      ((uint32_t)0x0020)           /*!<HRCæ¨¡å—æ—¶é’Ÿä½¿èƒ½       */
 #if defined HT6x2x || defined  HT501x
-#define  CMU_CLKCTRL0_PLLLOCKEN                  ((uint32_t)0x0040)           /*!<PLLËø¶¨Ê¹ÄÜ           */
+#define  CMU_CLKCTRL0_PLLLOCKEN                  ((uint32_t)0x0040)           /*!<PLLé”å®šä½¿èƒ½           */
 #elif	defined HT6x1x
-#define  CMU_CLKCTRL0_Reserved                   ((uint32_t)0x0040)           /*!<±£ÁôÎª1               */
+#define  CMU_CLKCTRL0_Reserved                   ((uint32_t)0x0040)           /*!<ä¿ç•™ä¸º1               */
 #endif
-#define  CMU_CLKCTRL0_LFDETEN                    ((uint32_t)0x0080)           /*!<LFÊ±ÖÓ¼ì²âÄ£¿éÊ¹ÄÜ    */
-#define  CMU_CLKCTRL0_PLLDETEN                   ((uint32_t)0x0100)           /*!<PLLÊ±ÖÓ¼ì²âÄ£¿éÊ¹ÄÜ   */
-#define  CMU_CLKCTRL0_HRCDETEN                   ((uint32_t)0x0200)           /*!<HRCÊ±ÖÓ¼ì²âÄ£¿éÊ¹ÄÜ   */
+#define  CMU_CLKCTRL0_LFDETEN                    ((uint32_t)0x0080)           /*!<LFæ—¶é’Ÿæ£€æµ‹æ¨¡å—ä½¿èƒ½    */
+#define  CMU_CLKCTRL0_PLLDETEN                   ((uint32_t)0x0100)           /*!<PLLæ—¶é’Ÿæ£€æµ‹æ¨¡å—ä½¿èƒ½   */
+#define  CMU_CLKCTRL0_HRCDETEN                   ((uint32_t)0x0200)           /*!<HRCæ—¶é’Ÿæ£€æµ‹æ¨¡å—ä½¿èƒ½   */
 #if  defined  HT6x1x                                                         
-#define  CMU_CLKCTRL0_WDTEN                      ((uint32_t)0x0800)           /*!<WDTµÍ¹¦ºÄÄ£Ê½ÏÂÊ¹ÄÜÎ» */
+#define  CMU_CLKCTRL0_WDTEN                      ((uint32_t)0x0800)           /*!<WDTä½åŠŸè€—æ¨¡å¼ä¸‹ä½¿èƒ½ä½ */
 #elif defined HT501x
-#define  CMU_CLKCTRL0_KEYEN                      ((uint32_t)0x0800)           /*!<WDTµÍ¹¦ºÄÄ£Ê½ÏÂÊ¹ÄÜÎ» */
+#define  CMU_CLKCTRL0_KEYEN                      ((uint32_t)0x0800)           /*!<WDTä½åŠŸè€—æ¨¡å¼ä¸‹ä½¿èƒ½ä½ */
 #endif
-#define  CMU_CLKCTRL0_CLKOUTEN                   ((uint32_t)0x1000)           /*!<CLKOUTÊä³öÊ¹ÄÜÎ»      */
-#define  CMU_CLKCTRL0_1P5LBOREN                  ((uint32_t)0x2000)           /*!<µÍ¹¦ºÄ1P5 LBORÊ¹ÄÜÎ»  */
+#define  CMU_CLKCTRL0_CLKOUTEN                   ((uint32_t)0x1000)           /*!<CLKOUTè¾“å‡ºä½¿èƒ½ä½      */
+#define  CMU_CLKCTRL0_1P5LBOREN                  ((uint32_t)0x2000)           /*!<ä½åŠŸè€—1P5 LBORä½¿èƒ½ä½  */
 #if   defined  HT6x1x                                                        
-#define  CMU_CLKCTRL0_3DESRADEN                  ((uint32_t)0x4000)           /*!<3DES/Ëæ»úÊıÄ£¿éÊ¹ÄÜÎ» */
+#define  CMU_CLKCTRL0_3DESRADEN                  ((uint32_t)0x4000)           /*!<3DES/éšæœºæ•°æ¨¡å—ä½¿èƒ½ä½ */
 #else                                                                         
-#define  CMU_CLKCTRL0_ADESRADEN                  ((uint32_t)0x4000)           /*!<AES/Ëæ»úÊıÄ£¿éÊ¹ÄÜÎ»  */
+#define  CMU_CLKCTRL0_ADESRADEN                  ((uint32_t)0x4000)           /*!<AES/éšæœºæ•°æ¨¡å—ä½¿èƒ½ä½  */
 #endif
 #if  defined  HT6x2x 
-#define  CMU_CLKCTRL0_CRCEN                      ((uint32_t)0x8000)           /*!<CRCÄ£¿éÊ¹ÄÜÎ»         */
+#define  CMU_CLKCTRL0_CRCEN                      ((uint32_t)0x8000)           /*!<CRCæ¨¡å—ä½¿èƒ½ä½         */
 #elif defined HT501x
-#define  CMU_CLKCTRL0_EMUEN                      ((uint32_t)0x8000)           /*!<EMUÄ£¿éÊ¹ÄÜÎ»         */
+#define  CMU_CLKCTRL0_EMUEN                      ((uint32_t)0x8000)           /*!<EMUæ¨¡å—ä½¿èƒ½ä½         */
 #endif
 
 /************************  Bit definition for CLKCTRL1 register of HT_CMU_TypeDef ***********************/
 #if  defined  HT6x1x                                                        
-#define  CMU_CLKCTRL1                            ((uint32_t)0x03ff)           /*!<CLKCTRL1¼Ä´æÆ÷        */
+#define  CMU_CLKCTRL1                            ((uint32_t)0x03ff)           /*!<CLKCTRL1å¯„å­˜å™¨        */
 #elif defined HT6x2x
-#define  CMU_CLKCTRL1                            ((uint32_t)0xffff)           /*!<CLKCTRL1¼Ä´æÆ÷        */
+#define  CMU_CLKCTRL1                            ((uint32_t)0xffff)           /*!<CLKCTRL1å¯„å­˜å™¨        */
 #elif defined HT501x
-#define  CMU_CLKCTRL1                            ((uint32_t)0xc3ff)           /*!<CLKCTRL1¼Ä´æÆ÷        */
+#define  CMU_CLKCTRL1                            ((uint32_t)0xc3ff)           /*!<CLKCTRL1å¯„å­˜å™¨        */
 #endif
-#define  CMU_CLKCTRL1_TMR0EN                     ((uint32_t)0x0001)           /*!<Timer0Ä£¿éÊ±ÖÓÊ¹ÄÜ    */
-#define  CMU_CLKCTRL1_TMR1EN                     ((uint32_t)0x0002)           /*!<Timer1Ä£¿éÊ±ÖÓÊ¹ÄÜ    */
-#define  CMU_CLKCTRL1_TMR2EN                     ((uint32_t)0x0004)           /*!<Timer2Ä£¿éÊ±ÖÓÊ¹ÄÜ    */
-#define  CMU_CLKCTRL1_TMR3EN                     ((uint32_t)0x0008)           /*!<Timer3Ä£¿éÊ±ÖÓÊ¹ÄÜ    */
-#define  CMU_CLKCTRL1_UART0EN                    ((uint32_t)0x0010)           /*!<UART0Ä£¿éÊ±ÖÓÊ¹ÄÜ     */
-#define  CMU_CLKCTRL1_UART1EN                    ((uint32_t)0x0020)           /*!<UART1Ä£¿éÊ±ÖÓÊ¹ÄÜ     */
-#define  CMU_CLKCTRL1_UART2EN                    ((uint32_t)0x0040)           /*!<UART2Ä£¿éÊ±ÖÓÊ¹ÄÜ     */
-#define  CMU_CLKCTRL1_UART3_7816_1EN             ((uint32_t)0x0080)           /*!<UART37816Ä£¿éÊ±ÖÓÊ¹ÄÜ */
-#define  CMU_CLKCTRL1_UART4_7816_0EN             ((uint32_t)0x0100)           /*!<UART47816Ä£¿éÊ±ÖÓÊ¹ÄÜ */
-#define  CMU_CLKCTRL1_UART5EN                    ((uint32_t)0x0200)           /*!<UART5Ä£¿éÊ±ÖÓÊ¹ÄÜ     */
+#define  CMU_CLKCTRL1_TMR0EN                     ((uint32_t)0x0001)           /*!<Timer0æ¨¡å—æ—¶é’Ÿä½¿èƒ½    */
+#define  CMU_CLKCTRL1_TMR1EN                     ((uint32_t)0x0002)           /*!<Timer1æ¨¡å—æ—¶é’Ÿä½¿èƒ½    */
+#define  CMU_CLKCTRL1_TMR2EN                     ((uint32_t)0x0004)           /*!<Timer2æ¨¡å—æ—¶é’Ÿä½¿èƒ½    */
+#define  CMU_CLKCTRL1_TMR3EN                     ((uint32_t)0x0008)           /*!<Timer3æ¨¡å—æ—¶é’Ÿä½¿èƒ½    */
+#define  CMU_CLKCTRL1_UART0EN                    ((uint32_t)0x0010)           /*!<UART0æ¨¡å—æ—¶é’Ÿä½¿èƒ½     */
+#define  CMU_CLKCTRL1_UART1EN                    ((uint32_t)0x0020)           /*!<UART1æ¨¡å—æ—¶é’Ÿä½¿èƒ½     */
+#define  CMU_CLKCTRL1_UART2EN                    ((uint32_t)0x0040)           /*!<UART2æ¨¡å—æ—¶é’Ÿä½¿èƒ½     */
+#define  CMU_CLKCTRL1_UART3_7816_1EN             ((uint32_t)0x0080)           /*!<UART37816æ¨¡å—æ—¶é’Ÿä½¿èƒ½ */
+#define  CMU_CLKCTRL1_UART4_7816_0EN             ((uint32_t)0x0100)           /*!<UART47816æ¨¡å—æ—¶é’Ÿä½¿èƒ½ */
+#define  CMU_CLKCTRL1_UART5EN                    ((uint32_t)0x0200)           /*!<UART5æ¨¡å—æ—¶é’Ÿä½¿èƒ½     */
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
-#define  CMU_CLKCTRL1_TMR4EN                     ((uint32_t)0x0400)           /*!<Timer4Ä£¿éÊ±ÖÓÊ¹ÄÜ    */
-#define  CMU_CLKCTRL1_TMR5EN                     ((uint32_t)0x0800)           /*!<Timer5Ä£¿éÊ±ÖÓÊ¹ÄÜ    */
-#define  CMU_CLKCTRL1_UART6EN                    ((uint32_t)0x1000)           /*!<UART6Ä£¿éÊ±ÖÓÊ¹ÄÜ     */
-#define  CMU_CLKCTRL1_SPI1EN                     ((uint32_t)0x2000)           /*!<SPI1Ä£¿éÊ±ÖÓÊ¹ÄÜ      */
-#define  CMU_CLKCTRL1_SOFTWDTEN                  ((uint32_t)0x4000)           /*!<SoftWDTÄ£¿éÊ±ÖÓÊ¹ÄÜ   */
-#define  CMU_CLKCTRL1_LRCRTCEN                   ((uint32_t)0x8000)           /*!<LRCRTCÄ£¿éÊ±ÖÓÊ¹ÄÜ    */
+#define  CMU_CLKCTRL1_TMR4EN                     ((uint32_t)0x0400)           /*!<Timer4æ¨¡å—æ—¶é’Ÿä½¿èƒ½    */
+#define  CMU_CLKCTRL1_TMR5EN                     ((uint32_t)0x0800)           /*!<Timer5æ¨¡å—æ—¶é’Ÿä½¿èƒ½    */
+#define  CMU_CLKCTRL1_UART6EN                    ((uint32_t)0x1000)           /*!<UART6æ¨¡å—æ—¶é’Ÿä½¿èƒ½     */
+#define  CMU_CLKCTRL1_SPI1EN                     ((uint32_t)0x2000)           /*!<SPI1æ¨¡å—æ—¶é’Ÿä½¿èƒ½      */
+#define  CMU_CLKCTRL1_SOFTWDTEN                  ((uint32_t)0x4000)           /*!<SoftWDTæ¨¡å—æ—¶é’Ÿä½¿èƒ½   */
+#define  CMU_CLKCTRL1_LRCRTCEN                   ((uint32_t)0x8000)           /*!<LRCRTCæ¨¡å—æ—¶é’Ÿä½¿èƒ½    */
 #elif defined HT501x
-#define  CMU_CLKCTRL1_LRCTFREQEN                 ((uint32_t)0x4000)           /*!<LRC²âÆµÄ£¿éÊ¹ÄÜ       */
-#define  CMU_CLKCTRL1_LRCRTCEN                   ((uint32_t)0x8000)           /*!<LRCRTCÄ£¿éÊ±ÖÓÊ¹ÄÜ    */
+#define  CMU_CLKCTRL1_LRCTFREQEN                 ((uint32_t)0x4000)           /*!<LRCæµ‹é¢‘æ¨¡å—ä½¿èƒ½       */
+#define  CMU_CLKCTRL1_LRCRTCEN                   ((uint32_t)0x8000)           /*!<LRCRTCæ¨¡å—æ—¶é’Ÿä½¿èƒ½    */
 #endif
 
 /************************  Bit definition for FLASHCON register of HT_CMU_TypeDef ***********************/
-#define  CMU_FLASHCON                      	 	 ((uint32_t)0x0007)           /*!<Flash¿ØÖÆ¼Ä´æÆ÷         */
-#define  CMU_FLASHCON_FOP                        ((uint32_t)0x0003)           /*!<Flash²Ù×÷Ä£Ê½         */
-#define  CMU_FLASHCON_FOP_READ                   ((uint32_t)0x0000)           /*!<Flash´¦ÓÚÖ»¶ÁÄ£Ê½     */
-#define  CMU_FLASHCON_FOP_WRITE                  ((uint32_t)0x0001)           /*!<Flash´¦ÓÚĞ´Ä£Ê½       */
-#define  CMU_FLASHCON_FOP_PAGEERASE              ((uint32_t)0x0002)           /*!<Flash´¦ÓÚÒ³²Á³ıÄ£Ê½   */
-#define  CMU_FLASHCON_FOP_CHIPERASE              ((uint32_t)0x0003)           /*!<Flash´¦ÓÚÈ«²Á³ıÄ£Ê½   */
+#define  CMU_FLASHCON                      	 	 ((uint32_t)0x0007)           /*!<Flashæ§åˆ¶å¯„å­˜å™¨         */
+#define  CMU_FLASHCON_FOP                        ((uint32_t)0x0003)           /*!<Flashæ“ä½œæ¨¡å¼         */
+#define  CMU_FLASHCON_FOP_READ                   ((uint32_t)0x0000)           /*!<Flashå¤„äºåªè¯»æ¨¡å¼     */
+#define  CMU_FLASHCON_FOP_WRITE                  ((uint32_t)0x0001)           /*!<Flashå¤„äºå†™æ¨¡å¼       */
+#define  CMU_FLASHCON_FOP_PAGEERASE              ((uint32_t)0x0002)           /*!<Flashå¤„äºé¡µæ“¦é™¤æ¨¡å¼   */
+#define  CMU_FLASHCON_FOP_CHIPERASE              ((uint32_t)0x0003)           /*!<Flashå¤„äºå…¨æ“¦é™¤æ¨¡å¼   */
                                                                                                         
-#define  CMU_FLASHCON_BUSY                       ((uint32_t)0x0004)           /*!<Flash×´Ì¬ 0:¿ÕÏĞ 1:Ã¦ */
+#define  CMU_FLASHCON_BUSY                       ((uint32_t)0x0004)           /*!<FlashçŠ¶æ€ 0:ç©ºé—² 1:å¿™ */
 
 /************************  Bit definition for FLASHLOCK register of HT_CMU_TypeDef **********************/
-#define  CMU_FLASHLOCK                           ((uint32_t)0xffff)           /*!<FlashËø¶¨¼Ä´æÆ÷       */
-#define  CMU_FLASHLOCK_UnLocked                  ((uint32_t)0x7A68)           /*!<FlashĞ´/²Á³ı½âËø      */
-#define  CMU_FLASHLOCK_Locked                    ((uint32_t)0x0000)           /*!<FlashËø¶¨             */
+#define  CMU_FLASHLOCK                           ((uint32_t)0xffff)           /*!<Flashé”å®šå¯„å­˜å™¨       */
+#define  CMU_FLASHLOCK_UnLocked                  ((uint32_t)0x7A68)           /*!<Flashå†™/æ“¦é™¤è§£é”      */
+#define  CMU_FLASHLOCK_Locked                    ((uint32_t)0x0000)           /*!<Flashé”å®š             */
                                                                               /*!<0x7A68 : Unlock       */
                                                                               /*!<other  : Lock         */
                                                                               
 /************************  Bit definition for PREFETCH register of HT_CMU_TypeDef ***********************/
 #if  defined  HT6x2x                                                          
-#define  CMU_PREFETCH                            ((uint32_t)0x0001)           /*!<Ö¸ÁîÔ¤È¡Ê¹ÄÜ¿ØÖÆ      */
-#define  CMU_PREFETCH_ENABLE                     ((uint32_t)0x0001)           /*!<Ö¸ÁîÔ¤È¡Ê¹ÄÜ          */
-#define  CMU_PREFETCH_DISABLE                    ((uint32_t)0x0000)           /*!<Ö¸ÁîÔ¤È¡½ûÖ¹          */
+#define  CMU_PREFETCH                            ((uint32_t)0x0001)           /*!<æŒ‡ä»¤é¢„å–ä½¿èƒ½æ§åˆ¶      */
+#define  CMU_PREFETCH_ENABLE                     ((uint32_t)0x0001)           /*!<æŒ‡ä»¤é¢„å–ä½¿èƒ½          */
+#define  CMU_PREFETCH_DISABLE                    ((uint32_t)0x0000)           /*!<æŒ‡ä»¤é¢„å–ç¦æ­¢          */
 #endif
 
 /************************  Bit definition for FLASHDLY register of HT_CMU_TypeDef ***********************/
 #if  defined  HT501x                                                          
-#define  CMU_FLASHDLY                            ((uint32_t)0x0001)           /*!<FlashÈ¡Ö¸ÁîµÈ´ı¿ØÖÆ   */
-#define  CMU_FLASHDLY_ENABLE                     ((uint32_t)0x0001)           /*!<FlashÈ¡Ö¸ÁîµÈ´ı       */
-#define  CMU_FLASHDLY_DISABLE                    ((uint32_t)0x0000)           /*!<FlashÈ¡Ö¸Áî²»µÈ´ı     */
+#define  CMU_FLASHDLY                            ((uint32_t)0x0001)           /*!<Flashå–æŒ‡ä»¤ç­‰å¾…æ§åˆ¶   */
+#define  CMU_FLASHDLY_ENABLE                     ((uint32_t)0x0001)           /*!<Flashå–æŒ‡ä»¤ç­‰å¾…       */
+#define  CMU_FLASHDLY_DISABLE                    ((uint32_t)0x0000)           /*!<Flashå–æŒ‡ä»¤ä¸ç­‰å¾…     */
 #endif
 
 #if  defined  HT6x2x                                                          
 /************************  Bit definition for RCCALICON register of HT_CMU_TypeDef **********************/
-#define  CMU_RCCALICON			                 ((uint32_t)0x001f)           /*!<HRCĞ£ÕıÅäÖÃ¼Ä´æÆ÷   */
+#define  CMU_RCCALICON			                 ((uint32_t)0x001f)           /*!<HRCæ ¡æ­£é…ç½®å¯„å­˜å™¨   */
 
-#define  CMU_RCCALICON_HRCAutoCali               ((uint32_t)0x0001)           /*!<HRC×Ô¶¯²âÊÔÊÇÊ¹ÄÜÎ»   */
-#define  CMU_RCCALICON_LRCAutoCali               ((uint32_t)0x0002)           /*!<LRC×Ô¶¯²âÊÔÊÇÊ¹ÄÜÎ»   */
-#define  CMU_RCCALICON_HRCCaliStart              ((uint32_t)0x0004)           /*!<HRC²âÆµÊ¹ÄÜ           */
-#define  CMU_RCCALICON_LRCCaliStart              ((uint32_t)0x0008)           /*!<LRC²âÆµÊ¹ÄÜ           */
+#define  CMU_RCCALICON_HRCAutoCali               ((uint32_t)0x0001)           /*!<HRCè‡ªåŠ¨æµ‹è¯•æ˜¯ä½¿èƒ½ä½   */
+#define  CMU_RCCALICON_LRCAutoCali               ((uint32_t)0x0002)           /*!<LRCè‡ªåŠ¨æµ‹è¯•æ˜¯ä½¿èƒ½ä½   */
+#define  CMU_RCCALICON_HRCCaliStart              ((uint32_t)0x0004)           /*!<HRCæµ‹é¢‘ä½¿èƒ½           */
+#define  CMU_RCCALICON_LRCCaliStart              ((uint32_t)0x0008)           /*!<LRCæµ‹é¢‘ä½¿èƒ½           */
 
-#define  CMU_RCCALICON_FreqSource                ((uint32_t)0x0010)           /*!<±»²â1HzÊ±ÖÓÀ´Ô´Ñ¡Ôñ   */
-#define  CMU_RCCALICON_FreqSourceInner           ((uint32_t)0x0000)           /*!<±»²â1HzÊ±ÖÓÀ´Ô´ÄÚ²¿1Hz*/
-#define  CMU_RCCALICON_FreqSourceOut             ((uint32_t)0x0010)           /*!<±»²â1HzÊ±ÖÓÀ´Ô´Íâ²¿1Hz*/
+#define  CMU_RCCALICON_FreqSource                ((uint32_t)0x0010)           /*!<è¢«æµ‹1Hzæ—¶é’Ÿæ¥æºé€‰æ‹©   */
+#define  CMU_RCCALICON_FreqSourceInner           ((uint32_t)0x0000)           /*!<è¢«æµ‹1Hzæ—¶é’Ÿæ¥æºå†…éƒ¨1Hz*/
+#define  CMU_RCCALICON_FreqSourceOut             ((uint32_t)0x0010)           /*!<è¢«æµ‹1Hzæ—¶é’Ÿæ¥æºå¤–éƒ¨1Hz*/
 
 /************************  Bit definition for RCCALIIE register of HT_CMU_TypeDef ***********************/
-#define  CMU_RCCALIIE		                    ((uint32_t)0x0003)           /*!<HRC/LRC²âÆµÖĞ¶ÏÊ¹ÄÜ    */
+#define  CMU_RCCALIIE		                    ((uint32_t)0x0003)           /*!<HRC/LRCæµ‹é¢‘ä¸­æ–­ä½¿èƒ½    */
 
-#define  CMU_RCCALIIE_HRCCaliIE                  ((uint32_t)0x0001)           /*!<HRC²âÆµÖĞ¶ÏÊ¹ÄÜÎ»     */
-#define  CMU_RCCALIIE_LRCCaliIE                  ((uint32_t)0x0002)           /*!<LRC²âÆµÖĞ¶ÏÊ¹ÄÜÎ»     */
+#define  CMU_RCCALIIE_HRCCaliIE                  ((uint32_t)0x0001)           /*!<HRCæµ‹é¢‘ä¸­æ–­ä½¿èƒ½ä½     */
+#define  CMU_RCCALIIE_LRCCaliIE                  ((uint32_t)0x0002)           /*!<LRCæµ‹é¢‘ä¸­æ–­ä½¿èƒ½ä½     */
 
 /************************  Bit definition for RCCALIIF register of HT_CMU_TypeDef ***********************/
-#define  CMU_RCCALIIF			                 ((uint32_t)0x0003)           /*!<HRC/LRC²âÆµÖĞ¶Ï±êÖ¾Î»     */
+#define  CMU_RCCALIIF			                 ((uint32_t)0x0003)           /*!<HRC/LRCæµ‹é¢‘ä¸­æ–­æ ‡å¿—ä½     */
 
-#define  CMU_RCCALIIF_HRCCaliIF                  ((uint32_t)0x0001)           /*!<HRC²âÆµÖĞ¶Ï±êÖ¾Î»     */
-#define  CMU_RCCALIIF_LRCCaliIF                  ((uint32_t)0x0002)           /*!<LRC²âÆµÖĞ¶Ï±êÖ¾Î»     */
+#define  CMU_RCCALIIF_HRCCaliIF                  ((uint32_t)0x0001)           /*!<HRCæµ‹é¢‘ä¸­æ–­æ ‡å¿—ä½     */
+#define  CMU_RCCALIIF_LRCCaliIF                  ((uint32_t)0x0002)           /*!<LRCæµ‹é¢‘ä¸­æ–­æ ‡å¿—ä½     */
 
 /************************  Bit definition for HRCVALUE register of HT_CMU_TypeDef ***********************/
-#define  CMU_HRCVALUE                            ((uint32_t)0xffffff)         /*!<HRC²âÆµÖµ             */
+#define  CMU_HRCVALUE                            ((uint32_t)0xffffff)         /*!<HRCæµ‹é¢‘å€¼             */
 
 /************************  Bit definition for LRCVALUE register of HT_CMU_TypeDef ***********************/
-#define  CMU_LRCVALUE                            ((uint32_t)0x1ffff)          /*!<LRC²âÆµÖµ             */
+#define  CMU_LRCVALUE                            ((uint32_t)0x1ffff)          /*!<LRCæµ‹é¢‘å€¼             */
 
 /*************************  Bit definition for CHIPID register of HT_CMU_TypeDef ************************/
 #define  CMU_CHIPID                              ((uint32_t)0xffff)           /*!<ChipID                */
@@ -2036,16 +2036,16 @@ typedef union
 */  
 /**************************  Bit definition for WDTCFG register of HT_WDT_TypeDef ***********************/
 #if   defined  HT6x1x 
-#define  WDT_WDTCFG_INTRST                       ((uint32_t)0x0001)           /*!<WDT²úÉú¸´Î»/ÖĞ¶ÏÑ¡Ôñ  */  
-#define  WDT_WDTCFG_INT                          ((uint32_t)0x0001)           /*!<WDTÒç³ö²úÉúÖĞ¶Ï       */
-#define  WDT_WDTCFG_RST                          ((uint32_t)0x0000)           /*!<WDT²úÉú¸´Î»           */ 
+#define  WDT_WDTCFG_INTRST                       ((uint32_t)0x0001)           /*!<WDTäº§ç”Ÿå¤ä½/ä¸­æ–­é€‰æ‹©  */  
+#define  WDT_WDTCFG_INT                          ((uint32_t)0x0001)           /*!<WDTæº¢å‡ºäº§ç”Ÿä¸­æ–­       */
+#define  WDT_WDTCFG_RST                          ((uint32_t)0x0000)           /*!<WDTäº§ç”Ÿå¤ä½           */ 
 #endif
 
 /**************************  Bit definition for WDTSET register of HT_WDT_TypeDef ***********************/
-#define  WDT_WDTCLR                              ((uint32_t)0xffff)           /*!<WDTÎ¹¹·¼°Ê±¼äÅäÖÃ     */
+#define  WDT_WDTCLR                              ((uint32_t)0xffff)           /*!<WDTå–‚ç‹—åŠæ—¶é—´é…ç½®     */
 
 /**************************  Bit definition for WDTCNT register of HT_WDT_TypeDef ***********************/
-#define  WDT_WDTCNT                              ((uint32_t)0xffff)           /*!<WDT¼ÆÊı¼Ä´æÆ÷         */
+#define  WDT_WDTCNT                              ((uint32_t)0xffff)           /*!<WDTè®¡æ•°å¯„å­˜å™¨         */
 
 
 /*
@@ -2081,11 +2081,11 @@ typedef union
 #define  GPIO_PTOD                               ((uint32_t)0xffff)           /*!<0:OD 1:Push-Pull      */
 
 /*********************  Bit definition for HT_GPIOHDPORT register of HT_GPIO_TypeDef ********************/
-#define  GPIO_HDPORT                             ((uint32_t)0x000f)           /*!<´óµçÁ÷Ä£Ê½Éè¶¨        */
-#define  GPIO_HDPORT_PC0                         ((uint32_t)0x0001)           /*!<PC0´óµçÁ÷Ä£Ê½Éè¶¨     */
-#define  GPIO_HDPORT_PA6                         ((uint32_t)0x0002)           /*!<PA6´óµçÁ÷Ä£Ê½Éè¶¨     */
-#define  GPIO_HDPORT_PA7                         ((uint32_t)0x0004)           /*!<PA7´óµçÁ÷Ä£Ê½Éè¶¨     */
-#define  GPIO_HDPORT_PA8                         ((uint32_t)0x0008)           /*!<PA8´óµçÁ÷Ä£Ê½Éè¶¨     */
+#define  GPIO_HDPORT                             ((uint32_t)0x000f)           /*!<å¤§ç”µæµæ¨¡å¼è®¾å®š        */
+#define  GPIO_HDPORT_PC0                         ((uint32_t)0x0001)           /*!<PC0å¤§ç”µæµæ¨¡å¼è®¾å®š     */
+#define  GPIO_HDPORT_PA6                         ((uint32_t)0x0002)           /*!<PA6å¤§ç”µæµæ¨¡å¼è®¾å®š     */
+#define  GPIO_HDPORT_PA7                         ((uint32_t)0x0004)           /*!<PA7å¤§ç”µæµæ¨¡å¼è®¾å®š     */
+#define  GPIO_HDPORT_PA8                         ((uint32_t)0x0008)           /*!<PA8å¤§ç”µæµæ¨¡å¼è®¾å®š     */
 
 
 /*
@@ -2094,93 +2094,93 @@ typedef union
 **********************************************************************************************************
 */  
 /**************************  Bit definition for EXTIE register of HT_INT_TypeDef ************************/
-#define  INT_EXTIE_FIE                           ((uint32_t)0x007f)           /*!<ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ        */
-#define  INT_EXTIE_FIE_INT0                      ((uint32_t)0x0001)           /*!<INT0ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_FIE_INT1                      ((uint32_t)0x0002)           /*!<INT1ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_FIE_INT2                      ((uint32_t)0x0004)           /*!<INT2ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_FIE_INT3                      ((uint32_t)0x0008)           /*!<INT3ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_FIE_INT4                      ((uint32_t)0x0010)           /*!<INT4ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_FIE_INT5                      ((uint32_t)0x0020)           /*!<INT5ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_FIE_INT6                      ((uint32_t)0x0040)           /*!<INT6ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ    */
+#define  INT_EXTIE_FIE                           ((uint32_t)0x007f)           /*!<ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½        */
+#define  INT_EXTIE_FIE_INT0                      ((uint32_t)0x0001)           /*!<INT0ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_FIE_INT1                      ((uint32_t)0x0002)           /*!<INT1ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_FIE_INT2                      ((uint32_t)0x0004)           /*!<INT2ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_FIE_INT3                      ((uint32_t)0x0008)           /*!<INT3ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_FIE_INT4                      ((uint32_t)0x0010)           /*!<INT4ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_FIE_INT5                      ((uint32_t)0x0020)           /*!<INT5ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_FIE_INT6                      ((uint32_t)0x0040)           /*!<INT6ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½    */
 
-#define  INT_EXTIE_RIE                           ((uint32_t)0x7f00)           /*!<ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ        */
-#define  INT_EXTIE_RIE_INT0                      ((uint32_t)0x0100)           /*!<INT0ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_RIE_INT1                      ((uint32_t)0x0200)           /*!<INT1ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_RIE_INT2                      ((uint32_t)0x0400)           /*!<INT2ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_RIE_INT3                      ((uint32_t)0x0800)           /*!<INT3ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_RIE_INT4                      ((uint32_t)0x1000)           /*!<INT4ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_RIE_INT5                      ((uint32_t)0x2000)           /*!<INT5ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE_RIE_INT6                      ((uint32_t)0x4000)           /*!<INT6ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ    */
+#define  INT_EXTIE_RIE                           ((uint32_t)0x7f00)           /*!<ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½        */
+#define  INT_EXTIE_RIE_INT0                      ((uint32_t)0x0100)           /*!<INT0ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_RIE_INT1                      ((uint32_t)0x0200)           /*!<INT1ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_RIE_INT2                      ((uint32_t)0x0400)           /*!<INT2ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_RIE_INT3                      ((uint32_t)0x0800)           /*!<INT3ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_RIE_INT4                      ((uint32_t)0x1000)           /*!<INT4ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_RIE_INT5                      ((uint32_t)0x2000)           /*!<INT5ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE_RIE_INT6                      ((uint32_t)0x4000)           /*!<INT6ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½    */
 
 /**************************  Bit definition for EXTIF register of HT_INT_TypeDef ************************/
-#define  INT_EXTIF_FIF                           ((uint32_t)0x007f)           /*!<ÏÂ½µÑØÖĞ¶Ï±êÖ¾        */
-#define  INT_EXTIF_FIF_INT0                      ((uint32_t)0x0001)           /*!<INT0ÏÂ½µÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_FIF_INT1                      ((uint32_t)0x0002)           /*!<INT1ÏÂ½µÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_FIF_INT2                      ((uint32_t)0x0004)           /*!<INT2ÏÂ½µÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_FIF_INT3                      ((uint32_t)0x0008)           /*!<INT3ÏÂ½µÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_FIF_INT4                      ((uint32_t)0x0010)           /*!<INT4ÏÂ½µÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_FIF_INT5                      ((uint32_t)0x0020)           /*!<INT5ÏÂ½µÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_FIF_INT6                      ((uint32_t)0x0040)           /*!<INT6ÏÂ½µÑØÖĞ¶Ï±êÖ¾    */
+#define  INT_EXTIF_FIF                           ((uint32_t)0x007f)           /*!<ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—        */
+#define  INT_EXTIF_FIF_INT0                      ((uint32_t)0x0001)           /*!<INT0ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_FIF_INT1                      ((uint32_t)0x0002)           /*!<INT1ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_FIF_INT2                      ((uint32_t)0x0004)           /*!<INT2ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_FIF_INT3                      ((uint32_t)0x0008)           /*!<INT3ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_FIF_INT4                      ((uint32_t)0x0010)           /*!<INT4ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_FIF_INT5                      ((uint32_t)0x0020)           /*!<INT5ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_FIF_INT6                      ((uint32_t)0x0040)           /*!<INT6ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—    */
 
-#define  INT_EXTIF_RIF                           ((uint32_t)0x7f00)           /*!<ÉÏÉıÑØÖĞ¶Ï±êÖ¾        */
-#define  INT_EXTIF_RIF_INT0                      ((uint32_t)0x0100)           /*!<INT0ÉÏÉıÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_RIF_INT1                      ((uint32_t)0x0200)           /*!<INT1ÉÏÉıÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_RIF_INT2                      ((uint32_t)0x0400)           /*!<INT2ÉÏÉıÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_RIF_INT3                      ((uint32_t)0x0800)           /*!<INT3ÉÏÉıÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_RIF_INT4                      ((uint32_t)0x1000)           /*!<INT4ÉÏÉıÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_RIF_INT5                      ((uint32_t)0x2000)           /*!<INT5ÉÏÉıÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF_RIF_INT6                      ((uint32_t)0x4000)           /*!<INT6ÉÏÉıÑØÖĞ¶Ï±êÖ¾    */
+#define  INT_EXTIF_RIF                           ((uint32_t)0x7f00)           /*!<ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—        */
+#define  INT_EXTIF_RIF_INT0                      ((uint32_t)0x0100)           /*!<INT0ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_RIF_INT1                      ((uint32_t)0x0200)           /*!<INT1ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_RIF_INT2                      ((uint32_t)0x0400)           /*!<INT2ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_RIF_INT3                      ((uint32_t)0x0800)           /*!<INT3ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_RIF_INT4                      ((uint32_t)0x1000)           /*!<INT4ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_RIF_INT5                      ((uint32_t)0x2000)           /*!<INT5ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF_RIF_INT6                      ((uint32_t)0x4000)           /*!<INT6ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—    */
 
 /**************************  Bit definition for PINFLT register of HT_INT_TypeDef ***********************/
-#define	 INT_PINFLT								 ((uint32_t)0x7f7f)    		   /*!<Íâ²¿Òı½ÅÊı×ÖÂË²¨¼Ä´æÆ÷ */
+#define	 INT_PINFLT								 ((uint32_t)0x7f7f)    		   /*!<å¤–éƒ¨å¼•è„šæ•°å­—æ»¤æ³¢å¯„å­˜å™¨ */
 
-#define	 INT_PINFLT_INTFLT						 	 				((uint32_t)0x007f)    		   /*!<INT0-6Êı×ÖÂË²¨Ê¹ÄÜ   */
-#define	 INT_PINFLT_INTFLT_INT0					 				((uint32_t)0x0001)    		   /*!<INT0Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_INTFLT_INT1					 				((uint32_t)0x0002)    		   /*!<INT1Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_INTFLT_INT2					 				((uint32_t)0x0004)    		   /*!<INT2Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_INTFLT_INT3					 				((uint32_t)0x0008)    		   /*!<INT3Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_INTFLT_INT4					 				((uint32_t)0x0010)    		   /*!<INT4Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_INTFLT_INT5					 				((uint32_t)0x0020)    		   /*!<INT5Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_INTFLT_INT6					 				((uint32_t)0x0040)    		   /*!<INT6Êı×ÖÂË²¨Ê¹ÄÜ 	  */
+#define	 INT_PINFLT_INTFLT						 	 				((uint32_t)0x007f)    		   /*!<INT0-6æ•°å­—æ»¤æ³¢ä½¿èƒ½   */
+#define	 INT_PINFLT_INTFLT_INT0					 				((uint32_t)0x0001)    		   /*!<INT0æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_INTFLT_INT1					 				((uint32_t)0x0002)    		   /*!<INT1æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_INTFLT_INT2					 				((uint32_t)0x0004)    		   /*!<INT2æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_INTFLT_INT3					 				((uint32_t)0x0008)    		   /*!<INT3æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_INTFLT_INT4					 				((uint32_t)0x0010)    		   /*!<INT4æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_INTFLT_INT5					 				((uint32_t)0x0020)    		   /*!<INT5æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_INTFLT_INT6					 				((uint32_t)0x0040)    		   /*!<INT6æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
 
-#define	 INT_PINFLT_RXFLT						 		 				((uint32_t)0x7f00)    		   /*!<RX0-6Êı×ÖÂË²¨Ê¹ÄÜ   */
-#define	 INT_PINFLT_RXFLT_RX0					 					((uint32_t)0x0100)    		   /*!<RX0Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_RXFLT_RX1					 					((uint32_t)0x0200)    		   /*!<RX1Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_RXFLT_RX2					 					((uint32_t)0x0400)    		   /*!<RX2Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_RXFLT_RX3					 					((uint32_t)0x0800)    		   /*!<RX3Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_RXFLT_RX4					 					((uint32_t)0x1000)    		   /*!<RX4Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_RXFLT_RX5					 					((uint32_t)0x2000)    		   /*!<RX5Êı×ÖÂË²¨Ê¹ÄÜ 	  */
-#define	 INT_PINFLT_RXFLT_RX6					 					((uint32_t)0x4000)    		   /*!<RX6Êı×ÖÂË²¨Ê¹ÄÜ 	  */
+#define	 INT_PINFLT_RXFLT						 		 				((uint32_t)0x7f00)    		   /*!<RX0-6æ•°å­—æ»¤æ³¢ä½¿èƒ½   */
+#define	 INT_PINFLT_RXFLT_RX0					 					((uint32_t)0x0100)    		   /*!<RX0æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_RXFLT_RX1					 					((uint32_t)0x0200)    		   /*!<RX1æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_RXFLT_RX2					 					((uint32_t)0x0400)    		   /*!<RX2æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_RXFLT_RX3					 					((uint32_t)0x0800)    		   /*!<RX3æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_RXFLT_RX4					 					((uint32_t)0x1000)    		   /*!<RX4æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_RXFLT_RX5					 					((uint32_t)0x2000)    		   /*!<RX5æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
+#define	 INT_PINFLT_RXFLT_RX6					 					((uint32_t)0x4000)    		   /*!<RX6æ•°å­—æ»¤æ³¢ä½¿èƒ½ 	  */
 
 #if  defined  HT6x2x                                                           
 /**************************  Bit definition for EXTIE2 register of HT_INT_TypeDef ***********************/
-#define  INT_EXTIE2_FIE                          ((uint32_t)0x0007<<16)       /*!<ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ        */
-#define  INT_EXTIE2_FIE_INT7                     ((uint32_t)0x0001<<16)       /*!<INT7ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE2_FIE_INT8                     ((uint32_t)0x0002<<16)       /*!<INT8ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE2_FIE_INT9                     ((uint32_t)0x0004<<16)       /*!<INT9ÏÂ½µÑØÖĞ¶ÏÊ¹ÄÜ    */
+#define  INT_EXTIE2_FIE                          ((uint32_t)0x0007<<16)       /*!<ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½        */
+#define  INT_EXTIE2_FIE_INT7                     ((uint32_t)0x0001<<16)       /*!<INT7ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE2_FIE_INT8                     ((uint32_t)0x0002<<16)       /*!<INT8ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE2_FIE_INT9                     ((uint32_t)0x0004<<16)       /*!<INT9ä¸‹é™æ²¿ä¸­æ–­ä½¿èƒ½    */
 
-#define  INT_EXTIE2_RIE                          ((uint32_t)0x0700<<16)       /*!<ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ        */
-#define  INT_EXTIE2_RIE_INT7                     ((uint32_t)0x0100<<16)       /*!<INT7ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE2_RIE_INT8                     ((uint32_t)0x0200<<16)       /*!<INT8ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ    */
-#define  INT_EXTIE2_RIE_INT9                     ((uint32_t)0x0400<<16)       /*!<INT9ÉÏÉıÑØÖĞ¶ÏÊ¹ÄÜ    */
+#define  INT_EXTIE2_RIE                          ((uint32_t)0x0700<<16)       /*!<ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½        */
+#define  INT_EXTIE2_RIE_INT7                     ((uint32_t)0x0100<<16)       /*!<INT7ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE2_RIE_INT8                     ((uint32_t)0x0200<<16)       /*!<INT8ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½    */
+#define  INT_EXTIE2_RIE_INT9                     ((uint32_t)0x0400<<16)       /*!<INT9ä¸Šå‡æ²¿ä¸­æ–­ä½¿èƒ½    */
 
 /**************************  Bit definition for EXTIF2 register of HT_INT_TypeDef ***********************/
-#define  INT_EXTIF2_FIF                          ((uint32_t)0x0007<<16)       /*!<ÏÂ½µÑØÖĞ¶Ï±êÖ¾        */
-#define  INT_EXTIF2_FIF_INT7                     ((uint32_t)0x0001<<16)       /*!<INT7ÏÂ½µÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF2_FIF_INT8                     ((uint32_t)0x0002<<16)       /*!<INT8ÏÂ½µÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF2_FIF_INT9                     ((uint32_t)0x0004<<16)       /*!<INT9ÏÂ½µÑØÖĞ¶Ï±êÖ¾    */
+#define  INT_EXTIF2_FIF                          ((uint32_t)0x0007<<16)       /*!<ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—        */
+#define  INT_EXTIF2_FIF_INT7                     ((uint32_t)0x0001<<16)       /*!<INT7ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF2_FIF_INT8                     ((uint32_t)0x0002<<16)       /*!<INT8ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF2_FIF_INT9                     ((uint32_t)0x0004<<16)       /*!<INT9ä¸‹é™æ²¿ä¸­æ–­æ ‡å¿—    */
 
-#define  INT_EXTIF2_RIF                          ((uint32_t)0x0700<<16)       /*!<ÉÏÉıÑØÖĞ¶Ï±êÖ¾        */
-#define  INT_EXTIF2_RIF_INT7                     ((uint32_t)0x0100<<16)       /*!<INT7ÉÏÉıÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF2_RIF_INT8                     ((uint32_t)0x0200<<16)       /*!<INT8ÉÏÉıÑØÖĞ¶Ï±êÖ¾    */
-#define  INT_EXTIF2_RIF_INT9                     ((uint32_t)0x0400<<16)       /*!<INT9ÉÏÉıÑØÖĞ¶Ï±êÖ¾    */
+#define  INT_EXTIF2_RIF                          ((uint32_t)0x0700<<16)       /*!<ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—        */
+#define  INT_EXTIF2_RIF_INT7                     ((uint32_t)0x0100<<16)       /*!<INT7ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF2_RIF_INT8                     ((uint32_t)0x0200<<16)       /*!<INT8ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—    */
+#define  INT_EXTIF2_RIF_INT9                     ((uint32_t)0x0400<<16)       /*!<INT9ä¸Šå‡æ²¿ä¸­æ–­æ ‡å¿—    */
 
 /**************************  Bit definition for PINFLT2 register of HT_INT_TypeDef ***********************/
-#define	 INT_PINFLT2							 							((uint32_t)0x0007<<16)    		/*!<Íâ²¿Òı½ÅÊı×ÖÂË²¨¼Ä´æÆ÷2 */
-#define	 INT_PINFLT2_INTFLT						 					((uint32_t)0x0007<<16)    		/*!<INT7-9Êı×ÖÂË²¨Ê¹ÄÜ  */
-#define	 INT_PINFLT2_INTFLT_INT7				 				((uint32_t)0x0001<<16)    		/*!<INT7Êı×ÖÂË²¨Ê¹ÄÜ    */
-#define	 INT_PINFLT2_INTFLT_INT8				 				((uint32_t)0x0002<<16)    		/*!<INT8Êı×ÖÂË²¨Ê¹ÄÜ    */
-#define	 INT_PINFLT2_INTFLT_INT9				 				((uint32_t)0x0004<<16)    		/*!<INT9Êı×ÖÂË²¨Ê¹ÄÜ    */
+#define	 INT_PINFLT2							 							((uint32_t)0x0007<<16)    		/*!<å¤–éƒ¨å¼•è„šæ•°å­—æ»¤æ³¢å¯„å­˜å™¨2 */
+#define	 INT_PINFLT2_INTFLT						 					((uint32_t)0x0007<<16)    		/*!<INT7-9æ•°å­—æ»¤æ³¢ä½¿èƒ½  */
+#define	 INT_PINFLT2_INTFLT_INT7				 				((uint32_t)0x0001<<16)    		/*!<INT7æ•°å­—æ»¤æ³¢ä½¿èƒ½    */
+#define	 INT_PINFLT2_INTFLT_INT8				 				((uint32_t)0x0002<<16)    		/*!<INT8æ•°å­—æ»¤æ³¢ä½¿èƒ½    */
+#define	 INT_PINFLT2_INTFLT_INT9				 				((uint32_t)0x0004<<16)    		/*!<INT9æ•°å­—æ»¤æ³¢ä½¿èƒ½    */
 #endif
 
 
@@ -2191,93 +2191,93 @@ typedef union
 */
 #if  defined  HT6x2x  ||  defined  HT501x                                                         
 /**************************  Bit definition for DMAIE register of HT_DMA_TypeDef ************************/
-#define  DMA_DMAIE		                         ((uint32_t)0x0777)           /*!<DMAÖĞ¶ÏÊ¹ÄÜ¼Ä´æÆ÷	 */
+#define  DMA_DMAIE		                         ((uint32_t)0x0777)           /*!<DMAä¸­æ–­ä½¿èƒ½å¯„å­˜å™¨	 */
 
-#define  DMA_DMAIE_TCIE0                         ((uint32_t)0x0001)           /*!<Í¨µÀ0´«ÊäÍê³ÉÖĞ¶ÏÊ¹ÄÜ */
-#define  DMA_DMAIE_TCIE1                         ((uint32_t)0x0002)           /*!<Í¨µÀ1´«ÊäÍê³ÉÖĞ¶ÏÊ¹ÄÜ */
-#define  DMA_DMAIE_TCIE2                         ((uint32_t)0x0004)           /*!<Í¨µÀ2´«ÊäÍê³ÉÖĞ¶ÏÊ¹ÄÜ */
+#define  DMA_DMAIE_TCIE0                         ((uint32_t)0x0001)           /*!<é€šé“0ä¼ è¾“å®Œæˆä¸­æ–­ä½¿èƒ½ */
+#define  DMA_DMAIE_TCIE1                         ((uint32_t)0x0002)           /*!<é€šé“1ä¼ è¾“å®Œæˆä¸­æ–­ä½¿èƒ½ */
+#define  DMA_DMAIE_TCIE2                         ((uint32_t)0x0004)           /*!<é€šé“2ä¼ è¾“å®Œæˆä¸­æ–­ä½¿èƒ½ */
 
-#define  DMA_DMAIE_BCIE0                         ((uint32_t)0x0010)           /*!<Í¨µÀ0°ë´«ÊäÖĞ¶ÏÊ¹ÄÜ   */
-#define  DMA_DMAIE_BCIE1                         ((uint32_t)0x0020)           /*!<Í¨µÀ1°ë´«ÊäÖĞ¶ÏÊ¹ÄÜ   */
-#define  DMA_DMAIE_BCIE2                         ((uint32_t)0x0040)           /*!<Í¨µÀ2°ë´«ÊäÖĞ¶ÏÊ¹ÄÜ   */
+#define  DMA_DMAIE_BCIE0                         ((uint32_t)0x0010)           /*!<é€šé“0åŠä¼ è¾“ä¸­æ–­ä½¿èƒ½   */
+#define  DMA_DMAIE_BCIE1                         ((uint32_t)0x0020)           /*!<é€šé“1åŠä¼ è¾“ä¸­æ–­ä½¿èƒ½   */
+#define  DMA_DMAIE_BCIE2                         ((uint32_t)0x0040)           /*!<é€šé“2åŠä¼ è¾“ä¸­æ–­ä½¿èƒ½   */
 
-#define  DMA_DMAIE_TEIE0                         ((uint32_t)0x0100)           /*!<Í¨µÀ0´«Êä³ö´íÖĞ¶ÏÊ¹ÄÜ */
-#define  DMA_DMAIE_TEIE1                         ((uint32_t)0x0200)           /*!<Í¨µÀ1´«Êä³ö´íÖĞ¶ÏÊ¹ÄÜ */
-#define  DMA_DMAIE_TEIE2                         ((uint32_t)0x0400)           /*!<Í¨µÀ2´«Êä³ö´íÖĞ¶ÏÊ¹ÄÜ */
+#define  DMA_DMAIE_TEIE0                         ((uint32_t)0x0100)           /*!<é€šé“0ä¼ è¾“å‡ºé”™ä¸­æ–­ä½¿èƒ½ */
+#define  DMA_DMAIE_TEIE1                         ((uint32_t)0x0200)           /*!<é€šé“1ä¼ è¾“å‡ºé”™ä¸­æ–­ä½¿èƒ½ */
+#define  DMA_DMAIE_TEIE2                         ((uint32_t)0x0400)           /*!<é€šé“2ä¼ è¾“å‡ºé”™ä¸­æ–­ä½¿èƒ½ */
 
 /**************************  Bit definition for DMAIF register of HT_DMA_TypeDef ************************/
-#define  DMA_DMAIF		                         ((uint32_t)0x0777)           /*!<DMAÖĞ¶Ï±êÖ¾¼Ä´æÆ÷     */
+#define  DMA_DMAIF		                         ((uint32_t)0x0777)           /*!<DMAä¸­æ–­æ ‡å¿—å¯„å­˜å™¨     */
 
-#define  DMA_DMAIF_TCIF0                         ((uint32_t)0x0001)           /*!<Í¨µÀ0´«ÊäÍê³É±êÖ¾     */
-#define  DMA_DMAIF_TCIF1                         ((uint32_t)0x0002)           /*!<Í¨µÀ1´«ÊäÍê³É±êÖ¾     */
-#define  DMA_DMAIF_TCIF2                         ((uint32_t)0x0004)           /*!<Í¨µÀ2´«ÊäÍê³É±êÖ¾     */
+#define  DMA_DMAIF_TCIF0                         ((uint32_t)0x0001)           /*!<é€šé“0ä¼ è¾“å®Œæˆæ ‡å¿—     */
+#define  DMA_DMAIF_TCIF1                         ((uint32_t)0x0002)           /*!<é€šé“1ä¼ è¾“å®Œæˆæ ‡å¿—     */
+#define  DMA_DMAIF_TCIF2                         ((uint32_t)0x0004)           /*!<é€šé“2ä¼ è¾“å®Œæˆæ ‡å¿—     */
 
-#define  DMA_DMAIF_BCIF0                         ((uint32_t)0x0010)           /*!<Í¨µÀ0°ë´«ÊäÍê³É±êÖ¾   */
-#define  DMA_DMAIF_BCIF1                         ((uint32_t)0x0020)           /*!<Í¨µÀ1°ë´«ÊäÍê³É±êÖ¾   */
-#define  DMA_DMAIF_BCIF2                         ((uint32_t)0x0040)           /*!<Í¨µÀ2°ë´«ÊäÍê³É±êÖ¾   */
+#define  DMA_DMAIF_BCIF0                         ((uint32_t)0x0010)           /*!<é€šé“0åŠä¼ è¾“å®Œæˆæ ‡å¿—   */
+#define  DMA_DMAIF_BCIF1                         ((uint32_t)0x0020)           /*!<é€šé“1åŠä¼ è¾“å®Œæˆæ ‡å¿—   */
+#define  DMA_DMAIF_BCIF2                         ((uint32_t)0x0040)           /*!<é€šé“2åŠä¼ è¾“å®Œæˆæ ‡å¿—   */
 
-#define  DMA_DMAIF_TEIF0                         ((uint32_t)0x0100)           /*!<Í¨µÀ0´«Êä³ö´í±êÖ¾     */
-#define  DMA_DMAIF_TEIF1                         ((uint32_t)0x0200)           /*!<Í¨µÀ1´«Êä³ö´í±êÖ¾     */
-#define  DMA_DMAIF_TEIF2                         ((uint32_t)0x0400)           /*!<Í¨µÀ2´«Êä³ö´í±êÖ¾     */
+#define  DMA_DMAIF_TEIF0                         ((uint32_t)0x0100)           /*!<é€šé“0ä¼ è¾“å‡ºé”™æ ‡å¿—     */
+#define  DMA_DMAIF_TEIF1                         ((uint32_t)0x0200)           /*!<é€šé“1ä¼ è¾“å‡ºé”™æ ‡å¿—     */
+#define  DMA_DMAIF_TEIF2                         ((uint32_t)0x0400)           /*!<é€šé“2ä¼ è¾“å‡ºé”™æ ‡å¿—     */
 
 /**************************  Bit definition for CHNSTA register of HT_DMA_TypeDef ***********************/
-#define  DMA_CHNSTA                        		 ((uint32_t)0x0007)           /*!<DMA×´Ì¬¼Ä´æÆ÷         */
-#define  DMA_CHNSTA_BUSY0                        ((uint32_t)0x0001)           /*!<Í¨µÀ0Ã¦±êÖ¾           */
-#define  DMA_CHNSTA_BUSY1                        ((uint32_t)0x0002)           /*!<Í¨µÀ1Ã¦±êÖ¾           */
-#define  DMA_CHNSTA_BUSY2                        ((uint32_t)0x0004)           /*!<Í¨µÀ2Ã¦±êÖ¾           */
+#define  DMA_CHNSTA                        		 ((uint32_t)0x0007)           /*!<DMAçŠ¶æ€å¯„å­˜å™¨         */
+#define  DMA_CHNSTA_BUSY0                        ((uint32_t)0x0001)           /*!<é€šé“0å¿™æ ‡å¿—           */
+#define  DMA_CHNSTA_BUSY1                        ((uint32_t)0x0002)           /*!<é€šé“1å¿™æ ‡å¿—           */
+#define  DMA_CHNSTA_BUSY2                        ((uint32_t)0x0004)           /*!<é€šé“2å¿™æ ‡å¿—           */
 #endif
 
 #if  defined  HT6x2x  ||  defined  HT501x
 /*********************  Bit definition for CHNCTL register of HT_DMA_Channel_TypeDef ********************/
-#define  DMA_CHNCTL		                         ((uint32_t)0x7fff)           /*!<DMAÍ¨µÀ¿ØÖÆ¼Ä´æÆ÷      */
+#define  DMA_CHNCTL		                         ((uint32_t)0x7fff)           /*!<DMAé€šé“æ§åˆ¶å¯„å­˜å™¨      */
 
-#define  DMA_CHNCTL_CHNEN                        ((uint32_t)0x0001)           /*!<DMAÍ¨µÀÊ¹ÄÜ           */
+#define  DMA_CHNCTL_CHNEN                        ((uint32_t)0x0001)           /*!<DMAé€šé“ä½¿èƒ½           */
 
-#define  DMA_CHNCTL_PSIZE                        ((uint32_t)0x0006)           /*!<´«ËÍÎ»ÊıÉèÖÃ          */
-#define  DMA_CHNCTL_PSIZE_Byte                   ((uint32_t)0x0000)           /*!<´«ËÍÎ»Êı = Byte       */
-#define  DMA_CHNCTL_PSIZE_HalfWord               ((uint32_t)0x0002)           /*!<´«ËÍÎ»Êı = HalfWord   */
-#define  DMA_CHNCTL_PSIZE_Word                   ((uint32_t)0x0004)           /*!<´«ËÍÎ»Êı = Word       */
+#define  DMA_CHNCTL_PSIZE                        ((uint32_t)0x0006)           /*!<ä¼ é€ä½æ•°è®¾ç½®          */
+#define  DMA_CHNCTL_PSIZE_Byte                   ((uint32_t)0x0000)           /*!<ä¼ é€ä½æ•° = Byte       */
+#define  DMA_CHNCTL_PSIZE_HalfWord               ((uint32_t)0x0002)           /*!<ä¼ é€ä½æ•° = HalfWord   */
+#define  DMA_CHNCTL_PSIZE_Word                   ((uint32_t)0x0004)           /*!<ä¼ é€ä½æ•° = Word       */
 
-#define  DMA_CHNCTL_MODE                         ((uint32_t)0x0008)           /*!<´«ËÍÄ£Ê½ÉèÖÃ          */
-#define  DMA_CHNCTL_MODE_WordTransfer            ((uint32_t)0x0000)           /*!<µ¥¸ö´«Êä              */
-#define  DMA_CHNCTL_MODE_BlockTransfer           ((uint32_t)0x0008)           /*!<¿é´«Êä                */
+#define  DMA_CHNCTL_MODE                         ((uint32_t)0x0008)           /*!<ä¼ é€æ¨¡å¼è®¾ç½®          */
+#define  DMA_CHNCTL_MODE_WordTransfer            ((uint32_t)0x0000)           /*!<å•ä¸ªä¼ è¾“              */
+#define  DMA_CHNCTL_MODE_BlockTransfer           ((uint32_t)0x0008)           /*!<å—ä¼ è¾“                */
 
-#define  DMA_CHNCTL_CYCLE                        ((uint32_t)0x0010)           /*!<Ñ­»·´«ÊäÉèÖÃ          */
-#define  DMA_CHNCTL_CYCLE_DISABLE                ((uint32_t)0x0000)           /*!<·ÇÑ­»·Ä£Ê½            */
-#define  DMA_CHNCTL_CYCLE_ENABLE                 ((uint32_t)0x0010)           /*!<Ñ­»·Ä£Ê½              */
+#define  DMA_CHNCTL_CYCLE                        ((uint32_t)0x0010)           /*!<å¾ªç¯ä¼ è¾“è®¾ç½®          */
+#define  DMA_CHNCTL_CYCLE_DISABLE                ((uint32_t)0x0000)           /*!<éå¾ªç¯æ¨¡å¼            */
+#define  DMA_CHNCTL_CYCLE_ENABLE                 ((uint32_t)0x0010)           /*!<å¾ªç¯æ¨¡å¼              */
 
-#define  DMA_CHNCTL_SOURCEINC                    ((uint32_t)0x0060)           /*!<Ô´µØÖ·ÔöÁ¿Ä£Ê½ÉèÖÃ    */
-#define  DMA_CHNCTL_SOURCEINC_NOINC              ((uint32_t)0x0000)           /*!<²»Ôö¼Ó                */
-#define  DMA_CHNCTL_SOURCEINC_INC                ((uint32_t)0x0020)           /*!<Ôö¼Ó                  */
-#define  DMA_CHNCTL_SOURCEINC_BLOCKINC           ((uint32_t)0x0040)           /*!<Êı¾İ¿éÄÚÑ­»·Ôö¼Ó      */
+#define  DMA_CHNCTL_SOURCEINC                    ((uint32_t)0x0060)           /*!<æºåœ°å€å¢é‡æ¨¡å¼è®¾ç½®    */
+#define  DMA_CHNCTL_SOURCEINC_NOINC              ((uint32_t)0x0000)           /*!<ä¸å¢åŠ                 */
+#define  DMA_CHNCTL_SOURCEINC_INC                ((uint32_t)0x0020)           /*!<å¢åŠ                   */
+#define  DMA_CHNCTL_SOURCEINC_BLOCKINC           ((uint32_t)0x0040)           /*!<æ•°æ®å—å†…å¾ªç¯å¢åŠ       */
 
-#define  DMA_CHNCTL_DESTININC                    ((uint32_t)0x0180)           /*!<Ä¿µÄµØÖ·ÔöÁ¿Ä£Ê½ÉèÖÃ  */
-#define  DMA_CHNCTL_DESTININC_NOINC              ((uint32_t)0x0000)           /*!<²»Ôö¼Ó                */
-#define  DMA_CHNCTL_DESTININC_INC                ((uint32_t)0x0080)           /*!<Ôö¼Ó                  */
-#define  DMA_CHNCTL_DESTININC_BLOCKINC           ((uint32_t)0x0100)           /*!<Êı¾İ¿éÄÚÑ­»·Ôö¼Ó      */
+#define  DMA_CHNCTL_DESTININC                    ((uint32_t)0x0180)           /*!<ç›®çš„åœ°å€å¢é‡æ¨¡å¼è®¾ç½®  */
+#define  DMA_CHNCTL_DESTININC_NOINC              ((uint32_t)0x0000)           /*!<ä¸å¢åŠ                 */
+#define  DMA_CHNCTL_DESTININC_INC                ((uint32_t)0x0080)           /*!<å¢åŠ                   */
+#define  DMA_CHNCTL_DESTININC_BLOCKINC           ((uint32_t)0x0100)           /*!<æ•°æ®å—å†…å¾ªç¯å¢åŠ       */
 
-#define  DMA_CHNCTL_CHANNEL                      ((uint32_t)0x3e00)           /*!<Í¨µÀÑ¡Ôñ              */
+#define  DMA_CHNCTL_CHANNEL                      ((uint32_t)0x3e00)           /*!<é€šé“é€‰æ‹©              */
 
 /*********************  Bit definition for CHNSRC register of HT_DMA_Channel_TypeDef ********************/
-#define  DMA_CHNSRC                              ((uint32_t)0xffffffff)       /*!<Ô´µØÖ·¼Ä´æÆ÷          */
+#define  DMA_CHNSRC                              ((uint32_t)0xffffffff)       /*!<æºåœ°å€å¯„å­˜å™¨          */
 
 /*********************  Bit definition for CHNTAR register of HT_DMA_Channel_TypeDef ********************/
-#define  DMA_CHNTAR                              ((uint32_t)0xffffffff)       /*!<Ä¿µÄµØÖ·¼Ä´æÆ÷        */
+#define  DMA_CHNTAR                              ((uint32_t)0xffffffff)       /*!<ç›®çš„åœ°å€å¯„å­˜å™¨        */
 
 /*********************  Bit definition for CHNCNT register of HT_DMA_Channel_TypeDef ********************/
-#define  DMA_CHNCNT                              ((uint32_t)0xffff)           /*!<´«ÊäÊıÁ¿ÉèÖÃ          */
+#define  DMA_CHNCNT                              ((uint32_t)0xffff)           /*!<ä¼ è¾“æ•°é‡è®¾ç½®          */
 
 /********************  Bit definition for CHNTCCNT register of HT_DMA_Channel_TypeDef *******************/
-#define  DMA_CHNTCCNT                            ((uint32_t)0xffff)           /*!<ÒÑÍê³É´«ÊäÊıÁ¿        */
+#define  DMA_CHNTCCNT                            ((uint32_t)0xffff)           /*!<å·²å®Œæˆä¼ è¾“æ•°é‡        */
 
 /*******************  Bit definition for CHNBULKNUM register of HT_DMA_Channel_TypeDef ******************/
 #if defined HT6x2x
-#define  DMA_CHNBULKNUM                          ((uint32_t)0xffff)           /*!<Êı¾İ¿éÄÚÊı¾İ³¤¶ÈÉèÖÃ  */
-#define  DMA_CHNBULKNUM_NUM                      ((uint32_t)0x00ff)           /*!<Ñ­»·´ÎÊıÉèÖÃ */
-#define  DMA_CHNBULKNUM_CYCLE                    ((uint32_t)0xff00)           /*!<Êı¾İ¿éÄÚÊı¾İ³¤¶ÈÉèÖÃ  */
+#define  DMA_CHNBULKNUM                          ((uint32_t)0xffff)           /*!<æ•°æ®å—å†…æ•°æ®é•¿åº¦è®¾ç½®  */
+#define  DMA_CHNBULKNUM_NUM                      ((uint32_t)0x00ff)           /*!<å¾ªç¯æ¬¡æ•°è®¾ç½® */
+#define  DMA_CHNBULKNUM_CYCLE                    ((uint32_t)0xff00)           /*!<æ•°æ®å—å†…æ•°æ®é•¿åº¦è®¾ç½®  */
 #else
-#define  DMA_CHNBULKNUM                          ((uint32_t)0x00ff)           /*!<Êı¾İ¿éÄÚÊı¾İ³¤¶ÈÉèÖÃ  */
-#define  DMA_CHNBULKNUM_NUM                      ((uint32_t)0x00ff)           /*!<Ñ­»·´ÎÊıÉèÖÃ */
+#define  DMA_CHNBULKNUM                          ((uint32_t)0x00ff)           /*!<æ•°æ®å—å†…æ•°æ®é•¿åº¦è®¾ç½®  */
+#define  DMA_CHNBULKNUM_NUM                      ((uint32_t)0x00ff)           /*!<å¾ªç¯æ¬¡æ•°è®¾ç½® */
 #endif
 #endif
 
@@ -2289,15 +2289,15 @@ typedef union
 */
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
 /*************************  Bit definition for CRCCON register of HT_CRC_TypeDef ************************/
-#define  CRC_CRCCON_MODE                         ((uint32_t)0x0003)           /*!<CRCÄ£Ê½ÉèÖÃ           */
+#define  CRC_CRCCON_MODE                         ((uint32_t)0x0003)           /*!<CRCæ¨¡å¼è®¾ç½®           */
 #define  CRC_CRCCON_MODE_CCITT                   ((uint32_t)0x0000)           /*!<CRC-CCITT             */
 #define  CRC_CRCCON_MODE_CRC16                   ((uint32_t)0x0001)           /*!<CRC-16                */
 #define  CRC_CRCCON_MODE_CRC32                   ((uint32_t)0x0002)           /*!<CRC-32                */
 
-#define  CRC_CRCCON_RESET                        ((uint32_t)0x0004)           /*!<CRC¼ÆËã¸´Î»           */
+#define  CRC_CRCCON_RESET                        ((uint32_t)0x0004)           /*!<CRCè®¡ç®—å¤ä½           */
 
 /*************************  Bit definition for CRCDAT register of HT_CRC_TypeDef ************************/
-#define  CRC_CRCDAT                              ((uint32_t)0xffffffff)       /*!<CRCÊı¾İ¼Ä´æÆ÷         */
+#define  CRC_CRCDAT                              ((uint32_t)0xffffffff)       /*!<CRCæ•°æ®å¯„å­˜å™¨         */
 #endif
 
 
@@ -2308,46 +2308,46 @@ typedef union
 */
 #if  defined  HT6x2x  ||  defined  HT501x
 /*************************  Bit definition for AESCON register of HT_AES_TypeDef ************************/
-#define  AES_AESCON_MODE                         ((uint32_t)0x0001)           /*!<AESÄ£Ê½ÉèÖÃ           */
-#define  AES_AESCON_MODE_ENCRYPT                 ((uint32_t)0x0000)           /*!<AESÄ£Ê½£º¼ÓÃÜ         */
-#define  AES_AESCON_MODE_DECRYPT                 ((uint32_t)0x0001)           /*!<AESÄ£Ê½£º½âÃÜ         */
+#define  AES_AESCON_MODE                         ((uint32_t)0x0001)           /*!<AESæ¨¡å¼è®¾ç½®           */
+#define  AES_AESCON_MODE_ENCRYPT                 ((uint32_t)0x0000)           /*!<AESæ¨¡å¼ï¼šåŠ å¯†         */
+#define  AES_AESCON_MODE_DECRYPT                 ((uint32_t)0x0001)           /*!<AESæ¨¡å¼ï¼šè§£å¯†         */
 
-#define  AES_AESCON_KEYMODE                      ((uint32_t)0x0006)           /*!<ÃØÔ¿³¤¶ÈÉèÖÃ          */
-#define  AES_AESCON_KEYMODE_AES128               ((uint32_t)0x0000)           /*!<ÃØÔ¿³¤¶È£º128bits     */
-#define  AES_AESCON_KEYMODE_AES192               ((uint32_t)0x0002)           /*!<ÃØÔ¿³¤¶È£º192bits     */
-#define  AES_AESCON_KEYMODE_AES256               ((uint32_t)0x0004)           /*!<ÃØÔ¿³¤¶È£º256bits     */
+#define  AES_AESCON_KEYMODE                      ((uint32_t)0x0006)           /*!<ç§˜é’¥é•¿åº¦è®¾ç½®          */
+#define  AES_AESCON_KEYMODE_AES128               ((uint32_t)0x0000)           /*!<ç§˜é’¥é•¿åº¦ï¼š128bits     */
+#define  AES_AESCON_KEYMODE_AES192               ((uint32_t)0x0002)           /*!<ç§˜é’¥é•¿åº¦ï¼š192bits     */
+#define  AES_AESCON_KEYMODE_AES256               ((uint32_t)0x0004)           /*!<ç§˜é’¥é•¿åº¦ï¼š256bits     */
 
 /*************************  Bit definition for AESSTR register of HT_AES_TypeDef ************************/
-#define  AES_AESSTR                              ((uint32_t)0xffff)           /*!<AESÆô¶¯¼Ä´æÆ÷         */
-#define  AES_AESSTR_NormalStart                  ((uint32_t)0x8329)           /*!<ÆÕÍ¨Æô¶¯              */
-#define  AES_AESSTR_KeyStart                     ((uint32_t)0x8581)           /*!<KEY²»±äÆô¶¯           */
+#define  AES_AESSTR                              ((uint32_t)0xffff)           /*!<AESå¯åŠ¨å¯„å­˜å™¨         */
+#define  AES_AESSTR_NormalStart                  ((uint32_t)0x8329)           /*!<æ™®é€šå¯åŠ¨              */
+#define  AES_AESSTR_KeyStart                     ((uint32_t)0x8581)           /*!<KEYä¸å˜å¯åŠ¨           */
 
 /*************************  Bit definition for AESFLG register of HT_AES_TypeDef ************************/
-#define  AES_AESFLG_BUSY                         ((uint32_t)0x0001)           /*!<AES Ã¦±êÖ¾            */
+#define  AES_AESFLG_BUSY                         ((uint32_t)0x0001)           /*!<AES å¿™æ ‡å¿—            */
 
 /*************************  Bit definition for AESINLL register of HT_AES_TypeDef ***********************/
-#define  AES_AESINLL                             ((uint32_t)0xffffffff)       /*!<AESÊäÈëÊı¾İµÄbit0-31  */
+#define  AES_AESINLL                             ((uint32_t)0xffffffff)       /*!<AESè¾“å…¥æ•°æ®çš„bit0-31  */
 
 /*************************  Bit definition for AESINML register of HT_AES_TypeDef ***********************/
-#define  AES_AESINML                             ((uint32_t)0xffffffff)       /*!<AESÊäÈëÊı¾İµÄbit32-63 */
+#define  AES_AESINML                             ((uint32_t)0xffffffff)       /*!<AESè¾“å…¥æ•°æ®çš„bit32-63 */
 
 /*************************  Bit definition for AESINHM register of HT_AES_TypeDef ***********************/
-#define  AES_AESINHM                             ((uint32_t)0xffffffff)       /*!<AESÊäÈëÊı¾İµÄbit64-95 */
+#define  AES_AESINHM                             ((uint32_t)0xffffffff)       /*!<AESè¾“å…¥æ•°æ®çš„bit64-95 */
 
 /*************************  Bit definition for AESINHH register of HT_AES_TypeDef ***********************/
-#define  AES_AESINHH                             ((uint32_t)0xffffffff)       /*!<AESÊäÈëÊı¾İµÄbit96-127*/
+#define  AES_AESINHH                             ((uint32_t)0xffffffff)       /*!<AESè¾“å…¥æ•°æ®çš„bit96-127*/
 
 /************************  Bit definition for AESOUTLL register of HT_AES_TypeDef ***********************/
-#define  AES_AESOUTLL                            ((uint32_t)0xffffffff)       /*!<AESÊä³öÊı¾İµÄbit0-31  */
+#define  AES_AESOUTLL                            ((uint32_t)0xffffffff)       /*!<AESè¾“å‡ºæ•°æ®çš„bit0-31  */
 
 /************************  Bit definition for AESOUTML register of HT_AES_TypeDef ***********************/
-#define  AES_AESOUTML                            ((uint32_t)0xffffffff)       /*!<AESÊä³öÊı¾İµÄbit32-63 */
+#define  AES_AESOUTML                            ((uint32_t)0xffffffff)       /*!<AESè¾“å‡ºæ•°æ®çš„bit32-63 */
 
 /************************  Bit definition for AESOUTHM register of HT_AES_TypeDef ***********************/
-#define  AES_AESOUTHM                            ((uint32_t)0xffffffff)       /*!<AESÊä³öÊı¾İµÄbit64-95 */
+#define  AES_AESOUTHM                            ((uint32_t)0xffffffff)       /*!<AESè¾“å‡ºæ•°æ®çš„bit64-95 */
 
 /************************  Bit definition for AESOUTHH register of HT_AES_TypeDef ***********************/
-#define  AES_AESOUTHH                            ((uint32_t)0xffffffff)       /*!<AESÊä³öÊı¾İµÄbit96-127*/
+#define  AES_AESOUTHH                            ((uint32_t)0xffffffff)       /*!<AESè¾“å‡ºæ•°æ®çš„bit96-127*/
 
 /*************************  Bit definition for AESKEY0 register of HT_AES_TypeDef ***********************/
 #define  AES_AESKEY0                             ((uint32_t)0xffffffff)       /*!<KEY Part0             */
@@ -2382,23 +2382,23 @@ typedef union
 */
 #if  defined  HT6x2x                                                          /*!< HT6x2x               */
 /************************  Bit definition for RANDSTR register of HT_RAND_TypeDef ***********************/
-#define  RAND_RANDSTR_MODESEL                    ((uint32_t)0x0003)           /*!<Ëæ»úÊıÄ£Ê½Ñ¡Ôñ¿ØÖÆ    */
-#define  RAND_RANDSTR_MODESEL_SAMPLE             ((uint32_t)0x0000)           /*!<µÍÆµ²ÉÑù¸ßÆµ          */
-#define  RAND_RANDSTR_MODESEL_DFF                ((uint32_t)0x0001)           /*!<D´¥·¢Æ÷               */
-#define  RAND_RANDSTR_MODESEL_XOR                ((uint32_t)0x0002)           /*!<µÍÆµ²ÉÑù¸ßÆµXORD´¥·¢Æ÷*/
+#define  RAND_RANDSTR_MODESEL                    ((uint32_t)0x0003)           /*!<éšæœºæ•°æ¨¡å¼é€‰æ‹©æ§åˆ¶    */
+#define  RAND_RANDSTR_MODESEL_SAMPLE             ((uint32_t)0x0000)           /*!<ä½é¢‘é‡‡æ ·é«˜é¢‘          */
+#define  RAND_RANDSTR_MODESEL_DFF                ((uint32_t)0x0001)           /*!<Dè§¦å‘å™¨               */
+#define  RAND_RANDSTR_MODESEL_XOR                ((uint32_t)0x0002)           /*!<ä½é¢‘é‡‡æ ·é«˜é¢‘XORDè§¦å‘å™¨*/
 
-#define  RAND_RANDSTR_START                      ((uint32_t)0x0004)           /*!<Ëæ»úÊıÆô¶¯¿ØÖÆÎ»      */
-#define  RAND_RANDSTR_BUSY                       ((uint32_t)0x0008)           /*!<Ëæ»úÊıÉú³ÉÃ¦±êÖ¾      */
+#define  RAND_RANDSTR_START                      ((uint32_t)0x0004)           /*!<éšæœºæ•°å¯åŠ¨æ§åˆ¶ä½      */
+#define  RAND_RANDSTR_BUSY                       ((uint32_t)0x0008)           /*!<éšæœºæ•°ç”Ÿæˆå¿™æ ‡å¿—      */
 
-#define  RAND_RANDSTR_BACKMODE                   ((uint32_t)0x0300)           /*!<Ëæ»úÊıºó´¦ÀíÄ£Ê½      */
-#define  RAND_RANDSTR_BACKMODE_LFSR              ((uint32_t)0x0000)           /*!<LFSRÄ£Ê½              */
-#define  RAND_RANDSTR_BACKMODE_PSEUDO            ((uint32_t)0x0100)           /*!<Î±Ëæ»ú»ìºÏ·½Ê½        */
-#define  RAND_RANDSTR_BACKMODE_ADD               ((uint32_t)0x0200)           /*!<ÉÏÊöÁ½ÕßºÍ·½Ê½        */
+#define  RAND_RANDSTR_BACKMODE                   ((uint32_t)0x0300)           /*!<éšæœºæ•°åå¤„ç†æ¨¡å¼      */
+#define  RAND_RANDSTR_BACKMODE_LFSR              ((uint32_t)0x0000)           /*!<LFSRæ¨¡å¼              */
+#define  RAND_RANDSTR_BACKMODE_PSEUDO            ((uint32_t)0x0100)           /*!<ä¼ªéšæœºæ··åˆæ–¹å¼        */
+#define  RAND_RANDSTR_BACKMODE_ADD               ((uint32_t)0x0200)           /*!<ä¸Šè¿°ä¸¤è€…å’Œæ–¹å¼        */
 
-#define  RAND_RANDSTR_BACKEN                     ((uint32_t)0x0400)           /*!<Ëæ»úÊıºó´¦ÀíÊ¹ÄÜ      */
+#define  RAND_RANDSTR_BACKEN                     ((uint32_t)0x0400)           /*!<éšæœºæ•°åå¤„ç†ä½¿èƒ½      */
 
 /************************  Bit definition for RANDDAT register of HT_RAND_TypeDef ***********************/
-#define  RAND_RANDDAT                            ((uint32_t)0xffffffff)       /*!<Ëæ»úÊıÊı¾İ¼Ä´æÆ÷      */
+#define  RAND_RANDDAT                            ((uint32_t)0xffffffff)       /*!<éšæœºæ•°æ•°æ®å¯„å­˜å™¨      */
 #endif
 
 /*
@@ -2408,56 +2408,56 @@ typedef union
 */
 #if  defined  HT6x2x  ||  defined  HT501x
 /**********************  Bit definition for GHASHSTR register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_GHASHSTR                          ((uint32_t)0x0501)           /*!<GHASH¼ÆËãÆô¶¯¼Ä´æÆ÷   */
+#define  GHASH_GHASHSTR                          ((uint32_t)0x0501)           /*!<GHASHè®¡ç®—å¯åŠ¨å¯„å­˜å™¨   */
 
 /**********************  Bit definition for GHASHFLG register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_GHASHFLG_BUSY                     ((uint32_t)0x0001)           /*!<GHASH¼ÆËãÃ¦±êÖ¾       */
+#define  GHASH_GHASHFLG_BUSY                     ((uint32_t)0x0001)           /*!<GHASHè®¡ç®—å¿™æ ‡å¿—       */
 
 /**********************  Bit definition for INPUT1LL register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_INPUT1LL                          ((uint32_t)0xffffffff)       /*!<Êı¾İ1 bit0-31         */
+#define  GHASH_INPUT1LL                          ((uint32_t)0xffffffff)       /*!<æ•°æ®1 bit0-31         */
 
 /**********************  Bit definition for INPUT1ML register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_INPUT1ML                          ((uint32_t)0xffffffff)       /*!<Êı¾İ1 bit32-63        */
+#define  GHASH_INPUT1ML                          ((uint32_t)0xffffffff)       /*!<æ•°æ®1 bit32-63        */
 
 /**********************  Bit definition for INPUT1HM register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_INPUT1HM                          ((uint32_t)0xffffffff)       /*!<Êı¾İ1 bit64-95        */
+#define  GHASH_INPUT1HM                          ((uint32_t)0xffffffff)       /*!<æ•°æ®1 bit64-95        */
 
 /**********************  Bit definition for INPUT1HH register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_INPUT1HH                          ((uint32_t)0xffffffff)       /*!<Êı¾İ1 bit96-127       */
+#define  GHASH_INPUT1HH                          ((uint32_t)0xffffffff)       /*!<æ•°æ®1 bit96-127       */
 
 /**********************  Bit definition for INPUT2LL register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_INPUT2LL                          ((uint32_t)0xffffffff)       /*!<Êı¾İ2 bit0-31         */
+#define  GHASH_INPUT2LL                          ((uint32_t)0xffffffff)       /*!<æ•°æ®2 bit0-31         */
 
 /**********************  Bit definition for INPUT2ML register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_INPUT2ML                          ((uint32_t)0xffffffff)       /*!<Êı¾İ2 bit32-63        */
+#define  GHASH_INPUT2ML                          ((uint32_t)0xffffffff)       /*!<æ•°æ®2 bit32-63        */
 
 /**********************  Bit definition for INPUT2HM register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_INPUT2HM                          ((uint32_t)0xffffffff)       /*!<Êı¾İ2 bit64-95        */
+#define  GHASH_INPUT2HM                          ((uint32_t)0xffffffff)       /*!<æ•°æ®2 bit64-95        */
 
 /**********************  Bit definition for INPUT2HH register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_INPUT2HH                          ((uint32_t)0xffffffff)       /*!<Êı¾İ2 bit96-127       */
+#define  GHASH_INPUT2HH                          ((uint32_t)0xffffffff)       /*!<æ•°æ®2 bit96-127       */
 
 /**********************  Bit definition for OUTPUTLL register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_OUTPUTLL                          ((uint32_t)0xffffffff)       /*!<Êä³öÊı¾İ bit0-31      */
+#define  GHASH_OUTPUTLL                          ((uint32_t)0xffffffff)       /*!<è¾“å‡ºæ•°æ® bit0-31      */
 
 /**********************  Bit definition for OUTPUTML register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_OUTPUTML                          ((uint32_t)0xffffffff)       /*!<Êä³öÊı¾İ bit32-63     */
+#define  GHASH_OUTPUTML                          ((uint32_t)0xffffffff)       /*!<è¾“å‡ºæ•°æ® bit32-63     */
 
 /**********************  Bit definition for OUTPUTHM register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_OUTPUTHM                          ((uint32_t)0xffffffff)       /*!<Êä³öÊı¾İ bit64-95     */
+#define  GHASH_OUTPUTHM                          ((uint32_t)0xffffffff)       /*!<è¾“å‡ºæ•°æ® bit64-95     */
 
 /**********************  Bit definition for OUTPUTHH register of HT_GHASH_TypeDef ***********************/
-#define  GHASH_OUTPUTHH                          ((uint32_t)0xffffffff)       /*!<Êä³öÊı¾İ bit96-127    */
+#define  GHASH_OUTPUTHH                          ((uint32_t)0xffffffff)       /*!<è¾“å‡ºæ•°æ® bit96-127    */
 
 /*********************  Bit definition for AESGHASHIE register of HT_GHASH_TypeDef **********************/
-#define  GHASH_AESGHASHIE_AESIE                  ((uint32_t)0x0001)           /*!<AES¼ÆËãÖĞ¶ÏÊ¹ÄÜ       */
-#define  GHASH_AESGHASHIE_GHASHIE                ((uint32_t)0x0002)           /*!<GHASH¼ÆËãÖĞ¶ÏÊ¹ÄÜ     */
-#define  GHASH_AESGHASHIE_RANDIE                 ((uint32_t)0x0004)           /*!<Ëæ»úÊıÉú³ÉÖĞ¶ÏÊ¹ÄÜ    */
+#define  GHASH_AESGHASHIE_AESIE                  ((uint32_t)0x0001)           /*!<AESè®¡ç®—ä¸­æ–­ä½¿èƒ½       */
+#define  GHASH_AESGHASHIE_GHASHIE                ((uint32_t)0x0002)           /*!<GHASHè®¡ç®—ä¸­æ–­ä½¿èƒ½     */
+#define  GHASH_AESGHASHIE_RANDIE                 ((uint32_t)0x0004)           /*!<éšæœºæ•°ç”Ÿæˆä¸­æ–­ä½¿èƒ½    */
 
 /*********************  Bit definition for AESGHASHIF register of HT_GHASH_TypeDef **********************/
-#define  GHASH_AESGHASHIF_AESIF                  ((uint32_t)0x0001)           /*!<AES¼ÆËãÖĞ¶Ï±êÖ¾       */
-#define  GHASH_AESGHASHIF_GHASHIF                ((uint32_t)0x0002)           /*!<GHASH¼ÆËãÖĞ¶Ï±êÖ¾     */
-#define  GHASH_AESGHASHIF_RANDIF                 ((uint32_t)0x0004)           /*!<Ëæ»úÊıÉú³ÉÖĞ¶Ï±êÖ¾    */
+#define  GHASH_AESGHASHIF_AESIF                  ((uint32_t)0x0001)           /*!<AESè®¡ç®—ä¸­æ–­æ ‡å¿—       */
+#define  GHASH_AESGHASHIF_GHASHIF                ((uint32_t)0x0002)           /*!<GHASHè®¡ç®—ä¸­æ–­æ ‡å¿—     */
+#define  GHASH_AESGHASHIF_RANDIF                 ((uint32_t)0x0004)           /*!<éšæœºæ•°ç”Ÿæˆä¸­æ–­æ ‡å¿—    */
 #endif
 
 
@@ -2468,26 +2468,26 @@ typedef union
 */
 #if  defined  HT501x                                                        
 /************************  Bit definition for KEYIF register of HT_KEY_TypeDef ***********************/
-#define  KEY_KEYIF                               ((uint32_t)0x0001)           /*!<°´¼ü±êÖ¾¼Ä´æÆ÷    */
+#define  KEY_KEYIF                               ((uint32_t)0x0001)           /*!<æŒ‰é”®æ ‡å¿—å¯„å­˜å™¨    */
 
 /************************  Bit definition for KEYSTA register of HT_KEY_TypeDef ***********************/
-#define	 KEY_KEYSTA								 ((uint32_t)0xffff)           /*!<°´¼ü×´Ì¬¼Ä´æÆ÷    */
-#define	 KEY_KEYSTA_STA0						 ((uint32_t)0x0001<<0)        /*!<°´¼ü×´Ì¬STA0    */
-#define	 KEY_KEYSTA_STA1						 ((uint32_t)0x0001<<1)        /*!<°´¼ü×´Ì¬STA1    */
-#define	 KEY_KEYSTA_STA2						 ((uint32_t)0x0001<<2)        /*!<°´¼ü×´Ì¬STA2    */
-#define	 KEY_KEYSTA_STA3						 ((uint32_t)0x0001<<3)        /*!<°´¼ü×´Ì¬STA3    */
-#define	 KEY_KEYSTA_STA4						 ((uint32_t)0x0001<<4)        /*!<°´¼ü×´Ì¬STA4    */
-#define	 KEY_KEYSTA_STA5						 ((uint32_t)0x0001<<5)        /*!<°´¼ü×´Ì¬STA5    */
-#define	 KEY_KEYSTA_STA6						 ((uint32_t)0x0001<<6)        /*!<°´¼ü×´Ì¬STA6    */
-#define	 KEY_KEYSTA_STA7						 ((uint32_t)0x0001<<7)        /*!<°´¼ü×´Ì¬STA7    */
-#define	 KEY_KEYSTA_STA8						 ((uint32_t)0x0001<<8)        /*!<°´¼ü×´Ì¬STA8    */
-#define	 KEY_KEYSTA_STA9						 ((uint32_t)0x0001<<9)        /*!<°´¼ü×´Ì¬STA9    */
-#define	 KEY_KEYSTA_STA10						 ((uint32_t)0x0001<<10)       /*!<°´¼ü×´Ì¬STA10    */
-#define	 KEY_KEYSTA_STA11						 ((uint32_t)0x0001<<11)       /*!<°´¼ü×´Ì¬STA11   */
-#define	 KEY_KEYSTA_STA12						 ((uint32_t)0x0001<<12)       /*!<°´¼ü×´Ì¬STA12   */
-#define	 KEY_KEYSTA_STA13						 ((uint32_t)0x0001<<13)       /*!<°´¼ü×´Ì¬STA13   */
-#define	 KEY_KEYSTA_STA14						 ((uint32_t)0x0001<<14)       /*!<°´¼ü×´Ì¬STA14   */
-#define	 KEY_KEYSTA_STA15						 ((uint32_t)0x0001<<15)       /*!<°´¼ü×´Ì¬STA15   */
+#define	 KEY_KEYSTA								 ((uint32_t)0xffff)           /*!<æŒ‰é”®çŠ¶æ€å¯„å­˜å™¨    */
+#define	 KEY_KEYSTA_STA0						 ((uint32_t)0x0001<<0)        /*!<æŒ‰é”®çŠ¶æ€STA0    */
+#define	 KEY_KEYSTA_STA1						 ((uint32_t)0x0001<<1)        /*!<æŒ‰é”®çŠ¶æ€STA1    */
+#define	 KEY_KEYSTA_STA2						 ((uint32_t)0x0001<<2)        /*!<æŒ‰é”®çŠ¶æ€STA2    */
+#define	 KEY_KEYSTA_STA3						 ((uint32_t)0x0001<<3)        /*!<æŒ‰é”®çŠ¶æ€STA3    */
+#define	 KEY_KEYSTA_STA4						 ((uint32_t)0x0001<<4)        /*!<æŒ‰é”®çŠ¶æ€STA4    */
+#define	 KEY_KEYSTA_STA5						 ((uint32_t)0x0001<<5)        /*!<æŒ‰é”®çŠ¶æ€STA5    */
+#define	 KEY_KEYSTA_STA6						 ((uint32_t)0x0001<<6)        /*!<æŒ‰é”®çŠ¶æ€STA6    */
+#define	 KEY_KEYSTA_STA7						 ((uint32_t)0x0001<<7)        /*!<æŒ‰é”®çŠ¶æ€STA7    */
+#define	 KEY_KEYSTA_STA8						 ((uint32_t)0x0001<<8)        /*!<æŒ‰é”®çŠ¶æ€STA8    */
+#define	 KEY_KEYSTA_STA9						 ((uint32_t)0x0001<<9)        /*!<æŒ‰é”®çŠ¶æ€STA9    */
+#define	 KEY_KEYSTA_STA10						 ((uint32_t)0x0001<<10)       /*!<æŒ‰é”®çŠ¶æ€STA10    */
+#define	 KEY_KEYSTA_STA11						 ((uint32_t)0x0001<<11)       /*!<æŒ‰é”®çŠ¶æ€STA11   */
+#define	 KEY_KEYSTA_STA12						 ((uint32_t)0x0001<<12)       /*!<æŒ‰é”®çŠ¶æ€STA12   */
+#define	 KEY_KEYSTA_STA13						 ((uint32_t)0x0001<<13)       /*!<æŒ‰é”®çŠ¶æ€STA13   */
+#define	 KEY_KEYSTA_STA14						 ((uint32_t)0x0001<<14)       /*!<æŒ‰é”®çŠ¶æ€STA14   */
+#define	 KEY_KEYSTA_STA15						 ((uint32_t)0x0001<<15)       /*!<æŒ‰é”®çŠ¶æ€STA15   */
 
 #endif
 
