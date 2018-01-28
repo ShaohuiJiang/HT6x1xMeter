@@ -102,7 +102,7 @@ extern void DisWr_WPREG(void)
  * @note   
  * @retval None
  */
-extern void DisWr_WPREG(void)
+extern void Goto_Sleep(void)
 {
     SCB->SCR = 0x0004;  
     __WFI();            //IAR是在core_cmInstr.h文件中有定义
@@ -114,16 +114,17 @@ extern void DisWr_WPREG(void)
  * @note   
  * @retval None
  */
-extern void DisWr_WPREG(void)
+extern void Feed_WDT(void)
 {
     HT_WDT->WDTSET = 0xAA3F;        //在ht6xxx.h文件中有定义
 }
+
 /** 
  * @brief   初始化系统定时器
  * @note    定时周期跟C_SysTickLoad，和系统时钟频率相关
  * @retval None
  */
-void Init_SysTick(void)
+extern void Init_SysTick(void)
 { 
     SysTick->CTRL = 0x00000000;
     SysTick->LOAD = C_SysTickLoad;
@@ -138,7 +139,7 @@ void Init_SysTick(void)
  * @note   
  * @retval None
  */
-void Run_SysTick(void)
+extern void Run_SysTick(void)
 { 
     if (((SysTick->CTRL & 0x00000007) != 0x00000007)
     || ((SysTick->LOAD & 0x00FFFFFF) != C_SysTickLoad))
@@ -157,7 +158,7 @@ void Run_SysTick(void)
  * @note   
  * @retval None
  */
-void Stop_SysTick(void)
+extern void Stop_SysTick(void)
 { 
     SysTick->CTRL = 0x00000000;
 }
@@ -167,7 +168,7 @@ void Stop_SysTick(void)
  * @note   32768Hz
  * @retval None
  */
-void SwitchTo_Flrc(void)
+extern void SwitchTo_Flrc(void)
 {
     if ((HT_CMU->SYSCLKCFG != 0x0000)
     || (HT_CMU->LRCADJ    != 0x0009)
@@ -191,7 +192,7 @@ void SwitchTo_Flrc(void)
  * @note   3.5MHz
  * @retval None
  */
-void SwitchTo_Fhrc(void)
+extern void SwitchTo_Fhrc(void)
 {
     if ((HT_CMU->SYSCLKCFG != 0x0002)
     || (HT_CMU->HRCADJ    != 0x003D)
@@ -221,7 +222,7 @@ void SwitchTo_Fhrc(void)
  * @note   
  * @retval Fsys=22MHz，Fcpu=11.010048MHz
  */
-void SwitchTo_Fpll(void)
+extern void SwitchTo_Fpll(void)
 {
     if ((HT_CMU->SYSCLKCFG != 0x0003)
     || !(HT_CMU->CLKCTRL0 & 0x0010)             //使能PLL
@@ -252,7 +253,7 @@ void SwitchTo_Fpll(void)
                     4：9600bps
  * @retval None
  */
-void OpenRx_UART0(unsigned char baud)
+extern void OpenRx_UART0(unsigned char baud)
 {
     NVIC_DisableIRQ(UART0_IRQn);                //禁止串口中断
     HT_UART0->MODESEL = 0x0000;                 //UART功能
@@ -272,7 +273,7 @@ void OpenRx_UART0(unsigned char baud)
  * @param  head: 首字节
  * @retval None
  */
-void OpenTx_UART0(unsigned char head)
+extern void OpenTx_UART0(unsigned char head)
 {
     NVIC_DisableIRQ(UART0_IRQn);                //禁止串口中断
     HT_UART0->MODESEL = 0x0000;                 //UART功能
@@ -289,7 +290,7 @@ void OpenTx_UART0(unsigned char head)
  * @note   
  * @retval None
  */
-void Close_UART0(void)
+extern void Close_UART0(void)
 {
     NVIC_DisableIRQ(UART0_IRQn);                //禁止串口中断
     HT_UART0->UARTCON = 0x0000;                 //禁止串口功能
@@ -302,7 +303,7 @@ void Close_UART0(void)
  * @retval TRUE:    接收端处于开启状态
  *         FALSE：  接收端处于关闭状态
  */
-Bool IsRxing_UART0(void)
+extern Bool IsRxing_UART0(void)
 {
     NVIC_EnableIRQ(UART0_IRQn);                 //使能串口中断
     return (((HT_UART0->MODESEL==0x0000) && (HT_UART0->UARTCON==0x005A))? TRUE: FALSE);
@@ -319,7 +320,7 @@ Bool IsRxing_UART0(void)
                     4：9600bps
  * @retval None
  */
-void OpenRx_UART1(unsigned char baud)
+extern void OpenRx_UART1(unsigned char baud)
 {
     baud    = baud;
     NVIC_DisableIRQ(UART1_IRQn);                //禁止串口中断
@@ -341,7 +342,7 @@ void OpenRx_UART1(unsigned char baud)
  * @param  head: 首字节
  * @retval None
  */
-void OpenTx_UART1(unsigned char head)
+extern void OpenTx_UART1(unsigned char head)
 {
     NVIC_DisableIRQ(UART1_IRQn);                //禁止串口中断
     HT_UART1->MODESEL = 0x0000;                 //UART功能
@@ -360,7 +361,7 @@ void OpenTx_UART1(unsigned char head)
  * @note   红外
  * @retval None
  */
-void Close_UART1(void)
+extern void Close_UART1(void)
 {
     NVIC_DisableIRQ(UART1_IRQn);                //禁止串口中断
     HT_UART1->UARTCON = 0x0000;                 //禁止串口功能
@@ -373,7 +374,7 @@ void Close_UART1(void)
  * @retval TRUE:    接收端处于开启状态
  *         FALSE：  接收端处于关闭状态
  */
-Bool IsRxing_UART1(void)
+extern Bool IsRxing_UART1(void)
 {
     NVIC_EnableIRQ(UART1_IRQn);                 //使能串口中断
     return (((HT_UART1->MODESEL==0x0000) && (HT_UART1->UARTCON==0x005A))? TRUE: FALSE);
@@ -390,7 +391,7 @@ Bool IsRxing_UART1(void)
  *               4: 9600bps
  * @retval None
  */
-void OpenRx_UART2(unsigned char baud)
+extern void OpenRx_UART2(unsigned char baud)
 {
     NVIC_DisableIRQ(UART2_IRQn);                //禁止串口中断
     HT_UART2->MODESEL = 0x0000;                 //UART功能
@@ -410,7 +411,7 @@ void OpenRx_UART2(unsigned char baud)
  * @param  head: 首字节
  * @retval None
  */
-void OpenTx_UART2(unsigned char  head)
+extern void OpenTx_UART2(unsigned char  head)
 {
     NVIC_DisableIRQ(UART2_IRQn);                //禁止串口中断
     HT_UART2->MODESEL = 0x0000;                 //UART功能
@@ -428,7 +429,7 @@ void OpenTx_UART2(unsigned char  head)
  * @note   
  * @retval None
  */
-void Close_UART2(void)
+extern void Close_UART2(void)
 {
     NVIC_DisableIRQ(UART2_IRQn);                //禁止串口中断
     HT_UART2->UARTCON = 0x0000;                 //禁止串口功能
@@ -441,7 +442,7 @@ void Close_UART2(void)
  * @retval TRUE:    接收端处于开启状态
  *         FALSE：  接收端处于关闭状态
  */
-Bool IsRxing_UART2(void)
+extern Bool IsRxing_UART2(void)
 {
     NVIC_EnableIRQ(UART2_IRQn);                 //使能串口中断
     return (((HT_UART2->MODESEL==0x0000) && (HT_UART2->UARTCON==0x005A))? TRUE: FALSE);
@@ -453,7 +454,7 @@ Bool IsRxing_UART2(void)
  * @note   7816功能
  * @retval None
  */
-void OpenRx_UART3(void)
+extern void OpenRx_UART3(void)
 {
     NVIC_DisableIRQ(UART3_IRQn);                //禁止串口中断
     HT_UART3->MODESEL    = 0x0001;              //7816功能
@@ -469,7 +470,7 @@ void OpenRx_UART3(void)
  * @param  head: 首字节
  * @retval None
  */
-void OpenTx_UART3(unsigned char head)
+extern void OpenTx_UART3(unsigned char head)
 {
     NVIC_DisableIRQ(UART3_IRQn);                //禁止串口中断
     HT_UART3->MODESEL    = 0x0001;              //7816功能
@@ -486,7 +487,7 @@ void OpenTx_UART3(unsigned char head)
  * @note   7816功能
  * @retval None
  */
-void Close_UART3(void)
+extern void Close_UART3(void)
 {
     NVIC_DisableIRQ(UART3_IRQn);                //禁止串口中断
     HT_UART3->ISO7816CON = 0x0000;              //禁止串口功能
@@ -499,7 +500,7 @@ void Close_UART3(void)
  * @note   ESAM
  * @retval None
  */
-void OpenRx_UART4(void)
+extern void OpenRx_UART4(void)
 {
     NVIC_DisableIRQ(UART4_IRQn);                //禁止串口中断
     HT_UART4->MODESEL	 = 0x0001;              //7816功能
@@ -515,7 +516,7 @@ void OpenRx_UART4(void)
  * @param  head: 首字节
  * @retval None
  */
-void OpenTx_UART4(INT8U head)
+extern void OpenTx_UART4(unsigned char  head)
 {
     NVIC_DisableIRQ(UART4_IRQn);                //禁止串口中断
     HT_UART4->MODESEL	 = 0x0001;              //7816功能
@@ -531,7 +532,7 @@ void OpenTx_UART4(INT8U head)
  * @note   ESAM
  * @retval None
  */
-void Close_UART4(void)
+extern void Close_UART4(void)
 {
     NVIC_DisableIRQ(UART4_IRQn);                //禁止串口中断
     HT_UART4->ISO7816CON = 0x0000;              //禁止串口功能
@@ -544,7 +545,7 @@ void Close_UART4(void)
  * @param  head: 首字节
  * @retval None
  */
-void Open_UART5(unsigned char head)
+extern void Open_UART5(unsigned char head)
 {
     NVIC_DisableIRQ(UART5_IRQn);                //禁止串口中断
     HT_UART5->MODESEL = 0x0000;                 //UART功能
@@ -561,7 +562,7 @@ void Open_UART5(unsigned char head)
  * @note   EMU
  * @retval None
  */
-void Close_UART5(void)
+extern void Close_UART5(void)
 {
     NVIC_DisableIRQ(UART5_IRQn);                //禁止串口中断
     HT_UART5->UARTCON = 0x0000;                 //禁止串口功能
@@ -572,7 +573,7 @@ void Close_UART5(void)
  * @note   
  * @retval 电池电压AD值
  */
-signed short ADC_BattVolt(void)
+extern signed short ADC_BattVolt(void)
 {
     return HT_TBS->VBATDAT;
 }
@@ -582,7 +583,7 @@ signed short ADC_BattVolt(void)
  * @note   
  * @retval 芯片温度AD值
  */
-signed short ADC_TempVolt(void)
+extern signed short ADC_TempVolt(void)
 {
     return HT_TBS->TMPDAT;
 }
@@ -595,7 +596,7 @@ signed short ADC_TempVolt(void)
  * @retval TRUE： 电压正常
  *         FALSE: 电压异常
  */
-Bool Check_PowerOn(unsigned long times)
+extern Bool Check_PowerOn(unsigned long times)
 {
     NVIC_DisableIRQ(PMU_IRQn);                  //禁止PMU中断
     HT_PMU->PMUIE   = 0x0000;                   //禁止PMU中断
@@ -620,7 +621,7 @@ Bool Check_PowerOn(unsigned long times)
  * @note   
  * @retval None
  */
-void Open_LCD(void)
+extern void Open_LCD(void)
 {
     if ((HT_CMU->CLKCTRL0 & 0x0002) != 0x0002)	//使能LCD时钟
     {
@@ -637,7 +638,7 @@ void Open_LCD(void)
  * @note   
  * @retval 
  */
-Bool Load_InfoData(void)
+extern Bool Load_InfoData(void)
 {
     unsigned char	i;
     unsigned long	chksum = 0;
@@ -678,7 +679,7 @@ Bool Load_InfoData(void)
  * @param  adj: 
  * @retval None
  */
-void Write_InfoData(signed short adj)
+extern void Write_InfoData(signed short adj)
 {
     unsigned char	i;
     unsigned long	info[15];
