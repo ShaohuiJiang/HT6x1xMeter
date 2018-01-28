@@ -12,7 +12,7 @@
 /*头文件----------------------------------------------------------------------*/
 ///添加头文件
 #include <stdio.h>
-//#include "ht6xxx_lib.h"
+#include "ht6xxx_lib.h"
 
 
 
@@ -53,10 +53,10 @@ int main(void)
     
     /*  Infinite loop  */
   
-//    HT_CMU->WPREG = 0xA55A;
+    HT_CMU->WPREG = 0xA55A;
     
-//    HT_GPIOE->IOCFG =0;
-//    HT_GPIOE->PTDIR =0xFFFF;
+    HT_GPIOE->IOCFG =0;
+    HT_GPIOE->PTDIR =0xFFFF;
   
     while (1)
     {
