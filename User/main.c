@@ -47,7 +47,7 @@
 ///定义可用于外部文件的函数
 int main(void)                                   
 {     
-    /*  SystemInit() has been called before enter main() */ 
+
     
     /*  Add your application code here  */ 
     
