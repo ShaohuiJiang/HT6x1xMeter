@@ -74,10 +74,7 @@ extern void Delay_mSec(unsigned char  mSec)
     {
         for (i=0; i<916; i++)
         {
-            NOP();
-            NOP();
-            NOP();
-            NOP();
+            Delay(1);
         }
     }
 }
