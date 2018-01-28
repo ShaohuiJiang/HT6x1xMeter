@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include "ht6xxx.h"
 #include "General.h"
+#include "MCUConfig.h"
 
 
 /*宏定义----------------------------------------------------------------------*/
@@ -25,21 +26,96 @@
 
 /*内部变量声明----------------------------------------------------------------*/
 ///添加内部变量
-
-
+static Bool b_MeterWorkState;        //表工作状态标志位， TRUE：上电状态；  FALSE：掉电状态
+static Bool b_RTCCalibrationState;   //RTC补偿校准状态标志位，TRUE：已补偿校准状态；FALSE：未补偿校准状态
 
 
 /*声明内部函数----------------------------------------------------------------*/
 ///声明只在本文件使用的函数
-
-
-
-
-
+static void SwitchTo_Flrc(void);                    //切换到内部低速RC时钟
+static void SwitchTo_Fhrc(void);                    //切换到外部高速RC时钟
+static void SwitchTo_Fpll(void);                    //切换到内部PLL时钟
 
 /*定义内部函数----------------------------------------------------------------*/
 ///定义只能在本文件使用的函数
+/** 
+ * @brief  切换到内部低速RC时钟函数
+ * @note   32768Hz
+ * @retval None
+ */
+static void SwitchTo_Flrc(void)
+{
+    if ((HT_CMU->SYSCLKCFG != 0x0000)
+    || (HT_CMU->LRCADJ    != 0x0009)
+    || (HT_CMU->SYSCLKDIV != 0x0001))
+    {
+        EnWr_WPREG();
+        HT_CMU->LRCADJ    = 0x0009;             //输出32768Hz
+        HT_CMU->SYSCLKDIV = 0x0001;             //Fcpu = Fsys /2
+        
+        HT_CMU->SYSCLKCFG = 0x0080;             //Fsys = Flrc
+        NOP();
+        HT_CMU->SYSCLKCFG = 0x0000;             //Fsys = Flrc
 
+        HT_CMU->CLKCTRL0 &= ~0x0030;            //LCD
+        DisWr_WPREG();
+    }
+}
+
+/** 
+ * @brief   切换到内部高速RC时钟函数
+ * @note   3.5MHz
+ * @retval None
+ */
+static void SwitchTo_Fhrc(void)
+{
+    if ((HT_CMU->SYSCLKCFG != 0x0002)
+    || (HT_CMU->HRCADJ    != 0x003D)
+    || (HT_CMU->HRCDIV    != 0x0001)
+    || !(HT_CMU->CLKCTRL0 & 0x0020)
+    || (HT_CMU->SYSCLKDIV != 0x0001))
+    {
+        EnWr_WPREG();
+        HT_CMU->HRCADJ    = 0x003D;             //输出8MHz
+        HT_CMU->HRCDIV    = 0x0001;             //Fhrc' = Fhrc /2 = 7MHz
+        HT_CMU->CLKCTRL0 |= 0x0020;             //使能HRC
+        HT_CMU->SYSCLKDIV = 0x0001;             //Fcpu  = Fsys /2 = 3.5MHz
+        while (HT_CMU->CLKSTA & 0x0008)
+        {
+            ;
+        }
+
+        HT_CMU->SYSCLKCFG = 0x0082;             //Fsys = Fhrc'
+        NOP();
+        HT_CMU->SYSCLKCFG = 0x0002;             //Fsys = Fhrc'
+        DisWr_WPREG();
+    }
+}
+
+/** 
+ * @brief  切换到内部pll函数
+ * @note   
+ * @retval Fsys=22MHz，Fcpu=11.010048MHz
+ */
+static void SwitchTo_Fpll(void)
+{
+    if ((HT_CMU->SYSCLKCFG != 0x0003)
+    || !(HT_CMU->CLKCTRL0 & 0x0010)             //使能PLL
+    || (HT_CMU->SYSCLKDIV != 0x0001))
+    {
+        EnWr_WPREG();
+        HT_CMU->CLKCTRL0 |= 0x0010;             //使能PLL
+        HT_CMU->SYSCLKDIV = 0x0001;             //Fcpu = Fsys/2 = Fpll/2 = 11.010048MHz
+        while (HT_CMU->CLKSTA & 0x0010)
+        {
+            ;
+        }
+        HT_CMU->SYSCLKCFG = 0x0083;             //Fsys = Fpll
+        NOP();
+        HT_CMU->SYSCLKCFG = 0x0003;             //Fsys = Fpll
+        DisWr_WPREG();
+    }
+}
 
 
 
@@ -161,85 +237,6 @@ extern void Run_SysTick(void)
 extern void Stop_SysTick(void)
 { 
     SysTick->CTRL = 0x00000000;
-}
-
-/** 
- * @brief  切换到内部低速RC时钟函数
- * @note   32768Hz
- * @retval None
- */
-extern void SwitchTo_Flrc(void)
-{
-    if ((HT_CMU->SYSCLKCFG != 0x0000)
-    || (HT_CMU->LRCADJ    != 0x0009)
-    || (HT_CMU->SYSCLKDIV != 0x0001))
-    {
-        EnWr_WPREG();
-        HT_CMU->LRCADJ    = 0x0009;             //输出32768Hz
-        HT_CMU->SYSCLKDIV = 0x0001;             //Fcpu = Fsys /2
-        
-        HT_CMU->SYSCLKCFG = 0x0080;             //Fsys = Flrc
-        NOP();
-        HT_CMU->SYSCLKCFG = 0x0000;             //Fsys = Flrc
-
-        HT_CMU->CLKCTRL0 &= ~0x0030;            //LCD
-        DisWr_WPREG();
-    }
-}
-
-/** 
- * @brief   切换到内部高速RC时钟函数
- * @note   3.5MHz
- * @retval None
- */
-extern void SwitchTo_Fhrc(void)
-{
-    if ((HT_CMU->SYSCLKCFG != 0x0002)
-    || (HT_CMU->HRCADJ    != 0x003D)
-    || (HT_CMU->HRCDIV    != 0x0001)
-    || !(HT_CMU->CLKCTRL0 & 0x0020)
-    || (HT_CMU->SYSCLKDIV != 0x0001))
-    {
-        EnWr_WPREG();
-        HT_CMU->HRCADJ    = 0x003D;             //输出8MHz
-        HT_CMU->HRCDIV    = 0x0001;             //Fhrc' = Fhrc /2 = 7MHz
-        HT_CMU->CLKCTRL0 |= 0x0020;             //使能HRC
-        HT_CMU->SYSCLKDIV = 0x0001;             //Fcpu  = Fsys /2 = 3.5MHz
-        while (HT_CMU->CLKSTA & 0x0008)
-        {
-            ;
-        }
-
-        HT_CMU->SYSCLKCFG = 0x0082;             //Fsys = Fhrc'
-        NOP();
-        HT_CMU->SYSCLKCFG = 0x0002;             //Fsys = Fhrc'
-        DisWr_WPREG();
-    }
-}
-
-/** 
- * @brief  切换到内部pll函数
- * @note   
- * @retval Fsys=22MHz，Fcpu=11.010048MHz
- */
-extern void SwitchTo_Fpll(void)
-{
-    if ((HT_CMU->SYSCLKCFG != 0x0003)
-    || !(HT_CMU->CLKCTRL0 & 0x0010)             //使能PLL
-    || (HT_CMU->SYSCLKDIV != 0x0001))
-    {
-        EnWr_WPREG();
-        HT_CMU->CLKCTRL0 |= 0x0010;             //使能PLL
-        HT_CMU->SYSCLKDIV = 0x0001;             //Fcpu = Fsys/2 = Fpll/2 = 11.010048MHz
-        while (HT_CMU->CLKSTA & 0x0010)
-        {
-            ;
-        }
-        HT_CMU->SYSCLKCFG = 0x0083;             //Fsys = Fpll
-        NOP();
-        HT_CMU->SYSCLKCFG = 0x0003;             //Fsys = Fpll
-        DisWr_WPREG();
-    }
 }
 
 
@@ -729,4 +726,191 @@ extern void Write_InfoData(signed short adj)
     DisWr_WPREG();
 }
 
+
+/** 
+ * @brief   MCU电池工作状态初始化
+ * @note   
+ * @retval None
+ */
+extern void Init_MCU_BatteryState(void)
+{
+    Feed_WDT();                     //清看门狗
+    b_MeterWorkState = FALSE;       //默认电表出于掉电状态
+    SwitchTo_Fhrc();                //切换到3.5MHz
+
+    /* MCU的存储器模块初始化 */
+    EnWr_WPREG();                   //关闭写保护
+    HT_CMU->FLASHLOCK = ~0x7A68;    //启用Flash写保护
+    DisWr_WPREG();                  //开启写保护
+
+    /* MCU的时钟模块初始化 */
+    EnWr_WPREG();
+    HT_CMU->CLKCTRL0 = 0X2C60;      //HRC时钟使能、OSC低功耗使能(手册上要求打开)、硬件看门狗时钟使能、LDO内部LBOR使能(手册上要求打开)
+    HT_CMU->CLKCTRL1 = 0;           //UART0~5和TIME0~3都时钟关闭
+    DisWr_WPREG();
+
+    /* MCU的电源模块初始化 */
+    NVIC_DisableIRQ(PMU_IRQn);      //禁止PMU中断
+    EnWr_WPREG();
+    HT_PMU->PMUCON  = 0x0013;       //开启BOR_DET,BOR复位模式，关闭LVDIN_DET模块，打开Hold模式下大功耗LDO（先试试打开，如果功耗不满意，再关闭）
+    DisWr_WPREG();
+    HT_PMU->VDETCFG = 0x006D;       //VCC检测阈值=4.6V;BOR检测阈值=2.2V
+    HT_PMU->VDETPCFG= 0x0022;       //Hold和Sleep模式下VCC_DET,BOR_DET检测时间=300us,周期=67ms
+    HT_PMU->PMUIF   = 0x0000;       //清中断标志
+    HT_PMU->PMUIE   = 0x0001;       //使能VCC检测中断，关闭BOR检测中断，关闭LVDIN检测中断
+    NVIC_ClearPendingIRQ(PMU_IRQn); //清除挂起状态
+    NVIC_SetPriority(PMU_IRQn, 3);  //设置优先级
+    NVIC_EnableIRQ(PMU_IRQn);       //使能PMU中断
+
+    /* MCU的GPIO初始化 */
+    EnWr_WPREG();
+    HT_GPIOA->IOCFG = 0x0520;       //PA5->INT0;PA8->INT3;PA10->INT5
+    HT_GPIOA->AFCFG = 0x0000;       //功能1
+    DisWr_WPREG();
+    HT_GPIOA->PTSET = 0x2017;
+//  HT_GPIOA->PTCLR = 0x0000;
+    HT_GPIOA->PTOD  = 0x1FE8;
+    HT_GPIOA->PTUP  = 0x253F;
+    HT_GPIOA->PTDIR = 0x2017;
+
+    EnWr_WPREG();
+    HT_GPIOB->IOCFG = 0xF7FF;      //PB[0:10]->SEG[0:10];PB[12:15]->SEG[12:15]
+    HT_GPIOB->AFCFG = 0x0000;      //功能1
+    DisWr_WPREG();
+    HT_GPIOB->PTSET = 0x0800;
+    HT_GPIOB->PTOD  = 0xF7FF;
+    HT_GPIOB->PTUP  = 0xFFFF;
+    HT_GPIOB->PTDIR = 0x0800;
+
+    EnWr_WPREG();
+    HT_GPIOC->IOCFG = 0x0000;       //
+    HT_GPIOC->AFCFG = 0x0000;       //功能1
+    DisWr_WPREG();
+    HT_GPIOC->PTSET = 0x4929;
+    HT_GPIOC->PTCLR = 0x0640;
+    HT_GPIOC->PTOD  = 0x3696;
+    HT_GPIOC->PTUP  = 0x7F7F;
+    HT_GPIOC->PTDIR = 0x0F69;
+
+    EnWr_WPREG();
+    HT_GPIOD->IOCFG = 0x3FFF;       //PD[0-7]->SEG[16:23];PD[8-13]->COM[0:5]
+    HT_GPIOD->AFCFG = 0x0000;       //功能1,2
+    DisWr_WPREG();
+    HT_GPIOD->PTOD = 0xBFFF;        //开漏
+    HT_GPIOD->PTUP  = 0xFFFF;
+    HT_GPIOD->PTDIR = 0x4000;
+    
+    EnWr_WPREG();
+    HT_GPIOE->IOCFG = 0x0000;       //PE[7]->LVDIN
+    HT_GPIOE->AFCFG = 0x0000;       //功能1
+    DisWr_WPREG();
+    HT_GPIOE->PTSET = 0x002E;
+    HT_GPIOE->PTOD  = 0x01D1;       //不开漏
+    HT_GPIOE->PTUP  = 0x006F;
+    HT_GPIOE->PTDIR = 0x002E;
+
+    /* MCU中断模块的初始化 */
+    NVIC_DisableIRQ(EXTI0_IRQn);        //禁止INT0中断
+    NVIC_DisableIRQ(EXTI3_IRQn);        //禁止INT3中断
+    NVIC_DisableIRQ(EXTI5_IRQn);        //禁止INT5中断
+    HT_INT->PINFLT  = 0x0000;           //INT[0,3,5]引脚数字滤波使能
+    HT_INT->EXTIF   = 0x0000;           //清中断标志
+    HT_INT->EXTIE   = 0x0928;           //INT0(Pulse)上;INT3(CoverKey)上下;INT5(DispKey)下,沿中断使能
+    NVIC_ClearPendingIRQ(EXTI0_IRQn);   //清除挂起状态
+    NVIC_ClearPendingIRQ(EXTI3_IRQn);   //清除挂起状态
+    NVIC_ClearPendingIRQ(EXTI5_IRQn);   //清除挂起状态
+    NVIC_SetPriority(EXTI0_IRQn, 3);    //设置优先级
+    NVIC_SetPriority(EXTI3_IRQn, 3);    //设置优先级
+    NVIC_SetPriority(EXTI5_IRQn, 3);    //设置优先级
+    NVIC_EnableIRQ(EXTI0_IRQn);         //使能INT2中断
+    NVIC_EnableIRQ(EXTI3_IRQn);         //使能INT3中断
+    NVIC_EnableIRQ(EXTI5_IRQn);         //使能INT5中断
+    NVIC->ICER[0]   = ~0x001000A5;      //中断清除使能寄存器（RTC,PMU,INT0,INT3,INT5除外）
+
+
+    /* MCU的UART/7816模块初始化 */
+    //暂时没写
+
+    /* MCU的LCD模块初始化 */
+    HT_LCD->LCDCLK	= 0x008C;           //1/3偏压,6COM,85.3Hz
+    HT_LCD->LCDCON	= 0x00F1;           //短时大电流，快速充电模式,1/64个Flcd周期，对比度=93.63%VLCD
+
+    /* MCU的硬件看门狗模块初始化 */
+    HT_WDT->WDTCFG	= 0x00;             //产生复位
+
+
+    /* MCU的定时器模块初始化 */
+    //暂时没写
+
+    /* MCU的硬件SPI模块初始化 */
+    //暂时没写
+
+    /* MCU的硬件I2C模块初始化 */
+    //暂时没写
+
+    /* MCU的RTC模块初始化 */
+    NVIC_DisableIRQ(RTC_IRQn);                      //禁止RTC中断
+    HT_RTC->RTCCON = 0x0000;                        //禁止TOUT输出
+    HT_RTC->RTCIF  = 0x0000;                        //清中断标志
+    HT_RTC->RTCIE = 0x0003;                         //使能RTC分,秒中断
+    NVIC_ClearPendingIRQ(RTC_IRQn);                 //清除挂起状态
+    NVIC_SetPriority(RTC_IRQn, 3);                  //设置优先级
+    NVIC_EnableIRQ(RTC_IRQn);                       //使能RTC中断
+    b_RTCCalibrationState = Load_InfoData();        //装载InfoData数据,并反馈到RTC补偿校准状态标志位
+
+    /* MCU的TBS模块初始化 */
+    HT_TBS->TBSCON  = 0x6541;                       //ADC2次平均;只使能温度测量
+    HT_TBS->TBSIE   = 0x0000;                       //禁止TBS中断、禁止电池电压检测中断、禁止ADC通道0检测中断、禁止ADC通道1检测中断、禁止VBAT小于VDRCMP中断、禁止电源电压测量中断
+    HT_TBS->TBSIF   = 0X0000;                       //清中断标志
+    HT_TBS->TBSPRD  = 0x0004;                       //HT601x温度测量周期=8s
+
+    /* Cotex-M0内核系统定时器初始化 */
+    Stop_SysTick();                                 //关闭系统定时器
+}
+
+
+/** 
+ * @brief  MCU外部电源工作状态初始化
+ * @note   
+ * @retval None
+ */
+extern void Init_MCU_ExternalPowerState(void)
+{
+
+
+}
+
+
+/** 
+ * @brief   MCU进入Hold模式状态前初始化
+ * @note   
+ * @retval None
+ */
+extern void Init_MCU_HoldState(void)
+{
+
+
+}
+
+/** 
+ * @brief  获取电表工作状态
+ * @note   
+ * @retval TRUE：  上电状态
+ *         FALSE:  下电状态
+ */
+extern Bool Get_MeterWorkState(void)
+{
+    return (b_MeterWorkState);
+}
+
+
+/** 
+ * @brief  获取RTC补偿校准状态
+ * @note   
+ * @retval 
+ */
+extern Bool Get_b_RTCCalibrationState(void)
+{
+    return (b_RTCCalibrationState);
+}
 /*end-------------------------------------------------------------------------*/
