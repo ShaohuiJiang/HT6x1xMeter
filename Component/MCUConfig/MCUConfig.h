@@ -32,7 +32,8 @@ extern void Enable_Int(void);                       //开全局中断
 extern void Disable_Int(void);                      //关闭全局中断
 extern void EnWr_WPREG(void);                       //HT6XXX芯片中关闭写保护寄存器
 extern void DisWr_WPREG(void);                      //HT6XXX芯片中开启写保护寄存器
-extern void Goto_Sleep(void);                       //关闭休眠模式
+extern void Goto_Sleep(void);                       //进入休眠模式
+extern void Goto_Hold(void);                        //进入保持模式
 extern void Feed_WDT(void);                         //清看门狗
 extern void Init_SysTick(void);                     //初始化系统定时器
 extern void Run_SysTick(void);                      //运行系统定时器运行
