@@ -207,6 +207,21 @@ extern void Feed_WDT(void)
 }
 
 /** 
+ * @brief  等待硬件看门狗复位
+ * @note   
+ * @retval None
+ */
+extern void WDTReset_MCU(void)
+{
+    Disable_Int();  //关闭全局中断
+    HT_WDT->WDTSET = 0xAA00;
+    while(1)
+    {
+       NOP(); 
+    }
+}
+
+/** 
  * @brief   初始化系统定时器
  * @note    定时周期跟C_SysTickLoad，和系统时钟频率相关
  * @retval None
@@ -921,7 +936,7 @@ extern void Init_MCU_ExternalPowerState(void)
     HT_GPIOA->AFCFG = 0x0000;       //功能1
     DisWr_WPREG();
     HT_GPIOA->PTSET = 0x2017;
-//  HT_GPIOA->PTCLR = 0x0000;
+
     HT_GPIOA->PTOD  = 0x1FE8;
     HT_GPIOA->PTUP  = 0x253F;
     HT_GPIOA->PTDIR = 0x2017;
@@ -1018,7 +1033,7 @@ extern void Init_MCU_ExternalPowerState(void)
     HT_TBS->TBSPRD  = 0x0004;                       //HT601x温度测量周期=8s
 
     /* Cotex-M0内核系统定时器初始化 */
-    Stop_SysTick();                                 //关闭系统定时器
+    Init_SysTick();                                 //初始化系统定时器
 
 }
 
@@ -1053,14 +1068,44 @@ extern Bool Get_MeterWorkState(void)
     return (b_MeterWorkState);
 }
 
-
+/** 
+ * @brief   设置表计工作状态
+ * @note   
+ * @param  state: TRUE：上电状态；FLASE：掉电状态
+ * @retval None
+ */
+extern void Set_MeterWorkState(Bool state)
+{
+    b_MeterWorkState = state;
+}
 /** 
  * @brief  获取RTC补偿校准状态
  * @note   
  * @retval 
  */
-extern Bool Get_b_RTCCalibrationState(void)
+extern Bool Get_RTCCalibrationState(void)
 {
     return (b_RTCCalibrationState);
+}
+/** 
+ * @brief   设置RTC补偿校准状态
+ * @note   
+ * @param  state: TRUE：已经校准状态；FLASE：未校准状态
+ * @retval None
+ */
+extern void Set_RTCCalibrationState(Bool state)
+{
+    b_RTCCalibrationState = state;
+}
+
+/** 
+ * @brief  上电状态检测MCU寄存器值函数
+ * @note   定时运行，确保寄存器值正确
+ * @retval None
+ */
+extern void Maintain_MCU(void)
+{
+
+
 }
 /*end-------------------------------------------------------------------------*/

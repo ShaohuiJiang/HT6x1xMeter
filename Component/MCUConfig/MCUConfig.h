@@ -35,6 +35,7 @@ extern void DisWr_WPREG(void);                      //HT6XXX芯片中开启写�
 extern void Goto_Sleep(void);                       //进入休眠模式
 extern void Goto_Hold(void);                        //进入保持模式
 extern void Feed_WDT(void);                         //清看门狗
+extern void WDTReset_MCU(void);                     //等待硬件看门狗复位函数
 extern void Init_SysTick(void);                     //初始化系统定时器
 extern void Run_SysTick(void);                      //运行系统定时器运行
 extern void Stop_SysTick(void);                     //停止系统定时器
@@ -70,7 +71,10 @@ extern void Init_MCU_ExternalPowerState(void);      //MCU外部电源工作状�
 extern void Init_MCU_HoldState(void);               //MCU进入Hold模式状态前初始化
 
 extern Bool Get_MeterWorkState(void);               //获取电表工作状态
-extern Bool Get_b_RTCCalibrationState(void);        //获取RTC补偿校准状态
+extern void Set_MeterWorkState(Bool state);         //设置表计工作状态
+extern Bool Get_TCCalibrationState(void);           //获取RTC补偿校准状态
+extern void Set_RTCCalibrationState(Bool state);    //设置RTC补偿校准状态
 
+extern void Maintain_MCU(void);                          //表计上电状态维护函数
 #endif
 /*end------------------------------------------------------------------------*/
