@@ -17,12 +17,13 @@
 
 /*头文件----------------------------------------------------------------------*/
 ///添加头文件
-
+#include "ht6xxx.h"
 
 
 
 /*宏定义----------------------------------------------------------------------*/
 ///添加宏定义
+#define C_TaskTick      64             //任务定时节拍频率（64Hz）
 //任务ID定义（无优先级概念）
 typedef	enum
 {
@@ -98,8 +99,9 @@ typedef unsigned char   MSG;            //将消息这种数据格式定为一�
 extern void Init_Message(void);                     //初始化消息系统
 extern void Stop_Message(void);                     //停止消息系统
 extern void Post_Message(ID_TASK idTask, MSG msg);  //发送消息
-MSG Accept_Message(ID_TASK idTask);                 //获取消息
-#define Is_Message(x,y) ((x&y) != MSG_Null)
+extern MSG Accept_Message(ID_TASK idTask);          //获取消息
+extern Bool Is_Message(MSG x,MSG y);                //确认消息类型
 
+extern void Task_Systick(void);                     //任务系统节拍定时器中断
 #endif
 /*end------------------------------------------------------------------------*/

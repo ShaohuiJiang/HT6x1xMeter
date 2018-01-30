@@ -75,6 +75,6 @@ extern void Set_MeterWorkState(Bool state);         //设置表计工作状态
 extern Bool Get_TCCalibrationState(void);           //获取RTC补偿校准状态
 extern void Set_RTCCalibrationState(Bool state);    //设置RTC补偿校准状态
 
-extern void Maintain_MCU(void);                          //表计上电状态维护函数
+extern void Maintain_MCU(void);                     //表计上电状态维护函数
 #endif
 /*end------------------------------------------------------------------------*/

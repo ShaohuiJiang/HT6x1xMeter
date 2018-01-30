@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "ht6xxx_lib.h": "c",
-        "mcuconfig.h": "c"
+        "mcuconfig.h": "c",
+        "ht6xxx.h": "c",
+        "general.h": "c"
     }
 }
