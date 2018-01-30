@@ -27,7 +27,7 @@
 typedef	enum
 {
     ID_TaskDisplay,     //显示任务      (消息 MSG_SecStep/MSG_DispKey/MSG_DispWake/MSG_FrameIn/MSG_FrameOut/MSG_DispKey)
-    ID_TaskRecord,      //记录任务      (消息 MSG_SecStep/MSG_MinStep)
+    ID_TaskRecord,      //记录任务      (消息 MSG_SecStep/MSG_MinStep)//该记录任务只能记录不需要发生瞬间立即执行的记录
     ID_TaskTime,        //时钟任务      (消息 MSG_SecStep)
     ID_TaskMetering,    //计量任务      (消息 MSG_SecStep)
     ID_TaskComm,        //通信任务      (消息 MSG_SecStep)
@@ -43,6 +43,8 @@ typedef	enum
 
 typedef unsigned char   MSG;            //将消息这种数据格式定为一个字节
 
+/* 对于消息值的定义，是按bit位来定义的，所以不能出现0x03、0x05、0x07等这种多bit位置1的值 */
+/* 只有一个bit位代表一种消息的好处，是可以让一个任务的多个消息同时存在，目前的缺点是由于是一个字节，除去定时节拍消息，一个任务只剩余6个消息 */
 /*定时节拍消息*/
 #define MSG_Null        (MSG)0x00      //空消息
 #define MSG_SecStep     (MSG)0x01      //秒节拍消息 （显示,记录,实时时钟,计量,拉合闸任务用）
