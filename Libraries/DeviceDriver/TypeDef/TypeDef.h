@@ -1,5 +1,5 @@
 /*******************************************************************************
-* @file      : TYPEDEF.h
+* @file      : TypeDef.h
 * @author    : Jiangshaohui
 * @version   : V1.0.0
 * @date      : Sat Feb 03 2018

@@ -13,7 +13,7 @@
 ///添加头文件
 #include <stdio.h>
 #include "ht6xxx_lib.h"
-#include "MCUCONFIG.h"
+#include "MCUConfig.h"
 //#include "TaskSystem.h"
 
 /*宏定义----------------------------------------------------------------------*/
