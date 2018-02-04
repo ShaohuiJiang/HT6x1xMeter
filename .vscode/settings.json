@@ -4,6 +4,8 @@
         "mcuconfig.h": "c",
         "ht6xxx.h": "c",
         "general.h": "c",
-        "typedef.h": "c"
-    }
+        "typedef.h": "c",
+        "powercheck.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

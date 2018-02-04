@@ -50,7 +50,8 @@
                 "${workspaceRoot}/Libraries/CMSIS/CM0/DeviceSupport",
                 "${workspaceRoot}/Libraries/Device_Driver/TYPEDEF",
                 "${workspaceRoot}/Libraries/Device_Driver/MCU",
-                "${workspaceRoot}/Component/General"
+                "${workspaceRoot}/Component/General",
+                "${workspaceRoot}/Libraries/DeviceDriver/TypeDef"
             ],
             "defines": [
                 "_DEBUG",

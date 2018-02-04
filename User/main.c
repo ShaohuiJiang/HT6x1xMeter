@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include "ht6xxx_lib.h"
 #include "MCUConfig.h"
+#include "PowerCheck.h"
 //#include "TaskSystem.h"
 
 /*宏定义----------------------------------------------------------------------*/
@@ -62,11 +63,10 @@ int main(void)
     Disable_Int();
     /* 低功耗状态初始化 */
     Init_MCU_BatteryState();
-
     while (1)       //大的死循环，除非复位，不然程序永远在里面运行
     {
         /* 判断外部电源，根据电源状态，进入相应循环 ，注意如果采用该模式，低功耗模式采用hold模式*/
-       // if(TRUE==Check_PowerOn(100))        //判断外部电源状态是有电状态
+        if(TRUE==Check_Power(100))        //判断外部电源状态是有电状态
         {
             /*外部电源供电状态初始化*/
             Init_MCU_ExternalPowerState();
@@ -88,7 +88,7 @@ int main(void)
                 //~~~~~
             }
         }
-       // else                                //判断到外部电源状态是无电状态
+        else                                //判断到外部电源状态是无电状态
         {
             /* 低功耗状态初始化 */
             Init_MCU_BatteryState();

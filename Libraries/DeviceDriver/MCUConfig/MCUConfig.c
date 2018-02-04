@@ -735,7 +735,6 @@ extern void Write_InfoData(signed short adj)
 extern void Init_MCU_BatteryState(void)
 {
     Feed_WDT();                     //清看门狗
-  //  b_MeterWorkState = FALSE;       //默认电表出于掉电状态
     SwitchTo_Fhrc();                //切换到3.5MHz
 
     /* MCU的存储器模块初始化 */
@@ -877,7 +876,6 @@ extern void Init_MCU_BatteryState(void)
 extern void Init_MCU_ExternalPowerState(void)
 {
     Feed_WDT();                     //清看门狗
-    //b_MeterWorkState = TRUE;        //表工作状态标志位改成上电状态
     SwitchTo_Fpll();                //切换到Fsys=22MHz，Fcpu=11MHz
 
     /* MCU的存储器模块初始化 */
@@ -1020,7 +1018,6 @@ extern void Init_MCU_ExternalPowerState(void)
 extern void Init_MCU_HoldState(void)
 {
     Feed_WDT();                      //清看门狗
-    //b_MeterWorkState = FALSE;        //表工作状态标志位赋值为掉电状态
     EnWr_WPREG();
     HT_CMU->CLKCTRL0 &= ~0xD3BD;     //确保BIT0、BIT2、BIT3、BIT4、BIT5、BIT7、BIT8、BIT9、BIT12、BIT14、BIT15都关闭
     DisWr_WPREG();
@@ -1067,18 +1064,18 @@ extern void Maintain_MCU(void)
  * @note   
  * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
-/*
-extern LEVEL Check_PowerOnPinLevelStatus(void)
+
+extern LEVEL Get_PowerOnPinLevelStatus(void)
 {
     if(((HT_GPIOE->IOCFG & BIT7) == BIT7)         //PE7没有配置为GPIO
      ||((HT_GPIOE->PTUP  & BIT7) != BIT7)         //或者PE7没有配置浮空
      ||((HT_GPIOE->PTDIR & BIT7) == BIT7))        //或者PE7没有配置成输入
     {
         EnWr_WPREG();
-        HT_GPIOE->IOCFG & = ~ BIT7;             //配置为GPIO
+        HT_GPIOE->IOCFG &= ~BIT7;             //配置为GPIO
         DisWr_WPREG();
-        HT_GPIOE->PTUP  | =   BIT7;             //浮空
-        HT_GPIOE->PTDIR & = ~ BIT7;             //输入脚
+        HT_GPIOE->PTUP  |=  BIT7;             //浮空
+        HT_GPIOE->PTDIR &= ~BIT7;             //输入脚
     
     }
 
@@ -1089,24 +1086,24 @@ extern LEVEL Check_PowerOnPinLevelStatus(void)
     return HIGHLEVEL;
 }
 
-*/
+
 /** 
  * @brief  检测超级权限管脚状态 
  * @note   
  * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
-/*
-extern LEVEL Check_SuperAuthorityPinLevelStatus(void)
+
+extern LEVEL Get_SuperAuthorityPinLevelStatus(void)
 {
     if(((HT_GPIOA->IOCFG & BIT11) == BIT11)         //PA11没有配置为GPIO
      ||((HT_GPIOA->PTUP  & BIT11) == BIT11)         //或者PA11没有配置上拉
      ||((HT_GPIOA->PTDIR & BIT11) == BIT11))        //或者PA11没有配置成输入
     {
         EnWr_WPREG();
-        HT_GPIOA->IOCFG & = ~ BIT11;       //配置为GPIO
+        HT_GPIOA->IOCFG &= ~BIT11;       //配置为GPIO
         DisWr_WPREG();
-        HT_GPIOA->PTUP  & = ~ BIT11;       //上拉
-        HT_GPIOA->PTDIR & = ~ BIT11;       //输入脚
+        HT_GPIOA->PTUP  &= ~BIT11;       //上拉
+        HT_GPIOA->PTDIR &= ~BIT11;       //输入脚
     }
 
     if(BIT11 == (HT_GPIOA->PTDAT & BIT11) )        //检测到PA11为高
@@ -1115,24 +1112,24 @@ extern LEVEL Check_SuperAuthorityPinLevelStatus(void)
     } 
     return LOWLEVEL;
 }
-*/
+
 /** 
  * @brief  检测按键管脚状态 
  * @note   
  * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
-/*
-extern LEVEL Check_DisplayKeyPinLevelStatus(void)
+
+extern LEVEL Get_DisplayKeyPinLevelStatus(void)
 {
     if(((HT_GPIOA->IOCFG & BIT10) == BIT10)         //PA10没有配置为GPIO
      ||((HT_GPIOA->PTUP  & BIT10) == BIT10)         //或者PA10没有配置上拉
      ||((HT_GPIOA->PTDIR & BIT10) == BIT10))        //或者PA10没有配置成输入
     {
         EnWr_WPREG();
-        HT_GPIOA->IOCFG & = ~ BIT10;       //配置为GPIO
+        HT_GPIOA->IOCFG &= ~BIT10;       //配置为GPIO
         DisWr_WPREG();
-        HT_GPIOA->PTUP  & = ~ BIT10;       //上拉
-        HT_GPIOA->PTDIR & = ~ BIT10;       //输入脚
+        HT_GPIOA->PTUP  &= ~BIT10;       //上拉
+        HT_GPIOA->PTDIR &= ~BIT10;       //输入脚
     }
 
     if(BIT10 == (HT_GPIOA->PTDAT & BIT10) )        //检测到PA11为高
@@ -1142,50 +1139,50 @@ extern LEVEL Check_DisplayKeyPinLevelStatus(void)
 
     return LOWLEVEL;
 }
-*/
+
 /** 
  * @brief  检测插卡管脚状态 
  * @note   
  * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
-/*
-extern LEVEL Check_CPUCardPinLevelStatus(void)
+
+extern LEVEL Get_CPUCardPinLevelStatus(void)
 {
         //具体代码暂缺
         return HIGHLEVEL;
 }
-*/
+
 /** 
  * @brief  检测继电器状态检测管脚状态
  * @note   
  * @retval  LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
-/*
-extern LEVEL Check_RelayPinLevelStatus(void)
+
+extern LEVEL Get_RelayPinLevelStatus(void)
 {
         //具体代码暂缺
         return HIGHLEVEL;
 }
-*/
+
 /** 
  * @brief  检测PLC通信状态检测管脚状态
  * @note   
  * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
-/*
-extern LEVEL Check_PLCStaPinLevelStatus(void)
+
+extern LEVEL Get_PLCStaPinLevelStatus(void)
 {
         //具体代码暂缺
         return HIGHLEVEL;
 }
-*/
+
 /** 
  * @brief  设置跳闸灯管脚的输出电平
  * @note   
  * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
  * @retval None
  */
-/*
+
 extern void Set_RelayLedPin(LEVEL level)
 {
     switch(level)
@@ -1214,7 +1211,7 @@ extern void Set_RelayLedPin(LEVEL level)
         HT_GPIOA->PTDIR |= BIT8;                    //输出
     }
 }
-*/
+
 /** 
  * @brief  设置PLC事件报警管脚的输出电平
  * @note   
@@ -1274,12 +1271,12 @@ extern void Set_BackLedPin(LEVEL level)
  * @note   
  * @retval  LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
-/*
-extern LEVEL Check_CoverKeyPinLevelStatus(void)
+
+extern LEVEL Get_CoverKeyPinLevelStatus(void)
 {
     //具体代码暂缺
 }
-*/
+
 /** 
  * @brief  设置SDA管脚的输出电平
  * @note   
