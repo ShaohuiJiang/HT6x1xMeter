@@ -47,7 +47,10 @@
             "includePath": [
                 "${workspaceRoot}",
                 "${workspaceRoot}/Libraries/HT60xx_StdPeriph_Driver",
-                "${workspaceRoot}/Libraries/CMSIS/CM0/DeviceSupport"
+                "${workspaceRoot}/Libraries/CMSIS/CM0/DeviceSupport",
+                "${workspaceRoot}/Libraries/Device_Driver/TYPEDEF",
+                "${workspaceRoot}/Libraries/Device_Driver/MCU",
+                "${workspaceRoot}/Component/General"
             ],
             "defines": [
                 "_DEBUG",

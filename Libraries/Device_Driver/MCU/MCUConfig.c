@@ -6,25 +6,27 @@
 * @brief     : 
 ********************************************************************************
 * @attention :
-*
+*     该文件主要是封装MCU的寄存器，让Device_Driver文件夹下除Message组件外的其他驱动
+* 组件不需要再去直接调用寄存器，便于以后移植平台时减少工作量。
+* 
 *
 */
 /*头文件----------------------------------------------------------------------*/
 ///添加头文件
 #include "MCUConfig.h"
 #include "General.h"
+#include "TypeDef.h"
 
 /*宏定义----------------------------------------------------------------------*/
 ///添加宏定义
-#define	C_TaskTick      64u                             //任务定时节拍频率（64Hz）
+#define	C_TaskTick      64                             //任务定时节拍频率（64Hz）
 #define	C_SysTickLoad   ((11010048 / C_TaskTick) - 1)   //系统节拍周期
 
 
 
 /*内部变量声明----------------------------------------------------------------*/
 ///添加内部变量
-static Bool b_MeterWorkState;        //表工作状态标志位， TRUE：上电状态；  FALSE：掉电状态
-static Bool b_RTCCalibrationState;   //RTC补偿校准状态标志位，TRUE：已补偿校准状态；FALSE：未补偿校准状态
+static BOOL b_RTCCalibrationState;   //RTC补偿校准状态标志位，TRUE：已补偿校准状态；FALSE：未补偿校准状态
 
 
 /*声明内部函数----------------------------------------------------------------*/
@@ -394,7 +396,7 @@ extern void Close_UART1(void)
  * @retval TRUE:    接收端处于开启状态
  *         FALSE：  接收端处于关闭状态
  */
-extern Bool IsRxing_UART1(void)
+extern BOOL IsRxing_UART1(void)
 {
     NVIC_EnableIRQ(UART1_IRQn);                 //使能串口中断
     return (((HT_UART1->MODESEL==0x0000) && (HT_UART1->UARTCON==0x005A))? TRUE: FALSE);
@@ -462,7 +464,7 @@ extern void Close_UART2(void)
  * @retval TRUE:    接收端处于开启状态
  *         FALSE：  接收端处于关闭状态
  */
-extern Bool IsRxing_UART2(void)
+extern BOOL IsRxing_UART2(void)
 {
     NVIC_EnableIRQ(UART2_IRQn);                 //使能串口中断
     return (((HT_UART2->MODESEL==0x0000) && (HT_UART2->UARTCON==0x005A))? TRUE: FALSE);
@@ -609,32 +611,7 @@ extern signed short ADC_TempVolt(void)
 }
 
 
-/** 
- * @brief  测试外部电源
- * @note   上电检测，比较VCC电压4.6V
- * @param  times: 比较次数
- * @retval TRUE： 电压正常
- *         FALSE: 电压异常
- */
-extern Bool Check_PowerOn(unsigned long times)
-{
-    NVIC_DisableIRQ(PMU_IRQn);                  //禁止PMU中断
-    HT_PMU->PMUIE   = 0x0000;                   //禁止PMU中断
-    HT_PMU->VDETCFG = 0x006D;                   //比较VCC电压4.6V
-    EnWr_WPREG();
-    HT_PMU->PMUCON  = 0x0003;                   //关闭LVD_DET,开启BOR_DET,BOR复位模式
-    DisWr_WPREG();
-    times <<= 5;
-    for (; times>0; times--)
-    {
-        Delay_mSec(1);                          //延时1ms
-        if (0x0001 != (HT_PMU->PMUSTA & 0x0001))
-        {
-            break;
-        }
-    }
-    return ((times==0)? TRUE:FALSE);
-}
+
 
 /** 
  * @brief  开启LCD显示模块
@@ -1055,27 +1032,6 @@ extern void Init_MCU_HoldState(void)
 }
 
 /** 
- * @brief  获取电表工作状态
- * @note   
- * @retval TRUE：  上电状态
- *         FALSE:  下电状态
- */
-extern Bool Get_MeterWorkState(void)
-{
-    return (b_MeterWorkState);
-}
-
-/** 
- * @brief   设置表计工作状态
- * @note   
- * @param  state: TRUE：上电状态；FLASE：掉电状态
- * @retval None
- */
-extern void Set_MeterWorkState(Bool state)
-{
-    b_MeterWorkState = state;
-}
-/** 
  * @brief  获取RTC补偿校准状态
  * @note   
  * @retval 
@@ -1105,4 +1061,96 @@ extern void Maintain_MCU(void)
 
 
 }
+
+/** 
+ * @brief  检测外部电源状态
+ * @note   
+ * @param  times: 检测次数
+ * @retval TRUE 有电; FALSE 没电
+ */
+extern BOOL Check_PowerOn(unsigned long times)
+{
+    u16 i;
+    if(((HT_GPIOE->IOCFG & BIT7) == BIT7)         //PE7没有配置为GPIO
+     ||((HT_GPIOE->PTUP  & BIT7) != BIT7)         //或者PE7没有配置浮空
+     ||((HT_GPIOE->PTDIR & BIT7) == BIT7))        //或者PE7没有配置成输入
+    {
+        EnWr_WPREG();
+        HT_GPIOE->IOCFG & = ~ BIT7;             //配置为GPIO
+        DisWr_WPREG();
+        HT_GPIOE->PTUP  | =   BIT7;             //浮空
+        HT_GPIOE->PTDIR & = ~ BIT7;             //输入脚
+    
+    }
+    for(i=0;i<times;i++)
+    {
+       if(BIT7 != (HT_GPIOE->PTDAT & BIT7) )        //检测到PE7为低
+       {
+           return FALSE;
+       } 
+        Delay_mSec(10);
+    }
+
+    return TRUE;
+}
+
+
+/** 
+ * @brief  检测超级权限状态
+ * @note   
+ * @retval TRUE 超级权限打开状态; FALSE 超级权限关闭状态
+ */
+extern BOOL Check_SuperAuthority(void)
+{
+    u8 i;
+
+    if(((HT_GPIOA->IOCFG & BIT11) == BIT11)         //PA11没有配置为GPIO
+     ||((HT_GPIOA->PTUP  & BIT11) == BIT11)         //或者PA11没有配置上拉
+     ||((HT_GPIOA->PTDIR & BIT11) == BIT11))        //或者PA11没有配置成输入
+    {
+        EnWr_WPREG();
+        HT_GPIOA->IOCFG & = ~ BIT11;       //配置为GPIO
+        DisWr_WPREG();
+        HT_GPIOA->PTUP  & = ~ BIT11;       //上拉
+        HT_GPIOA->PTDIR & = ~ BIT11;       //输入脚
+    }
+    for(i=0;i<5)
+    {
+        if(BIT11 == (HT_GPIOA->PTDAT & BIT11) )        //检测到PA11为高
+        {
+           return FALSE;
+        } 
+        Delay(10);
+    }
+    return TRUE;
+}
+
+/** 
+ * @brief  检测按键状态
+ * @note   这个只是判断瞬时的按键状态，不能作为按键按下的依据
+ * @retval TRUE 疑似按下状态；FALSE 弹起状态
+ */
+extern BOOL Check_DisplayKeyStatus(void)
+{
+    if(((HT_GPIOA->IOCFG & BIT10) == BIT10)         //PA10没有配置为GPIO
+     ||((HT_GPIOA->PTUP  & BIT10) == BIT10)         //或者PA10没有配置上拉
+     ||((HT_GPIOA->PTDIR & BIT10) == BIT10))        //或者PA10没有配置成输入
+    {
+        EnWr_WPREG();
+        HT_GPIOA->IOCFG & = ~ BIT10;       //配置为GPIO
+        DisWr_WPREG();
+        HT_GPIOA->PTUP  & = ~ BIT10;       //上拉
+        HT_GPIOA->PTDIR & = ~ BIT10;       //输入脚
+    }
+
+    if(BIT10 == (HT_GPIOA->PTDAT & BIT10) )        //检测到PA11为高
+    {
+        return FALSE;
+    }
+    else
+    {
+        return TRUE;
+    }
+}
+
 /*end-------------------------------------------------------------------------*/
