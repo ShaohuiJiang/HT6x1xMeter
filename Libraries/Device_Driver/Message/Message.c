@@ -12,7 +12,7 @@
 /*头文件----------------------------------------------------------------------*/
 ///添加头文件
 #include "Message.h"
-
+#include "TypeDef.h"
 
 
 /*宏定义----------------------------------------------------------------------*/
@@ -23,9 +23,9 @@
 
 /*内部变量声明----------------------------------------------------------------*/
 ///添加内部变量
-static volatile MSG u8_Message[ID_TaskNum];              //任务控制块（任务消息）
-static volatile unsigned char   u8_TaskTick;             //任务级节拍定时器
-
+static volatile MSG u8_Message[ID_TaskNum];   //任务控制块（任务消息）
+static volatile u8  u8_TaskTick;              //任务级节拍定时器
+static volatile u8  u8_DeviceDriverTick;      //任务级节拍定时器
 
 
 /*声明内部函数----------------------------------------------------------------*/
@@ -109,7 +109,7 @@ extern MSG Accept_Message(ID_TASK idTask)
  * @param  y: 比对用的消息
  * @retval 
  */
-extern Bool Is_Message(MSG x,MSG y)
+extern BOOL Is_Message(MSG x,MSG y)
 {
    if((x&y) != MSG_Null)
    {
@@ -163,6 +163,7 @@ extern void Task_Systick(void)
         default:
         break;
     }
+    
     //中断定时任务检测----------------------------------------------------------
     //INT_DispKey();                  //显示按键检测
     //INT_ChkComGap();                //计量通讯间隔定时器

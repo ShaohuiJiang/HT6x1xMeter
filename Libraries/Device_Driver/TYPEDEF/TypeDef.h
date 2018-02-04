@@ -32,6 +32,11 @@ typedef signed short            s16;
 typedef signed long             s32;
 typedef signed long long        s64;
 
+typedef void        (*V_FUN_V)(void);
+typedef void        (*V_FUN_U8)(u8);
+typedef LEVEL       (*LEVEL_FUN_V)(void);
+
+
 typedef	enum
 {
     FALSE = (u8)0x55,         //逻辑假
@@ -44,6 +49,7 @@ typedef	enum
     LOWLEVEL   = (u8)0x55,    //低电平
     HIGHLEVEL  = (u8)0xAA,    //高电平
 }LEVEL;                       //电平
+
 
 
 
