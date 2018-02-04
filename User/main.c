@@ -13,8 +13,8 @@
 ///添加头文件
 #include <stdio.h>
 #include "ht6xxx_lib.h"
-#include "MCUConfig.h"
-#include "TaskSystem.h"
+#include "MCUCONFIG.h"
+//#include "TaskSystem.h"
 
 /*宏定义----------------------------------------------------------------------*/
 ///添加宏定义
@@ -66,29 +66,29 @@ int main(void)
     while (1)       //大的死循环，除非复位，不然程序永远在里面运行
     {
         /* 判断外部电源，根据电源状态，进入相应循环 ，注意如果采用该模式，低功耗模式采用hold模式*/
-        if(TRUE==Check_PowerOn(100))        //判断外部电源状态是有电状态
+       // if(TRUE==Check_PowerOn(100))        //判断外部电源状态是有电状态
         {
             /*外部电源供电状态初始化*/
             Init_MCU_ExternalPowerState();
             /* 初始化系统任务 */
-            Init_TaskSystem();
+            //Init_TaskSystem();
             /* 进入上电状态循环前，打开全局中断 */
             Enable_Int();
 
             while(1)                        //上电状态循环
             {
-                Run_TaskSystem();           //系统任务，主要是判断外部电源，假如外部电源为0，就结束各种任务
+               // Run_TaskSystem();           //系统任务，主要是判断外部电源，假如外部电源为0，就结束各种任务
                 //添加各种任务1
                 Feed_WDT();                 //清看门狗
                 //~~~~~
 
-                Run_TaskSystem();           //系统任务，主要是判断外部电源，假如外部电源为0，就结束各种任务
+              //  Run_TaskSystem();           //系统任务，主要是判断外部电源，假如外部电源为0，就结束各种任务
                 //添加各种任务x
                 Feed_WDT();                 //清看门狗
                 //~~~~~
             }
         }
-        else                                //判断到外部电源状态是无电状态
+       // else                                //判断到外部电源状态是无电状态
         {
             /* 低功耗状态初始化 */
             Init_MCU_BatteryState();

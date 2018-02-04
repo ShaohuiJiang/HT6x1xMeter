@@ -26,7 +26,7 @@
 
 /*内部变量声明----------------------------------------------------------------*/
 ///添加内部变量
-static BOOL b_RTCCalibrationState;   //RTC补偿校准状态标志位，TRUE：已补偿校准状态；FALSE：未补偿校准状态
+static Bool b_RTCCalibrationState;   //RTC补偿校准状态标志位，TRUE：已补偿校准状态；FALSE：未补偿校准状态
 
 
 /*声明内部函数----------------------------------------------------------------*/
@@ -396,7 +396,7 @@ extern void Close_UART1(void)
  * @retval TRUE:    接收端处于开启状态
  *         FALSE：  接收端处于关闭状态
  */
-extern BOOL IsRxing_UART1(void)
+extern Bool IsRxing_UART1(void)
 {
     NVIC_EnableIRQ(UART1_IRQn);                 //使能串口中断
     return (((HT_UART1->MODESEL==0x0000) && (HT_UART1->UARTCON==0x005A))? TRUE: FALSE);
@@ -464,7 +464,7 @@ extern void Close_UART2(void)
  * @retval TRUE:    接收端处于开启状态
  *         FALSE：  接收端处于关闭状态
  */
-extern BOOL IsRxing_UART2(void)
+extern Bool IsRxing_UART2(void)
 {
     NVIC_EnableIRQ(UART2_IRQn);                 //使能串口中断
     return (((HT_UART2->MODESEL==0x0000) && (HT_UART2->UARTCON==0x005A))? TRUE: FALSE);
@@ -735,7 +735,7 @@ extern void Write_InfoData(signed short adj)
 extern void Init_MCU_BatteryState(void)
 {
     Feed_WDT();                     //清看门狗
-    b_MeterWorkState = FALSE;       //默认电表出于掉电状态
+  //  b_MeterWorkState = FALSE;       //默认电表出于掉电状态
     SwitchTo_Fhrc();                //切换到3.5MHz
 
     /* MCU的存储器模块初始化 */
@@ -877,7 +877,7 @@ extern void Init_MCU_BatteryState(void)
 extern void Init_MCU_ExternalPowerState(void)
 {
     Feed_WDT();                     //清看门狗
-    b_MeterWorkState = TRUE;        //表工作状态标志位改成上电状态
+    //b_MeterWorkState = TRUE;        //表工作状态标志位改成上电状态
     SwitchTo_Fpll();                //切换到Fsys=22MHz，Fcpu=11MHz
 
     /* MCU的存储器模块初始化 */
@@ -1020,7 +1020,7 @@ extern void Init_MCU_ExternalPowerState(void)
 extern void Init_MCU_HoldState(void)
 {
     Feed_WDT();                      //清看门狗
-    b_MeterWorkState = FALSE;        //表工作状态标志位赋值为掉电状态
+    //b_MeterWorkState = FALSE;        //表工作状态标志位赋值为掉电状态
     EnWr_WPREG();
     HT_CMU->CLKCTRL0 &= ~0xD3BD;     //确保BIT0、BIT2、BIT3、BIT4、BIT5、BIT7、BIT8、BIT9、BIT12、BIT14、BIT15都关闭
     DisWr_WPREG();
@@ -1067,6 +1067,7 @@ extern void Maintain_MCU(void)
  * @note   
  * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
+/*
 extern LEVEL Check_PowerOnPinLevelStatus(void)
 {
     if(((HT_GPIOE->IOCFG & BIT7) == BIT7)         //PE7没有配置为GPIO
@@ -1088,12 +1089,13 @@ extern LEVEL Check_PowerOnPinLevelStatus(void)
     return HIGHLEVEL;
 }
 
-
+*/
 /** 
  * @brief  检测超级权限管脚状态 
  * @note   
  * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
+/*
 extern LEVEL Check_SuperAuthorityPinLevelStatus(void)
 {
     if(((HT_GPIOA->IOCFG & BIT11) == BIT11)         //PA11没有配置为GPIO
@@ -1113,12 +1115,13 @@ extern LEVEL Check_SuperAuthorityPinLevelStatus(void)
     } 
     return LOWLEVEL;
 }
-
+*/
 /** 
  * @brief  检测按键管脚状态 
  * @note   
  * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
+/*
 extern LEVEL Check_DisplayKeyPinLevelStatus(void)
 {
     if(((HT_GPIOA->IOCFG & BIT10) == BIT10)         //PA10没有配置为GPIO
@@ -1139,44 +1142,50 @@ extern LEVEL Check_DisplayKeyPinLevelStatus(void)
 
     return LOWLEVEL;
 }
-
+*/
 /** 
  * @brief  检测插卡管脚状态 
  * @note   
  * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
+/*
 extern LEVEL Check_CPUCardPinLevelStatus(void)
 {
         //具体代码暂缺
         return HIGHLEVEL;
 }
+*/
 /** 
  * @brief  检测继电器状态检测管脚状态
  * @note   
  * @retval  LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
+/*
 extern LEVEL Check_RelayPinLevelStatus(void)
 {
         //具体代码暂缺
         return HIGHLEVEL;
 }
-
+*/
 /** 
  * @brief  检测PLC通信状态检测管脚状态
  * @note   
  * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
+/*
 extern LEVEL Check_PLCStaPinLevelStatus(void)
 {
         //具体代码暂缺
         return HIGHLEVEL;
 }
+*/
 /** 
  * @brief  设置跳闸灯管脚的输出电平
  * @note   
  * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
  * @retval None
  */
+/*
 extern void Set_RelayLedPin(LEVEL level)
 {
     switch(level)
@@ -1205,12 +1214,14 @@ extern void Set_RelayLedPin(LEVEL level)
         HT_GPIOA->PTDIR |= BIT8;                    //输出
     }
 }
+*/
 /** 
  * @brief  设置PLC事件报警管脚的输出电平
  * @note   
  * @param  level: LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，PLC事件接口这里是要开漏输出高)
  * @retval None
  */
+
 extern void Set_PLCEventPin(LEVEL level)
 {
     //具体代码暂缺
@@ -1263,10 +1274,12 @@ extern void Set_BackLedPin(LEVEL level)
  * @note   
  * @retval  LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
+/*
 extern LEVEL Check_CoverKeyPinLevelStatus(void)
 {
     //具体代码暂缺
 }
+*/
 /** 
  * @brief  设置SDA管脚的输出电平
  * @note   

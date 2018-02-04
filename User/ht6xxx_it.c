@@ -19,7 +19,6 @@
 
 #include "ht6xxx_lib.h"
 #include "ht6xxx_it.h"
-#include "Message.h"
 /*
 *********************************************************************************************************
 *                                            本地宏/结构体
@@ -828,6 +827,6 @@ void DMA_IRQHandler(void)
 
 void SysTick_Handler(void)
 {
-    Task_Systick();
+  //  Task_Systick();
 }
 
