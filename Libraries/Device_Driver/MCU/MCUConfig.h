@@ -91,12 +91,22 @@ extern void Init_MCU_HoldState(void);               //MCU进入Hold模式状态�
 
 
 /* MCU 的GPIO（功能脚除外） 连接的外部器件操作或者电平状态查询 从引脚序号1~~~~依次排列*/
-extern LEVEL Check_PowerOnPinLevelStatus(void);                   //检测外部电源管脚状态 LOWLEVEL 低电平;HighLEVEL 高电平
-extern LEVEL Check_SuperAuthorityPinLevelStatus(void);            //检测超级权限管脚状态 LOWLEVEL 低电平;HighLEVEL 高电平
-extern LEVEL Check_DisplayKeyPinLevelStatus(void);                //检测按键管脚状态 LOWLEVEL 低电平;HighLEVEL 高电平
-extern LEVEL Check_CPUCardPinLevelStatus(void);                   //检测插卡管脚状态 LOWLEVEL 低电平;HighLEVEL 高电平
-extern LEVEL Check_RelayPinLevelStatus(void);                     //检测继电器状态检测管脚状态 LOWLEVEL 低电平;HighLEVEL 高电平
-extern LEVEL Check_PLCStaPinLevelStatus(void);                    //检测PLC通信状态检测管脚状态 LOWLEVEL 低电平;HighLEVEL 高电平
-extern   Set_RelayLedPin(LEVEL level);                            //设置跳闸灯管脚的输出电平 LOWLEVEL 低电平;HighLEVEL 高电平
+extern LEVEL Check_PowerOnPinLevelStatus(void);                   //检测外部电源管脚状态 LOWLEVEL 低电平;HIGHLEVEL 高电平
+extern LEVEL Check_SuperAuthorityPinLevelStatus(void);            //检测超级权限管脚状态 LOWLEVEL 低电平;HIGHLEVEL 高电平
+extern LEVEL Check_DisplayKeyPinLevelStatus(void);                //检测按键管脚状态 LOWLEVEL 低电平;HIGHLEVEL 高电平
+extern LEVEL Check_CPUCardPinLevelStatus(void);                   //检测插卡管脚状态 LOWLEVEL 低电平;HIGHLEVEL 高电平
+extern LEVEL Check_RelayPinLevelStatus(void);                     //检测继电器状态检测管脚状态 LOWLEVEL 低电平;HIGHLEVEL 高电平
+extern LEVEL Check_PLCStaPinLevelStatus(void);                    //检测PLC通信状态检测管脚状态 LOWLEVEL 低电平;HIGHLEVEL 高电平
+extern void Set_RelayLedPin(LEVEL level);                         //设置跳闸灯管脚的输出电平 LOWLEVEL 低电平;HIGHLEVEL 高电平
+extern void Set_PLCEventPin(LEVEL level);                         //设置PLC事件报警管脚的输出电平 LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，PLC事件接口这里是要开漏输出高)
+extern void Set_PLCResetPin(LEVEL level);                         //设置PLC复位管脚的输出电平 LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，PLC复位接口这里是要开漏输出高)
+extern void Set_RelayOffPin(LEVEL level);                         //设置继电器闭合控制管脚的输出电平 LOWLEVEL 低电平;HIGHLEVEL 高电平
+extern void Set_RelayOnPin(LEVEL level);                          //设置继电器断开控制管脚的输出电平 LOWLEVEL 低电平;HIGHLEVEL 高电平
+extern void Set_BackLedPin(LEVEL level);                          //设置背光灯管脚的输出电平 LOWLEVEL 低电平;HIGHLEVEL 高电平
+extern LEVEL Check_CoverKeyPinLevelStatus(void);                  //检测开盖管脚状态 LOWLEVEL 低电平;HIGHLEVEL 高电平
+extern void Set_SDAPin(LEVEL level);                              //设置SDA管脚的输出电平 LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，这是软件模拟的I2C)
+extern void Set_SCLPin(LEVEL level);                              //设置SCL管脚的输出电平 LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，这是软件模拟的I2C)
+extern void Set_RS485CtrlPin(LEVEL level);                        //设置485发送接收使能管脚的输出电平 LOWLEVEL 低电平;HIGHLEVEL 高电平
+
 #endif
 /*end------------------------------------------------------------------------*/

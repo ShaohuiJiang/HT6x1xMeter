@@ -1063,14 +1063,12 @@ extern void Maintain_MCU(void)
 }
 
 /** 
- * @brief  检测外部电源状态
+ * @brief  检测外部电源管脚状态 
  * @note   
- * @param  times: 检测次数
- * @retval TRUE 有电; FALSE 没电
+ * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
-extern BOOL Check_PowerOn(unsigned long times)
+extern LEVEL Check_PowerOnPinLevelStatus(void)
 {
-    u16 i;
     if(((HT_GPIOE->IOCFG & BIT7) == BIT7)         //PE7没有配置为GPIO
      ||((HT_GPIOE->PTUP  & BIT7) != BIT7)         //或者PE7没有配置浮空
      ||((HT_GPIOE->PTDIR & BIT7) == BIT7))        //或者PE7没有配置成输入
@@ -1082,28 +1080,22 @@ extern BOOL Check_PowerOn(unsigned long times)
         HT_GPIOE->PTDIR & = ~ BIT7;             //输入脚
     
     }
-    for(i=0;i<times;i++)
-    {
-       if(BIT7 != (HT_GPIOE->PTDAT & BIT7) )        //检测到PE7为低
-       {
-           return FALSE;
-       } 
-        Delay_mSec(10);
-    }
 
-    return TRUE;
+    if(BIT7 != (HT_GPIOE->PTDAT & BIT7) )        //检测到PE7为低
+    {
+        return LOWLEVEL;
+    } 
+    return HIGHLEVEL;
 }
 
 
 /** 
- * @brief  检测超级权限状态
+ * @brief  检测超级权限管脚状态 
  * @note   
- * @retval TRUE 超级权限打开状态; FALSE 超级权限关闭状态
+ * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
-extern BOOL Check_SuperAuthority(void)
+extern LEVEL Check_SuperAuthorityPinLevelStatus(void)
 {
-    u8 i;
-
     if(((HT_GPIOA->IOCFG & BIT11) == BIT11)         //PA11没有配置为GPIO
      ||((HT_GPIOA->PTUP  & BIT11) == BIT11)         //或者PA11没有配置上拉
      ||((HT_GPIOA->PTDIR & BIT11) == BIT11))        //或者PA11没有配置成输入
@@ -1114,23 +1106,20 @@ extern BOOL Check_SuperAuthority(void)
         HT_GPIOA->PTUP  & = ~ BIT11;       //上拉
         HT_GPIOA->PTDIR & = ~ BIT11;       //输入脚
     }
-    for(i=0;i<5)
+
+    if(BIT11 == (HT_GPIOA->PTDAT & BIT11) )        //检测到PA11为高
     {
-        if(BIT11 == (HT_GPIOA->PTDAT & BIT11) )        //检测到PA11为高
-        {
-           return FALSE;
-        } 
-        Delay(10);
-    }
-    return TRUE;
+        return HIGHLEVEL;
+    } 
+    return LOWLEVEL;
 }
 
 /** 
- * @brief  检测按键状态
- * @note   这个只是判断瞬时的按键状态，不能作为按键按下的依据
- * @retval TRUE 疑似按下状态；FALSE 弹起状态
+ * @brief  检测按键管脚状态 
+ * @note   
+ * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
  */
-extern BOOL Check_DisplayKeyStatus(void)
+extern LEVEL Check_DisplayKeyPinLevelStatus(void)
 {
     if(((HT_GPIOA->IOCFG & BIT10) == BIT10)         //PA10没有配置为GPIO
      ||((HT_GPIOA->PTUP  & BIT10) == BIT10)         //或者PA10没有配置上拉
@@ -1145,12 +1134,169 @@ extern BOOL Check_DisplayKeyStatus(void)
 
     if(BIT10 == (HT_GPIOA->PTDAT & BIT10) )        //检测到PA11为高
     {
-        return FALSE;
+        return HIGHLEVEL;
     }
-    else
+
+    return LOWLEVEL;
+}
+
+/** 
+ * @brief  检测插卡管脚状态 
+ * @note   
+ * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
+ */
+extern LEVEL Check_CPUCardPinLevelStatus(void)
+{
+        //具体代码暂缺
+        return HIGHLEVEL;
+}
+/** 
+ * @brief  检测继电器状态检测管脚状态
+ * @note   
+ * @retval  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ */
+extern LEVEL Check_RelayPinLevelStatus(void)
+{
+        //具体代码暂缺
+        return HIGHLEVEL;
+}
+
+/** 
+ * @brief  检测PLC通信状态检测管脚状态
+ * @note   
+ * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
+ */
+extern LEVEL Check_PLCStaPinLevelStatus(void)
+{
+        //具体代码暂缺
+        return HIGHLEVEL;
+}
+/** 
+ * @brief  设置跳闸灯管脚的输出电平
+ * @note   
+ * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval None
+ */
+extern void Set_RelayLedPin(LEVEL level)
+{
+    switch(level)
     {
-        return TRUE;
+        case HIGHLEVEL:
+                        HT_GPIOC->PTSET |= BIT8;     //输出高
+            break;
+        
+        case LOWLEVEL:
+                        HT_GPIOC->PTSET &= ~BIT8;     //输出低
+            break;
+        
+        default:
+                        HT_GPIOC->PTSET |= BIT8;     //输出高,即默认输出高
+            break;
     }
+
+    if(((HT_GPIOC->IOCFG & BIT8) == BIT8)         //PC8没有配置为GPIO
+     ||((HT_GPIOC->PTOD  & BIT8) != BIT8)         //或者PC8没有配置成推挽模式
+     ||((HT_GPIOC->PTDIR & BIT8) != BIT8))        //或者PC8没有配置成输出
+    {
+        EnWr_WPREG();
+        HT_GPIOC->IOCFG &= ~ BIT8;                  //配置为GPIO
+        DisWr_WPREG();
+        HT_GPIOC->PTOD  |= BIT8;                    //推挽模式
+        HT_GPIOA->PTDIR |= BIT8;                    //输出
+    }
+}
+/** 
+ * @brief  设置PLC事件报警管脚的输出电平
+ * @note   
+ * @param  level: LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，PLC事件接口这里是要开漏输出高)
+ * @retval None
+ */
+extern void Set_PLCEventPin(LEVEL level)
+{
+    //具体代码暂缺
+}
+
+/** 
+ * @brief  设置PLC复位管脚的输出电平
+ * @note   
+ * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，PLC复位接口这里是要开漏输出高)
+ * @retval None
+ */
+extern void Set_PLCResetPin(LEVEL level)
+{
+    //具体代码暂缺
+}
+/** 
+ * @brief  设置继电器闭合控制管脚的输出电平
+ * @note   
+ * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval None
+ */
+extern void Set_RelayOffPin(LEVEL level)
+{
+    //具体代码暂缺
+}
+
+/** 
+ * @brief  设置继电器断开控制管脚的输出电平
+ * @note   
+ * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval None
+ */
+extern void Set_RelayOnPin(LEVEL level)
+{
+    //具体代码暂缺
+}
+
+/** 
+ * @brief  设置背光灯管脚的输出电平
+ * @note   
+ * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval None
+ */
+extern void Set_BackLedPin(LEVEL level)
+{
+    //具体代码暂缺
+}
+/** 
+ * @brief  检测开盖管脚状态
+ * @note   
+ * @retval  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ */
+extern LEVEL Check_CoverKeyPinLevelStatus(void)
+{
+    //具体代码暂缺
+}
+/** 
+ * @brief  设置SDA管脚的输出电平
+ * @note   
+ * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，这是软件模拟的I2C)
+ * @retval None
+ */
+extern void Set_SDAPin(LEVEL level)
+{
+    //具体代码暂缺
+}
+
+/** 
+ * @brief  //设置SCL管脚的输出电平
+ * @note   
+ * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，这是软件模拟的I2C)
+ * @retval None
+ */
+extern void Set_SCLPin(LEVEL level)
+{
+    //具体代码暂缺
+}
+/** 
+ * @brief  设置485发送接收使能管脚的输出电平
+ * @note   
+ * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval None
+ */
+extern void Set_RS485CtrlPin(LEVEL level)
+{
+    //具体代码暂缺
 }
 
 /*end-------------------------------------------------------------------------*/

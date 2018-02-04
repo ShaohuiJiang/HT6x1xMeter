@@ -46,6 +46,7 @@ typedef	enum
 }LEVEL;                       //电平
 
 
+
 #define DISABLE     0         //禁止
 #define ENABLE      1         //使能
 #define NULL        0         //无效
