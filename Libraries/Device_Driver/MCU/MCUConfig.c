@@ -1,5 +1,5 @@
 /*******************************************************************************
-* @file      : MCUConfig.c
+* @file      : MCUCONFIG.c
 * @author    : Jiangshaohui
 * @version   : V1.0.0
 * @date      : Sun Jan 28 2018
@@ -13,9 +13,9 @@
 */
 /*头文件----------------------------------------------------------------------*/
 ///添加头文件
-#include "MCUConfig.h"
-#include "General.h"
-#include "TypeDef.h"
+#include "MCUCONFIG.h"
+#include "GENERAL.h"
+#include "TYPEDEF.h"
 
 /*宏定义----------------------------------------------------------------------*/
 ///添加宏定义

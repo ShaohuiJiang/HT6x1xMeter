@@ -3,6 +3,7 @@
         "ht6xxx_lib.h": "c",
         "mcuconfig.h": "c",
         "ht6xxx.h": "c",
-        "general.h": "c"
+        "general.h": "c",
+        "typedef.h": "c"
     }
 }

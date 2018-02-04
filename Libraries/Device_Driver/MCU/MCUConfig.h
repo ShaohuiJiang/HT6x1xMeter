@@ -1,5 +1,5 @@
 /*******************************************************************************
-* @file      : MCUConfig.h
+* @file      : MCUCONFIG.h
 * @author    : Jiangshaohui
 * @version   : V1.0.0
 * @date      : Sun Jan 28 2018
@@ -16,7 +16,7 @@
 /*头文件----------------------------------------------------------------------*/
 ///添加头文件
 #include "ht6xxx.h"
-#include "TypeDef.h"
+#include "TYPEDEF.h"
 
 
 

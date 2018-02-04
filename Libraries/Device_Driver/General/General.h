@@ -1,5 +1,5 @@
 /*******************************************************************************
-* @file      : General.h
+* @file      : GENERAL.h
 * @author    : Jiangshaohui
 * @version   : V1.0.0
 * @date      : Sun Jan 21 2018

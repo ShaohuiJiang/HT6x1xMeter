@@ -1,5 +1,5 @@
 /*******************************************************************************
-* @file      : TypeDef.h
+* @file      : TYPEDEF.h
 * @author    : Jiangshaohui
 * @version   : V1.0.0
 * @date      : Sat Feb 03 2018
@@ -32,17 +32,6 @@ typedef signed short            s16;
 typedef signed long             s32;
 typedef signed long long        s64;
 
-typedef void        (*V_FUN_V)(void);
-typedef void        (*V_FUN_U8)(u8);
-typedef LEVEL       (*LEVEL_FUN_V)(void);
-
-
-typedef	enum
-{
-    FALSE = (u8)0x55,         //逻辑假
-    TRUE  = (u8)0xAA,         //逻辑真
-}BOOL;                        //布尔型
-
 
 typedef	enum
 {
@@ -50,12 +39,6 @@ typedef	enum
     HIGHLEVEL  = (u8)0xAA,    //高电平
 }LEVEL;                       //电平
 
-
-
-
-#define DISABLE     0         //禁止
-#define ENABLE      1         //使能
-#define NULL        0         //无效
 
 
 #define BIT0        0x0001
