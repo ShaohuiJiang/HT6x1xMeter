@@ -39,7 +39,8 @@ typedef	enum
     HIGHLEVEL  = (u8)0xAA,    //高电平
 }LEVEL;                       //电平
 
-
+typedef void    (*V_FUN_V)(void);
+typedef void    (*V_FUN_U8)(u8);
 
 #define BIT0        0x0001
 #define BIT1        0x0002

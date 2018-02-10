@@ -1,5 +1,5 @@
 /*******************************************************************************
-* @file      : PowerCheck.h
+* @file      : Led.h
 * @author    : Jiangshaohui
 * @version   : V1.0.0
 * @date      : Sun Feb 04 2018
@@ -10,30 +10,35 @@
 *
 */
 /* 条件编译-------------------------------------------------------------------*/
-#ifndef __POWERCHECK_H
-#define __POWERCHECK_H
+#ifndef __LED_H
+#define __LED_H
 
 
 
 /*头文件----------------------------------------------------------------------*/
 ///添加头文件
-#include "TypeDef.h"
+#include "MCUConfig.h"
 
 
 
 /*宏定义----------------------------------------------------------------------*/
 ///添加宏定义
-typedef enum
-{
-    POWERON  = (u8)0x55,            //外部电源有电
-    POWEROFF = (u8)0xaa             //外部电源无电
-}Power;
-
-
 /*声明外部函数----------------------------------------------------------------*/
 ///声明对应C文件中的全局函数
-extern Power Check_Power(u8 times);             //外部电源检测：POWERON 上电状态 POWEROFF 掉电状态 ,判断次数times
-extern Power Get_MeterWorkState(void);          //获取表计工作状态标志位，POWERON 上电状态 POWEROFF 掉电状态
+
+/* 定时运行的LED驱动函数，建议定时周期15ms */
+extern void LedGap(void);
+
+/* 跳闸灯操作函数 */
+extern void RelayLed_Open(void);
+extern void RelayLed_Closed(void);
+extern void RelayLed_Blink(void);
+
+/* 背光灯操作函数 */
+extern void BackLed_Open(void);
+extern void BackLed_Closed(void);
+extern void BackLed_Blink(void);
+
 
 
 #endif
