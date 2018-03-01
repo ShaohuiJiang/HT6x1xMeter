@@ -15,7 +15,7 @@
 #include "ht6xxx_lib.h"
 #include "MCUConfig.h"
 #include "PowerCheck.h"
-//#include "TaskSystem.h"
+#include "Message.h"
 
 /*宏定义----------------------------------------------------------------------*/
 ///添加宏定义
@@ -70,8 +70,8 @@ int main(void)
         {
             /* 外部电源供电状态初始化 */
             Init_MCU_ExternalPowerState();
-            /* 初始化系统任务 */
-            //Init_TaskSystem();
+            /* 初始化消息系统 */
+            Init_Message();
             /* 进入上电状态循环前，打开全局中断 */
             Enable_Int();
 

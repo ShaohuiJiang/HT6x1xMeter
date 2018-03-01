@@ -45,8 +45,8 @@ typedef void    (*V_FUN_LEVEL)(LEVEL);      //指向LED管脚的电平驱动函�
 typedef struct
 {
     V_FUN_LEVEL LedSetPin;              //操作LED对应的IO口高电平或者低电平；操作被封装，或者被LedGap函数根据LedStatus而执行相应操作
-    LEDSet   LedStatus;              //LED的几种状态，当状态被改变时，LedGap函数会根据状态执行相应的操作
-    u8       LedStatusFlipTimer;     //灯状态翻转时间；在闪烁状态，这个变量就是用来维持亮或者灭的持续时间参数之一；
+    LEDSet   LedStatus;                 //LED的几种状态，当状态被改变时，LedGap函数会根据状态执行相应的操作
+    u8       LedStatusFlipTimer;        //灯状态翻转时间；在闪烁状态，这个变量就是用来维持亮或者灭的持续时间参数之一；
 }LEDPara;
 /* 
 *灯状态翻转时间和LedGap函数的调用间隔共同决定了闪烁周期 默认LedGap函数

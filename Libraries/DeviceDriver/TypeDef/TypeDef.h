@@ -36,7 +36,7 @@ typedef signed long long        s64;
 typedef	enum
 {
     LOWLEVEL   = (u8)0x55,    //低电平
-    HIGHLEVEL  = (u8)0xAA,    //高电平
+    HIGHLEVEL  = (u8)0xAA     //高电平
 }LEVEL;                       //电平
 
 typedef void    (*V_FUN_V)(void);
