@@ -19,27 +19,21 @@
 ///添加头文件
 #include "MCUConfig.h"
 
-
-
 /*宏定义----------------------------------------------------------------------*/
 ///添加宏定义
+typedef u16 SEC;
 /*声明外部函数----------------------------------------------------------------*/
 ///声明对应C文件中的全局函数
-
-/* 定时运行的LED驱动函数，建议定时周期15ms */
-extern void LedGap(void);
 
 /* 跳闸灯操作函数 */
 extern void RelayLed_Open(void);
 extern void RelayLed_Closed(void);
-extern void RelayLed_Blink(void);
-
+extern void RelayLed_Blink(SEC seconds);
 /* 背光灯操作函数 */
 extern void BackLed_Open(void);
 extern void BackLed_Closed(void);
-extern void BackLed_Blink(void);
 
-
-
+/* 定时运行的LED驱动函数，建议定时周期15ms */
+extern void LedGap(void);
 #endif
 /*end------------------------------------------------------------------------*/
