@@ -31,12 +31,7 @@ typedef enum
     LedNumber        //要放在最后，这样才能等于灯的数量
 }LED;
 
-typedef enum
-{
-    Closed,         //关闭
-    Open,           //打开
-    Blink           //闪烁
-}LEDSet;            //LED灯的操作方法
+
 
 typedef void    (*V_FUN_SET)(LEDSet);      //指向LED驱动函数
 
@@ -183,6 +178,15 @@ extern void RelayLed_Blink(SEC seconds)
 }
 
 /** 
+ * @brief  返回跳闸灯的当前状态
+ * @note   
+ * @retval 跳闸灯的状态
+ */
+extern LEDSet RelayLed_GetStatus(void)
+{
+    return(LEDARRAY[RelayLed].LedStatus);
+}
+/** 
  * @brief  点亮背光灯
  * @note   供外部文件调用
  * @retval None
@@ -203,6 +207,17 @@ extern void BackLed_Closed(void)
     LEDARRAY[BackLed].LedSet_Name(Closed);           //熄灭背光灯
 }
 //背光灯无闪烁功能需求，所以没有相应函数
+
+/** 
+ * @brief  返回背光灯的当前状态
+ * @note   
+ * @retval 背光灯的状态
+ */
+extern LEDSet BackLed_GetStatus(void)
+{
+    return(LEDARRAY[BackLed].LedStatus);
+}
+
 
 /** 
  * @brief  LED定时驱动函数
