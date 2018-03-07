@@ -159,8 +159,23 @@ extern void RelayLed_Closed(void)
  * @note   供外部文件调用
  * @retval None
  */
+/** 
+ * @brief  闪烁跳闸灯
+ * @note   供外部文件调用
+ * @param  seconds: 点亮时间=熄灭时间 seconds范围：1~60，小于1默认1，大于60，默认60
+ * @retval None
+ */
 extern void RelayLed_Blink(SEC seconds)
 {
+    if(seconds < 1)
+    {
+        seconds = 1;
+    }
+    else if(seconds > 60)
+    {
+        seconds = 60;
+    }
+    
     LEDARRAY[RelayLed].LedStatus = Blink;                       //改变灯状态,具体IO口操作在LedGap函数中
     LEDARRAY[RelayLed].LedStatusFlipTimer = seconds*FlipTimer;  //灯的一个状态维持时间
     LEDARRAY[RelayLed].Ledcount = seconds*FlipTimer;            //计数器初始化

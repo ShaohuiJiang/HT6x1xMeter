@@ -28,7 +28,7 @@ typedef u16 SEC;
 /* 跳闸灯操作函数 */
 extern void RelayLed_Open(void);
 extern void RelayLed_Closed(void);
-extern void RelayLed_Blink(SEC seconds);
+extern void RelayLed_Blink(SEC seconds);        //seconds是点亮时间和熄灭时间，点亮时间=熄灭时间 seconds范围：1~60
 /* 背光灯操作函数 */
 extern void BackLed_Open(void);
 extern void BackLed_Closed(void);
