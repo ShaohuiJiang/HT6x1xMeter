@@ -9,10 +9,11 @@
 *   本文件规定了系统所有CPU直接驱动的LED函数，后续要新增led的步骤是
 *   1、确认在MCUConfig.c文件中已经有新led管脚的电平驱动函数Set_xxxLedPin(LEVEL)
 *   2、在LED枚举中增加Led名称
-*   3、声明和定义led操作函数
+*   3、声明和定义led操作函数LedSet_xxx(LEDSet set)
 *   4、在LEDARRAY数组中新增对应led的参数，即初始化
-*   4、然后新增可以被外部调用的三个操作函数xxxled_Open()\xxxled_Closed()\xxxled_Blink
-*
+*   5、然后新增可以被外部调用的三个操作函数xxxled_Open()\xxxled_Closed()\xxxled_Blink
+*   6、如果Blink没需求可以不写
+*   7、在Led.h文件中增加被外部调用的操作函数
 *
 */
 /*头文件----------------------------------------------------------------------*/
@@ -175,7 +176,7 @@ extern void RelayLed_Blink(SEC seconds)
     {
         seconds = 60;
     }
-    
+
     LEDARRAY[RelayLed].LedStatus = Blink;                       //改变灯状态,具体IO口操作在LedGap函数中
     LEDARRAY[RelayLed].LedStatusFlipTimer = seconds*FlipTimer;  //灯的一个状态维持时间
     LEDARRAY[RelayLed].Ledcount = seconds*FlipTimer;            //计数器初始化
