@@ -1,0 +1,1 @@
+该文件夹放数据类型文件、通用函数文件、MCU外设功能封装文件（MCUConfig）、其他MCU驱动和通信的外围设备模块（暂时有PLC、PowerCheck、Led、Key、LCD、UART、EEPROM、ESAM、IR、RS485、Relay、RN8209C）

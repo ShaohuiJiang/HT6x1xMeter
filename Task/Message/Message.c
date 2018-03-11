@@ -140,7 +140,7 @@ extern void MessageSystemTick(void)
     }
 
     //普通IO口定时驱动或者检测；
-    LedGap();       //Led每15ms定时驱动
+    LedGap(RelayLed);       //跳闸灯每15ms定时驱动
 }
 
 

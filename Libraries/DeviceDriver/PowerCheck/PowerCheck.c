@@ -57,7 +57,7 @@ extern Power Check_Power(u8 times)
     /* 判断times次检测引脚的电平，假如有一次是低电平，就认为外部电源没电，否则就是有电 */
     for(i=0;i<times;i++)
     {
-        if(LOWLEVEL == Get_PowerOnPinLevelStatus())
+        if(LOW_LEVEL == Get_PowerOnPinLevelStatus())
         {
             p_MeterWorkState = POWEROFF;        //将表计工作状态标志位置成掉电状态
             return POWEROFF;                    //返回掉电状态

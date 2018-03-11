@@ -55,7 +55,7 @@
  */
 extern void Init_DisplayTask(void)
 {
-    RelayLed_Closed();              //关闭跳闸灯
+    Init_RelayLed();              //关闭跳闸灯
 }
 
 /** 
@@ -74,20 +74,20 @@ extern void Run_DisplayTask(void)
     }
     if (Is_Message(msg, MSG_DispKey))       //收到显示按键消息
     {
-        LEDSet Ledstate;
-        Ledstate=RelayLed_GetStatus();
+        LED_SET Ledstate;
+        Ledstate=Get_RelayLedStatus();
         switch(Ledstate)
         {
-            case Closed:
-                RelayLed_Open();
+            case OFF_STATUS:
+                RelayLed_TurnOn();
             break;
 
-            case Open:
+            case TURN_ON_SET:
                 RelayLed_Blink(1);
             break;
 
-            case Blink:
-                RelayLed_Closed();
+            case BLINK_STATUS:
+                RelayLed_TurnOff();
             break;
             default:
             break;
@@ -103,7 +103,7 @@ extern void Run_DisplayTask(void)
  */
 extern void Stop_DisplayTask(void)
 {
-    RelayLed_Closed();              //关闭跳闸灯
+    Init_RelayLed();              //跳闸灯初始化
 }
 
 

@@ -1061,7 +1061,7 @@ extern void Maintain_MCU(void)
 /** 
  * @brief  检测外部电源管脚状态 
  * @note   
- * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  */
 
 extern LEVEL Get_PowerOnPinLevelStatus(void)
@@ -1080,16 +1080,16 @@ extern LEVEL Get_PowerOnPinLevelStatus(void)
 
     if(BIT7 != (HT_GPIOE->PTDAT & BIT7) )        //检测到PE7为低
     {
-        return LOWLEVEL;
+        return LOW_LEVEL;
     } 
-    return HIGHLEVEL;
+    return HIGH_LEVEL;
 }
 
 
 /** 
  * @brief  检测超级权限管脚状态 
  * @note   
- * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  */
 
 extern LEVEL Get_SuperAuthorityPinLevelStatus(void)
@@ -1107,15 +1107,15 @@ extern LEVEL Get_SuperAuthorityPinLevelStatus(void)
 
     if(BIT11 == (HT_GPIOA->PTDAT & BIT11) )        //检测到PA11为高
     {
-        return HIGHLEVEL;
+        return HIGH_LEVEL;
     } 
-    return LOWLEVEL;
+    return LOW_LEVEL;
 }
 
 /** 
  * @brief  检测按键管脚状态 
  * @note   
- * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  */
 
 extern LEVEL Get_DisplayKeyPinLevelStatus(void)
@@ -1133,52 +1133,52 @@ extern LEVEL Get_DisplayKeyPinLevelStatus(void)
 
     if(BIT10 == (HT_GPIOA->PTDAT & BIT10) )        //检测到PA11为高
     {
-        return HIGHLEVEL;
+        return HIGH_LEVEL;
     }
 
-    return LOWLEVEL;
+    return LOW_LEVEL;
 }
 
 /** 
  * @brief  检测插卡管脚状态 
  * @note   
- * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  */
 
 extern LEVEL Get_CPUCardPinLevelStatus(void)
 {
         //具体代码暂缺
-        return HIGHLEVEL;
+        return HIGH_LEVEL;
 }
 
 /** 
  * @brief  检测继电器状态检测管脚状态
  * @note   
- * @retval  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval  LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  */
 
 extern LEVEL Get_RelayPinLevelStatus(void)
 {
         //具体代码暂缺
-        return HIGHLEVEL;
+        return HIGH_LEVEL;
 }
 
 /** 
  * @brief  检测PLC通信状态检测管脚状态
  * @note   
- * @retval LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  */
 
 extern LEVEL Get_PLCStaPinLevelStatus(void)
 {
         //具体代码暂缺
-        return HIGHLEVEL;
+        return HIGH_LEVEL;
 }
 
 /** 
  * @brief  设置跳闸灯管脚的输出电平
  * @note   
- * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @param  level:  LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  * @retval None
  */
 
@@ -1186,11 +1186,11 @@ extern void Set_RelayLedPin(LEVEL level)
 {
     switch(level)
     {
-        case HIGHLEVEL:
+        case HIGH_LEVEL:
                         HT_GPIOC->PTSET |= BIT8;     //输出高
             break;
         
-        case LOWLEVEL:
+        case LOW_LEVEL:
                         HT_GPIOC->PTSET &= ~BIT8;     //输出低
             break;
         
@@ -1214,7 +1214,7 @@ extern void Set_RelayLedPin(LEVEL level)
 /** 
  * @brief  设置PLC事件报警管脚的输出电平
  * @note   
- * @param  level: LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，PLC事件接口这里是要开漏输出高)
+ * @param  level: LOW_LEVEL 低电平;HIGH_LEVEL 高电平(注意，PLC事件接口这里是要开漏输出高)
  * @retval None
  */
 
@@ -1226,7 +1226,7 @@ extern void Set_PLCEventPin(LEVEL level)
 /** 
  * @brief  设置PLC复位管脚的输出电平
  * @note   
- * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，PLC复位接口这里是要开漏输出高)
+ * @param  level:  LOW_LEVEL 低电平;HIGH_LEVEL 高电平(注意，PLC复位接口这里是要开漏输出高)
  * @retval None
  */
 extern void Set_PLCResetPin(LEVEL level)
@@ -1236,7 +1236,7 @@ extern void Set_PLCResetPin(LEVEL level)
 /** 
  * @brief  设置继电器闭合控制管脚的输出电平
  * @note   
- * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @param  level:  LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  * @retval None
  */
 extern void Set_RelayOffPin(LEVEL level)
@@ -1247,7 +1247,7 @@ extern void Set_RelayOffPin(LEVEL level)
 /** 
  * @brief  设置继电器断开控制管脚的输出电平
  * @note   
- * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @param  level:  LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  * @retval None
  */
 extern void Set_RelayOnPin(LEVEL level)
@@ -1258,7 +1258,7 @@ extern void Set_RelayOnPin(LEVEL level)
 /** 
  * @brief  设置背光灯管脚的输出电平
  * @note   
- * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @param  level:  LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  * @retval None
  */
 extern void Set_BackLedPin(LEVEL level)
@@ -1268,7 +1268,7 @@ extern void Set_BackLedPin(LEVEL level)
 /** 
  * @brief  检测开盖管脚状态
  * @note   
- * @retval  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @retval  LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  */
 
 extern LEVEL Get_CoverKeyPinLevelStatus(void)
@@ -1279,7 +1279,7 @@ extern LEVEL Get_CoverKeyPinLevelStatus(void)
 /** 
  * @brief  设置SDA管脚的输出电平
  * @note   
- * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，这是软件模拟的I2C)
+ * @param  level:  LOW_LEVEL 低电平;HIGH_LEVEL 高电平(注意，这是软件模拟的I2C)
  * @retval None
  */
 extern void Set_SDAPin(LEVEL level)
@@ -1290,7 +1290,7 @@ extern void Set_SDAPin(LEVEL level)
 /** 
  * @brief  //设置SCL管脚的输出电平
  * @note   
- * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平(注意，这是软件模拟的I2C)
+ * @param  level:  LOW_LEVEL 低电平;HIGH_LEVEL 高电平(注意，这是软件模拟的I2C)
  * @retval None
  */
 extern void Set_SCLPin(LEVEL level)
@@ -1300,7 +1300,7 @@ extern void Set_SCLPin(LEVEL level)
 /** 
  * @brief  设置485发送接收使能管脚的输出电平
  * @note   
- * @param  level:  LOWLEVEL 低电平;HIGHLEVEL 高电平
+ * @param  level:  LOW_LEVEL 低电平;HIGH_LEVEL 高电平
  * @retval None
  */
 extern void Set_RS485CtrlPin(LEVEL level)
