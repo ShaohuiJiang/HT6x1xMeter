@@ -59,6 +59,7 @@ KEY_PARA DisplayKey =
 /*定义全局函数----------------------------------------------------------------*/
 ///定义可用于外部文件的函数
 
+/* 定时查询方式 */
 /** 
  * @brief  检测显示键瞬间的状态函数
  * @note   
@@ -108,6 +109,7 @@ extern void Init_Key(KEY_PARA Key)
     /* 按键行为初始化无行为 */
     Key.KeyAction = NO_ACTION;
 }
+
 
 /** 
  * @brief  按键定时查询并反馈行为函数
@@ -163,10 +165,30 @@ extern KEY_ACTION KeyGap(KEY_PARA Key)
     return Key.KeyAction;
 }
 
+/* 中断方式 */
+//因为管脚不一定支持中断功能，所以有些按键不一定支持，注意在MCU初始化时需配置成中断方式
 
+/** 
+ * @brief  键按下中断函数
+ * @note   该函数根据需求要放到对应的外部中断函数中
+ * @param  Key: 按键
+ * @retval None
+ */
+extern void IRQ_Key_Down(KEY_PARA Key)
+{
+   Key.KeyAction = Down_ACTION;                      //按下行为
+}
 
-
-
+/** 
+ * @brief  键弹起中断函数
+ * @note   该函数根据需求要放到对应的外部中断函数中
+ * @param  Key: 按键
+ * @retval None
+ */
+extern void IRQ_Key_Up(KEY_PARA Key)
+{
+   Key.KeyAction = UP_ACTION;                        //弹起行为
+}
 
 
 

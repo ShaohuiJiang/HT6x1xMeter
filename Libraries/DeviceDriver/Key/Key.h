@@ -62,6 +62,7 @@ extern KEY_PARA DisplayKey;         //声明一个显示键结构体
 /*声明外部函数----------------------------------------------------------------*/
 ///声明对应C文件中的全局函数
 
+/* 定时查询方式 */
 /* 获取显示键状态：弹起状态或按下状态 （只针对瞬间，可能是抖动） */
 extern KEY_STATUS GetStatus_DisplayKey(void);
 
@@ -70,6 +71,14 @@ extern void Init_Key(KEY_PARA Key);
 
 /* 按键定时查询并反馈行为函数，这个函数必须10~30ms左右运行一次 */
 extern KEY_ACTION KeyGap(KEY_PARA Key);
+
+
+/* 中断方式 */
+//中断方式针对某个按键单独写中断处理函数，因为管脚不一定支持中断功能，同时在MCU初始化时需配置成中断方式
+//输入对应的key，放到对应的中断函数中
+extern void IRQ_Key_Down(KEY_PARA Key);         //按键按下中断处理函数
+extern void IRQ_Key_Up(KEY_PARA Key);           //按键弹起中断处理函数
+
 
 #endif
 /*end------------------------------------------------------------------------*/
